@@ -303,6 +303,7 @@
             this.toolStripButton1.Text = "New Plan";
             this.toolStripButton1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
             // toolStripButton3
             // 

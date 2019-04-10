@@ -64,6 +64,10 @@ namespace BusinessPlanner
             }
         }
 
-       
+        private void ToolStripButton1_Click(object sender, EventArgs e)
+        {
+            Step1Dialog st = new Step1Dialog();
+            st.ShowDialog();
+        }
     }
 }
