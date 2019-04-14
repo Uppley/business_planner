@@ -22,7 +22,6 @@ namespace BusinessPlanner
             InitializeComponent();
             ToolStripManager.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip1.Renderer = new Office2007Renderer.Office2007Renderer();
-            
             this.home.TopLevel = false;
             panel1.Controls.Clear();
             panel1.Controls.Add(this.home);
