@@ -95,8 +95,9 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ItemHeight = 16;
+            this.comboBox1.ItemHeight = 20;
             this.comboBox1.Items.AddRange(new object[] {
             "January",
             "February",
@@ -112,11 +113,12 @@
             "December"});
             this.comboBox1.Location = new System.Drawing.Point(205, 272);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(199, 24);
+            this.comboBox1.Size = new System.Drawing.Size(199, 28);
             this.comboBox1.TabIndex = 13;
             // 
             // comboBox2
             // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "2019",
@@ -133,7 +135,7 @@
             "2030"});
             this.comboBox2.Location = new System.Drawing.Point(630, 272);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 24);
+            this.comboBox2.Size = new System.Drawing.Size(200, 28);
             this.comboBox2.TabIndex = 14;
             // 
             // label3

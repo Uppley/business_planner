@@ -189,6 +189,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label2.Location = new System.Drawing.Point(70, 235);
@@ -196,6 +197,7 @@
             this.label2.Size = new System.Drawing.Size(150, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Create New Plan";
+            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // label1
             // 

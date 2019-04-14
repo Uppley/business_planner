@@ -16,5 +16,11 @@ namespace BusinessPlanner
         {
             InitializeComponent();
         }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+            Step1Dialog st = new Step1Dialog();
+            st.ShowDialog();
+        }
     }
 }
