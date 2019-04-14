@@ -69,5 +69,21 @@ namespace BusinessPlanner
             Step1Dialog st = new Step1Dialog();
             st.ShowDialog();
         }
+
+        private void AboutVersionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBP abp = new AboutBP();
+            abp.ShowDialog();
+        }
+
+        private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure to exit this program ? If you are sure then click the Yes button else click No button.","Exit Business Planner",MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                this.Dispose();
+            }  
+
+        }
     }
 }

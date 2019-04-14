@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBP.Designer.cs">
+      <DependentUpon>AboutBP.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,12 +85,64 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Step9Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Step9Dialog.Designer.cs">
+      <DependentUpon>Step9Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Step8Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Step8Dialog.Designer.cs">
+      <DependentUpon>Step8Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Step7Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Step7Dialog.Designer.cs">
+      <DependentUpon>Step7Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Step6Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Step6Dialog.Designer.cs">
+      <DependentUpon>Step6Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Step5Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Step5Dialog.Designer.cs">
+      <DependentUpon>Step5Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Step4Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Step4Dialog.Designer.cs">
+      <DependentUpon>Step4Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Step3Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Step3Dialog.Designer.cs">
+      <DependentUpon>Step3Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Step2Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Step2Dialog.Designer.cs">
+      <DependentUpon>Step2Dialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Step1Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Step1Dialog.Designer.cs">
       <DependentUpon>Step1Dialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
+    <EmbeddedResource Include="AboutBP.resx">
+      <DependentUpon>AboutBP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +163,30 @@
     </Compile>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Step9Dialog.resx">
+      <DependentUpon>Step9Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Step8Dialog.resx">
+      <DependentUpon>Step8Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Step7Dialog.resx">
+      <DependentUpon>Step7Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Step6Dialog.resx">
+      <DependentUpon>Step6Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Step5Dialog.resx">
+      <DependentUpon>Step5Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Step4Dialog.resx">
+      <DependentUpon>Step4Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Step3Dialog.resx">
+      <DependentUpon>Step3Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Step2Dialog.resx">
+      <DependentUpon>Step2Dialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Step1Dialog.resx">
       <DependentUpon>Step1Dialog.cs</DependentUpon>

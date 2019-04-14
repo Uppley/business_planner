@@ -29,39 +29,39 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Home");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Objectives");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mission");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Kick Start", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Summary");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Ownership");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Start Up Table");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Company Insight", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Service Summary");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Product Selling", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Summary");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Analysis Table");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Market Segmentation");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Market Analysis", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Business Analysis");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Competitive Study");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Line Of Business", new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode16});
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Strategy Summary");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Competitive Edge");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Marketing Plan", new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode19});
+            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("Home");
+            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("Objectives");
+            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("Mission");
+            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("Kick Start", new System.Windows.Forms.TreeNode[] {
+            treeNode62,
+            treeNode63});
+            System.Windows.Forms.TreeNode treeNode65 = new System.Windows.Forms.TreeNode("Summary");
+            System.Windows.Forms.TreeNode treeNode66 = new System.Windows.Forms.TreeNode("Ownership");
+            System.Windows.Forms.TreeNode treeNode67 = new System.Windows.Forms.TreeNode("Start Up Table");
+            System.Windows.Forms.TreeNode treeNode68 = new System.Windows.Forms.TreeNode("Company Insight", new System.Windows.Forms.TreeNode[] {
+            treeNode65,
+            treeNode66,
+            treeNode67});
+            System.Windows.Forms.TreeNode treeNode69 = new System.Windows.Forms.TreeNode("Service Summary");
+            System.Windows.Forms.TreeNode treeNode70 = new System.Windows.Forms.TreeNode("Product Selling", new System.Windows.Forms.TreeNode[] {
+            treeNode69});
+            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("Summary");
+            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("Analysis Table");
+            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("Market Segmentation");
+            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("Market Analysis", new System.Windows.Forms.TreeNode[] {
+            treeNode71,
+            treeNode72,
+            treeNode73});
+            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("Business Analysis");
+            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("Competitive Study");
+            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("Line Of Business", new System.Windows.Forms.TreeNode[] {
+            treeNode75,
+            treeNode76});
+            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("Strategy Summary");
+            System.Windows.Forms.TreeNode treeNode79 = new System.Windows.Forms.TreeNode("Competitive Edge");
+            System.Windows.Forms.TreeNode treeNode80 = new System.Windows.Forms.TreeNode("Marketing Plan", new System.Windows.Forms.TreeNode[] {
+            treeNode78,
+            treeNode79});
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -167,33 +167,37 @@
             // 
             // newToolStripMenuItem
             // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.newToolStripMenuItem.Text = "New";
             // 
             // openToolStripMenuItem
             // 
+            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // saveToolStripMenuItem
             // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.quitToolStripMenuItem.Text = "Quit";
+            this.quitToolStripMenuItem.Click += new System.EventHandler(this.QuitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -224,15 +228,17 @@
             // 
             // fAQToolStripMenuItem
             // 
+            this.fAQToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("fAQToolStripMenuItem.Image")));
             this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
-            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.fAQToolStripMenuItem.Text = "FAQ";
             // 
             // aboutVersionToolStripMenuItem
             // 
             this.aboutVersionToolStripMenuItem.Name = "aboutVersionToolStripMenuItem";
-            this.aboutVersionToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
+            this.aboutVersionToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.aboutVersionToolStripMenuItem.Text = "About Version";
+            this.aboutVersionToolStripMenuItem.Click += new System.EventHandler(this.AboutVersionToolStripMenuItem_Click);
             // 
             // toolStripContainer1
             // 
@@ -281,7 +287,7 @@
             this.toolStripButton21,
             this.toolStripButton20,
             this.toolStripButton19});
-            this.toolStrip1.Location = new System.Drawing.Point(8, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(7, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(1);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -423,54 +429,54 @@
             this.treeView1.ItemHeight = 25;
             this.treeView1.Location = new System.Drawing.Point(0, 34);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "home";
-            treeNode1.Text = "Home";
-            treeNode2.Name = "objectives";
-            treeNode2.Text = "Objectives";
-            treeNode3.Name = "Node1";
-            treeNode3.Text = "Mission";
-            treeNode4.Name = "Node1";
-            treeNode4.Text = "Kick Start";
-            treeNode5.Name = "Node2";
-            treeNode5.Text = "Summary";
-            treeNode6.Name = "Node3";
-            treeNode6.Text = "Ownership";
-            treeNode7.Name = "Node4";
-            treeNode7.Text = "Start Up Table";
-            treeNode8.Name = "Node2";
-            treeNode8.Text = "Company Insight";
-            treeNode9.Name = "Node5";
-            treeNode9.Text = "Service Summary";
-            treeNode10.Name = "Node3";
-            treeNode10.Text = "Product Selling";
-            treeNode11.Name = "Node7";
-            treeNode11.Text = "Summary";
-            treeNode12.Name = "Node8";
-            treeNode12.Text = "Analysis Table";
-            treeNode13.Name = "Node9";
-            treeNode13.Text = "Market Segmentation";
-            treeNode14.Name = "Node4";
-            treeNode14.Text = "Market Analysis";
-            treeNode15.Name = "Node10";
-            treeNode15.Text = "Business Analysis";
-            treeNode16.Name = "Node11";
-            treeNode16.Text = "Competitive Study";
-            treeNode17.Name = "Node5";
-            treeNode17.Text = "Line Of Business";
-            treeNode18.Name = "Node12";
-            treeNode18.Text = "Strategy Summary";
-            treeNode19.Name = "Node13";
-            treeNode19.Text = "Competitive Edge";
-            treeNode20.Name = "Node6";
-            treeNode20.Text = "Marketing Plan";
+            treeNode61.Name = "home";
+            treeNode61.Text = "Home";
+            treeNode62.Name = "objectives";
+            treeNode62.Text = "Objectives";
+            treeNode63.Name = "Node1";
+            treeNode63.Text = "Mission";
+            treeNode64.Name = "Node1";
+            treeNode64.Text = "Kick Start";
+            treeNode65.Name = "Node2";
+            treeNode65.Text = "Summary";
+            treeNode66.Name = "Node3";
+            treeNode66.Text = "Ownership";
+            treeNode67.Name = "Node4";
+            treeNode67.Text = "Start Up Table";
+            treeNode68.Name = "Node2";
+            treeNode68.Text = "Company Insight";
+            treeNode69.Name = "Node5";
+            treeNode69.Text = "Service Summary";
+            treeNode70.Name = "Node3";
+            treeNode70.Text = "Product Selling";
+            treeNode71.Name = "Node7";
+            treeNode71.Text = "Summary";
+            treeNode72.Name = "Node8";
+            treeNode72.Text = "Analysis Table";
+            treeNode73.Name = "Node9";
+            treeNode73.Text = "Market Segmentation";
+            treeNode74.Name = "Node4";
+            treeNode74.Text = "Market Analysis";
+            treeNode75.Name = "Node10";
+            treeNode75.Text = "Business Analysis";
+            treeNode76.Name = "Node11";
+            treeNode76.Text = "Competitive Study";
+            treeNode77.Name = "Node5";
+            treeNode77.Text = "Line Of Business";
+            treeNode78.Name = "Node12";
+            treeNode78.Text = "Strategy Summary";
+            treeNode79.Name = "Node13";
+            treeNode79.Text = "Competitive Edge";
+            treeNode80.Name = "Node6";
+            treeNode80.Text = "Marketing Plan";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode4,
-            treeNode8,
-            treeNode10,
-            treeNode14,
-            treeNode17,
-            treeNode20});
+            treeNode61,
+            treeNode64,
+            treeNode68,
+            treeNode70,
+            treeNode74,
+            treeNode77,
+            treeNode80});
             this.treeView1.Size = new System.Drawing.Size(197, 536);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_1);

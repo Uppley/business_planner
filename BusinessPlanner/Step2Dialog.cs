@@ -10,25 +10,27 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    public partial class Step1Dialog : Form
+    public partial class Step2Dialog : Form
     {
-        
-        private String mData { get; set; }
+        public Int32 mData { get; set; }
 
-        public Step1Dialog()
+        public Step2Dialog()
         {
             InitializeComponent();
-            if(Utilities.mainData.ContainsKey("step1"))
+            this.comboBox1.SelectedIndex = 0;
+            if (Utilities.mainData.ContainsKey("step2"))
             {
-                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == Utilities.mainData["step1"].ToString());
-                cb.Checked = true;
+                this.comboBox1.SelectedIndex = (Int32) Utilities.mainData["step2"];
             }
         }
 
 
         private void Button2_Click(object sender, EventArgs e)
         {
-
+            Step1Dialog st1 = new Step1Dialog();
+            this.Hide();
+            st1.ShowDialog();
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -38,15 +40,11 @@ namespace BusinessPlanner
 
         private void Button3_Click(object sender, EventArgs e)
         {
-
-            var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
-            this.mData = cb.Text;
-            Utilities.CreateOrUpdateDict("step1", this.mData);
-            Step2Dialog st2 = new Step2Dialog();
+            Step3Dialog st3 = new Step3Dialog();
+            this.mData = this.comboBox1.SelectedIndex;
+            Utilities.CreateOrUpdateDict("step2", this.mData);
             this.Hide();
-            st2.ShowDialog();
+            st3.ShowDialog();
         }
-
-        
     }
 }
