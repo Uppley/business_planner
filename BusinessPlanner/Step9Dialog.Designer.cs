@@ -106,6 +106,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(39, 307);
             this.radioButton1.Name = "radioButton1";
@@ -123,7 +124,6 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(353, 24);
             this.radioButton2.TabIndex = 13;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "I would like a long-term business plan.";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,15 @@ namespace BusinessPlanner
 {
     public partial class Dashboard : Form
     {
+        public DocumentModel dm;
         public Dashboard(String name)
         {
             InitializeComponent();
             ToolStripManager.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip2.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip3.Renderer = new Office2007Renderer.Office2007Renderer();
-            
             ComponentInfo.SetLicense("FREE-LIMITED-KEY");
+            dm = DocumentModel.Load("Document.rtf");
             this.setContentInitial(name);
         }
 
@@ -31,9 +33,9 @@ namespace BusinessPlanner
             {
                 using (var stream = new MemoryStream())
                 {
-                    DocumentModel.Load("Document.docx").Save(stream, SaveOptions.RtfDefault);
+                    dm.Save(stream, SaveOptions.RtfDefault);
                     stream.Position = 0;
-                    this.richTextBox1.LoadFile(stream, RichTextBoxStreamType.RichText);
+                    this.richTextBox1.LoadFile("Document.rtf");
                 }
             }
             else
@@ -46,7 +48,7 @@ namespace BusinessPlanner
         {
             using (var stream = new MemoryStream())
             {
-                DocumentModel.Load("Document.docx").Save(stream, SaveOptions.RtfDefault);
+                dm.Save(stream, SaveOptions.RtfDefault);
                 stream.Position = 0;
                 this.richTextBox1.LoadFile(stream, RichTextBoxStreamType.RichText);
 
@@ -178,13 +180,8 @@ namespace BusinessPlanner
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            using (var stream = new MemoryStream())
-            {
-                this.richTextBox1.SaveFile(stream, RichTextBoxStreamType.RichText);
-                stream.Position = 0;
-                DocumentModel.Load(stream, LoadOptions.RtfDefault).Save("Document.docx");
-                this.label2.Text = "Saved";
-            }
+            this.richTextBox1.SaveFile("Document.rtf");
+            this.label2.Text = "Saved";
         }
 
         private void btnGemBoxCut_Click_1(object sender, EventArgs e)
@@ -227,6 +224,20 @@ namespace BusinessPlanner
         private void richTextBox1_TextChanged(object sender, KeyEventArgs e)
         {
             this.label2.Text = "Editing";
+        }
+
+        private void ToolStripButton13_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                Image img = Image.FromFile(opnfd.FileName);
+                Clipboard.SetImage(img);
+                richTextBox1.Paste();
+                richTextBox1.Focus();
+            }
         }
     }
 }

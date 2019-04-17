@@ -31,7 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,8 +71,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -111,6 +111,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Instructions";
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.Location = new System.Drawing.Point(11, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(940, 215);
+            this.label3.TabIndex = 0;
+            this.label3.Text = resources.GetString("label3.Text");
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Info;
@@ -121,6 +131,16 @@
             this.tabPage2.Size = new System.Drawing.Size(969, 238);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Examples";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.Location = new System.Drawing.Point(11, 11);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(937, 209);
+            this.label4.TabIndex = 0;
+            this.label4.Text = resources.GetString("label4.Text");
             // 
             // tabPage3
             // 
@@ -444,6 +464,7 @@
             this.toolStripButton13.Name = "toolStripButton13";
             this.toolStripButton13.Size = new System.Drawing.Size(24, 25);
             this.toolStripButton13.Text = "Save";
+            this.toolStripButton13.Click += new System.EventHandler(this.ToolStripButton13_Click);
             // 
             // toolStripButton14
             // 
@@ -541,26 +562,6 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(11, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(940, 215);
-            this.label3.TabIndex = 0;
-            this.label3.Text = resources.GetString("label3.Text");
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Location = new System.Drawing.Point(11, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(937, 209);
-            this.label4.TabIndex = 0;
-            this.label4.Text = resources.GetString("label4.Text");
             // 
             // Dashboard
             // 
