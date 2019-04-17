@@ -239,5 +239,21 @@ namespace BusinessPlanner
                 richTextBox1.Focus();
             }
         }
+
+        private void ToolStripButton15_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            MyDialog.AllowFullOpen = false;
+            MyDialog.ShowHelp = true;
+            MyDialog.Color = richTextBox1.ForeColor;
+
+            if (MyDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (richTextBox1.SelectedText != null)
+                {
+                    richTextBox1.SelectionColor = MyDialog.Color;
+                }
+            }
+        }
     }
 }

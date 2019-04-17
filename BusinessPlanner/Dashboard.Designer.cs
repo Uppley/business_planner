@@ -64,7 +64,6 @@
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton16 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -334,7 +333,7 @@
             this.toggleFont.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.toggleFont.Name = "toggleFont";
             this.toggleFont.Size = new System.Drawing.Size(24, 27);
-            this.toggleFont.Text = "Toggle Font";
+            this.toggleFont.Text = "Indent Right";
             // 
             // toolStripButton5
             // 
@@ -344,7 +343,7 @@
             this.toolStripButton5.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton5.Text = "toolStripButton5";
+            this.toolStripButton5.Text = "Indent Left";
             // 
             // toolStripButton6
             // 
@@ -354,7 +353,7 @@
             this.toolStripButton6.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton6.Text = "toolStripButton6";
+            this.toolStripButton6.Text = "Ordered Lists";
             // 
             // toolStripButton7
             // 
@@ -364,7 +363,7 @@
             this.toolStripButton7.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton7.Text = "toolStripButton7";
+            this.toolStripButton7.Text = "Unordered Lists";
             // 
             // toolStripButton8
             // 
@@ -374,7 +373,7 @@
             this.toolStripButton8.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton8.Text = "toolStripButton8";
+            this.toolStripButton8.Text = "Left Align";
             // 
             // toolStripButton9
             // 
@@ -384,7 +383,7 @@
             this.toolStripButton9.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton9.Text = "toolStripButton9";
+            this.toolStripButton9.Text = "Center Align";
             // 
             // toolStripButton10
             // 
@@ -394,7 +393,7 @@
             this.toolStripButton10.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton10.Name = "toolStripButton10";
             this.toolStripButton10.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton10.Text = "toolStripButton10";
+            this.toolStripButton10.Text = "Right Align";
             // 
             // toolStripSeparator3
             // 
@@ -409,7 +408,7 @@
             this.toolStripButton11.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton11.Name = "toolStripButton11";
             this.toolStripButton11.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton11.Text = "toolStripButton11";
+            this.toolStripButton11.Text = "Bold Text";
             // 
             // toolStripButton12
             // 
@@ -419,7 +418,7 @@
             this.toolStripButton12.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton12.Name = "toolStripButton12";
             this.toolStripButton12.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton12.Text = "toolStripButton12";
+            this.toolStripButton12.Text = "Italic Text";
             // 
             // toolStripButton23
             // 
@@ -428,7 +427,7 @@
             this.toolStripButton23.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton23.Name = "toolStripButton23";
             this.toolStripButton23.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton23.Text = "toolStripButton23";
+            this.toolStripButton23.Text = "Underline Text";
             // 
             // toolStrip3
             // 
@@ -443,14 +442,13 @@
             this.toolStripButton13,
             this.toolStripButton14,
             this.toolStripButton15,
-            this.toolStripButton17,
             this.toolStripButton16,
             this.toolStripButton18});
             this.toolStrip3.Location = new System.Drawing.Point(585, 262);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Padding = new System.Windows.Forms.Padding(0);
             this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip3.Size = new System.Drawing.Size(215, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(181, 25);
             this.toolStrip3.Stretch = true;
             this.toolStrip3.TabIndex = 3;
             this.toolStrip3.Text = "toolStrip3";
@@ -463,7 +461,7 @@
             this.toolStripButton13.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton13.Name = "toolStripButton13";
             this.toolStripButton13.Size = new System.Drawing.Size(24, 25);
-            this.toolStripButton13.Text = "Save";
+            this.toolStripButton13.Text = "Insert Image";
             this.toolStripButton13.Click += new System.EventHandler(this.ToolStripButton13_Click);
             // 
             // toolStripButton14
@@ -474,7 +472,7 @@
             this.toolStripButton14.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton14.Name = "toolStripButton14";
             this.toolStripButton14.Size = new System.Drawing.Size(24, 25);
-            this.toolStripButton14.Text = "Cut";
+            this.toolStripButton14.Text = "Insert Table";
             // 
             // toolStripButton15
             // 
@@ -484,17 +482,8 @@
             this.toolStripButton15.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton15.Name = "toolStripButton15";
             this.toolStripButton15.Size = new System.Drawing.Size(24, 25);
-            this.toolStripButton15.Text = "Copy";
-            // 
-            // toolStripButton17
-            // 
-            this.toolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
-            this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton17.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(24, 25);
-            this.toolStripButton17.Text = "Undo";
+            this.toolStripButton15.Text = "Color Picker";
+            this.toolStripButton15.Click += new System.EventHandler(this.ToolStripButton15_Click);
             // 
             // toolStripButton16
             // 
@@ -504,7 +493,7 @@
             this.toolStripButton16.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton16.Name = "toolStripButton16";
             this.toolStripButton16.Size = new System.Drawing.Size(24, 25);
-            this.toolStripButton16.Text = "Paste";
+            this.toolStripButton16.Text = "Look Up";
             // 
             // toolStripButton18
             // 
@@ -514,7 +503,7 @@
             this.toolStripButton18.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton18.Name = "toolStripButton18";
             this.toolStripButton18.Size = new System.Drawing.Size(24, 25);
-            this.toolStripButton18.Text = "Redo";
+            this.toolStripButton18.Text = "Search";
             // 
             // label2
             // 
@@ -632,7 +621,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton13;
         private System.Windows.Forms.ToolStripButton toolStripButton14;
         private System.Windows.Forms.ToolStripButton toolStripButton15;
-        private System.Windows.Forms.ToolStripButton toolStripButton17;
         private System.Windows.Forms.ToolStripButton toolStripButton16;
         private System.Windows.Forms.ToolStripButton toolStripButton18;
         private System.Windows.Forms.Label label2;
