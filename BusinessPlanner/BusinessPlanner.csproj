@@ -62,6 +62,7 @@
     <Compile Include="AboutBP.Designer.cs">
       <DependentUpon>AboutBP.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppMessages.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

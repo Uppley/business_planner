@@ -61,11 +61,11 @@ namespace BusinessPlanner
                     lb.Top = 50;
                     Label lb1 = new Label();
                     lb1.Left = 50;
-                    lb1.Top = 105;
+                    lb1.Top = 120;
                     lb1.Text = "";
                     lb1.BorderStyle = BorderStyle.Fixed3D;
                     lb1.AutoSize = false;
-                    lb1.Width = 1170;
+                    lb1.Width = 1190;
                     lb1.Height = 2;
                     lb1.BackColor = Color.Red;
                     Label lb2 = new Label();
@@ -98,7 +98,7 @@ namespace BusinessPlanner
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure to quit Business Planner ?\nIf you are sure then click the Yes button else click No button.","Exit Business Planner",MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show(AppMessages.messages["exit_body"],AppMessages.messages["exit_head"],MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 this.Dispose();
@@ -108,7 +108,7 @@ namespace BusinessPlanner
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure to quit Business Planner ?\nIf you are sure then click the Yes button else click No button.", "Exit Business Planner", MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show(AppMessages.messages["exit_body"], AppMessages.messages["exit_head"], MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 e.Cancel = false;

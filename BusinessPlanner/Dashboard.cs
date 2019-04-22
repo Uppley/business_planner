@@ -30,7 +30,7 @@ namespace BusinessPlanner
             this.setContentInitial(name);
             richTextBox1.SelectionFont = new Font("Arial", richTextBox1.SelectionFont.Size, richTextBox1.SelectionFont.Style);
             richTextBox1.ZoomFactor = 1.0f;
-            toolStripComboBox2.SelectedIndex = 1;
+            toolStripComboBox2.SelectedIndex = 2;
         }
 
         private void setContentInitial(String name)
@@ -304,10 +304,15 @@ namespace BusinessPlanner
             {
                 zf = 0.5f;
             }
-            else if(i == 2)
+            else if (i == 1)
+            {
+                zf = 0.75f;
+            }
+            else if(i == 3)
             {
                 zf = 1.25f;
-            }else if(i == 3)
+            }
+            else if(i == 4)
             {
                 zf = 1.5f;
             }
