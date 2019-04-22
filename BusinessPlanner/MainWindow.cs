@@ -55,18 +55,29 @@ namespace BusinessPlanner
                     Label lb = new Label();
                     lb.AutoSize = true;
                     lb.Text = this.treeView1.SelectedNode.Text;
-                    lb.ForeColor = Color.MediumBlue;
+                    lb.ForeColor = Color.DarkBlue;
                     lb.Font = new Font(FontFamily.GenericSansSerif,35.0F, FontStyle.Bold);
                     lb.Left = 50;
                     lb.Top = 50;
+                    Label lb1 = new Label();
+                    lb1.Left = 50;
+                    lb1.Top = 105;
+                    lb1.Text = "";
+                    lb1.BorderStyle = BorderStyle.Fixed3D;
+                    lb1.AutoSize = false;
+                    lb1.Width = 1170;
+                    lb1.Height = 2;
+                    lb1.BackColor = Color.Red;
                     Label lb2 = new Label();
                     //lb2.AutoSize = true;
                     lb2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer cursus dui id eros condimentum feugiat. Praesent et mauris nec nibh convallis aliquet in id magna. Quisque id dui vitae ipsum malesuada vulputate. Ut eu pulvinar enim. Duis dolor sapien, rutrum eget ultrices convallis, aliquam eu ex. Vestibulum eget erat quis purus pulvinar ultricies ac vel ipsum. Suspendisse nibh erat, consequat vitae consectetur sed, vehicula vel quam. Vivamus bibendum arcu tortor, sit amet porta tellus sollicitudin eu. Sed pharetra a ante sed tincidunt. In accumsan velit mauris, vitae placerat leo gravida nec. Cras condimentum massa et faucibus posuere.\n\n\nSuspendisse tempus fringilla lectus ac feugiat. Quisque eget elementum lorem. In euismod finibus dui et mollis. Sed auctor tincidunt urna vel dignissim. Vivamus sed leo nec mauris porta interdum nec et nibh.";
+                    lb2.Font = new Font(FontFamily.GenericSerif, 12.0F, FontStyle.Regular);
                     lb2.Top = 150;
-                    lb2.Left = 50;
+                    lb2.Left = 60;
                     lb2.Width = 1200;
                     lb2.Height = 700;
                     panel1.Controls.Add(lb);
+                    panel1.Controls.Add(lb1);
                     panel1.Controls.Add(lb2);
                 }
                 
@@ -108,6 +119,19 @@ namespace BusinessPlanner
                 e.Cancel = true;
                 return;
             }
+        }
+
+        private void ToolStripButton21_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            panel1.Controls.Add(this.home);
+            this.home.Show();
+        }
+
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Step1Dialog st = new Step1Dialog();
+            st.ShowDialog();
         }
     }
 }
