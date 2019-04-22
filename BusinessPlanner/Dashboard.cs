@@ -1,5 +1,4 @@
-﻿using GemBox.Document;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,163 +14,141 @@ namespace BusinessPlanner
 {
     public partial class Dashboard : Form
     {
-        public DocumentModel dm;
+        
         public Dashboard(String name)
         {
             InitializeComponent();
             ToolStripManager.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip2.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip3.Renderer = new Office2007Renderer.Office2007Renderer();
-            ComponentInfo.SetLicense("FREE-LIMITED-KEY");
-            dm = DocumentModel.Load("Document.rtf");
+            
+            foreach (FontFamily font in System.Drawing.FontFamily.Families)
+            {
+                toolStripComboBox1.Items.Add(font.Name.ToString());
+            }
+            toolStripComboBox1.SelectedItem = "Arial";
             this.setContentInitial(name);
+            richTextBox1.SelectionFont = new Font("Arial", richTextBox1.SelectionFont.Size, richTextBox1.SelectionFont.Style);
+            richTextBox1.ZoomFactor = 1.0f;
+            toolStripComboBox2.SelectedIndex = 1;
         }
 
         private void setContentInitial(String name)
         {
             if (name == "objectives")
             {
-                using (var stream = new MemoryStream())
-                {
-                    dm.Save(stream, SaveOptions.RtfDefault);
-                    stream.Position = 0;
-                    this.richTextBox1.LoadFile("Document.rtf");
-                }
+                richTextBox1.LoadFile("Document.rtf");
             }
             else
             {
-                this.richTextBox1.Text = "";
+               richTextBox1.Text = "";
             }
         }
 
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
-            using (var stream = new MemoryStream())
-            {
-                dm.Save(stream, SaveOptions.RtfDefault);
-                stream.Position = 0;
-                this.richTextBox1.LoadFile(stream, RichTextBoxStreamType.RichText);
-
-            }
+            
         }
 
 
         private void btnCut_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.Cut();
+            richTextBox1.Cut();
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.Copy();
+            richTextBox1.Copy();
         }
 
         private void btnPaste_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.Paste();
+           richTextBox1.Paste();
         }
 
         private void btnBold_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionFont = new Font(this.richTextBox1.SelectionFont.FontFamily, this.richTextBox1.SelectionFont.Size, this.ToggleFontStyle(this.richTextBox1.SelectionFont.Style, FontStyle.Bold));
+            if (richTextBox1.SelectionFont != null)
+            {
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size, ToggleFontStyle(richTextBox1.SelectionFont.Style, FontStyle.Bold));
+            }
         }
 
         private void btnItalic_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionFont = new Font(this.richTextBox1.SelectionFont.FontFamily, this.richTextBox1.SelectionFont.Size, this.ToggleFontStyle(this.richTextBox1.SelectionFont.Style, FontStyle.Italic));
+            if (richTextBox1.SelectionFont != null)
+            {
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size, ToggleFontStyle(richTextBox1.SelectionFont.Style, FontStyle.Italic));
+            }
         }
 
         private void btnUnderline_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionFont = new Font(this.richTextBox1.SelectionFont.FontFamily, this.richTextBox1.SelectionFont.Size, this.ToggleFontStyle(this.richTextBox1.SelectionFont.Style, FontStyle.Underline));
+            if (richTextBox1.SelectionFont != null)
+            {
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size, ToggleFontStyle(richTextBox1.SelectionFont.Style, FontStyle.Underline));
+            }
         }
 
         private void btnIncreaseFontSize_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionFont = new Font(this.richTextBox1.SelectionFont.FontFamily, this.richTextBox1.SelectionFont.Size + 1, this.richTextBox1.SelectionFont.Style);
+            if (richTextBox1.SelectionFont != null)
+            {
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size + 1, richTextBox1.SelectionFont.Style);
+            }
         }
 
         private void btnDecreaseFontSize_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionFont = new Font(this.richTextBox1.SelectionFont.FontFamily, this.richTextBox1.SelectionFont.Size - 1, this.richTextBox1.SelectionFont.Style);
+            if (richTextBox1.SelectionFont != null)
+            {
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size - 1, richTextBox1.SelectionFont.Style);
+            }
         }
 
         private void btnToggleBullets_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionBullet = !this.richTextBox1.SelectionBullet;
+            
+                richTextBox1.SelectionBullet = !richTextBox1.SelectionBullet;
+            
         }
 
         private void btnDecreaseIndentation_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionIndent -= 10;
+            
+                richTextBox1.SelectionIndent -= 10;
+            
         }
 
         private void btnIncreaseIndentation_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionIndent += 10;
+            
+                richTextBox1.SelectionIndent += 10;
+            
         }
 
         private void btnAlignLeft_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            
+                richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            
         }
 
         private void btnAlignCenter_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
         }
 
         private void btnAlignRight_Click(object sender, EventArgs e)
         {
-            this.richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Right;
+            richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Right;
         }
 
         //endregion
 
-        private void DoGemBoxCopy()
-        {
-            using (var stream = new MemoryStream())
-            {
-                // Save RichTextBox selection to RTF stream.
-                var writer = new StreamWriter(stream);
-                writer.Write(this.richTextBox1.SelectedRtf);
-                writer.Flush();
+        
 
-                stream.Position = 0;
-
-                // Save RTF stream to clipboard.
-                DocumentModel.Load(stream, LoadOptions.RtfDefault).Content.SaveToClipboard();
-            }
-        }
-
-        private void DoGemBoxPaste(bool prepend)
-        {
-            using (var stream = new MemoryStream())
-            {
-                // Save RichTextBox content to RTF stream.
-                var writer = new StreamWriter(stream);
-                writer.Write(this.richTextBox1.SelectedRtf);
-                writer.Flush();
-
-                stream.Position = 0;
-
-                // Load document from RTF stream and prepend or append clipboard content to it.
-                var document = DocumentModel.Load(stream, LoadOptions.RtfDefault);
-                var content = document.Content;
-                (prepend ? content.Start : content.End).LoadFromClipboard();
-
-                stream.Position = 0;
-
-                // Save document to RTF stream.
-                document.Save(stream, SaveOptions.RtfDefault);
-
-                stream.Position = 0;
-
-                // Load RTF stream into RichTextBox.
-                var reader = new StreamReader(stream);
-                this.richTextBox1.SelectedRtf = reader.ReadToEnd();
-            }
-        }
+        
 
         private FontStyle ToggleFontStyle(FontStyle item, FontStyle toggle)
         {
@@ -180,38 +157,38 @@ namespace BusinessPlanner
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            this.richTextBox1.SaveFile("Document.rtf");
-            this.label2.Text = "Saved";
+            richTextBox1.SaveFile("Document.rtf");
+            label2.Text = "Saved";
         }
 
         private void btnGemBoxCut_Click_1(object sender, EventArgs e)
         {
-            this.DoGemBoxCopy();
-            this.richTextBox1.SelectedRtf = string.Empty;
+            
+            richTextBox1.SelectedRtf = string.Empty;
         }
 
         private void btnGemBoxCopy_Click_1(object sender, EventArgs e)
         {
-            this.DoGemBoxCopy();
+            richTextBox1.Copy();
         }
 
         private void btnGemBoxPastePrepend_Click_1(object sender, EventArgs e)
         {
-            this.richTextBox1.Paste();
+            richTextBox1.Paste();
         }
 
 
 
         private void btnUndo_Click_1(object sender, EventArgs e)
         {
-            if (this.richTextBox1.CanUndo)
-                this.richTextBox1.Undo();
+            if (richTextBox1.CanUndo)
+                richTextBox1.Undo();
         }
 
         private void btnRedo_Click_1(object sender, EventArgs e)
         {
-            if (this.richTextBox1.CanRedo)
-                this.richTextBox1.Redo();
+            if (richTextBox1.CanRedo)
+                richTextBox1.Redo();
         }
 
         private void toggleFont_Click(object sender, EventArgs e)
@@ -223,7 +200,7 @@ namespace BusinessPlanner
 
         private void richTextBox1_TextChanged(object sender, KeyEventArgs e)
         {
-            this.label2.Text = "Editing";
+            label2.Text = "Editing";
         }
 
         private void ToolStripButton13_Click(object sender, EventArgs e)
@@ -254,6 +231,88 @@ namespace BusinessPlanner
                     richTextBox1.SelectionColor = MyDialog.Color;
                 }
             }
+        }
+
+        private void ToolStripButton14_Click(object sender, EventArgs e)
+        {
+            _TableInputForm tbl = new _TableInputForm();
+            DialogResult table_dimensions = tbl.ShowDialog(this);
+            if(table_dimensions == DialogResult.OK && tbl.col_width > 0)
+            {
+                int col_width = Decimal.ToInt32(tbl.col_width)*1000;
+                int rows = Decimal.ToInt32(tbl.rows);
+                int columns = Decimal.ToInt32(tbl.columns);
+                StringBuilder tableRtf = new StringBuilder();
+                tableRtf.Append(@"{\rtf1 ");
+                for (int i = 0; i < rows; i++)
+                {
+                    tableRtf.Append(@"\trowd");
+                    for (int j = 1; j <= columns; j++)
+                    {
+                        string col = (col_width * j).ToString();
+                        tableRtf.Append(@"\cellx"+col);
+                    }
+                    tableRtf.Append(@"\intbl \cell \row");
+                }
+                
+                tableRtf.Append(@"\pard");
+                tableRtf.Append(@"}");
+                richTextBox1.SelectedRtf = tableRtf.ToString();
+            }
+            
+        }
+
+        private void ToolStripButton3_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ToolStripButton4_Click(object sender, EventArgs e)
+        {
+            
+            _HyperlinkInputForm hpl = new _HyperlinkInputForm();
+            DialogResult hpl_data = hpl.ShowDialog(this);
+            if (hpl_data == DialogResult.OK)
+            {
+
+                StringBuilder st = new StringBuilder();
+                st.Append(@"{\rtf1 {\colortbl;\red0\green0\blue238;}");
+                st.Append(@"{\field{\*\fldinst {HYPERLINK "+ hpl.linkUrl +"}}");
+                st.Append(@"{\fldrslt{\cf1\ul " + hpl.linkText+"}}}");
+                st.Append(@"}");
+                richTextBox1.SelectedRtf = st.ToString();
+            }
+        }
+
+        private void ToolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            richTextBox1.SelectionFont = new Font(toolStripComboBox1.SelectedItem.ToString(), 12, richTextBox1.SelectionFont.Style);
+        }
+
+        private void RichTextBox1_SelectionChanged(object sender, EventArgs e)
+        {
+            if(richTextBox1.SelectionFont != null)
+                toolStripComboBox1.SelectedItem = richTextBox1.SelectionFont.Name;
+        }
+
+        private void ToolStripComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ToolStripComboBox cmb = (ToolStripComboBox)sender;
+            int i = toolStripComboBox2.SelectedIndex;
+            float zf = 1.0f;
+            if (i == 0)
+            {
+                zf = 0.5f;
+            }
+            else if(i == 2)
+            {
+                zf = 1.25f;
+            }else if(i == 3)
+            {
+                zf = 1.5f;
+            }
+            
+            richTextBox1.ZoomFactor = zf;
         }
     }
 }

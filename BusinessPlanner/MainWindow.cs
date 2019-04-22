@@ -87,7 +87,7 @@ namespace BusinessPlanner
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show("Are you sure to exit this program ? If you are sure then click the Yes button else click No button.","Exit Business Planner",MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show("Are you sure to quit Business Planner ?\nIf you are sure then click the Yes button else click No button.","Exit Business Planner",MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 this.Dispose();
@@ -95,6 +95,19 @@ namespace BusinessPlanner
 
         }
 
-        
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure to quit Business Planner ?\nIf you are sure then click the Yes button else click No button.", "Exit Business Planner", MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                e.Cancel = false;
+                this.Dispose();
+            }
+            else
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
     }
 }

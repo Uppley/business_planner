@@ -51,25 +51,29 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toggleFont = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton23 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton16 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -234,22 +238,25 @@
             this.btnUndo,
             this.btnRedo,
             this.toolStripSeparator2,
+            this.toolStripComboBox1,
             this.toggleFont,
             this.toolStripButton5,
-            this.toolStripButton6,
             this.toolStripButton7,
             this.toolStripButton8,
             this.toolStripButton9,
+            this.toolStripButton3,
             this.toolStripButton10,
             this.toolStripSeparator3,
             this.toolStripButton11,
             this.toolStripButton12,
-            this.toolStripButton23});
-            this.toolStrip2.Location = new System.Drawing.Point(7, 260);
+            this.toolStripButton23,
+            this.toolStripButton1,
+            this.toolStripButton2});
+            this.toolStrip2.Location = new System.Drawing.Point(9, 260);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Padding = new System.Windows.Forms.Padding(0);
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(567, 27);
+            this.toolStrip2.Size = new System.Drawing.Size(755, 27);
             this.toolStrip2.Stretch = true;
             this.toolStrip2.TabIndex = 2;
             this.toolStrip2.Text = "toolStrip2";
@@ -334,6 +341,7 @@
             this.toggleFont.Name = "toggleFont";
             this.toggleFont.Size = new System.Drawing.Size(24, 27);
             this.toggleFont.Text = "Indent Right";
+            this.toggleFont.Click += new System.EventHandler(this.btnIncreaseIndentation_Click);
             // 
             // toolStripButton5
             // 
@@ -344,16 +352,7 @@
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton5.Text = "Indent Left";
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton6.Text = "Ordered Lists";
+            this.toolStripButton5.Click += new System.EventHandler(this.btnDecreaseIndentation_Click);
             // 
             // toolStripButton7
             // 
@@ -364,6 +363,7 @@
             this.toolStripButton7.Name = "toolStripButton7";
             this.toolStripButton7.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton7.Text = "Unordered Lists";
+            this.toolStripButton7.Click += new System.EventHandler(this.btnToggleBullets_Click);
             // 
             // toolStripButton8
             // 
@@ -374,6 +374,7 @@
             this.toolStripButton8.Name = "toolStripButton8";
             this.toolStripButton8.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton8.Text = "Left Align";
+            this.toolStripButton8.Click += new System.EventHandler(this.btnAlignLeft_Click);
             // 
             // toolStripButton9
             // 
@@ -384,6 +385,17 @@
             this.toolStripButton9.Name = "toolStripButton9";
             this.toolStripButton9.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton9.Text = "Center Align";
+            this.toolStripButton9.Click += new System.EventHandler(this.btnAlignCenter_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton3.Text = "Justify";
+            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButton3_Click);
             // 
             // toolStripButton10
             // 
@@ -394,6 +406,7 @@
             this.toolStripButton10.Name = "toolStripButton10";
             this.toolStripButton10.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton10.Text = "Right Align";
+            this.toolStripButton10.Click += new System.EventHandler(this.btnAlignRight_Click);
             // 
             // toolStripSeparator3
             // 
@@ -409,6 +422,7 @@
             this.toolStripButton11.Name = "toolStripButton11";
             this.toolStripButton11.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton11.Text = "Bold Text";
+            this.toolStripButton11.Click += new System.EventHandler(this.btnBold_Click);
             // 
             // toolStripButton12
             // 
@@ -419,15 +433,40 @@
             this.toolStripButton12.Name = "toolStripButton12";
             this.toolStripButton12.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton12.Text = "Italic Text";
+            this.toolStripButton12.Click += new System.EventHandler(this.btnItalic_Click);
             // 
             // toolStripButton23
             // 
             this.toolStripButton23.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton23.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton23.Image")));
             this.toolStripButton23.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton23.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton23.Name = "toolStripButton23";
-            this.toolStripButton23.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton23.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton23.Text = "Underline Text";
+            this.toolStripButton23.Click += new System.EventHandler(this.btnUnderline_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(24, 27);
+            this.toolStripButton1.Text = "Decrease Font";
+            this.toolStripButton1.Click += new System.EventHandler(this.btnIncreaseFontSize_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 27);
+            this.toolStripButton2.Text = "Increase Font";
+            this.toolStripButton2.Click += new System.EventHandler(this.btnDecreaseFontSize_Click);
             // 
             // toolStrip3
             // 
@@ -439,19 +478,31 @@
             this.toolStrip3.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton4,
             this.toolStripButton13,
             this.toolStripButton14,
             this.toolStripButton15,
             this.toolStripButton16,
-            this.toolStripButton18});
-            this.toolStrip3.Location = new System.Drawing.Point(585, 262);
+            this.toolStripComboBox2});
+            this.toolStrip3.Location = new System.Drawing.Point(769, 260);
             this.toolStrip3.Name = "toolStrip3";
             this.toolStrip3.Padding = new System.Windows.Forms.Padding(0);
             this.toolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip3.Size = new System.Drawing.Size(181, 25);
+            this.toolStrip3.Size = new System.Drawing.Size(232, 27);
             this.toolStrip3.Stretch = true;
             this.toolStrip3.TabIndex = 3;
             this.toolStrip3.Text = "toolStrip3";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(24, 25);
+            this.toolStripButton4.Text = "Hyperlink";
+            this.toolStripButton4.Click += new System.EventHandler(this.ToolStripButton4_Click);
             // 
             // toolStripButton13
             // 
@@ -473,6 +524,7 @@
             this.toolStripButton14.Name = "toolStripButton14";
             this.toolStripButton14.Size = new System.Drawing.Size(24, 25);
             this.toolStripButton14.Text = "Insert Table";
+            this.toolStripButton14.Click += new System.EventHandler(this.ToolStripButton14_Click);
             // 
             // toolStripButton15
             // 
@@ -494,16 +546,6 @@
             this.toolStripButton16.Name = "toolStripButton16";
             this.toolStripButton16.Size = new System.Drawing.Size(24, 25);
             this.toolStripButton16.Text = "Look Up";
-            // 
-            // toolStripButton18
-            // 
-            this.toolStripButton18.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton18.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton18.Image")));
-            this.toolStripButton18.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton18.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.toolStripButton18.Name = "toolStripButton18";
-            this.toolStripButton18.Size = new System.Drawing.Size(24, 25);
-            this.toolStripButton18.Text = "Search";
             // 
             // label2
             // 
@@ -543,6 +585,7 @@
             // 
             // richTextBox1
             // 
+            this.richTextBox1.AutoWordSelection = true;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(10, 10);
@@ -550,7 +593,25 @@
             this.richTextBox1.Size = new System.Drawing.Size(990, 371);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.SelectionChanged += new System.EventHandler(this.RichTextBox1_SelectionChanged);
             this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_TextChanged);
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 27);
+            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.ToolStripComboBox1_SelectedIndexChanged);
+            // 
+            // toolStripComboBox2
+            // 
+            this.toolStripComboBox2.Items.AddRange(new object[] {
+            "50%",
+            "100%",
+            "125%",
+            "150%"});
+            this.toolStripComboBox2.Name = "toolStripComboBox2";
+            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 27);
+            this.toolStripComboBox2.SelectedIndexChanged += new System.EventHandler(this.ToolStripComboBox2_SelectedIndexChanged);
             // 
             // Dashboard
             // 
@@ -608,7 +669,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toggleFont;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripButton toolStripButton8;
         private System.Windows.Forms.ToolStripButton toolStripButton9;
@@ -622,12 +682,17 @@
         private System.Windows.Forms.ToolStripButton toolStripButton14;
         private System.Windows.Forms.ToolStripButton toolStripButton15;
         private System.Windows.Forms.ToolStripButton toolStripButton16;
-        private System.Windows.Forms.ToolStripButton toolStripButton18;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
     }
 }
