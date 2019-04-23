@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessPlanner.Partials;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,13 +18,15 @@ namespace BusinessPlanner
         string filepath = "test.rtf";
         string[] fileContent;
         StringBuilder contentBuilder;
+        List<int> findPosition = new List<int>();
+        int findLength = 0;
         public Dashboard(String name)
         {
             InitializeComponent();
             ToolStripManager.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip2.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip3.Renderer = new Office2007Renderer.Office2007Renderer();
-            
+            findPosition.Clear();
             foreach (FontFamily font in System.Drawing.FontFamily.Families)
             {
                 toolStripComboBox1.Items.Add(font.Name.ToString());
@@ -321,7 +324,8 @@ namespace BusinessPlanner
 
         private void RichTextBox1_SelectionChanged(object sender, EventArgs e)
         {
-            if(richTextBox1.SelectionFont != null)
+            
+            if (richTextBox1.SelectionFont != null)
             {
                 boldBt.Checked = false;
                 italicBt.Checked = false;
@@ -375,6 +379,52 @@ namespace BusinessPlanner
                 {
                     richTextBox1.SelectionBackColor = MyDialog.Color;
                 }
+            }
+        }
+
+        private void ToolStripButton16_Click(object sender, EventArgs e)
+        {
+            _FindDialog hpl = new _FindDialog();
+            DialogResult hpl_data = hpl.ShowDialog(this);
+            if (hpl_data == DialogResult.OK)
+            {
+                if (hpl.searchTerm.Length > 0)
+                {
+                    this.findLength = hpl.searchTerm.Length;
+                    int startIndex = 0;
+                    while (startIndex < richTextBox1.TextLength)
+                    {
+                        int wordStartIndex = richTextBox1.Find(hpl.searchTerm, startIndex, RichTextBoxFinds.None);
+                        if (wordStartIndex != -1)
+                        {
+                            richTextBox1.SelectionStart = wordStartIndex;
+                            richTextBox1.SelectionLength = hpl.searchTerm.Length;
+                            richTextBox1.SelectionBackColor = Color.Yellow;
+                            this.findPosition.Add(wordStartIndex);
+                        }
+                        else
+                            break;
+                        startIndex += wordStartIndex + hpl.searchTerm.Length;
+                    }
+
+                }
+            }
+        }
+
+        private void RichTextBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (this.findPosition.Count() > 0 && this.findLength > 0)
+            {
+                foreach (int c in this.findPosition)
+                {
+                    richTextBox1.SelectionStart = c;
+                    richTextBox1.SelectionLength = this.findLength;
+                    richTextBox1.SelectionBackColor = Color.White;
+                }
+
+                this.findPosition.Clear();
+                this.findLength = 0;
             }
         }
     }

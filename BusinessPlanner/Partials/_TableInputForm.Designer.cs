@@ -122,7 +122,7 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "(Enter value between 1-10)";
             // 
-            // TableInputForm
+            // _TableInputForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,7 +138,8 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TableInputForm";
+            this.Name = "_TableInputForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Table Dimesions";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

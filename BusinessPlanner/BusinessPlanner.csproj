@@ -62,6 +62,12 @@
     <Compile Include="AboutBP.Designer.cs">
       <DependentUpon>AboutBP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Partials\_FindDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\_FindDialog.Designer.cs">
+      <DependentUpon>_FindDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\AppMessages.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partials\_FindDialog.resx">
+      <DependentUpon>_FindDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

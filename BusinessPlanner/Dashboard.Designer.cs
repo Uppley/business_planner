@@ -526,6 +526,7 @@
             this.toolStripButton16.Name = "toolStripButton16";
             this.toolStripButton16.Size = new System.Drawing.Size(24, 27);
             this.toolStripButton16.Text = "Look Up";
+            this.toolStripButton16.Click += new System.EventHandler(this.ToolStripButton16_Click);
             // 
             // toolStripComboBox2
             // 
@@ -586,6 +587,7 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.RichTextBox1_SelectionChanged);
+            this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichTextBox1_MouseClick);
             this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_TextChanged);
             // 
             // toolStripButton1
