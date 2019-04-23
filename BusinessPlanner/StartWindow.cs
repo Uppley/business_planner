@@ -21,7 +21,7 @@ namespace BusinessPlanner
         {
             MainWindow mf = new MainWindow();
             mf.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -30,7 +30,7 @@ namespace BusinessPlanner
             Step1Dialog st = new Step1Dialog();
             mf.Show();
             st.ShowDialog();
-            this.Hide();
+            this.Close();
         }
     }
 }
