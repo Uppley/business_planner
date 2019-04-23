@@ -50,16 +50,17 @@
             this.btnRedo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.fontSizeCmb = new System.Windows.Forms.ToolStripComboBox();
+            this.boldBt = new System.Windows.Forms.ToolStripButton();
+            this.italicBt = new System.Windows.Forms.ToolStripButton();
+            this.underBt = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toggleFont = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.boldBt = new System.Windows.Forms.ToolStripButton();
-            this.italicBt = new System.Windows.Forms.ToolStripButton();
-            this.underBt = new System.Windows.Forms.ToolStripButton();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
@@ -71,7 +72,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.fontSizeCmb = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -335,6 +336,51 @@
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 27);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.ToolStripComboBox1_SelectedIndexChanged);
             // 
+            // fontSizeCmb
+            // 
+            this.fontSizeCmb.AutoSize = false;
+            this.fontSizeCmb.Name = "fontSizeCmb";
+            this.fontSizeCmb.Size = new System.Drawing.Size(70, 28);
+            this.fontSizeCmb.SelectedIndexChanged += new System.EventHandler(this.FontSizeCmb_SelectedIndexChanged);
+            // 
+            // boldBt
+            // 
+            this.boldBt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.boldBt.Image = ((System.Drawing.Image)(resources.GetObject("boldBt.Image")));
+            this.boldBt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.boldBt.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.boldBt.Name = "boldBt";
+            this.boldBt.Size = new System.Drawing.Size(24, 27);
+            this.boldBt.Text = "Bold Text";
+            this.boldBt.Click += new System.EventHandler(this.btnBold_Click);
+            // 
+            // italicBt
+            // 
+            this.italicBt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.italicBt.Image = ((System.Drawing.Image)(resources.GetObject("italicBt.Image")));
+            this.italicBt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.italicBt.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.italicBt.Name = "italicBt";
+            this.italicBt.Size = new System.Drawing.Size(24, 27);
+            this.italicBt.Text = "Italic Text";
+            this.italicBt.Click += new System.EventHandler(this.btnItalic_Click);
+            // 
+            // underBt
+            // 
+            this.underBt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.underBt.Image = ((System.Drawing.Image)(resources.GetObject("underBt.Image")));
+            this.underBt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.underBt.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.underBt.Name = "underBt";
+            this.underBt.Size = new System.Drawing.Size(24, 27);
+            this.underBt.Text = "Underline Text";
+            this.underBt.Click += new System.EventHandler(this.btnUnderline_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            // 
             // toggleFont
             // 
             this.toggleFont.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -401,44 +447,6 @@
             this.toolStripButton10.Text = "Right Align";
             this.toolStripButton10.Click += new System.EventHandler(this.btnAlignRight_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
-            // 
-            // boldBt
-            // 
-            this.boldBt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.boldBt.Image = ((System.Drawing.Image)(resources.GetObject("boldBt.Image")));
-            this.boldBt.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.boldBt.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.boldBt.Name = "boldBt";
-            this.boldBt.Size = new System.Drawing.Size(24, 27);
-            this.boldBt.Text = "Bold Text";
-            this.boldBt.Click += new System.EventHandler(this.btnBold_Click);
-            // 
-            // italicBt
-            // 
-            this.italicBt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.italicBt.Image = ((System.Drawing.Image)(resources.GetObject("italicBt.Image")));
-            this.italicBt.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.italicBt.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.italicBt.Name = "italicBt";
-            this.italicBt.Size = new System.Drawing.Size(24, 27);
-            this.italicBt.Text = "Italic Text";
-            this.italicBt.Click += new System.EventHandler(this.btnItalic_Click);
-            // 
-            // underBt
-            // 
-            this.underBt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.underBt.Image = ((System.Drawing.Image)(resources.GetObject("underBt.Image")));
-            this.underBt.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.underBt.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
-            this.underBt.Name = "underBt";
-            this.underBt.Size = new System.Drawing.Size(24, 27);
-            this.underBt.Text = "Underline Text";
-            this.underBt.Click += new System.EventHandler(this.btnUnderline_Click);
-            // 
             // toolStrip3
             // 
             this.toolStrip3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -453,6 +461,7 @@
             this.toolStripButton13,
             this.toolStripButton14,
             this.toolStripButton15,
+            this.toolStripButton1,
             this.toolStripButton16,
             this.toolStripComboBox2});
             this.toolStrip3.Location = new System.Drawing.Point(769, 260);
@@ -505,7 +514,7 @@
             this.toolStripButton15.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.toolStripButton15.Name = "toolStripButton15";
             this.toolStripButton15.Size = new System.Drawing.Size(24, 27);
-            this.toolStripButton15.Text = "Color Picker";
+            this.toolStripButton15.Text = "Forecolor";
             this.toolStripButton15.Click += new System.EventHandler(this.ToolStripButton15_Click);
             // 
             // toolStripButton16
@@ -527,7 +536,7 @@
             "125%",
             "150%"});
             this.toolStripComboBox2.Name = "toolStripComboBox2";
-            this.toolStripComboBox2.Size = new System.Drawing.Size(121, 27);
+            this.toolStripComboBox2.Size = new System.Drawing.Size(75, 27);
             this.toolStripComboBox2.SelectedIndexChanged += new System.EventHandler(this.ToolStripComboBox2_SelectedIndexChanged);
             // 
             // label2
@@ -579,12 +588,16 @@
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.RichTextBox1_SelectionChanged);
             this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_TextChanged);
             // 
-            // fontSizeCmb
+            // toolStripButton1
             // 
-            this.fontSizeCmb.AutoSize = false;
-            this.fontSizeCmb.Name = "fontSizeCmb";
-            this.fontSizeCmb.Size = new System.Drawing.Size(70, 27);
-            this.fontSizeCmb.SelectedIndexChanged += new System.EventHandler(this.FontSizeCmb_SelectedIndexChanged);
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton1.Text = "Backcolor";
+            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
             // Dashboard
             // 
@@ -665,5 +678,6 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
         private System.Windows.Forms.ToolStripComboBox fontSizeCmb;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

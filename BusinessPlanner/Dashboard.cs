@@ -361,5 +361,21 @@ namespace BusinessPlanner
             if (richTextBox1.SelectionFont != null)
                 richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, float.Parse(fontSizeCmb.SelectedItem.ToString()), richTextBox1.SelectionFont.Style);
         }
+
+        private void ToolStripButton1_Click(object sender, EventArgs e)
+        {
+            ColorDialog MyDialog = new ColorDialog();
+            MyDialog.AllowFullOpen = false;
+            MyDialog.ShowHelp = true;
+            MyDialog.Color = richTextBox1.BackColor;
+
+            if (MyDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (richTextBox1.SelectedText != null)
+                {
+                    richTextBox1.SelectionBackColor = MyDialog.Color;
+                }
+            }
+        }
     }
 }
