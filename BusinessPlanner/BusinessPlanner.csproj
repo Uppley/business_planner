@@ -62,7 +62,7 @@
     <Compile Include="AboutBP.Designer.cs">
       <DependentUpon>AboutBP.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppMessages.cs" />
+    <Compile Include="Utility\AppMessages.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +88,12 @@
     </Compile>
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartWindow.Designer.cs">
+      <DependentUpon>StartWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Step9Dialog.cs">
       <SubType>Form</SubType>
@@ -143,19 +149,25 @@
     <Compile Include="Step1Dialog.Designer.cs">
       <DependentUpon>Step1Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="_HyperlinkInputForm.cs">
+    <Compile Include="Partials\_HyperlinkInputForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="_HyperlinkInputForm.Designer.cs">
+    <Compile Include="Partials\_HyperlinkInputForm.Designer.cs">
       <DependentUpon>_HyperlinkInputForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="_TableInputForm.cs">
+    <Compile Include="Partials\_LoadingDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="_TableInputForm.Designer.cs">
+    <Compile Include="Partials\_LoadingDialog.Designer.cs">
+      <DependentUpon>_LoadingDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partials\_TableInputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\_TableInputForm.Designer.cs">
       <DependentUpon>_TableInputForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities.cs" />
+    <Compile Include="Utility\Utilities.cs" />
     <EmbeddedResource Include="AboutBP.resx">
       <DependentUpon>AboutBP.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +191,9 @@
     </Compile>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartWindow.resx">
+      <DependentUpon>StartWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Step9Dialog.resx">
       <DependentUpon>Step9Dialog.cs</DependentUpon>
@@ -207,10 +222,13 @@
     <EmbeddedResource Include="Step1Dialog.resx">
       <DependentUpon>Step1Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="_HyperlinkInputForm.resx">
+    <EmbeddedResource Include="Partials\_HyperlinkInputForm.resx">
       <DependentUpon>_HyperlinkInputForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="_TableInputForm.resx">
+    <EmbeddedResource Include="Partials\_LoadingDialog.resx">
+      <DependentUpon>_LoadingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partials\_TableInputForm.resx">
       <DependentUpon>_TableInputForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -227,6 +245,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -30,8 +30,8 @@ namespace BusinessPlanner
 
         {
             tmr.Stop();
-            MainWindow mf = new MainWindow();
-            mf.Show();
+            StartWindow sw = new StartWindow();
+            sw.Show();
             this.Hide();
         }
     }

@@ -14,7 +14,9 @@ namespace BusinessPlanner
 {
     public partial class Dashboard : Form
     {
-        
+        string filepath = "test.rtf";
+        string[] fileContent;
+        StringBuilder contentBuilder;
         public Dashboard(String name)
         {
             InitializeComponent();
@@ -26,9 +28,16 @@ namespace BusinessPlanner
             {
                 toolStripComboBox1.Items.Add(font.Name.ToString());
             }
+            for(int i = 5;i<=90;i++)
+            {
+                fontSizeCmb.Items.Add(i);
+            }
             toolStripComboBox1.SelectedItem = "Arial";
+            fontSizeCmb.SelectedItem = 12;
+            //contentBuilder = new StringBuilder();
+            //fileContent = File.ReadAllLines(filepath);
             this.setContentInitial(name);
-            richTextBox1.SelectionFont = new Font("Arial", richTextBox1.SelectionFont.Size, richTextBox1.SelectionFont.Style);
+            richTextBox1.SelectionFont = new Font("Arial", 12, richTextBox1.SelectionFont.Style);
             richTextBox1.ZoomFactor = 1.0f;
             toolStripComboBox2.SelectedIndex = 2;
         }
@@ -37,7 +46,35 @@ namespace BusinessPlanner
         {
             if (name == "objectives")
             {
-                richTextBox1.LoadFile("Document.rtf");
+                /*int indx_start = Array.FindIndex(this.fileContent,str => str.Contains(@"{\pard \fs60 Objectives\par}"));
+                int indx_end = Array.FindIndex(this.fileContent, str => str.Contains(@"{\pard \fs15 end_objectives\par}"));
+                
+                contentBuilder.AppendLine(@"{\rtf1");
+                for (int i=indx_start+1;i<indx_end;i++)
+                {
+                    contentBuilder.AppendLine(this.fileContent[i]);
+
+                }
+                
+                contentBuilder.AppendLine(@"}");
+                
+                richTextBox1.Rtf = contentBuilder.ToString();*/
+                _LoadingDialog ld = new _LoadingDialog();
+                try
+                {
+                    ld.Show();
+                    Application.DoEvents();
+                    richTextBox1.LoadFile("Document1.rtf");
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show("Exception: " + e.Message);
+                }
+                finally
+                {
+                    ld.Close();
+                }
+                
             }
             else
             {
@@ -90,21 +127,7 @@ namespace BusinessPlanner
             }
         }
 
-        private void btnIncreaseFontSize_Click(object sender, EventArgs e)
-        {
-            if (richTextBox1.SelectionFont != null)
-            {
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size + 1, richTextBox1.SelectionFont.Style);
-            }
-        }
-
-        private void btnDecreaseFontSize_Click(object sender, EventArgs e)
-        {
-            if (richTextBox1.SelectionFont != null)
-            {
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size - 1, richTextBox1.SelectionFont.Style);
-            }
-        }
+      
 
         private void btnToggleBullets_Click(object sender, EventArgs e)
         {
@@ -157,7 +180,12 @@ namespace BusinessPlanner
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            richTextBox1.SaveFile("Document.rtf");
+            //string data = richTextBox1.Rtf;
+            //int pFrom = data.IndexOf(@"{\rtf1") + @"{\rtf1".Length;
+            //int pTo = data.LastIndexOf(@"}");
+           // String result = data.Substring(pFrom, pTo - pFrom);
+           // MessageBox.Show(result);
+            richTextBox1.SaveFile("Document1.rtf");
             label2.Text = "Saved";
         }
 
@@ -276,7 +304,8 @@ namespace BusinessPlanner
             {
 
                 StringBuilder st = new StringBuilder();
-                st.Append(@"{\rtf1 {\colortbl;\red0\green0\blue238;}");
+                st.Append(@"{\rtf1");
+                st.Append(@"{\colortbl;\red0\green0\blue238;}");
                 st.Append(@"{\field{\*\fldinst {HYPERLINK "+ hpl.linkUrl +"}}");
                 st.Append(@"{\fldrslt{\cf1\ul " + hpl.linkText+"}}}");
                 st.Append(@"}");
@@ -286,14 +315,21 @@ namespace BusinessPlanner
 
         private void ToolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            richTextBox1.SelectionFont = new Font(toolStripComboBox1.SelectedItem.ToString(), 12, richTextBox1.SelectionFont.Style);
+            if (richTextBox1.SelectionFont != null)
+                richTextBox1.SelectionFont = new Font(toolStripComboBox1.SelectedItem.ToString(), 12, richTextBox1.SelectionFont.Style);
         }
 
         private void RichTextBox1_SelectionChanged(object sender, EventArgs e)
         {
             if(richTextBox1.SelectionFont != null)
+            {
+                boldBt.Checked = false;
+                italicBt.Checked = false;
+                underBt.Checked = false;
                 toolStripComboBox1.SelectedItem = richTextBox1.SelectionFont.Name;
-        }
+                fontSizeCmb.SelectedItem = Int32.TryParse(richTextBox1.SelectionFont.Size.ToString(), out int res) ?  res : 12;
+            }
+         }
 
         private void ToolStripComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -318,6 +354,12 @@ namespace BusinessPlanner
             }
             
             richTextBox1.ZoomFactor = zf;
+        }
+
+        private void FontSizeCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (richTextBox1.SelectionFont != null)
+                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, float.Parse(fontSizeCmb.SelectedItem.ToString()), richTextBox1.SelectionFont.Style);
         }
     }
 }
