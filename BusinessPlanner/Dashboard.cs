@@ -85,6 +85,8 @@ namespace BusinessPlanner
             }
         }
 
+
+
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
             
@@ -426,6 +428,26 @@ namespace BusinessPlanner
                 this.findPosition.Clear();
                 this.findLength = 0;
             }
+        }
+
+        private void NextEgBt_MouseHover(object sender, EventArgs e)
+        {
+            nextEgBt.ImageIndex = 1;
+        }
+
+        private void NextEgBt_MouseLeave(object sender, EventArgs e)
+        {
+            nextEgBt.ImageIndex = 0;
+        }
+
+        private void PrevEgBt_MouseHover(object sender, EventArgs e)
+        {
+            prevEgBt.ImageIndex = 1;
+        }
+
+        private void PrevEgBt_MouseLeave(object sender, EventArgs e)
+        {
+            prevEgBt.ImageIndex = 0;
         }
     }
 }
