@@ -29,39 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Home");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Objectives");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mission");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Kick Start", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Summary");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Ownership");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Start Up Table");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Company Insight", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Service Summary");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Product Selling", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Summary");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Analysis Table");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Market Segmentation");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Market Analysis", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13});
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Business Analysis");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Competitive Study");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Line Of Business", new System.Windows.Forms.TreeNode[] {
-            treeNode15,
-            treeNode16});
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Strategy Summary");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Competitive Edge");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Marketing Plan", new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode19});
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -72,6 +39,8 @@
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mSWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.adobePDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +66,9 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
+            this.saveFileDialog3 = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -200,10 +172,29 @@
             // 
             // exportAsToolStripMenuItem
             // 
+            this.exportAsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mSWordToolStripMenuItem,
+            this.adobePDFToolStripMenuItem});
             this.exportAsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportAsToolStripMenuItem.Image")));
             this.exportAsToolStripMenuItem.Name = "exportAsToolStripMenuItem";
             this.exportAsToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.exportAsToolStripMenuItem.Text = "Export As";
+            // 
+            // mSWordToolStripMenuItem
+            // 
+            this.mSWordToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("mSWordToolStripMenuItem.Image")));
+            this.mSWordToolStripMenuItem.Name = "mSWordToolStripMenuItem";
+            this.mSWordToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.mSWordToolStripMenuItem.Text = "MS Word";
+            this.mSWordToolStripMenuItem.Click += new System.EventHandler(this.MSWordToolStripMenuItem_Click);
+            // 
+            // adobePDFToolStripMenuItem
+            // 
+            this.adobePDFToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("adobePDFToolStripMenuItem.Image")));
+            this.adobePDFToolStripMenuItem.Name = "adobePDFToolStripMenuItem";
+            this.adobePDFToolStripMenuItem.Size = new System.Drawing.Size(159, 26);
+            this.adobePDFToolStripMenuItem.Text = "Adobe PDF";
+            this.adobePDFToolStripMenuItem.Click += new System.EventHandler(this.AdobePDFToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
@@ -468,54 +459,6 @@
             this.treeView1.ItemHeight = 25;
             this.treeView1.Location = new System.Drawing.Point(0, 34);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "home";
-            treeNode1.Text = "Home";
-            treeNode2.Name = "objectives";
-            treeNode2.Text = "Objectives";
-            treeNode3.Name = "Node1";
-            treeNode3.Text = "Mission";
-            treeNode4.Name = "Node1";
-            treeNode4.Text = "Kick Start";
-            treeNode5.Name = "Node2";
-            treeNode5.Text = "Summary";
-            treeNode6.Name = "Node3";
-            treeNode6.Text = "Ownership";
-            treeNode7.Name = "Node4";
-            treeNode7.Text = "Start Up Table";
-            treeNode8.Name = "Node2";
-            treeNode8.Text = "Company Insight";
-            treeNode9.Name = "Node5";
-            treeNode9.Text = "Service Summary";
-            treeNode10.Name = "Node3";
-            treeNode10.Text = "Product Selling";
-            treeNode11.Name = "Node7";
-            treeNode11.Text = "Summary";
-            treeNode12.Name = "Node8";
-            treeNode12.Text = "Analysis Table";
-            treeNode13.Name = "Node9";
-            treeNode13.Text = "Market Segmentation";
-            treeNode14.Name = "Node4";
-            treeNode14.Text = "Market Analysis";
-            treeNode15.Name = "Node10";
-            treeNode15.Text = "Business Analysis";
-            treeNode16.Name = "Node11";
-            treeNode16.Text = "Competitive Study";
-            treeNode17.Name = "Node5";
-            treeNode17.Text = "Line Of Business";
-            treeNode18.Name = "Node12";
-            treeNode18.Text = "Strategy Summary";
-            treeNode19.Name = "Node13";
-            treeNode19.Text = "Competitive Edge";
-            treeNode20.Name = "Node6";
-            treeNode20.Text = "Marketing Plan";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode4,
-            treeNode8,
-            treeNode10,
-            treeNode14,
-            treeNode17,
-            treeNode20});
             this.treeView1.Size = new System.Drawing.Size(197, 536);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_1);
@@ -544,6 +487,24 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Tasks";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileName = "BusinessPlan";
+            this.saveFileDialog1.RestoreDirectory = true;
+            this.saveFileDialog1.Title = "Browse File Location";
+            // 
+            // saveFileDialog2
+            // 
+            this.saveFileDialog2.FileName = "BusinessPlan";
+            this.saveFileDialog2.RestoreDirectory = true;
+            this.saveFileDialog2.Title = "Browse File Location";
+            // 
+            // saveFileDialog3
+            // 
+            this.saveFileDialog3.FileName = "BusinessPlan";
+            this.saveFileDialog3.RestoreDirectory = true;
+            this.saveFileDialog3.Title = "Browse File Location";
             // 
             // MainWindow
             // 
@@ -620,5 +581,10 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mSWordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adobePDFToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog3;
     }
 }

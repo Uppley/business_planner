@@ -8,7 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Office2007Renderer;
+using Microsoft.Office.Interop.Word;
+using Microsoft.Office;
 using System.Windows.Forms;
+using Rectangle = System.Drawing.Rectangle;
+using Point = System.Drawing.Point;
+using Application = System.Windows.Forms.Application;
+using BusinessPlanner.Utility;
+using System.Diagnostics;
 
 namespace BusinessPlanner
 {
@@ -16,7 +23,7 @@ namespace BusinessPlanner
     {
         Dashboard dashboard;
         Home home = new Home();
-        
+        string[] documents;
         public MainWindow()
         {
             InitializeComponent();
@@ -26,13 +33,64 @@ namespace BusinessPlanner
             panel1.Controls.Clear();
             panel1.Controls.Add(this.home);
             this.home.Show();
+            Utilities.mainForm = this;
+           // documents = extractDocuments();
             
+            setTreeNodes();
+        }
+
+        private string[] extractDocuments()
+        {
+            List<string> filenames= new List<String>();
+            foreach(var s in Directory.GetFiles(ProjectConfig.projectPath))
+            {
+                string[] fnames = s.Split(new char[] { '\\' });
+                string fname = fnames[fnames.Count() - 1];
+                Debug.WriteLine(fname);
+                filenames.Add(fname);
+            }
+           
+            return filenames.ToArray();
+        }
+
+        public void setTreeNodes()
+        {
+            PopulateTreeView(0, null);
+         /* string data = "";
+            foreach (KeyValuePair<string,object> kvp in Utilities.mainData)
+            {
+                data += string.Format("Key = {0}, Value = {1} \n", kvp.Key, kvp.Value);
+            }
+        */
+
+        }
+
+        public void updateTreeNodes()
+        {
+            treeView1.Nodes.Clear();
+            PopulateTreeView(0, null);
+        }
+
+        private void PopulateTreeView(int parentId, TreeNode parentNode)
+        {
+            
+            var filteredItems = AppConfig.getProjectNodes().Where(item =>item.ParentID == parentId);
+            TreeNode childNode;
+            foreach (var i in filteredItems.ToList())
+            {
+                if (parentNode == null)
+                    childNode = this.treeView1.Nodes.Add(i.Text);
+                else
+                    childNode = parentNode.Nodes.Add(i.Text);
+
+                PopulateTreeView(i.ID, childNode);
+            }
         }
 
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
            
-            if (this.treeView1.SelectedNode.Name == "home")
+            if (this.treeView1.SelectedNode.Text == "Home")
             {
                
                 panel1.Controls.Clear();
@@ -43,7 +101,7 @@ namespace BusinessPlanner
             {
                 if(this.treeView1.SelectedNode.Parent != null)
                 {
-                    this.dashboard = new Dashboard(this.treeView1.SelectedNode.Name);
+                    this.dashboard = new Dashboard(this.treeView1.SelectedNode.Text);
                     this.dashboard.TopLevel = false;
                     panel1.Controls.Clear();
                     panel1.Controls.Add(this.dashboard);
@@ -55,8 +113,8 @@ namespace BusinessPlanner
                     Label lb = new Label();
                     lb.AutoSize = true;
                     lb.Text = this.treeView1.SelectedNode.Text;
-                    lb.ForeColor = Color.DarkBlue;
-                    lb.Font = new Font(FontFamily.GenericSansSerif,35.0F, FontStyle.Bold);
+                    lb.ForeColor = Color.RoyalBlue;
+                    lb.Font = new System.Drawing.Font(FontFamily.GenericSansSerif,35.0F, FontStyle.Bold);
                     lb.Left = 50;
                     lb.Top = 50;
                     Label lb1 = new Label();
@@ -69,9 +127,8 @@ namespace BusinessPlanner
                     lb1.Height = 2;
                     lb1.BackColor = Color.Red;
                     Label lb2 = new Label();
-                    //lb2.AutoSize = true;
                     lb2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer cursus dui id eros condimentum feugiat. Praesent et mauris nec nibh convallis aliquet in id magna. Quisque id dui vitae ipsum malesuada vulputate. Ut eu pulvinar enim. Duis dolor sapien, rutrum eget ultrices convallis, aliquam eu ex. Vestibulum eget erat quis purus pulvinar ultricies ac vel ipsum. Suspendisse nibh erat, consequat vitae consectetur sed, vehicula vel quam. Vivamus bibendum arcu tortor, sit amet porta tellus sollicitudin eu. Sed pharetra a ante sed tincidunt. In accumsan velit mauris, vitae placerat leo gravida nec. Cras condimentum massa et faucibus posuere.\n\n\nSuspendisse tempus fringilla lectus ac feugiat. Quisque eget elementum lorem. In euismod finibus dui et mollis. Sed auctor tincidunt urna vel dignissim. Vivamus sed leo nec mauris porta interdum nec et nibh.";
-                    lb2.Font = new Font(FontFamily.GenericSerif, 12.0F, FontStyle.Regular);
+                    lb2.Font = new System.Drawing.Font(FontFamily.GenericSerif, 12.0F, FontStyle.Regular);
                     lb2.Top = 150;
                     lb2.Left = 60;
                     lb2.Width = 1200;
@@ -133,5 +190,124 @@ namespace BusinessPlanner
             Step1Dialog st = new Step1Dialog();
             st.ShowDialog();
         }
+
+        private void MSWordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            saveFileDialog1.DefaultExt = "docx";
+            saveFileDialog1.Filter = "docx files (*.docx)|*.docx|All files (*.*)|*.*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                RichTextBox rtb = new RichTextBox();
+                rtb.LoadFile("Document1.rtf");
+                object missing = System.Reflection.Missing.Value;
+                object Visible = true;
+                object start1 = 0;
+                object end1 = 0;
+                ApplicationClass WordApp = new ApplicationClass();
+                Document adoc = WordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+                Microsoft.Office.Interop.Word.Range rng = adoc.Range(ref start1, ref missing);
+                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["exporting"]);
+                try
+                {
+                    ld.Show();
+                    System.Windows.Forms.Application.DoEvents();
+                    Clipboard.SetText(rtb.Rtf, TextDataFormat.Rtf);
+                    WordApp.Selection.Paste();
+                    object filename = saveFileDialog1.FileName;
+                    adoc.SaveAs(ref filename, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
+                    ld.Close();
+                    MessageBox.Show(AppMessages.messages["export_success"]);
+                }
+                catch (Exception ex)
+                {
+                    ld.Close();
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+            
+        }
+
+        private void AdobePDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            saveFileDialog2.DefaultExt = "pdf";
+            saveFileDialog2.Filter = "pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
+            if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                RichTextBox rtb = new RichTextBox();
+                rtb.LoadFile("Document1.rtf");
+                object missing = System.Reflection.Missing.Value;
+                object Visible = true;
+                object start1 = 0;
+                object end1 = 0;
+                ApplicationClass WordApp = new ApplicationClass();
+                Document adoc = WordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+                Microsoft.Office.Interop.Word.Range rng = adoc.Range(ref start1, ref missing);
+                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["exporting"]);
+                try
+                {
+                    ld.Show();
+                    System.Windows.Forms.Application.DoEvents();
+                    Clipboard.SetText(rtb.Rtf, TextDataFormat.Rtf);
+                    WordApp.Selection.Paste();
+                    object filename = saveFileDialog2.FileName;
+                    object fileformat = WdSaveFormat.wdFormatPDF;
+                    adoc.SaveAs(ref filename, ref fileformat, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
+                    ld.Close();
+                    MessageBox.Show(AppMessages.messages["export_success"]);
+                }
+                catch (Exception ex)
+                {
+                    ld.Close();
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+        }
+
+        /*private void TreeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        {
+            string minusPath = Application.StartupPath + Path.DirectorySeparatorChar + @"Images\minus.png";
+            string plusPath = Application.StartupPath + Path.DirectorySeparatorChar + @"Images\plus.png";
+            string nodePath = Application.StartupPath + Path.DirectorySeparatorChar + @"Images\node_img.png";
+            Rectangle nodeRect = e.Node.Bounds;
+            
+            
+            Point ptExpand = new Point(nodeRect.Location.X - 20, nodeRect.Location.Y + 2);
+            Image expandImg = null;
+            if (e.Node.IsExpanded || e.Node.Nodes.Count < 1)
+                expandImg = Image.FromFile(minusPath);
+            else
+                expandImg = Image.FromFile(plusPath);
+            Graphics g = Graphics.FromImage(expandImg);
+            IntPtr imgPtr = g.GetHdc();
+            g.ReleaseHdc();
+            e.Graphics.DrawImage(expandImg, ptExpand);
+
+            
+            Point ptNodeIcon = new Point(nodeRect.Location.X - 4, nodeRect.Location.Y + 2);
+            Image nodeImg = Image.FromFile(nodePath);
+            g = Graphics.FromImage(nodeImg);
+            imgPtr = g.GetHdc();
+            g.ReleaseHdc();
+            e.Graphics.DrawImage(nodeImg, ptNodeIcon);
+
+            
+            System.Drawing.Font nodeFont = e.Node.NodeFont;
+            if (nodeFont == null)
+                nodeFont = ((TreeView)sender).Font;
+            Brush textBrush = SystemBrushes.WindowText;
+            //to highlight the text when selected
+            if ((e.State & TreeNodeStates.Focused) != 0)
+                textBrush = SystemBrushes.HotTrack;
+            //Inflate to not be cut
+            Rectangle textRect = nodeRect;
+            //need to extend node rect
+            textRect.Width += 40;
+            e.Graphics.DrawString(e.Node.Text, nodeFont, textBrush,
+                Rectangle.Inflate(textRect, -12, 0));
+        }*/
     }
 }

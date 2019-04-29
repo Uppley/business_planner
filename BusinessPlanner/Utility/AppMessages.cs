@@ -12,6 +12,9 @@ namespace BusinessPlanner
         {
             {"exit_head","Exit Business Planner" },
             {"exit_body","Are you sure to quit Business Planner ?\nIf you are sure then click the Yes button else click No." },
+            {"loading","Loading...Please Wait !" },
+            {"exporting","Exporting...Please Wait !" },
+            {"export_success","File exported successfully !" },
         };
         
     }

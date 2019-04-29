@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessPlanner.Utility;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,18 +13,19 @@ namespace BusinessPlanner
 {
     public partial class Step9Dialog : Form
     {
-        public String[] mainData;
+        private String mData { get; set; }
+        
         public Step9Dialog()
         {
             InitializeComponent();
-       
+           
+            if (Utilities.mainData.ContainsKey("step9"))
+            {
+                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == Utilities.mainData["step9"].ToString());
+                cb.Checked = true;
+            }
         }
 
-        public void setFormData(String[] data)
-        {
-            this.mainData = data;
-         
-        }
 
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -38,7 +40,16 @@ namespace BusinessPlanner
         }
 
         private void Button3_Click(object sender, EventArgs e)
-        {  
+        {
+            var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            this.mData = cb.Text;
+            Utilities.CreateOrUpdateDict("step9", this.mData);
+            AppConfig.updateNodes(2,AppConfig.getId()+1,"Mission");
+            //DocumentRecord.DocumentList.Find(x => x.ItemName == "Mission").IsActive = 1;
+            //MainWindow mw = Utilities.mainForm as MainWindow;
+            //mw.updateTreeNodes();
+            DocumentCreator dc = new DocumentCreator();
+            dc.createPackage();
             this.Close();
         }
     }

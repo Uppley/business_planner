@@ -12,9 +12,11 @@ namespace BusinessPlanner
 {
     public partial class _LoadingDialog : Form
     {
-        public _LoadingDialog()
+
+        public _LoadingDialog(string mssg="Loading...")
         {
             InitializeComponent();
+            label1.Text = mssg;
         }
     }
 }

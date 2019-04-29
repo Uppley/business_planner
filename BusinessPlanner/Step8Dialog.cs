@@ -12,18 +12,17 @@ namespace BusinessPlanner
 {
     public partial class Step8Dialog : Form
     {
-        public String[] mainData;
+        private String mData { get; set; }
         public Step8Dialog()
         {
             InitializeComponent();
-       
+            if (Utilities.mainData.ContainsKey("step8"))
+            {
+                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == Utilities.mainData["step8"].ToString());
+                cb.Checked = true;
+            }
         }
 
-        public void setFormData(String[] data)
-        {
-            this.mainData = data;
-         
-        }
 
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -39,6 +38,9 @@ namespace BusinessPlanner
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            this.mData = cb.Text;
+            Utilities.CreateOrUpdateDict("step8", this.mData);
             Step9Dialog st9 = new Step9Dialog();
             this.Hide();
             st9.ShowDialog();

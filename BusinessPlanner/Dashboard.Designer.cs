@@ -34,6 +34,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.prevEgBt = new System.Windows.Forms.Button();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.nextEgBt = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
@@ -74,10 +78,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.nextEgBt = new System.Windows.Forms.Button();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.prevEgBt = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -140,6 +140,56 @@
             this.tabPage2.Size = new System.Drawing.Size(969, 238);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Examples";
+            // 
+            // prevEgBt
+            // 
+            this.prevEgBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.prevEgBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.prevEgBt.FlatAppearance.BorderColor = System.Drawing.SystemColors.Info;
+            this.prevEgBt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.prevEgBt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.prevEgBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.prevEgBt.ImageIndex = 0;
+            this.prevEgBt.ImageList = this.imageList2;
+            this.prevEgBt.Location = new System.Drawing.Point(883, 196);
+            this.prevEgBt.Name = "prevEgBt";
+            this.prevEgBt.Size = new System.Drawing.Size(28, 28);
+            this.prevEgBt.TabIndex = 2;
+            this.prevEgBt.UseVisualStyleBackColor = true;
+            this.prevEgBt.MouseLeave += new System.EventHandler(this.PrevEgBt_MouseLeave);
+            this.prevEgBt.MouseHover += new System.EventHandler(this.PrevEgBt_MouseHover);
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "right_arr.png");
+            this.imageList2.Images.SetKeyName(1, "right_arr_active.png");
+            // 
+            // nextEgBt
+            // 
+            this.nextEgBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nextEgBt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.nextEgBt.FlatAppearance.BorderColor = System.Drawing.SystemColors.Info;
+            this.nextEgBt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.nextEgBt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.nextEgBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextEgBt.ImageIndex = 0;
+            this.nextEgBt.ImageList = this.imageList1;
+            this.nextEgBt.Location = new System.Drawing.Point(919, 196);
+            this.nextEgBt.Name = "nextEgBt";
+            this.nextEgBt.Size = new System.Drawing.Size(28, 28);
+            this.nextEgBt.TabIndex = 1;
+            this.nextEgBt.UseVisualStyleBackColor = true;
+            this.nextEgBt.MouseLeave += new System.EventHandler(this.NextEgBt_MouseLeave);
+            this.nextEgBt.MouseHover += new System.EventHandler(this.NextEgBt_MouseHover);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "left_arr.png");
+            this.imageList1.Images.SetKeyName(1, "left_arr_active.png");
             // 
             // label4
             // 
@@ -607,57 +657,7 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.SelectionChanged += new System.EventHandler(this.RichTextBox1_SelectionChanged);
             this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichTextBox1_MouseClick);
-            this.richTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_TextChanged);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "left_arr.png");
-            this.imageList1.Images.SetKeyName(1, "left_arr_active.png");
-            // 
-            // nextEgBt
-            // 
-            this.nextEgBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.nextEgBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.nextEgBt.FlatAppearance.BorderColor = System.Drawing.SystemColors.Info;
-            this.nextEgBt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.nextEgBt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.nextEgBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextEgBt.ImageIndex = 0;
-            this.nextEgBt.ImageList = this.imageList1;
-            this.nextEgBt.Location = new System.Drawing.Point(919, 196);
-            this.nextEgBt.Name = "nextEgBt";
-            this.nextEgBt.Size = new System.Drawing.Size(28, 28);
-            this.nextEgBt.TabIndex = 1;
-            this.nextEgBt.UseVisualStyleBackColor = true;
-            this.nextEgBt.MouseLeave += new System.EventHandler(this.NextEgBt_MouseLeave);
-            this.nextEgBt.MouseHover += new System.EventHandler(this.NextEgBt_MouseHover);
-            // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "right_arr.png");
-            this.imageList2.Images.SetKeyName(1, "right_arr_active.png");
-            // 
-            // prevEgBt
-            // 
-            this.prevEgBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.prevEgBt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.prevEgBt.FlatAppearance.BorderColor = System.Drawing.SystemColors.Info;
-            this.prevEgBt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.prevEgBt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.prevEgBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prevEgBt.ImageIndex = 0;
-            this.prevEgBt.ImageList = this.imageList2;
-            this.prevEgBt.Location = new System.Drawing.Point(883, 196);
-            this.prevEgBt.Name = "prevEgBt";
-            this.prevEgBt.Size = new System.Drawing.Size(28, 28);
-            this.prevEgBt.TabIndex = 2;
-            this.prevEgBt.UseVisualStyleBackColor = true;
-            this.prevEgBt.MouseLeave += new System.EventHandler(this.PrevEgBt_MouseLeave);
-            this.prevEgBt.MouseHover += new System.EventHandler(this.PrevEgBt_MouseHover);
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // Dashboard
             // 

@@ -12,11 +12,18 @@ namespace BusinessPlanner
 {
     public partial class Step6Dialog : Form
     {
-        public String mData { get; set; }
+        public Dictionary<string, Boolean> mData;
         public Step6Dialog()
         {
             InitializeComponent();
-       
+            mData = new Dictionary<string, bool>();
+            if (Utilities.mainData.ContainsKey("step6"))
+            {
+                Dictionary<string, Boolean> data = new Dictionary<string, bool>();
+                data = (Dictionary<string, Boolean>)Utilities.mainData["step6"];
+                checkBox1.Checked = data["swot"];
+                checkBox2.Checked = data["web"];
+            }
         }
 
 
@@ -34,8 +41,9 @@ namespace BusinessPlanner
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            
-            
+            this.mData["swot"] = checkBox1.Checked;
+            this.mData["web"] = checkBox2.Checked;
+            Utilities.CreateOrUpdateDict("step6",this.mData);
             Step7Dialog st7 = new Step7Dialog();
             this.Hide();
             st7.ShowDialog();

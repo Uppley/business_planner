@@ -1,4 +1,5 @@
 ﻿using BusinessPlanner.Partials;
+using BusinessPlanner.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +16,9 @@ namespace BusinessPlanner
 {
     public partial class Dashboard : Form
     {
-        string filepath = "test.rtf";
-        string[] fileContent;
-        StringBuilder contentBuilder;
         List<int> findPosition = new List<int>();
         int findLength = 0;
+        public string richtext { get; set; }
         public Dashboard(String name)
         {
             InitializeComponent();
@@ -37,8 +36,6 @@ namespace BusinessPlanner
             }
             toolStripComboBox1.SelectedItem = "Arial";
             fontSizeCmb.SelectedItem = 12;
-            //contentBuilder = new StringBuilder();
-            //fileContent = File.ReadAllLines(filepath);
             this.setContentInitial(name);
             richTextBox1.SelectionFont = new Font("Arial", 12, richTextBox1.SelectionFont.Style);
             richTextBox1.ZoomFactor = 1.0f;
@@ -47,27 +44,13 @@ namespace BusinessPlanner
 
         private void setContentInitial(String name)
         {
-            if (name == "objectives")
-            {
-                /*int indx_start = Array.FindIndex(this.fileContent,str => str.Contains(@"{\pard \fs60 Objectives\par}"));
-                int indx_end = Array.FindIndex(this.fileContent, str => str.Contains(@"{\pard \fs15 end_objectives\par}"));
-                
-                contentBuilder.AppendLine(@"{\rtf1");
-                for (int i=indx_start+1;i<indx_end;i++)
-                {
-                    contentBuilder.AppendLine(this.fileContent[i]);
-
-                }
-                
-                contentBuilder.AppendLine(@"}");
-                
-                richTextBox1.Rtf = contentBuilder.ToString();*/
-                _LoadingDialog ld = new _LoadingDialog();
+                string filename = DocumentRecord.DocumentList.Find(item => item.ItemName == name).DocumentName;
+                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["loading"]);
                 try
                 {
                     ld.Show();
                     Application.DoEvents();
-                    richTextBox1.LoadFile("Document1.rtf");
+                    richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath,filename));
                 }
                 catch(Exception e)
                 {
@@ -78,11 +61,7 @@ namespace BusinessPlanner
                     ld.Close();
                 }
                 
-            }
-            else
-            {
-               richTextBox1.Text = "";
-            }
+             
         }
 
 
@@ -185,11 +164,6 @@ namespace BusinessPlanner
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            //string data = richTextBox1.Rtf;
-            //int pFrom = data.IndexOf(@"{\rtf1") + @"{\rtf1".Length;
-            //int pTo = data.LastIndexOf(@"}");
-           // String result = data.Substring(pFrom, pTo - pFrom);
-           // MessageBox.Show(result);
             richTextBox1.SaveFile("Document1.rtf");
             label2.Text = "Saved";
         }
@@ -448,6 +422,11 @@ namespace BusinessPlanner
         private void PrevEgBt_MouseLeave(object sender, EventArgs e)
         {
             prevEgBt.ImageIndex = 0;
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            label2.Text = "Editing";
         }
     }
 }
