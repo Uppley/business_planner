@@ -48,9 +48,25 @@ namespace BusinessPlanner
             //DocumentRecord.DocumentList.Find(x => x.ItemName == "Mission").IsActive = 1;
             //MainWindow mw = Utilities.mainForm as MainWindow;
             //mw.updateTreeNodes();
-            DocumentCreator dc = new DocumentCreator();
-            dc.createPackage();
+            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["document_created"]);
             this.Close();
+            try
+            {
+                ld.Show();
+                Application.DoEvents();
+                DocumentCreator dc = new DocumentCreator();
+                dc.createPackage();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+            finally
+            {
+                ld.Close();
+            }
+           
+            
         }
     }
 }

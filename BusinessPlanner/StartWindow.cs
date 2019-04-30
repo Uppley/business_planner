@@ -50,10 +50,25 @@ namespace BusinessPlanner
         private void loadProject(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LinkLabel lnb = sender as LinkLabel;
-            ProjectConfig.projectPath = Path.Combine(ProjectConfig.projectBase,lnb.Text);
-            MainWindow mf = new MainWindow();
-            mf.Show();
-            this.Close();
+            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_loading"]);
+            try
+            {
+                ld.Show();
+                Application.DoEvents();
+                ProjectConfig.projectPath = Path.Combine(ProjectConfig.projectBase, lnb.Text);
+                MainWindow mf = new MainWindow();
+                mf.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+            finally
+            {
+                ld.Close();
+            }
+            
         }
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

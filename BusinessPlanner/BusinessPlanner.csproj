@@ -61,6 +61,9 @@
     <Compile Include="AboutBP.Designer.cs">
       <DependentUpon>AboutBP.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomElements\GrowLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Partials\_FindDialog.cs">
       <SubType>Form</SubType>
     </Compile>

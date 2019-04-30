@@ -12,12 +12,21 @@ namespace BusinessPlanner.Utility
     {
         public static string projectPath { get; set; }
         public static string projectFile { get; set; }
-        public static string projectBase = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"BusinessPlans");
+        public static string projectBase = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"BP Plans");
 
         public static List<string> projectList()
         {
-            string[] projects = Directory.GetDirectories(ProjectConfig.projectBase);
-            return projects.ToList();
+            if(Directory.Exists(ProjectConfig.projectBase))
+            {
+                string[] projects = Directory.GetDirectories(ProjectConfig.projectBase);
+                return projects.ToList();
+            }
+            else
+            {
+                Directory.CreateDirectory(ProjectConfig.projectBase);
+                return new List<string>();
+            }
+            
         }
     }
 }

@@ -15,6 +15,8 @@ namespace BusinessPlanner
             {"loading","Loading...Please Wait !" },
             {"exporting","Exporting...Please Wait !" },
             {"export_success","File exported successfully !" },
+            {"document_created","Creating documents...Please Wait !" },
+            {"project_loading","Project loading...Please Wait !" },
         };
         
     }
