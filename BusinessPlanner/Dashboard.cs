@@ -18,10 +18,12 @@ namespace BusinessPlanner
     {
         List<int> findPosition = new List<int>();
         int findLength = 0;
+        string file_loaded;
         public string richtext { get; set; }
         public Dashboard(String name)
         {
             InitializeComponent();
+            file_loaded = name;
             ToolStripManager.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip2.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip3.Renderer = new Office2007Renderer.Office2007Renderer();
@@ -36,7 +38,7 @@ namespace BusinessPlanner
             }
             toolStripComboBox1.SelectedItem = "Arial";
             fontSizeCmb.SelectedItem = 12;
-            this.setContentInitial(name);
+            this.setContentInitial(file_loaded);
             richTextBox1.SelectionFont = new Font("Arial", 12, richTextBox1.SelectionFont.Style);
             richTextBox1.ZoomFactor = 1.0f;
             toolStripComboBox2.SelectedIndex = 2;
@@ -44,13 +46,14 @@ namespace BusinessPlanner
 
         private void setContentInitial(String name)
         {
-                string filename = DocumentRecord.DocumentList.Find(item => item.ItemName == name).DocumentName;
+                
                 _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["loading"]);
                 try
                 {
                     ld.Show();
                     Application.DoEvents();
-                    richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath,filename));
+                    label9.Text = DocumentRecord.DocumentList.Find(item => item.DocumentName == name).ItemName;
+                    richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath,name));
                 }
                 catch(Exception e)
                 {
@@ -60,8 +63,7 @@ namespace BusinessPlanner
                 {
                     ld.Close();
                 }
-                
-             
+
         }
 
 
@@ -164,7 +166,7 @@ namespace BusinessPlanner
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            richTextBox1.SaveFile("Document1.rtf");
+            richTextBox1.SaveFile(Path.Combine(ProjectConfig.projectPath, file_loaded));
             label2.Text = "Saved";
         }
 

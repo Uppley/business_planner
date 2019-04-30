@@ -23,7 +23,7 @@ namespace BusinessPlanner
     {
         Dashboard dashboard;
         Home home = new Home();
-        string[] documents;
+        //string[] documents;
         public MainWindow()
         {
             InitializeComponent();
@@ -56,13 +56,6 @@ namespace BusinessPlanner
         public void setTreeNodes()
         {
             PopulateTreeView(0, null);
-         /* string data = "";
-            foreach (KeyValuePair<string,object> kvp in Utilities.mainData)
-            {
-                data += string.Format("Key = {0}, Value = {1} \n", kvp.Key, kvp.Value);
-            }
-        */
-
         }
 
         public void updateTreeNodes()
@@ -101,7 +94,8 @@ namespace BusinessPlanner
             {
                 if(this.treeView1.SelectedNode.Parent != null)
                 {
-                    this.dashboard = new Dashboard(this.treeView1.SelectedNode.Text);
+                    ProjectConfig.projectFile = DocumentRecord.DocumentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
+                    this.dashboard = new Dashboard(ProjectConfig.projectFile);
                     this.dashboard.TopLevel = false;
                     panel1.Controls.Clear();
                     panel1.Controls.Add(this.dashboard);
