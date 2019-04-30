@@ -55,7 +55,11 @@ namespace BusinessPlanner
             {
                 ld.Show();
                 Application.DoEvents();
-                ProjectConfig.projectPath = Path.Combine(ProjectConfig.projectBase, lnb.Text);
+
+                string proPath = Path.Combine(ProjectConfig.projectBase, lnb.Text);
+                string tempPath = Path.Combine(ProjectConfig.projectBase, "temp_" + lnb.Text.Replace(".bpx",""));
+                //ProjectConfig.projectPath = Path.Combine(ProjectConfig.projectBase, lnb.Text);
+                DocumentLoader.load(proPath, tempPath);
                 MainWindow mf = new MainWindow();
                 mf.Show();
                 this.Close();

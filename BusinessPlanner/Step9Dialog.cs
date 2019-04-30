@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,7 +56,9 @@ namespace BusinessPlanner
                 ld.Show();
                 Application.DoEvents();
                 DocumentCreator dc = new DocumentCreator();
-                dc.createPackage();
+                string proPath = dc.createPackage();
+                string tempPath = Path.Combine(ProjectConfig.projectBase,"temp_"+Utilities.mainData["step5"].ToString());
+                DocumentLoader.load(proPath,tempPath);
             }
             catch (Exception ex)
             {

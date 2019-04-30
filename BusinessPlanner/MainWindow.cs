@@ -152,6 +152,7 @@ namespace BusinessPlanner
             var confirmResult = MessageBox.Show(AppMessages.messages["exit_body"],AppMessages.messages["exit_head"],MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
+                this.saveProjectBeforeClose();
                 this.Dispose();
             }  
 
@@ -162,6 +163,7 @@ namespace BusinessPlanner
             var confirmResult = MessageBox.Show(AppMessages.messages["exit_body"], AppMessages.messages["exit_head"], MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
+                this.saveProjectBeforeClose();
                 e.Cancel = false;
                 this.Dispose();
             }
@@ -169,6 +171,26 @@ namespace BusinessPlanner
             {
                 e.Cancel = true;
                 return;
+            }
+        }
+
+        private void saveProjectBeforeClose()
+        {
+            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_save"]);
+            try
+            {
+                ld.Show();
+                Application.DoEvents();
+                string dPath = ProjectConfig.projectPath.Replace("temp_", "");
+                DocumentLoader.save(dPath, ProjectConfig.projectPath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Exception: " + e.Message);
+            }
+            finally
+            {
+                ld.Close();
             }
         }
 
