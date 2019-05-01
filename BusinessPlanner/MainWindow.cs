@@ -321,6 +321,76 @@ namespace BusinessPlanner
             }
         }
 
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_save"]);
+            try
+            {
+                ld.Show();
+                Application.DoEvents();
+                string dPath = ProjectConfig.projectPath.Replace("temp_", "");
+                DocumentLoader.saveOnly(dPath, ProjectConfig.projectPath);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+            finally
+            {
+                ld.Close();
+            }
+        }
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog4.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            saveFileDialog4.DefaultExt = "bupx";
+            saveFileDialog4.Filter = "BUPX files (*.bupx)|*.bupx";
+            if (saveFileDialog4.ShowDialog() == DialogResult.OK)
+            {
+                Debug.WriteLine(saveFileDialog4.FileName);
+                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_save"]);
+                try
+                {
+                    ld.Show();
+                    Application.DoEvents();
+                    string dPath = saveFileDialog4.FileName;
+                    DocumentLoader.saveAsOnly(dPath, ProjectConfig.projectPath);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception: " + ex.Message);
+                }
+                finally
+                {
+                    ld.Close();
+                }
+            }
+        }
+
+        private void ToolStripButton3_Click(object sender, EventArgs e)
+        {
+            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_save"]);
+            try
+            {
+                ld.Show();
+                Application.DoEvents();
+                string dPath = ProjectConfig.projectPath.Replace("temp_", "");
+                DocumentLoader.saveOnly(dPath, ProjectConfig.projectPath);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message);
+            }
+            finally
+            {
+                ld.Close();
+            }
+        }
+
         /*private void TreeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             string minusPath = Application.StartupPath + Path.DirectorySeparatorChar + @"Images\minus.png";

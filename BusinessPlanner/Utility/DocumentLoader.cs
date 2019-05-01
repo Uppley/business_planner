@@ -54,5 +54,35 @@ namespace BusinessPlanner.Utility
                 }
             }
         }
+
+        public static void saveOnly(string dPath, string tempPath)
+        {
+            try
+            {
+                if (File.Exists(dPath + ProjectConfig.projectExtension))
+                    File.Delete(dPath + ProjectConfig.projectExtension);
+                ZipFile.CreateFromDirectory(tempPath, dPath + ProjectConfig.projectExtension);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
+        }
+
+        public static void saveAsOnly(string dPath, string tempPath)
+        {
+            try
+            {
+                if (File.Exists(dPath))
+                    File.Delete(dPath);
+                ZipFile.CreateFromDirectory(tempPath, dPath);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
     }
 }
