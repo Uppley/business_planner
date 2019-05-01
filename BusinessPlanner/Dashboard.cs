@@ -430,5 +430,11 @@ namespace BusinessPlanner
         {
             label2.Text = "Editing";
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label4.Text);
+            richTextBox1.Paste();
+        }
     }
 }

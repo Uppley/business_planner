@@ -80,6 +80,8 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -87,6 +89,7 @@
             this.toolStrip2.SuspendLayout();
             this.toolStrip3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -133,8 +136,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Info;
-            this.tabPage2.Controls.Add(this.prevEgBt);
-            this.tabPage2.Controls.Add(this.nextEgBt);
+            this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
@@ -148,12 +150,13 @@
             this.prevEgBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.prevEgBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.prevEgBt.FlatAppearance.BorderColor = System.Drawing.SystemColors.Info;
+            this.prevEgBt.FlatAppearance.BorderSize = 0;
             this.prevEgBt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.prevEgBt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.prevEgBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prevEgBt.ImageIndex = 0;
             this.prevEgBt.ImageList = this.imageList2;
-            this.prevEgBt.Location = new System.Drawing.Point(883, 196);
+            this.prevEgBt.Location = new System.Drawing.Point(887, 6);
             this.prevEgBt.Name = "prevEgBt";
             this.prevEgBt.Size = new System.Drawing.Size(28, 28);
             this.prevEgBt.TabIndex = 2;
@@ -173,12 +176,13 @@
             this.nextEgBt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nextEgBt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.nextEgBt.FlatAppearance.BorderColor = System.Drawing.SystemColors.Info;
+            this.nextEgBt.FlatAppearance.BorderSize = 0;
             this.nextEgBt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.nextEgBt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.nextEgBt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextEgBt.ImageIndex = 0;
             this.nextEgBt.ImageList = this.imageList1;
-            this.nextEgBt.Location = new System.Drawing.Point(919, 196);
+            this.nextEgBt.Location = new System.Drawing.Point(926, 6);
             this.nextEgBt.Name = "nextEgBt";
             this.nextEgBt.Size = new System.Drawing.Size(28, 28);
             this.nextEgBt.TabIndex = 1;
@@ -199,7 +203,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.Location = new System.Drawing.Point(11, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(937, 209);
+            this.label4.Size = new System.Drawing.Size(952, 182);
             this.label4.TabIndex = 0;
             this.label4.Text = resources.GetString("label4.Text");
             // 
@@ -683,6 +687,35 @@
             this.label9.TabIndex = 9;
             this.label9.Text = "none";
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.prevEgBt);
+            this.panel2.Controls.Add(this.nextEgBt);
+            this.panel2.Location = new System.Drawing.Point(0, 196);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(969, 42);
+            this.panel2.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(7, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(131, 30);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Use Content";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -714,6 +747,7 @@
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -771,5 +805,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button1;
     }
 }

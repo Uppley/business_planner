@@ -16,7 +16,7 @@ namespace BusinessPlanner.Utility
             try
             {
                 if (Directory.Exists(tempPath))
-                    Directory.Delete(tempPath);
+                    Directory.Delete(tempPath,true);
                 DirectoryInfo di = Directory.CreateDirectory(tempPath);
                 di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 if (File.Exists(dPath))
