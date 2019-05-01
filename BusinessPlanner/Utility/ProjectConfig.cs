@@ -11,7 +11,7 @@ namespace BusinessPlanner.Utility
     class ProjectConfig
     {
         public static string projectPath { get; set; }
-        public static string projectExtension = ".bpx";
+        public static string projectExtension = ".bupx";
         public static string projectFile { get; set; }
         public static string projectBase = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"BP Plans");
 

@@ -45,6 +45,10 @@ namespace BusinessPlanner
                 }
                 
             }
+            if(ProjectConfig.projectList().Count()<3)
+            {
+                panel1.Visible = false;
+            }
         }
 
         private void loadProject(object sender, LinkLabelLinkClickedEventArgs e)
@@ -55,10 +59,8 @@ namespace BusinessPlanner
             {
                 ld.Show();
                 Application.DoEvents();
-
                 string proPath = Path.Combine(ProjectConfig.projectBase, lnb.Text);
-                string tempPath = Path.Combine(ProjectConfig.projectBase, "temp_" + lnb.Text.Replace(".bpx",""));
-                //ProjectConfig.projectPath = Path.Combine(ProjectConfig.projectBase, lnb.Text);
+                string tempPath = Path.Combine(ProjectConfig.projectBase, "temp_" + lnb.Text.Replace(ProjectConfig.projectExtension,""));
                 DocumentLoader.load(proPath, tempPath);
                 MainWindow mf = new MainWindow();
                 mf.Show();

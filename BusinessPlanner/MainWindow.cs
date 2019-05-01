@@ -283,6 +283,44 @@ namespace BusinessPlanner
             }
         }
 
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "BUPX Files (*.bupx;)|*.bupx;";
+            string dPath = ProjectConfig.projectPath.Replace("temp_", "")+ProjectConfig.projectExtension;
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                if (opnfd.FileName.Equals(dPath))
+                {
+                    MessageBox.Show(AppMessages.messages["project_active"]);
+                }
+                else
+                {
+                    _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_loading"]);
+                    try
+                    {
+                        ld.Show();
+                        Application.DoEvents();
+                        string proPath = opnfd.FileName;
+                        string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
+                        this.Close();
+                        DocumentLoader.load(proPath, tempPath);
+                        MainWindow mf = new MainWindow();
+                        mf.Show();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Exception: " + ex.Message);
+                    }
+                    finally
+                    {
+                        ld.Close();
+                    }
+                }
+            }
+        }
+
         /*private void TreeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             string minusPath = Application.StartupPath + Path.DirectorySeparatorChar + @"Images\minus.png";
