@@ -67,6 +67,8 @@ namespace BusinessPlanner
             finally
             {
                 ld.Close();
+                MainWindow mf = new MainWindow();
+                mf.Show();
             }
            
             

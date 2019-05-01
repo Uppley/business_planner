@@ -33,6 +33,7 @@ namespace BusinessPlanner
                     LinkLabel linkLabel = new LinkLabel();
                     linkLabel.Dock = DockStyle.Fill;
                     linkLabel.Font = new Font("Arial", 10, FontStyle.Regular);
+                    
                     linkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                     linkLabel.Text = pname;
                     linkLabel.LinkClicked += new LinkLabelLinkClickedEventHandler(this.loadProject);
@@ -45,7 +46,7 @@ namespace BusinessPlanner
                 }
                 
             }
-            if(ProjectConfig.projectList().Count()<3)
+            if(ProjectConfig.projectList().Count()<=3)
             {
                 panel1.Visible = false;
             }
@@ -79,11 +80,44 @@ namespace BusinessPlanner
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MainWindow mf = new MainWindow();
+            //MainWindow mf = new MainWindow();
             Step1Dialog st = new Step1Dialog();
-            mf.Show();
+            //mf.Show();
             st.ShowDialog();
             this.Close();
+        }
+
+        private void LinkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "BUPX Files (*.bupx;)|*.bupx;";
+            //string dPath = ProjectConfig.projectPath.Replace("temp_", "") + ProjectConfig.projectExtension;
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+               
+                    _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_loading"]);
+                    try
+                    {
+                        ld.Show();
+                        Application.DoEvents();
+                        string proPath = opnfd.FileName;
+                        string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
+                        this.Close();
+                        DocumentLoader.load(proPath, tempPath);
+                        MainWindow mf = new MainWindow();
+                        mf.Show();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Exception: " + ex.Message);
+                    }
+                    finally
+                    {
+                        ld.Close();
+                    }
+                
+            }
         }
     }
 }

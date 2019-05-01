@@ -35,7 +35,13 @@ namespace BusinessPlanner
             this.home.Show();
             Utilities.mainForm = this;
            // documents = extractDocuments();
-            
+            if(ProjectConfig.projectPath != null)
+            {
+                string[] pn = ProjectConfig.projectPath.Split(new char[] { '\\' });
+                string pname = pn[pn.Count() - 1];
+                pname = pname.Replace("temp_", "");
+                label1.Text = pname;
+            }
             setTreeNodes();
         }
 
