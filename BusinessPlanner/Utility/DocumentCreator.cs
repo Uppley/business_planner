@@ -25,7 +25,7 @@ namespace BusinessPlanner.Utility
         public string createPackage()
         {
             projectPath = Path.Combine(ProjectConfig.projectBase,Utilities.mainData["step5"].ToString()+ProjectConfig.projectExtension);
-            tempPath = Path.Combine(ProjectConfig.projectBase, "temp_"+Utilities.mainData["step5"].ToString());
+            tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_"+Utilities.mainData["step5"].ToString());
             try
             {
                 if (Directory.Exists(tempPath))
@@ -34,7 +34,7 @@ namespace BusinessPlanner.Utility
                 di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
                 foreach (var d in documentList)
                 {
-                    if (d.IsActive == 1)
+                    
                         rtb.Rtf = rtfText;
                         rtb.SaveFile(Path.Combine(tempPath, d.DocumentName));
                 }

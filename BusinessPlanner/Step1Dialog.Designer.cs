@@ -52,7 +52,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(445, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Step 1 of 9: Customize your document";
+            this.label1.Text = "Step 1 of 8: Customize your document";
             // 
             // radioButton1
             // 
@@ -111,10 +111,10 @@
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.Location = new System.Drawing.Point(39, 383);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(571, 28);
+            this.radioButton3.Size = new System.Drawing.Size(563, 28);
             this.radioButton3.TabIndex = 5;
             this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Detail Plan: More Topics and Expanded Financial Options";
+            this.radioButton3.Text = "Financial Plan: Topics Related To Financial Domain Only";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // label5

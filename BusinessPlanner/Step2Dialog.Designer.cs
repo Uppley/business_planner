@@ -47,7 +47,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(512, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Step 2 of 9: What currency should be used ?";
+            this.label1.Text = "Step 2 of 8: What currency should be used ?";
             // 
             // label2
             // 

@@ -49,7 +49,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(434, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Step 6 of 9: Add additional Analysis ?";
+            this.label1.Text = "Step 6 of 8: Add additional Analysis ?";
             // 
             // label2
             // 

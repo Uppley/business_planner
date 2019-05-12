@@ -65,7 +65,7 @@ namespace BusinessPlanner.Utility
                 {
                     foreach(var d in DocumentRecord.DocumentList)
                     {
-                        if(d.ItemName==s.Text && d.IsActive == 1)
+                        if(d.ItemName==s.Text)
                         {
                             li.Add(s);
                         }

@@ -216,7 +216,7 @@ namespace BusinessPlanner
         {
 
             OpenFileDialog opnfd = new OpenFileDialog();
-            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            opnfd.Filter = "Image Files (*.jpg;*.jpeg;*.png;*.gif;)|*.jpg;*.jpeg;*.png;*.gif;";
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
                 Image img = Image.FromFile(opnfd.FileName);

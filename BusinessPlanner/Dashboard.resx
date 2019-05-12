@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. Sed dignissim lacinia leo, a semper dolor faucibus eu. Nam vehicula nisi ac arcu cursus viverra. Maecenas mattis volutpat ex vitae faucibus. Integer ac rhoncus neque, id mollis diam. Morbi odio nunc, pellentesque sed egestas sit amet, viverra a sem. Vivamus at iaculis neque. Pellentesque ac nibh ut ex scelerisque consectetur tempus in dolor. Mauris tincidunt euismod sem fringilla dictum. Donec lobortis, lorem non posuere placerat, ipsum urna dignissim orci, et scelerisque est magna vitae elit. Proin ut sem ut turpis fringilla bibendum. In non volutpat ante. Donec cursus venenatis felis, in tincidunt diam egestas at. Curabitur maximus leo ac metus tempor egestas. Vestibulum at laoreet leo, id rutrum erat.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -135,7 +138,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAD2
-        CQAAAk1TRnQBSQFMAgEBAgEAASABAAEgAQABHAEAARwBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAATABAAEwAQABHAEAARwBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABcAMAARwDAAEBAQABCAUAAUABDBgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
         AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
         AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
@@ -188,7 +191,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAD2
-        CQAAAk1TRnQBSQFMAgEBAgEAASABAAEgAQABHAEAARwBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAgEAATABAAEwAQABHAEAARwBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABcAMAARwDAAEBAQABCAUAAUABDBgAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPAAQABwAHc
         AcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANNAQADQgEA
         AzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGtAgAB/wEz
@@ -236,29 +239,26 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Suspendisse potenti. Sed porttitor consectetur nulla, nec scelerisque urna laoreet ut. Proin dictum libero enim, sit amet congue dui pulvinar quis. Donec aliquam, velit non dignissim dignissim, urna ante dignissim dui, vitae rhoncus sem massa nec tortor. In hac habitasse platea dictumst. Morbi sem augue, dictum a pretium et, pulvinar eu magna. Duis id lorem erat. Integer vitae purus sagittis, imperdiet magna ut, dapibus dolor. Integer tempor odio eu maximus tincidunt. Ut vel interdum elit. Praesent pretium nibh eget odio congue, ut ullamcorper quam semper. Donec in arcu lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum urna eros, auctor sit amet neque a, scelerisque elementum odio.</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. Sed dignissim lacinia leo, a semper dolor faucibus eu. Nam vehicula nisi ac arcu cursus viverra. Maecenas mattis volutpat ex vitae faucibus. Integer ac rhoncus neque, id mollis diam. Morbi odio nunc, pellentesque sed egestas sit amet, viverra a sem. Vivamus at iaculis neque. Pellentesque ac nibh ut ex scelerisque consectetur tempus in dolor. Mauris tincidunt euismod sem fringilla dictum. Donec lobortis, lorem non posuere placerat, ipsum urna dignissim orci, et scelerisque est magna vitae elit. Proin ut sem ut turpis fringilla bibendum. In non volutpat ante. Donec cursus venenatis felis, in tincidunt diam egestas at. Curabitur maximus leo ac metus tempor egestas. Vestibulum at laoreet leo, id rutrum erat.</value>
-  </data>
   <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAALySURBVDhPrZF/LNRhHMeftZrWokx28msljvnD/MjP5Ecr
-        jlKmlkwj1mqY0ZqrCSXOUd1JqZYSKye2lMsQmlbS/OjQqCjGhbjzs2915Jx3D74b/9d7z3vP82zP673P
-        5/OQ/yLXs8KkfTI5UyDrY2p75ExtG7Wsn5reZb3s3s0U19Qy/JvFjHt2BWN9KDyNxQkxPR6V7dQ5g/ZR
-        BitaoGse0KihmVVBMfIdqpF+SKpfwyxFii3O/ndYnBCrCL5gTztQ36Og0Bwmf/zExPSPJY9PTWNgeAS9
-        8kH8nlKipK4JVuel2OoSeI3FCeEejRN4VGpQ0zmMBY0KyokpjI5PQjExicFR5VLAsEJJC1JB2vAB5jGP
-        wbHzXwkwPxglcJNMo7JNDs0cs/R4RDlOQyYwpBiDgoaN0UpoU6hp6YbZqUfQt+WJWJyQbT4RGQ653/D2
-        4zf65A/mZ3/S3mfpWU1N57BKn+VKmEQWQs/GV8zidIheYUJXcQ+ulXegoUuOl+0DaPw0iKrWXjxv+oKq
-        lq948b4X9R39yJU2wzJqsQK/VQHux4Q+OV2w41fA6owUnpdqwEuvxsbg21gTcBWEJ4BesBjGYTdgGiqC
-        S0IpDB38slmcEGO3I5leV1qxk/8M/hefIqngFRLyasHjSxCQ+BiHkyWwDcuC6f4EcINT4XSuFBzHVQGG
-        LkGZHsJGWMYU48L9aqSJ8iG+V4WBfjWGhpZnEBonBjHYi228eDinPIGBo/91FifEyDkwa3f6K3CjC5FW
-        9AZBcdmIFZbh9y+A/uiSTqY+ALENh0XwRThfLoOh24GVABPPkHxPUTO2R+dDJO1EbE41BJLGZZJV/N1K
-        aAUmwyb+Fnbl1MHI+0guixOiY2wV4pRYArOEEqSWvEN33xi6qFUzaqjVaszNqXH6bjl0IzNgn5QH7yIZ
-        jHmhD1l8WVobdHw3mFic0NHf6mvD5bpb7tjhxeEYUXMW7b1+82bPtdrablq6+jxtM+uIdZs22bPov4iQ
-        vy9/BuP9EYjaAAAAAElFTkSuQmCC
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAL1SURBVDhPrZFrSNNRGMYPURiRN0pW3rBpc/RBzMrLstQI
+        nXYTi1YYmhGFRWiEK0wt07mstmVZ0cWUcrYgyxVqW1GUGXZZFlppKXNe0s3735zmnE9H/YN+r4fzcM6B
+        83t43/eQ/6KgY9K0jToDU6hrZrSNBkZLz1qdnpredU3s3sCUaLSM+HIJE6x4wqzYFp/F4oS470lU+NeN
+        oLaLwYwm6BoHrBZYR80wdv6CuVMPZeUrcDPUWBwQdY3FCeEniCUbaoEXjUYKjaFvcAi9A4NT7ukfQEtH
+        J5oMbRjuN0H1rAb8E2osDYy+wOKE8HYmSdaXW6Gp68CE1QxTbz+6evpg7O1DW5dpKqDDaKIFmaGu+gKv
+        w/fAWRk1E+C1NVEiUA6g/JMB1jFm6nGnqYeG9KLd2A0jDeumldCmoHnfAO6Bu3DyFcpYnBCP8IScVfmt
+        ePO1lT75g/HRIdr7KD1bqOkcZum7wQS3fUVY5BMhZ3E6xNA4aZC8ERfKPqOq3oDntS2o/taGig9NeFzz
+        AxXvf+Lpxya8+KxHvvodvBMnK4icFRC8SxqeV4+V4ifgH1Uj5LQGwuxKLBRdxZwt50GEEiwSyeEadwnu
+        sTIEptyH86pIBYsT4irYcTb03AesFj9C1KmHSCt8iZQbWgjFSmxJvYft6Ur4xuXCfVMKeKJM+B+/D86a
+        WQHOgTFn10ur4X24BCdvVSJLVgD5zQq06C1ob5+eQWySHGTJRngIkxGQ8QBL1kRdZHFCXAKic9dlvwTv
+        UBGyil8jJkmBI9JSDP8G6I9OaX/mbRDfeCwXnULAmVI4CzbPBLiF7C4Ikb3DskMFkKnrcCSvEhJl9TTJ
+        Kvl6OWyi0+GTfAVr857BJWxHPosTYufK3+2fqgI3RYVM1Vs0NHejnto8YoHFYsHYmAUHr5fBcV8O/NJu
+        IKxYB1dh7B0Wn5bNAruIBW7L99o5LY3w4fGCvT09QzkcF2rOpMPmOziEzLW1Fdg4OgltuSsS5tnb+7Ho
+        v4iQvygABuEGrzCmAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="btnGemBoxCut.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -318,17 +318,17 @@
   <data name="boldBt.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAItSURBVDhPY6AK+P//v8S/f//47t+/rzlt2rSk6dOnp8+Y
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIrSURBVDhPY6AK+P//v8S/f//47t+/rzlt2rSk6dOnp8+Y
         MSNtypQp6YsXL045c+aMz5YtW+RBaoHq2IHqBYFYAKwZBKCCjG1tbX4cHBxfmZiY/gOFUbCFhcXxkJCQ
         5G3btvGB1AIxM1AcAoAcfhCtoqLiy8fH9w0kZGJicjEuLm5VcHDwFnV19UcgMX5+/l+TJk1KAKnFaoCO
-        jo63mJjYZ5BQeXl5HEgM6DrOiRMnhikoKDwDicfHxy978+YNH0gODpAN4OXl/QISSk5O9gKJgQAwXMTc
+        jo63mJjYZ5BQeXl5HEgM6DrOiRMnhikoKDwDicfHxy978+YNH0gODpAN4Obm/gISSk5O9gKJgQAwXMTc
         3NyOA5n/AwMD13/8+FEYIgMF2FxQXFxc+fjxY9WTJ0+apKent3Nycn4C4p9z587NBDkfpxfExcXBBoDC
         QlZW9o2kpORHZmZmcEDm5uYuff78OTdILVAPK4gGA2wukJKSeq6np3dNV1f3KpC+DTTwp6Ki4pM5c+Zk
-        QWONCaQHDJANgIVBYWFhMkgRCL98+VIC6I1poOjl5ub+AkwbtiD1cIDNgKioqFCQGAzU1tY6Al31Fcj8
-        D0wv0RBRKEA2AOaFsrKyKJAYCABdwJORkVHDw8PzC8gFyYVAZKAAZgAwIfnAEpKdnd0ZYKAtTEtLWxQU
-        FLQNaPA7kLiZmdn5Y8eOqYDUwwEosYDoxsbGQGBS/oktKTMyMv4FpoVtQM3WQAsZgWIIAHIBEDPdvn1b
-        paurKx2Is7u7u7NAdHt7e/b8+fOTT58+7bB7925wAgKqBaUDDrBmygADAwBARy7aPC2tIgAAAABJRU5E
-        rkJggg==
+        QWONCaQHDJANgIVBYWFhMkgRCL98+VIC6I1poOgFyQPThi1IPRxgMyAqKioUJAYDtbW1jkBXfQUy/wPT
+        SzREFAqQDYB5oaysLAokBgJAF/BkZGTU8PDw/AJyQXIhEBkogBkATEg+sIRkZ2d3BhhoC9PS0hYFBQVt
+        Axr8DiRuZmZ2/tixYyog9XAASiwgurGxMRCYlH9iS8qMjIx/gWlhG1CzNdBCRqAYAoBcAMRMt2/fVunq
+        6koH4uzu7u4sEN3e3p49f/785NOnTzvs3r0bnICAakHpgAOsmTLAwAAAHPsuyBmUVdwAAAAASUVORK5C
+        YII=
 </value>
   </data>
   <data name="italicBt.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

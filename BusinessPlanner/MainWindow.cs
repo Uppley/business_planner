@@ -39,7 +39,7 @@ namespace BusinessPlanner
             {
                 string[] pn = ProjectConfig.projectPath.Split(new char[] { '\\' });
                 string pname = pn[pn.Count() - 1];
-                pname = pname.Replace("temp_", "");
+                pname = pname.Replace("~temp_", "");
                 label1.Text = pname;
             }
             setTreeNodes();
@@ -187,7 +187,7 @@ namespace BusinessPlanner
             {
                 ld.Show();
                 Application.DoEvents();
-                string dPath = ProjectConfig.projectPath.Replace("temp_", "");
+                string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
                 DocumentLoader.save(dPath, ProjectConfig.projectPath);
             }
             catch (Exception e)
@@ -202,9 +202,12 @@ namespace BusinessPlanner
 
         private void ToolStripButton21_Click(object sender, EventArgs e)
         {
+            DashboardHome dh = new DashboardHome();
+            dh.TopLevel = false;
             panel1.Controls.Clear();
-            panel1.Controls.Add(this.home);
-            this.home.Show();
+            panel1.Controls.Add(dh);
+            dh.Dock = DockStyle.Fill;
+            dh.Show();
         }
 
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -220,8 +223,19 @@ namespace BusinessPlanner
             saveFileDialog1.Filter = "docx files (*.docx)|*.docx|All files (*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                RichTextBox rtb = new RichTextBox();
-                rtb.LoadFile("Document1.rtf");
+                RichTextBox rtb1 = new RichTextBox();
+                RichTextBox rtb2 = new RichTextBox();
+                List<DocumentItem> allFiles = DocumentRecord.DocumentList.OrderBy(x => x.Seq).ToList();
+                foreach(DocumentItem doc in allFiles)
+                {
+                    rtb1.LoadFile(ProjectConfig.projectPath+"\\"+doc.DocumentName);
+                    rtb1.SelectAll();
+                    rtb1.Copy();
+                    rtb2.SelectionFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold |FontStyle.Underline);
+                    rtb2.AppendText("\n\n"+doc.Seq+". "+doc.ItemName+"\n\n");
+                    rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
+                    rtb2.Paste();
+                }
                 object missing = System.Reflection.Missing.Value;
                 object Visible = true;
                 object start1 = 0;
@@ -234,7 +248,9 @@ namespace BusinessPlanner
                 {
                     ld.Show();
                     System.Windows.Forms.Application.DoEvents();
-                    Clipboard.SetText(rtb.Rtf, TextDataFormat.Rtf);
+                    Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
+                    rtb1.Dispose();
+                    rtb2.Dispose();
                     WordApp.Selection.Paste();
                     object filename = saveFileDialog1.FileName;
                     adoc.SaveAs(ref filename, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
@@ -258,8 +274,19 @@ namespace BusinessPlanner
             saveFileDialog2.Filter = "pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
             if (saveFileDialog2.ShowDialog() == DialogResult.OK)
             {
-                RichTextBox rtb = new RichTextBox();
-                rtb.LoadFile("Document1.rtf");
+                RichTextBox rtb1 = new RichTextBox();
+                RichTextBox rtb2 = new RichTextBox();
+                List<DocumentItem> allFiles = DocumentRecord.DocumentList.OrderBy(x => x.Seq).ToList();
+                foreach (DocumentItem doc in allFiles)
+                {
+                    rtb1.LoadFile(ProjectConfig.projectPath + "\\" + doc.DocumentName);
+                    rtb1.SelectAll();
+                    rtb1.Copy();
+                    rtb2.SelectionFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+                    rtb2.AppendText("\n\n" + doc.Seq + ". " + doc.ItemName + "\n\n");
+                    rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
+                    rtb2.Paste();
+                }
                 object missing = System.Reflection.Missing.Value;
                 object Visible = true;
                 object start1 = 0;
@@ -272,11 +299,17 @@ namespace BusinessPlanner
                 {
                     ld.Show();
                     System.Windows.Forms.Application.DoEvents();
-                    Clipboard.SetText(rtb.Rtf, TextDataFormat.Rtf);
+                    Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
                     WordApp.Selection.Paste();
+                    rtb1.Dispose();
+                    rtb2.Dispose();
                     object filename = saveFileDialog2.FileName;
                     object fileformat = WdSaveFormat.wdFormatPDF;
-                    adoc.SaveAs(ref filename, ref fileformat, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
+                    adoc.SaveAs2(ref filename, ref fileformat, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
+                    object saveChanges = WdSaveOptions.wdDoNotSaveChanges;
+                    ((_Document)adoc).Close(ref saveChanges, ref missing, ref missing);
+                    WordApp.Quit();
+                    adoc = null;
                     ld.Close();
                     MessageBox.Show(AppMessages.messages["export_success"]);
                 }
@@ -293,7 +326,7 @@ namespace BusinessPlanner
         {
             OpenFileDialog opnfd = new OpenFileDialog();
             opnfd.Filter = "BUPX Files (*.bupx;)|*.bupx;";
-            string dPath = ProjectConfig.projectPath.Replace("temp_", "")+ProjectConfig.projectExtension;
+            string dPath = ProjectConfig.projectPath.Replace("~temp_", "")+ProjectConfig.projectExtension;
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
                 if (opnfd.FileName.Equals(dPath))
@@ -308,7 +341,7 @@ namespace BusinessPlanner
                         ld.Show();
                         Application.DoEvents();
                         string proPath = opnfd.FileName;
-                        string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
+                        string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
                         this.Close();
                         DocumentLoader.load(proPath, tempPath);
                         MainWindow mf = new MainWindow();
@@ -334,7 +367,7 @@ namespace BusinessPlanner
             {
                 ld.Show();
                 Application.DoEvents();
-                string dPath = ProjectConfig.projectPath.Replace("temp_", "");
+                string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
                 DocumentLoader.saveOnly(dPath, ProjectConfig.projectPath);
 
             }
@@ -383,7 +416,7 @@ namespace BusinessPlanner
             {
                 ld.Show();
                 Application.DoEvents();
-                string dPath = ProjectConfig.projectPath.Replace("temp_", "");
+                string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
                 DocumentLoader.saveOnly(dPath, ProjectConfig.projectPath);
 
             }

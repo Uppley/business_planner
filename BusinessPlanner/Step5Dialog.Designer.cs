@@ -47,7 +47,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(499, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Step 5 of 9: What\'s the name of your plan ?";
+            this.label1.Text = "Step 5 of 8: What\'s the name of your plan ?";
             // 
             // label2
             // 

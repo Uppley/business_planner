@@ -48,7 +48,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Step 7 of 9: What do you sell ?";
+            this.label1.Text = "Step 7 of 8: What do you sell ?";
             // 
             // label2
             // 

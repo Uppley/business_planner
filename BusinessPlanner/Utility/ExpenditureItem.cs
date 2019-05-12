@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace BusinessPlanner.Utility
 {
-    class DocumentItem
+    class ExpenditureItem
     {
-        public string ItemName { get; set; }
-        public string DocumentName { get; set; }
-        public int Seq { get; set; }
+        public string name {get;set;}
+        public float amount { get; set;}
     }
 }
