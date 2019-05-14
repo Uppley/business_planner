@@ -82,6 +82,7 @@ namespace BusinessPlanner.Utility
         public void saveAsWord(object data)
         {
             this.adoc.SaveAs(ref data, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
+            ((_Document)this.adoc).Close(ref missing, ref missing, ref missing);
         }
 
         public void saveAsPdf(object data)
