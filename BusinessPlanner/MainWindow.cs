@@ -24,6 +24,7 @@ namespace BusinessPlanner
         Dashboard dashboard;
         Home home = new Home();
         //string[] documents;
+        String project_name;
         public MainWindow()
         {
             InitializeComponent();
@@ -40,8 +41,9 @@ namespace BusinessPlanner
                 string[] pn = ProjectConfig.projectPath.Split(new char[] { '\\' });
                 string pname = pn[pn.Count() - 1];
                 pname = pname.Replace("~temp_", "");
-                label1.Text = pname;
+                project_name = pname;
             }
+            label1.Text = project_name;
             setTreeNodes();
         }
 
@@ -236,13 +238,10 @@ namespace BusinessPlanner
                     rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                     rtb2.Paste();
                 }
-                object missing = System.Reflection.Missing.Value;
-                object Visible = true;
-                object start1 = 0;
-                object end1 = 0;
-                ApplicationClass WordApp = new ApplicationClass();
-                Document adoc = WordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
-                Microsoft.Office.Interop.Word.Range rng = adoc.Range(ref start1, ref missing);
+                DocGenerator document = new DocGenerator();
+                document.open();
+                document.generateCoverPage(project_name);
+                document.getFooterWithPageNumber();
                 _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["exporting"]);
                 try
                 {
@@ -251,9 +250,10 @@ namespace BusinessPlanner
                     Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
                     rtb1.Dispose();
                     rtb2.Dispose();
-                    WordApp.Selection.Paste();
+                    document.getContent();
                     object filename = saveFileDialog1.FileName;
-                    adoc.SaveAs(ref filename, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
+                    document.saveAsWord(filename);
+                    document.close();
                     ld.Close();
                     MessageBox.Show(AppMessages.messages["export_success"]);
                 }
@@ -261,6 +261,11 @@ namespace BusinessPlanner
                 {
                     ld.Close();
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    document = null;
+                    GC.Collect();
                 }
                 
             }
@@ -287,29 +292,23 @@ namespace BusinessPlanner
                     rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                     rtb2.Paste();
                 }
-                object missing = System.Reflection.Missing.Value;
-                object Visible = true;
-                object start1 = 0;
-                object end1 = 0;
-                ApplicationClass WordApp = new ApplicationClass();
-                Document adoc = WordApp.Documents.Add(ref missing, ref missing, ref missing, ref missing);
-                Microsoft.Office.Interop.Word.Range rng = adoc.Range(ref start1, ref missing);
+                DocGenerator document = new DocGenerator();
+                document.open();
+                document.generateCoverPage(project_name);
+                document.getFooterWithPageNumber();
                 _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["exporting"]);
                 try
                 {
                     ld.Show();
                     System.Windows.Forms.Application.DoEvents();
                     Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
-                    WordApp.Selection.Paste();
+                    document.getContent();
                     rtb1.Dispose();
                     rtb2.Dispose();
                     object filename = saveFileDialog2.FileName;
                     object fileformat = WdSaveFormat.wdFormatPDF;
-                    adoc.SaveAs2(ref filename, ref fileformat, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing, ref missing);
-                    object saveChanges = WdSaveOptions.wdDoNotSaveChanges;
-                    ((_Document)adoc).Close(ref saveChanges, ref missing, ref missing);
-                    WordApp.Quit();
-                    adoc = null;
+                    document.saveAsPdf(filename);
+                    document.close();
                     ld.Close();
                     MessageBox.Show(AppMessages.messages["export_success"]);
                 }
@@ -317,6 +316,11 @@ namespace BusinessPlanner
                 {
                     ld.Close();
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    document = null;
+                    GC.Collect();
                 }
                 
             }

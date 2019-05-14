@@ -199,6 +199,7 @@
     <Compile Include="Partials\_TableInputForm.Designer.cs">
       <DependentUpon>_TableInputForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utility\DocGenerator.cs" />
     <Compile Include="Utility\DocumentCreator.cs" />
     <Compile Include="Utility\DocumentItem.cs" />
     <Compile Include="Utility\DocumentLoader.cs" />
