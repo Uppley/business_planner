@@ -52,6 +52,7 @@ namespace BusinessPlanner
             {
                 ld.Show();
                 Application.DoEvents();
+                
                 label9.Text = DocumentRecord.DocumentList.Find(item => item.DocumentName == name).ItemName;
                 richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath,name));
             }

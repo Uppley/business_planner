@@ -18,5 +18,10 @@ namespace BusinessPlanner
             InitializeComponent();
             label1.Text = mssg;
         }
+
+        private void _LoadingDialog_Load(object sender, EventArgs e)
+        {
+            pictureBox1.Image = Properties.Resources.loader;
+        }
     }
 }

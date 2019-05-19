@@ -19,6 +19,8 @@ namespace BusinessPlanner
             {"project_loading","Project loading...Please Wait !" },
             {"project_save","Saving Project...Please Wait !" },
             {"project_active","Error loading !\nThis project is already active." },
+            {"data_save","Saving your data" },
+            {"data_load","Loading your data" },
         };
         
     }

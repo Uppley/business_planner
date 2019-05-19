@@ -103,11 +103,22 @@ namespace BusinessPlanner
                 if(this.treeView1.SelectedNode.Parent != null)
                 {
                     ProjectConfig.projectFile = DocumentRecord.DocumentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
-                    this.dashboard = new Dashboard(ProjectConfig.projectFile);
-                    this.dashboard.TopLevel = false;
-                    panel1.Controls.Clear();
-                    panel1.Controls.Add(this.dashboard);
-                    this.dashboard.Show();
+                    if (this.treeView1.SelectedNode.Text == "Sales Forecast Table")
+                    {
+                        ForecastWindow frw = new ForecastWindow();
+                        frw.TopLevel = false;
+                        panel1.Controls.Clear();
+                        panel1.Controls.Add(frw);
+                        frw.Show();
+                    }
+                    else
+                    {
+                        this.dashboard = new Dashboard(ProjectConfig.projectFile);
+                        this.dashboard.TopLevel = false;
+                        panel1.Controls.Clear();
+                        panel1.Controls.Add(this.dashboard);
+                        this.dashboard.Show();
+                    }
                 }
                 else
                 {
