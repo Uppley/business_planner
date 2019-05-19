@@ -21,13 +21,13 @@ namespace BusinessPlanner.Utility
             xlApp = new Excel.Application();
         }
 
-        public DataGridView readExcelToDataGridView(string filename)
+        public DataGridView readExcelToDataGridView(int sheet)
         {
             DataGridView dgv = new DataGridView();
             try
             {
-                xlWorkbook = xlApp.Workbooks.Open(ProjectConfig.projectPath + "\\" + filename);
-                xlWorksheet = xlWorkbook.Sheets[1];
+                xlWorkbook = xlApp.Workbooks.Open(ProjectConfig.projectPath + "\\" + "data.xls");
+                xlWorksheet = xlWorkbook.Sheets[sheet];
                 xlRange = xlWorksheet.UsedRange;
 
                 int rowCount = xlRange.Rows.Count;
@@ -73,12 +73,12 @@ namespace BusinessPlanner.Utility
             return dgv;
         }
 
-        public void readExcelToDataGridView(string filename,DataGridView dgv)
+        public void readExcelToDataGridView(DataGridView dgv, int sheet)
         {
             try
             {
-                xlWorkbook = xlApp.Workbooks.Open(ProjectConfig.projectPath + "\\" + filename);
-                xlWorksheet = xlWorkbook.Sheets[1];
+                xlWorkbook = xlApp.Workbooks.Open(ProjectConfig.projectPath + "\\" + "data.xls");
+                xlWorksheet = xlWorkbook.Sheets[sheet];
                 xlRange = xlWorksheet.UsedRange;
 
                 int rowCount = xlRange.Rows.Count;
@@ -109,26 +109,43 @@ namespace BusinessPlanner.Utility
             }
         }
 
-        public void saveExcelFromDataGridView(DataGridView dgv)
+        public void saveExcelFromDataGridView(DataGridView[] dgvs,int[] sheets,string[] sheetNames)
         {
             try
-            { 
+            {
+                xlApp.Visible = false;
                 xlWorkbook = xlApp.Workbooks.Add(Type.Missing);
                 xlWorksheet = null;
-                xlWorksheet = xlWorkbook.Sheets["Sheet1"];
-                xlWorksheet = xlWorkbook.ActiveSheet;
-                xlWorksheet.Name = "Sales Forecast";
-                for (int i = 1; i < dgv.Columns.Count + 1; i++)
+                
+                xlWorksheet = xlWorkbook.ActiveSheet as Excel.Worksheet;
+                xlWorksheet.Name = sheetNames[0];
+
+                for (int i = 1; i < dgvs[0].Columns.Count + 1; i++)
                 {
-                    xlWorksheet.Cells[1, i] = dgv.Columns[i - 1].HeaderText;
+                    xlWorksheet.Cells[1, i] = dgvs[0].Columns[i - 1].HeaderText;
                 }
-                for (int i = 0; i < dgv.Rows.Count - 1; i++)
+                for (int i = 0; i < dgvs[0].Rows.Count - 1; i++)
                 {
-                    for (int j = 0; j < dgv.Columns.Count; j++)
+                    for (int j = 0; j < dgvs[0].Columns.Count; j++)
                     {
-                        xlWorksheet.Cells[i + 2, j + 1] = dgv.Rows[i].Cells[j].Value.ToString();
+                        xlWorksheet.Cells[i + 2, j + 1] = dgvs[0].Rows[i].Cells[j].Value.ToString();
                     }
                 }
+
+                xlWorksheet = xlWorkbook.Sheets.Add(Type.Missing, Type.Missing, 1, Type.Missing) as Excel.Worksheet;
+                xlWorksheet.Name = sheetNames[1];
+                for (int i = 1; i < dgvs[1].Columns.Count + 1; i++)
+                {
+                    xlWorksheet.Cells[1, i] = dgvs[1].Columns[i - 1].HeaderText;
+                }
+                for (int i = 0; i < dgvs[1].Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dgvs[1].Columns.Count; j++)
+                    {
+                        xlWorksheet.Cells[i + 2, j + 1] = dgvs[1].Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+
                 if (File.Exists(ProjectConfig.projectPath + "\\data.xls"))
                 {
                     File.Delete(ProjectConfig.projectPath + "\\data.xls");

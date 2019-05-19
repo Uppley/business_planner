@@ -29,7 +29,8 @@ namespace BusinessPlanner
                     ld.Show();
                     Application.DoEvents();
                     ExcelReader excelReader = new ExcelReader();
-                    excelReader.readExcelToDataGridView("data.xls", dataGridView1);
+                    excelReader.readExcelToDataGridView(dataGridView1,2);
+                    excelReader.readExcelToDataGridView(dataGridView2,1);
                     excelReader.Close();
                 }
                 catch (Exception e)
@@ -44,7 +45,9 @@ namespace BusinessPlanner
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        
+
+        private void Button1_Click_1(object sender, EventArgs e)
         {
             _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["data_save"]);
             try
@@ -52,7 +55,8 @@ namespace BusinessPlanner
                 ld.Show();
                 Application.DoEvents();
                 ExcelReader excelReader = new ExcelReader();
-                excelReader.saveExcelFromDataGridView(dataGridView1);
+                excelReader.saveExcelFromDataGridView(new DataGridView[2]{dataGridView1,dataGridView2}, new int[2]{1,2}, new string[2]{"Sales Forecast","Cost Of Sales"});
+                //excelReader.saveExcelFromDataGridView(, 2, "Cost Of Sales");
                 excelReader.Close();
             }
             catch (Exception ex)
@@ -63,8 +67,6 @@ namespace BusinessPlanner
             {
                 ld.Close();
             }
-            
-            
         }
     }
 }
