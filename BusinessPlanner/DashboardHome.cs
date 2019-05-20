@@ -51,8 +51,8 @@ namespace BusinessPlanner
                 DataGridView dgv1 = new DataGridView();
                 DataGridView dgv2 = new DataGridView();
                 ExcelReader excelReader = new ExcelReader();
-                dgv1 = excelReader.readExcelToDataGridView(2);
-                dgv2 = excelReader.readExcelToDataGridView(1);
+                dgv1 = excelReader.readExcelToDataGridView(3);
+                dgv2 = excelReader.readExcelToDataGridView(2);
                 excelReader.Close();
                 months = new List<string>();
                 for (int col = 2; col < dgv1.Rows[0].Cells.Count; col++)

@@ -10,6 +10,7 @@ namespace BusinessPlanner.Utility
     {
         public string ItemName { get; set; }
         public string DocumentName { get; set; }
+        public string Ftype { get; set; }
         public int Seq { get; set; }
     }
 }

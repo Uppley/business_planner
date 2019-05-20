@@ -102,7 +102,7 @@ namespace BusinessPlanner
             {
                 if(this.treeView1.SelectedNode.Parent != null)
                 {
-                    ProjectConfig.projectFile = DocumentRecord.DocumentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
+                    ProjectConfig.projectFile = StandardDocument.DocumentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
                     if (this.treeView1.SelectedNode.Text == "Sales Forecast Table")
                     {
                         ForecastWindow frw = new ForecastWindow();
@@ -238,7 +238,7 @@ namespace BusinessPlanner
             {
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-                List<DocumentItem> allFiles = DocumentRecord.DocumentList.OrderBy(x => x.Seq).ToList();
+                List<DocumentItem> allFiles = StandardDocument.DocumentList.OrderBy(x => x.Seq).ToList();
                 foreach(DocumentItem doc in allFiles)
                 {
                     rtb1.LoadFile(ProjectConfig.projectPath+"\\"+doc.DocumentName);
@@ -292,7 +292,7 @@ namespace BusinessPlanner
             {
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-                List<DocumentItem> allFiles = DocumentRecord.DocumentList.OrderBy(x => x.Seq).ToList();
+                List<DocumentItem> allFiles = StandardDocument.DocumentList.OrderBy(x => x.Seq).ToList();
                 foreach (DocumentItem doc in allFiles)
                 {
                     rtb1.LoadFile(ProjectConfig.projectPath + "\\" + doc.DocumentName);

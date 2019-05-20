@@ -63,7 +63,7 @@ namespace BusinessPlanner.Utility
                 }
                 else
                 {
-                    foreach(var d in DocumentRecord.DocumentList)
+                    foreach(var d in StandardDocument.DocumentList)
                     {
                         if(d.ItemName==s.Text)
                         {

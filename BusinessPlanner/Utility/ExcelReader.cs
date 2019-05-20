@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,6 +20,50 @@ namespace BusinessPlanner.Utility
         public ExcelReader()
         {
             xlApp = new Excel.Application();
+        }
+
+        public void createExcelFile(string filename,Dictionary<string,object> data)
+        {
+            int duration = (int) data["plan_duration"];
+            string[] months = ((List<string>)data["months"]).ToArray();
+            object missing = Type.Missing;
+            xlApp.Visible = false;
+            xlWorkbook = xlApp.Workbooks.Add(missing);
+
+            // First Sheet
+            Excel.Worksheet oSheet = xlWorkbook.ActiveSheet as Excel.Worksheet;
+            oSheet.Name = "Sales Forecast";
+            oSheet.Cells[1, 1] = "Product/Service";
+            oSheet.Cells[1, 2] = "VAT (%)";
+            for(int i = 0; i < duration; i++)
+            {
+                oSheet.Cells[1, 3+i] = months[i];
+            }
+            
+            // Second Sheet
+            Excel.Worksheet oSheet2 = xlWorkbook.Sheets.Add(missing, missing, 1, missing) as Excel.Worksheet;
+            oSheet2.Name = "Cost Of Sales";
+            oSheet2.Cells[1, 1] = "Product/Service";
+            oSheet2.Cells[1, 2] = "VAT (%)";
+            for (int i = 0; i < duration; i++)
+            {
+                oSheet2.Cells[1, 3 + i] = months[i];
+            }
+
+            // Third Sheet
+            Excel.Worksheet oSheet3 = xlWorkbook.Sheets.Add(missing, missing, 1, missing) as Excel.Worksheet;
+            oSheet3.Name = "Expenditures";
+            oSheet3.Cells[1, 1] = "Name";
+            oSheet3.Cells[1, 2] = "Amount";
+
+
+            xlWorkbook.SaveAs(filename, Excel.XlFileFormat.xlOpenXMLWorkbook,
+                missing, missing, missing, missing,
+                Excel.XlSaveAsAccessMode.xlNoChange,
+                missing, missing, missing, missing, missing);
+            xlWorkbook.Close(missing, missing, missing);
+            xlApp.UserControl = true;
+            this.Close();
         }
 
         public DataGridView readExcelToDataGridView(int sheet)
@@ -87,6 +132,10 @@ namespace BusinessPlanner.Utility
                 // dt.Column = colCount;  
                 dgv.ColumnCount = colCount;
                 dgv.RowCount = rowCount;
+                for (int j = 1; j <= colCount; j++)
+                {
+                    dgv.Columns[j-1].HeaderText = xlRange.Cells[1, j].Value2.ToString();
+                }
 
                 for (int i = 2; i <= rowCount; i++)
                 {
@@ -114,16 +163,9 @@ namespace BusinessPlanner.Utility
             try
             {
                 xlApp.Visible = false;
-                xlWorkbook = xlApp.Workbooks.Add(Type.Missing);
-                xlWorksheet = null;
-                
-                xlWorksheet = xlWorkbook.ActiveSheet as Excel.Worksheet;
-                xlWorksheet.Name = sheetNames[0];
-
-                for (int i = 1; i < dgvs[0].Columns.Count + 1; i++)
-                {
-                    xlWorksheet.Cells[1, i] = dgvs[0].Columns[i - 1].HeaderText;
-                }
+                xlApp.DisplayAlerts = false;
+                xlWorkbook = xlApp.Workbooks.Open(ProjectConfig.projectPath+"//"+"data.xls");
+                xlWorksheet = (Worksheet) xlWorkbook.Worksheets[sheetNames[0]];
                 for (int i = 0; i < dgvs[0].Rows.Count - 1; i++)
                 {
                     for (int j = 0; j < dgvs[0].Columns.Count; j++)
@@ -132,12 +174,8 @@ namespace BusinessPlanner.Utility
                     }
                 }
 
-                xlWorksheet = xlWorkbook.Sheets.Add(Type.Missing, Type.Missing, 1, Type.Missing) as Excel.Worksheet;
-                xlWorksheet.Name = sheetNames[1];
-                for (int i = 1; i < dgvs[1].Columns.Count + 1; i++)
-                {
-                    xlWorksheet.Cells[1, i] = dgvs[1].Columns[i - 1].HeaderText;
-                }
+
+                xlWorksheet = (Worksheet)xlWorkbook.Worksheets[sheetNames[1]];
                 for (int i = 0; i < dgvs[1].Rows.Count - 1; i++)
                 {
                     for (int j = 0; j < dgvs[1].Columns.Count; j++)
@@ -146,11 +184,7 @@ namespace BusinessPlanner.Utility
                     }
                 }
 
-                if (File.Exists(ProjectConfig.projectPath + "\\data.xls"))
-                {
-                    File.Delete(ProjectConfig.projectPath + "\\data.xls");
-                }
-                xlWorkbook.SaveAs(ProjectConfig.projectPath + "\\data.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                xlWorkbook.SaveAs(ProjectConfig.projectPath + "\\data.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, Microsoft.Office.Interop.Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 xlWorkbook.Close(true, Type.Missing, Type.Missing);
             }
             catch (Exception e)

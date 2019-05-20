@@ -224,7 +224,9 @@
     <Compile Include="Utility\DocumentCreator.cs" />
     <Compile Include="Utility\DocumentItem.cs" />
     <Compile Include="Utility\DocumentLoader.cs" />
-    <Compile Include="Utility\DocumentRecord.cs" />
+    <Compile Include="Utility\FinancialDocument.cs" />
+    <Compile Include="Utility\PlanAsDocument.cs" />
+    <Compile Include="Utility\StandardDocument.cs" />
     <Compile Include="Utility\ExcelReader.cs" />
     <Compile Include="Utility\ExpenditureItem.cs" />
     <Compile Include="Utility\ProjectConfig.cs" />

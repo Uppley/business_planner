@@ -44,7 +44,7 @@ namespace BusinessPlanner
         {
             String month = comboBox1.SelectedItem.ToString();
             String year = comboBox2.SelectedItem.ToString();
-            this.mData = month + ',' + year;
+            this.mData = year+"-"+month + '-' +"01";
             Utilities.CreateOrUpdateDict("step4", this.mData);
             Step5Dialog st5 = new Step5Dialog();
             this.Hide();

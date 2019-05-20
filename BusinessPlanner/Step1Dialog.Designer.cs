@@ -62,7 +62,6 @@
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(178, 28);
             this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Plan As You Go";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -87,6 +86,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.Location = new System.Drawing.Point(39, 234);
             this.radioButton2.Name = "radioButton2";
@@ -113,7 +113,6 @@
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(563, 28);
             this.radioButton3.TabIndex = 5;
-            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Financial Plan: Topics Related To Financial Domain Only";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
