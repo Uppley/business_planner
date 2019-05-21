@@ -18,9 +18,9 @@ namespace BusinessPlanner
         {
             InitializeComponent();
             this.comboBox1.SelectedIndex = 0;
-            if (Utilities.mainData.ContainsKey("step2"))
+            if (AppUtilities.mainData.ContainsKey("step2"))
             {
-                this.comboBox1.SelectedIndex = (Int32) Utilities.mainData["step2"];
+                this.comboBox1.SelectedIndex = (Int32) AppUtilities.mainData["step2"];
             }
         }
 
@@ -42,7 +42,7 @@ namespace BusinessPlanner
         {
             Step3Dialog st3 = new Step3Dialog();
             this.mData = this.comboBox1.SelectedIndex;
-            Utilities.CreateOrUpdateDict("step2", this.mData);
+            AppUtilities.CreateOrUpdateDict("step2", this.mData);
             this.Hide();
             st3.ShowDialog();
         }

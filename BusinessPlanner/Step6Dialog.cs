@@ -17,10 +17,10 @@ namespace BusinessPlanner
         {
             InitializeComponent();
             mData = new Dictionary<string, bool>();
-            if (Utilities.mainData.ContainsKey("step6"))
+            if (AppUtilities.mainData.ContainsKey("step6"))
             {
                 Dictionary<string, Boolean> data = new Dictionary<string, bool>();
-                data = (Dictionary<string, Boolean>)Utilities.mainData["step6"];
+                data = (Dictionary<string, Boolean>)AppUtilities.mainData["step6"];
                 checkBox1.Checked = data["swot"];
                 checkBox2.Checked = data["web"];
             }
@@ -43,7 +43,7 @@ namespace BusinessPlanner
         {
             this.mData["swot"] = checkBox1.Checked;
             this.mData["web"] = checkBox2.Checked;
-            Utilities.CreateOrUpdateDict("step6",this.mData);
+            AppUtilities.CreateOrUpdateDict("step6",this.mData);
             Step7Dialog st7 = new Step7Dialog();
             this.Hide();
             st7.ShowDialog();

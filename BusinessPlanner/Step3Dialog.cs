@@ -17,9 +17,9 @@ namespace BusinessPlanner
         public Step3Dialog()
         {
             InitializeComponent();
-            if (Utilities.mainData.ContainsKey("step3"))
+            if (AppUtilities.mainData.ContainsKey("step3"))
             {
-                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == Utilities.mainData["step3"].ToString());
+                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == AppUtilities.mainData["step3"].ToString());
                 cb.Checked = true;
             }
         }
@@ -42,7 +42,7 @@ namespace BusinessPlanner
             Step4Dialog st4 = new Step4Dialog();
             var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             this.mData = cb.Text;
-            Utilities.CreateOrUpdateDict("step3", this.mData);
+            AppUtilities.CreateOrUpdateDict("step3", this.mData);
             this.Hide();
             st4.ShowDialog();
         }

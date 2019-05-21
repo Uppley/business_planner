@@ -16,9 +16,9 @@ namespace BusinessPlanner
         public Step5Dialog()
         {
             InitializeComponent();
-            if(Utilities.mainData.ContainsKey("step5"))
+            if(AppUtilities.mainData.ContainsKey("step5"))
             {
-                textBox1.Text = Utilities.mainData["step5"].ToString();
+                textBox1.Text = AppUtilities.mainData["step5"].ToString();
             }
         }
 
@@ -38,7 +38,7 @@ namespace BusinessPlanner
         private void Button3_Click(object sender, EventArgs e)
         {
             this.mData = textBox1.Text;
-            Utilities.CreateOrUpdateDict("step5", this.mData);
+            AppUtilities.CreateOrUpdateDict("step5", this.mData);
             Step6Dialog st6 = new Step6Dialog();
             this.Hide();
             st6.ShowDialog();

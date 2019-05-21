@@ -34,31 +34,11 @@ namespace BusinessPlanner
             panel1.Controls.Clear();
             panel1.Controls.Add(this.home);
             this.home.Show();
-            Utilities.mainForm = this;
-           // documents = extractDocuments();
-            if(ProjectConfig.projectPath != null)
-            {
-                string[] pn = ProjectConfig.projectPath.Split(new char[] { '\\' });
-                string pname = pn[pn.Count() - 1];
-                pname = pname.Replace("~temp_", "");
-                project_name = pname;
-            }
-            label1.Text = project_name;
+            AppUtilities.mainForm = this;
+            project_name = ProjectConfig.projectSettings["Title"].ToString().ToUpper();
+            label1.Text = project_name.ToUpper();
+            currency.Text = ProjectConfig.projectSettings["Currency"].ToString();
             setTreeNodes();
-        }
-
-        private string[] extractDocuments()
-        {
-            List<string> filenames= new List<String>();
-            foreach(var s in Directory.GetFiles(ProjectConfig.projectPath))
-            {
-                string[] fnames = s.Split(new char[] { '\\' });
-                string fname = fnames[fnames.Count() - 1];
-                Debug.WriteLine(fname);
-                filenames.Add(fname);
-            }
-           
-            return filenames.ToArray();
         }
 
         public void setTreeNodes()
@@ -66,18 +46,28 @@ namespace BusinessPlanner
             PopulateTreeView(0, null);
         }
 
-        public void updateTreeNodes()
-        {
-            treeView1.Nodes.Clear();
-            PopulateTreeView(0, null);
-        }
-
         private void PopulateTreeView(int parentId, TreeNode parentNode)
         {
+            int total_files = Directory.GetFiles(ProjectConfig.projectPath).Length;
+            List<TreeViewItem> filteredItems = null;
+            if(ProjectConfig.projectSettings["PlanType"]== "Standard Plan: Multiple Topics and Linked Financial Tables")
+            {
+                filteredItems = StandardConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
+            }else if (ProjectConfig.projectSettings["PlanType"] == "Plan As You Go")
+            {
+                filteredItems = PlanAsConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
+            }
+            else if (ProjectConfig.projectSettings["PlanType"] == "Financial Plan: Topics Related To Financial Domain Only")
+            {
+                filteredItems = FinancialConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
+            }
+            else
+            {
+                MessageBox.Show("We encountered some config issues");
+            }
             
-            var filteredItems = AppConfig.getProjectNodes().Where(item =>item.ParentID == parentId);
             TreeNode childNode;
-            foreach (var i in filteredItems.ToList())
+            foreach (var i in filteredItems)
             {
                 if (parentNode == null)
                     childNode = this.treeView1.Nodes.Add(i.Text);
@@ -201,7 +191,7 @@ namespace BusinessPlanner
                 ld.Show();
                 Application.DoEvents();
                 string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
-                DocumentLoader.save(dPath, ProjectConfig.projectPath);
+                ProjectLoader.save(dPath, ProjectConfig.projectPath);
             }
             catch (Exception e)
             {
@@ -238,7 +228,7 @@ namespace BusinessPlanner
             {
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-                List<DocumentItem> allFiles = StandardDocument.DocumentList.OrderBy(x => x.Seq).ToList();
+                List<DocumentItem> allFiles = StandardDocument.DocumentList.FindAll(x=>x.Ftype=="rtf").OrderBy(x => x.Seq).ToList();
                 foreach(DocumentItem doc in allFiles)
                 {
                     rtb1.LoadFile(ProjectConfig.projectPath+"\\"+doc.DocumentName);
@@ -249,7 +239,7 @@ namespace BusinessPlanner
                     rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                     rtb2.Paste();
                 }
-                DocGenerator document = new DocGenerator();
+                ExportGenerator document = new ExportGenerator();
                 document.open();
                 document.generateCoverPage(project_name);
                 document.getFooterWithPageNumber();
@@ -292,7 +282,7 @@ namespace BusinessPlanner
             {
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-                List<DocumentItem> allFiles = StandardDocument.DocumentList.OrderBy(x => x.Seq).ToList();
+                List<DocumentItem> allFiles = StandardDocument.DocumentList.FindAll(x => x.Ftype == "rtf").OrderBy(x => x.Seq).ToList();
                 foreach (DocumentItem doc in allFiles)
                 {
                     rtb1.LoadFile(ProjectConfig.projectPath + "\\" + doc.DocumentName);
@@ -303,7 +293,7 @@ namespace BusinessPlanner
                     rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                     rtb2.Paste();
                 }
-                DocGenerator document = new DocGenerator();
+                ExportGenerator document = new ExportGenerator();
                 document.open();
                 document.generateCoverPage(project_name);
                 document.getFooterWithPageNumber();
@@ -358,7 +348,7 @@ namespace BusinessPlanner
                         string proPath = opnfd.FileName;
                         string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
                         this.Close();
-                        DocumentLoader.load(proPath, tempPath);
+                        ProjectLoader.load(proPath, tempPath);
                         MainWindow mf = new MainWindow();
                         mf.Show();
 
@@ -383,7 +373,7 @@ namespace BusinessPlanner
                 ld.Show();
                 Application.DoEvents();
                 string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
-                DocumentLoader.saveOnly(dPath, ProjectConfig.projectPath);
+                ProjectLoader.saveOnly(dPath, ProjectConfig.projectPath);
 
             }
             catch (Exception ex)
@@ -410,7 +400,7 @@ namespace BusinessPlanner
                     ld.Show();
                     Application.DoEvents();
                     string dPath = saveFileDialog4.FileName;
-                    DocumentLoader.saveAsOnly(dPath, ProjectConfig.projectPath);
+                    ProjectLoader.saveAsOnly(dPath, ProjectConfig.projectPath);
 
                 }
                 catch (Exception ex)
@@ -432,7 +422,7 @@ namespace BusinessPlanner
                 ld.Show();
                 Application.DoEvents();
                 string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
-                DocumentLoader.saveOnly(dPath, ProjectConfig.projectPath);
+                ProjectLoader.saveOnly(dPath, ProjectConfig.projectPath);
 
             }
             catch (Exception ex)

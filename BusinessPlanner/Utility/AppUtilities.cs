@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    class Utilities
+    class AppUtilities
     {
         public static Dictionary<string, object> mainData = new Dictionary<string, object>();
 
@@ -15,15 +15,15 @@ namespace BusinessPlanner
 
         public static Dictionary<string, object> CreateOrUpdateDict(string key, object data)
         {
-            if (!Utilities.mainData.ContainsKey(key))
+            if (!AppUtilities.mainData.ContainsKey(key))
             {
-                Utilities.mainData.Add(key, data);
+                AppUtilities.mainData.Add(key, data);
             }
             else
             {
-                Utilities.mainData[key] = data;
+                AppUtilities.mainData[key] = data;
             }
-            return Utilities.mainData;
+            return AppUtilities.mainData;
         }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessPlanner.Utility
 {
-    public class AppConfig
+    class PlanAsConfig
     {
         public static List<TreeViewItem> treeViewList = new List<TreeViewItem>() {
             new TreeViewItem() {ParentID=0,ID=1,Text="Home"},
@@ -35,27 +34,26 @@ namespace BusinessPlanner.Utility
             new TreeViewItem() { ParentID = 21, ID = 23, Text = "Competitive Edge" },
             new TreeViewItem() { ParentID = 0, ID = 24, Text = "Financial Plan" },
             new TreeViewItem() { ParentID = 24, ID = 25, Text = "Financial Summary" },
-            new TreeViewItem() { ParentID = 24, ID = 26, Text = "Cash Flow" },
-            new TreeViewItem() { ParentID = 24, ID = 27, Text = "Balance Sheet" },
-            new TreeViewItem() { ParentID = 0, ID = 28, Text = "Finish" },
-            new TreeViewItem() { ParentID = 28, ID = 29, Text = "Executive Summary" }
+            new TreeViewItem() { ParentID = 24, ID = 26, Text = "Investment Requirement" },
+            new TreeViewItem() { ParentID = 0, ID = 27, Text = "Finish" },
+            new TreeViewItem() { ParentID = 27, ID = 28, Text = "Executive Summary" }
         };
-        
+
         public static int getId()
         {
 
-            return AppConfig.treeViewList[AppConfig.treeViewList.Count - 1].ID;
+            return PlanAsConfig.treeViewList[PlanAsConfig.treeViewList.Count - 1].ID;
         }
 
         public static List<TreeViewItem> getAllNodes()
         {
-            return AppConfig.treeViewList;
+            return PlanAsConfig.treeViewList;
         }
 
         public static List<TreeViewItem> getProjectNodes()
         {
             List<TreeViewItem> li = new List<TreeViewItem>();
-            foreach(var s in AppConfig.treeViewList)
+            foreach (var s in PlanAsConfig.treeViewList)
             {
                 if (s.ParentID == 0)
                 {
@@ -63,9 +61,9 @@ namespace BusinessPlanner.Utility
                 }
                 else
                 {
-                    foreach(var d in StandardDocument.DocumentList)
+                    foreach (var d in PlanAsDocument.DocumentList)
                     {
-                        if(d.ItemName==s.Text)
+                        if (d.ItemName == s.Text)
                         {
                             li.Add(s);
                         }
@@ -75,9 +73,9 @@ namespace BusinessPlanner.Utility
             return li;
         }
 
-        public static void updateNodes(int pid,int id,string t)
+        public static void updateNodes(int pid, int id, string t)
         {
-            AppConfig.treeViewList.Add(new TreeViewItem() { ParentID = pid, ID = id, Text = t });
+            PlanAsConfig.treeViewList.Add(new TreeViewItem() { ParentID = pid, ID = id, Text = t });
         }
     }
 }

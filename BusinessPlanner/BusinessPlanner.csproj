@@ -69,6 +69,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Office2007Renderer">
       <HintPath>..\..\..\..\..\Desktop\business planner workspace\Office2007Renderer.dll</HintPath>
     </Reference>
@@ -114,13 +117,16 @@
     <Compile Include="ForecastWindow.Designer.cs">
       <DependentUpon>ForecastWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Data.cs" />
     <Compile Include="Partials\_FindDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Partials\_FindDialog.Designer.cs">
       <DependentUpon>_FindDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility\AppConfig.cs" />
+    <Compile Include="ConfigFiles\FinancialConfig.cs" />
+    <Compile Include="ConfigFiles\PlanAsConfig.cs" />
+    <Compile Include="ConfigFiles\StandardConfig.cs" />
     <Compile Include="Utility\AppMessages.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -220,20 +226,21 @@
     <Compile Include="Partials\_TableInputForm.Designer.cs">
       <DependentUpon>_TableInputForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utility\DocGenerator.cs" />
+    <Compile Include="Utility\BPSettings.cs" />
+    <Compile Include="Utility\ExportGenerator.cs" />
     <Compile Include="Utility\DocumentCreator.cs" />
-    <Compile Include="Utility\DocumentItem.cs" />
-    <Compile Include="Utility\DocumentLoader.cs" />
+    <Compile Include="Models\DocumentItem.cs" />
+    <Compile Include="Utility\ProjectLoader.cs" />
     <Compile Include="Utility\FinancialDocument.cs" />
     <Compile Include="Utility\PlanAsDocument.cs" />
     <Compile Include="Utility\StandardDocument.cs" />
     <Compile Include="Utility\ExcelReader.cs" />
-    <Compile Include="Utility\ExpenditureItem.cs" />
-    <Compile Include="Utility\ProjectConfig.cs" />
-    <Compile Include="Utility\SaleItem.cs" />
-    <Compile Include="Utility\SalesItem.cs" />
-    <Compile Include="Utility\TreeViewItem.cs" />
-    <Compile Include="Utility\Utilities.cs" />
+    <Compile Include="Models\ExpenditureItem.cs" />
+    <Compile Include="ConfigFiles\ProjectConfig.cs" />
+    <Compile Include="Models\SaleItem.cs" />
+    <Compile Include="Models\SalesItem.cs" />
+    <Compile Include="Models\TreeViewItem.cs" />
+    <Compile Include="Utility\AppUtilities.cs" />
     <EmbeddedResource Include="AboutBP.resx">
       <DependentUpon>AboutBP.cs</DependentUpon>
     </EmbeddedResource>

@@ -10,6 +10,7 @@ namespace BusinessPlanner.Utility
     {
         public static List<DocumentItem> DocumentList = new List<DocumentItem>()
         {
+            new DocumentItem() {ItemName="Executive Summary", DocumentName="executive_summary.rtf",Ftype="rtf",Seq=1 },
             new DocumentItem() {ItemName="Objectives", DocumentName="objectives.rtf",Ftype="rtf",Seq=2 },
             new DocumentItem() {ItemName="Mission", DocumentName="mission.rtf",Ftype="rtf",Seq=3 },
             new DocumentItem() {ItemName="Company Summary",DocumentName="company_summary.rtf",Ftype="rtf",Seq=4 },
@@ -27,10 +28,9 @@ namespace BusinessPlanner.Utility
             new DocumentItem() {ItemName="Strategy Summary", DocumentName="marketing_strategy_summary.rtf",Ftype="rtf",Seq=16 },
             new DocumentItem() {ItemName="Competitive Edge", DocumentName="competitive_edge.rtf",Ftype="rtf",Seq=17 },
             new DocumentItem() {ItemName="Financial Summary", DocumentName="financial_summary.rtf",Ftype="rtf",Seq=18 },
-            new DocumentItem() {ItemName="Cash Flow", DocumentName="cash_flow.rtf",Ftype="rtf",Seq=19 },
-            new DocumentItem() {ItemName="Balance Sheet", DocumentName="balance_sheet.rtf",Ftype="rtf",Seq=20 },
-            new DocumentItem() {ItemName="Executive Summary", DocumentName="executive_summary.rtf",Ftype="rtf",Seq=1 },
-            new DocumentItem() {ItemName="Financial Data", DocumentName="data.xls",Ftype="xls",Seq=21 },
+            new DocumentItem() {ItemName="Investment Requirement", DocumentName="investment.rtf",Ftype="rtf",Seq=19 },
+            new DocumentItem() {ItemName="Financial Data", DocumentName="data.xls",Ftype="xls",Seq=20 },
+            
         };
     }
 }

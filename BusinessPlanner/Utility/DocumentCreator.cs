@@ -16,25 +16,44 @@ namespace BusinessPlanner.Utility
         public readonly List<DocumentItem>documentList;
         private string projectPath;
         private string tempPath;
+        private string planType;
         RichTextBox rtb = new RichTextBox();
         string rtfText = @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang14346{\fonttbl{\f0\fnil\fcharset0 Calibri;}} {\*\generator Riched20 10.0.10586}\viewkind4\uc1 \pard\sa200\sl276\slmult1\f0\fs22\lang10 Enter Text Here.\par }";
 
         public DocumentCreator()
         {
-            string data = Utilities.mainData["step1"].ToString();
-            if (data == "Plan As You Go")
+            planType = AppUtilities.mainData["step1"].ToString();
+            if (planType == "Plan As You Go")
                 documentList = PlanAsDocument.DocumentList;
-            else if (data == "Standard Plan: Multiple Topics and Linked Financial Tables")
+            else if (planType == "Standard Plan: Multiple Topics and Linked Financial Tables")
                 documentList = StandardDocument.DocumentList;
-            else if (data == "Financial Plan: Topics Related To Financial Domain Only")
+            else if (planType == "Financial Plan: Topics Related To Financial Domain Only")
                 documentList = FinancialDocument.DocumentList;
+        }
+
+        public string getCurrency()
+        {
+            string c = "AED";
+            if(int.Parse(AppUtilities.mainData["step2"].ToString())==0)
+            {
+                c = "AED";
+            }else if(int.Parse(AppUtilities.mainData["step2"].ToString()) == 1)
+            {
+                c = "USD";
+            }
+            else if(int.Parse(AppUtilities.mainData["step2"].ToString()) == 2)
+            {
+                c = "EURO";
+            }
+            return c;
         }
         public string createPackage()
         {
-            projectPath = Path.Combine(ProjectConfig.projectBase,Utilities.mainData["step5"].ToString()+ProjectConfig.projectExtension);
-            string startDate = Utilities.mainData["step4"].ToString();
+            string projectTitle = AppUtilities.mainData["step5"].ToString();
+            projectPath = Path.Combine(ProjectConfig.projectBase,projectTitle+ProjectConfig.projectExtension);
+            string startDate = AppUtilities.mainData["step4"].ToString();
             DateTime oDate = DateTime.Parse(startDate);
-            string plan_type = Utilities.mainData["step8"].ToString();
+            string plan_type = AppUtilities.mainData["step8"].ToString();
             int plan_duration = 6;
             if(plan_type != "I would like a standard-term business plan.")
             {
@@ -49,9 +68,9 @@ namespace BusinessPlanner.Utility
             Dictionary<string, object> data = new Dictionary<string, object>();
             data["plan_duration"] = plan_duration;
             data["months"] = months;
-            data["currency"] = Utilities.mainData["step2"];
-            data["is_startup"] = Utilities.mainData["step3"].ToString() == "This business plan is for a startup." ? "yes" : "no";
-            tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_"+Utilities.mainData["step5"].ToString());
+            data["currency"] = getCurrency();
+            data["is_startup"] = AppUtilities.mainData["step3"].ToString() == "This business plan is for a startup." ? "yes" : "no";
+            tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_"+projectTitle);
             try
             {
                 if (Directory.Exists(tempPath))
@@ -69,9 +88,13 @@ namespace BusinessPlanner.Utility
                     {
                         ExcelReader excelReader = new ExcelReader();
                         excelReader.createExcelFile(Path.Combine(tempPath, "data.xls"),data);
-                    }   
+                    }
                 }
-
+                BPSettings bp = new BPSettings();
+                bp.AddSetting("Title", projectTitle);
+                bp.AddSetting("PlanType", planType);
+                bp.AddSetting("Currency", getCurrency());
+                bp.SaveSetting(Path.Combine(tempPath, "settings.json"));
                 ZipFile.CreateFromDirectory(tempPath, projectPath);
 
                 Debug.WriteLine("Project setup complete !");

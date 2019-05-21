@@ -20,9 +20,9 @@ namespace BusinessPlanner
         {
             InitializeComponent();
            
-            if (Utilities.mainData.ContainsKey("step8"))
+            if (AppUtilities.mainData.ContainsKey("step8"))
             {
-                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == Utilities.mainData["step8"].ToString());
+                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == AppUtilities.mainData["step8"].ToString());
                 cb.Checked = true;
             }
         }
@@ -44,11 +44,7 @@ namespace BusinessPlanner
         {
             var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             this.mData = cb.Text;
-            Utilities.CreateOrUpdateDict("step8", this.mData);
-            AppConfig.updateNodes(2,AppConfig.getId()+1,"Mission");
-            //DocumentRecord.DocumentList.Find(x => x.ItemName == "Mission").IsActive = 1;
-            //MainWindow mw = Utilities.mainForm as MainWindow;
-            //mw.updateTreeNodes();
+            AppUtilities.CreateOrUpdateDict("step8", this.mData);
             _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["document_created"]);
             this.Close();
             try
@@ -57,8 +53,8 @@ namespace BusinessPlanner
                 Application.DoEvents();
                 DocumentCreator dc = new DocumentCreator();
                 string proPath = dc.createPackage();
-                string tempPath = Path.Combine(ProjectConfig.projectBase,"~temp_"+Utilities.mainData["step5"].ToString());
-                DocumentLoader.load(proPath,tempPath);
+                string tempPath = Path.Combine(ProjectConfig.projectBase,"~temp_"+AppUtilities.mainData["step5"].ToString());
+                ProjectLoader.load(proPath,tempPath);
             }
             catch (Exception ex)
             {

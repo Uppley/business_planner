@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessPlanner.Utility
 {
-    class DocGenerator
+    class ExportGenerator
     {
         private object missing;
         private object Visible;

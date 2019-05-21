@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner.Utility
 {
-    class DocumentLoader
+    class ProjectLoader
     {
         public static void load(string dPath,string tempPath)
         {
@@ -23,6 +23,7 @@ namespace BusinessPlanner.Utility
                 {
                     ZipFile.ExtractToDirectory(dPath, tempPath);
                     ProjectConfig.projectPath = tempPath;
+                    ProjectConfig.loadSettings();
                 }
             }catch(Exception e)
             {

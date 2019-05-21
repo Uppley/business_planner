@@ -18,9 +18,9 @@ namespace BusinessPlanner
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 1;
-            if (Utilities.mainData.ContainsKey("step4"))
+            if (AppUtilities.mainData.ContainsKey("step4"))
             {
-                string[] data  = Utilities.mainData["step4"].ToString().Split(',');
+                string[] data  = AppUtilities.mainData["step4"].ToString().Split(',');
                 comboBox1.SelectedItem = data[0];
                 comboBox2.SelectedItem = data[1];
             }
@@ -45,7 +45,7 @@ namespace BusinessPlanner
             String month = comboBox1.SelectedItem.ToString();
             String year = comboBox2.SelectedItem.ToString();
             this.mData = year+"-"+month + '-' +"01";
-            Utilities.CreateOrUpdateDict("step4", this.mData);
+            AppUtilities.CreateOrUpdateDict("step4", this.mData);
             Step5Dialog st5 = new Step5Dialog();
             this.Hide();
             st5.ShowDialog();
