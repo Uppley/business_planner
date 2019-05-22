@@ -165,25 +165,18 @@ namespace BusinessPlanner.Utility
                 xlApp.Visible = false;
                 xlApp.DisplayAlerts = false;
                 xlWorkbook = xlApp.Workbooks.Open(ProjectConfig.projectPath+"//"+"data.xls");
-                xlWorksheet = (Worksheet) xlWorkbook.Worksheets[sheetNames[0]];
-                for (int i = 0; i < dgvs[0].Rows.Count - 1; i++)
+                for(int s = 0; s < sheets.Length; s++)
                 {
-                    for (int j = 0; j < dgvs[0].Columns.Count; j++)
+                    xlWorksheet = (Worksheet)xlWorkbook.Worksheets[sheetNames[s]];
+                    for (int i = 0; i < dgvs[s].Rows.Count - 1; i++)
                     {
-                        xlWorksheet.Cells[i + 2, j + 1] = dgvs[0].Rows[i].Cells[j].Value.ToString();
+                        for (int j = 0; j < dgvs[s].Columns.Count; j++)
+                        {
+                            xlWorksheet.Cells[i + 2, j + 1] = dgvs[s].Rows[i].Cells[j].Value.ToString();
+                        }
                     }
                 }
-
-
-                xlWorksheet = (Worksheet)xlWorkbook.Worksheets[sheetNames[1]];
-                for (int i = 0; i < dgvs[1].Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j < dgvs[1].Columns.Count; j++)
-                    {
-                        xlWorksheet.Cells[i + 2, j + 1] = dgvs[1].Rows[i].Cells[j].Value.ToString();
-                    }
-                }
-
+                
                 xlWorkbook.SaveAs(ProjectConfig.projectPath + "\\data.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, Microsoft.Office.Interop.Excel.XlSaveConflictResolution.xlLocalSessionChanges, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
                 xlWorkbook.Close(true, Type.Missing, Type.Missing);
             }

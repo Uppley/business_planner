@@ -127,6 +127,12 @@
     <Compile Include="ConfigFiles\FinancialConfig.cs" />
     <Compile Include="ConfigFiles\PlanAsConfig.cs" />
     <Compile Include="ConfigFiles\StandardConfig.cs" />
+    <Compile Include="StartUpWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartUpWindow.Designer.cs">
+      <DependentUpon>StartUpWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility\AppMessages.cs" />
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -274,6 +280,9 @@
     </Compile>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartUpWindow.resx">
+      <DependentUpon>StartUpWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartWindow.resx">
       <DependentUpon>StartWindow.cs</DependentUpon>

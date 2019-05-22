@@ -100,6 +100,13 @@ namespace BusinessPlanner
                         panel1.Controls.Clear();
                         panel1.Controls.Add(frw);
                         frw.Show();
+                    }else if(this.treeView1.SelectedNode.Text == "Start Up Table")
+                    {
+                        StartUpWindow stw = new StartUpWindow();
+                        stw.TopLevel = false;
+                        panel1.Controls.Clear();
+                        panel1.Controls.Add(stw);
+                        stw.Show();
                     }
                     else
                     {

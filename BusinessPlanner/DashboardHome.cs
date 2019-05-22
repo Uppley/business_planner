@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace BusinessPlanner
         List<string> months = new List<string>() { "Month1", "Month2", "Month3", "Month4", "Month5", "Month6" };
         List<float> salesAmount = new List<float>() { 0,0,0,0,0,0};
         List<float> costSales = new List<float>() { 0, 0, 0, 0, 0, 0 };
+        List<ExpenditureItem> expenditures = new List<ExpenditureItem>();
         public DashboardHome()
         {
             InitializeComponent();
@@ -49,11 +51,13 @@ namespace BusinessPlanner
             if (File.Exists(ProjectConfig.projectPath + "\\data.xls"))
             {
                 DataGridView dgv1 = new DataGridView();
-                DataGridView dgv2 = new DataGridView();
+                //DataGridView dgv2 = new DataGridView();
+                //DataGridView dgv3 = new DataGridView();
                 ExcelReader excelReader = new ExcelReader();
                 dgv1 = excelReader.readExcelToDataGridView(3);
-                dgv2 = excelReader.readExcelToDataGridView(2);
-                excelReader.Close();
+                //dgv2 = excelReader.readExcelToDataGridView(2);
+                //dgv3 = excelReader.readExcelToDataGridView(1);
+                
                 months = new List<string>();
                 for (int col = 2; col < dgv1.Rows[0].Cells.Count; col++)
                 {
@@ -72,34 +76,40 @@ namespace BusinessPlanner
 
                 }
                 this.salesAmount = new List<float>(){ col1, col2, col3, col4, col5, col6 };
+                dgv1.Rows.Clear();
+                dgv1.Columns.Clear();
+                dgv1 = excelReader.readExcelToDataGridView(2);
                 col1 = 0; col2 = 0; col3 = 0; col4 = 0; col5 = 0; col6 = 0;
-                for (int rows = 0; rows < dgv2.Rows.Count - 1; rows++)
+                for (int rows = 0; rows < dgv1.Rows.Count - 1; rows++)
                 {
-                    col1 += float.Parse(dgv2.Rows[rows].Cells[2].Value.ToString());
-                    col2 += float.Parse(dgv2.Rows[rows].Cells[3].Value.ToString());
-                    col3 += float.Parse(dgv2.Rows[rows].Cells[4].Value.ToString());
-                    col4 += float.Parse(dgv2.Rows[rows].Cells[5].Value.ToString());
-                    col5 += float.Parse(dgv2.Rows[rows].Cells[6].Value.ToString());
-                    col6 += float.Parse(dgv2.Rows[rows].Cells[7].Value.ToString());
+                    col1 += float.Parse(dgv1.Rows[rows].Cells[2].Value.ToString());
+                    col2 += float.Parse(dgv1.Rows[rows].Cells[3].Value.ToString());
+                    col3 += float.Parse(dgv1.Rows[rows].Cells[4].Value.ToString());
+                    col4 += float.Parse(dgv1.Rows[rows].Cells[5].Value.ToString());
+                    col5 += float.Parse(dgv1.Rows[rows].Cells[6].Value.ToString());
+                    col6 += float.Parse(dgv1.Rows[rows].Cells[7].Value.ToString());
 
                 }
                 this.costSales = new List<float>() { col1, col2, col3, col4, col5, col6 };
+                dgv1.Rows.Clear();
+                dgv1.Columns.Clear();
+                dgv1 = excelReader.readExcelToDataGridView(1);
+                for (int rows = 0; rows < dgv1.Rows.Count-1; rows++)
+                {
+                    expenditures.Add(new ExpenditureItem() { name = dgv1.Rows[rows].Cells[0].Value.ToString(), amount = float.Parse(dgv1.Rows[rows].Cells[1].Value.ToString()) });
+                }
+                dgv1.Rows.Clear();
+                dgv1.Columns.Clear();
+                dgv1.Dispose();
+                excelReader.Close();
+
             }
         }
 
         private void populateExpenditure()
         {
             chart2.Series[0].ChartType = SeriesChartType.Pie;
-            List<ExpenditureItem> lex = new List<ExpenditureItem>()
-            {
-                new ExpenditureItem(){name="Rent",amount=50000},
-                new ExpenditureItem(){name="Utilities",amount=10000},
-                new ExpenditureItem(){name="Equipment",amount=5000},
-                new ExpenditureItem(){name="Fixtures",amount=20000},
-                new ExpenditureItem(){name="Inventory",amount=40000},
-                new ExpenditureItem(){name="Marketing Budget",amount=15000},
-            };
-            chart2.DataSource = lex;
+            chart2.DataSource = expenditures;
             chart2.Series[0].XValueMember = "name";
             chart2.Series[0].YValueMembers = "amount";
             chart2.Titles.Add("Company Expenditures");
