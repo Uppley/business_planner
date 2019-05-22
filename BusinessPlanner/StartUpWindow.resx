@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. Sed dignissim lacinia leo, a semper dolor faucibus eu. Nam vehicula nisi ac arcu cursus viverra. Maecenas mattis volutpat ex vitae faucibus. Integer ac rhoncus neque, id mollis diam. Morbi odio nunc, pellentesque sed egestas sit amet, viverra a sem. Vivamus at iaculis neque. Pellentesque ac nibh ut ex scelerisque consectetur tempus in dolor. Mauris tincidunt euismod sem fringilla dictum. Donec lobortis, lorem non posuere placerat, ipsum urna dignissim orci, et scelerisque est magna vitae elit. Proin ut sem ut turpis fringilla bibendum. In non volutpat ante. Donec cursus venenatis felis, in tincidunt diam egestas at. Curabitur maximus leo ac metus tempor egestas. Vestibulum at laoreet leo, id rutrum erat.</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Suspendisse potenti. Sed porttitor consectetur nulla, nec scelerisque urna laoreet ut. Proin dictum libero enim, sit amet congue dui pulvinar quis. Donec aliquam, velit non dignissim dignissim, urna ante dignissim dui, vitae rhoncus sem massa nec tortor. In hac habitasse platea dictumst. Morbi sem augue, dictum a pretium et, pulvinar eu magna. Duis id lorem erat. Integer vitae purus sagittis, imperdiet magna ut, dapibus dolor. Integer tempor odio eu maximus tincidunt. Ut vel interdum elit. Praesent pretium nibh eget odio congue, ut ullamcorper quam semper. Donec in arcu lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum urna eros, auctor sit amet neque a, scelerisque elementum odio.</value>
-  </data>
   <metadata name="name.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="amount.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. Sed dignissim lacinia leo, a semper dolor faucibus eu. Nam vehicula nisi ac arcu cursus viverra. Maecenas mattis volutpat ex vitae faucibus. Integer ac rhoncus neque, id mollis diam. Morbi odio nunc, pellentesque sed egestas sit amet, viverra a sem. Vivamus at iaculis neque. Pellentesque ac nibh ut ex scelerisque consectetur tempus in dolor. Mauris tincidunt euismod sem fringilla dictum. Donec lobortis, lorem non posuere placerat, ipsum urna dignissim orci, et scelerisque est magna vitae elit. Proin ut sem ut turpis fringilla bibendum. In non volutpat ante. Donec cursus venenatis felis, in tincidunt diam egestas at. Curabitur maximus leo ac metus tempor egestas. Vestibulum at laoreet leo, id rutrum erat.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Suspendisse potenti. Sed porttitor consectetur nulla, nec scelerisque urna laoreet ut. Proin dictum libero enim, sit amet congue dui pulvinar quis. Donec aliquam, velit non dignissim dignissim, urna ante dignissim dui, vitae rhoncus sem massa nec tortor. In hac habitasse platea dictumst. Morbi sem augue, dictum a pretium et, pulvinar eu magna. Duis id lorem erat. Integer vitae purus sagittis, imperdiet magna ut, dapibus dolor. Integer tempor odio eu maximus tincidunt. Ut vel interdum elit. Praesent pretium nibh eget odio congue, ut ullamcorper quam semper. Donec in arcu lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum urna eros, auctor sit amet neque a, scelerisque elementum odio.</value>
+  </data>
 </root>
