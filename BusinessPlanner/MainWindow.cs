@@ -80,7 +80,7 @@ namespace BusinessPlanner
 
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
-           
+            
             if (this.treeView1.SelectedNode.Text == "Home")
             {
                
@@ -100,9 +100,17 @@ namespace BusinessPlanner
                         panel1.Controls.Clear();
                         panel1.Controls.Add(frw);
                         frw.Show();
-                    }else if(this.treeView1.SelectedNode.Text == "Start Up Table")
+                    }else if(this.treeView1.SelectedNode.Text == "Start Up Investment")
                     {
                         StartUpWindow stw = new StartUpWindow();
+                        stw.TopLevel = false;
+                        panel1.Controls.Clear();
+                        panel1.Controls.Add(stw);
+                        stw.Show();
+                    }
+                    else if (this.treeView1.SelectedNode.Text == "Company Expenditure")
+                    {
+                        ExpenditureWindow stw = new ExpenditureWindow();
                         stw.TopLevel = false;
                         panel1.Controls.Clear();
                         panel1.Controls.Add(stw);
@@ -441,7 +449,5 @@ namespace BusinessPlanner
                 ld.Close();
             }
         }
-
-        
     }
 }

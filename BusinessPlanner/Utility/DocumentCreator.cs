@@ -47,6 +47,35 @@ namespace BusinessPlanner.Utility
             }
             return c;
         }
+        public int isStartUp()
+        {
+            int i = 0;
+            if(AppUtilities.mainData["step2"].ToString()== "This business plan is for a startup.")
+            {
+                i = 1;
+            }
+            return i;
+        }
+        public int isSWOT()
+        {
+            int i = 0;
+            var dt = (Dictionary<string,Boolean>)AppUtilities.mainData["step6"];
+            if(dt["swot"])
+            {
+                i = 1;
+            }
+            return i;
+        }
+        public int isWeb()
+        {
+            int i = 0;
+            var dt = (Dictionary<string, Boolean>)AppUtilities.mainData["step6"];
+            if (dt["web"])
+            {
+                i = 1;
+            }
+            return i;
+        }
         public string createPackage()
         {
             string projectTitle = AppUtilities.mainData["step5"].ToString();
@@ -81,8 +110,15 @@ namespace BusinessPlanner.Utility
                 {
                     if (d.Ftype == "rtf")
                     {
+                        if (isSWOT() != 1 && (d.ItemName == "Strength" || d.ItemName == "Weakness" || d.ItemName == "Opportunities" || d.ItemName == "Threats"))
+                            continue;
+                        if (isWeb() != 1 && (d.ItemName == "Web Plan Summary" || d.ItemName == "Developments Requirements"))
+                            continue;
+                        if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
+                            continue;
                         rtb.Rtf = rtfText;
                         rtb.SaveFile(Path.Combine(tempPath, d.DocumentName));
+
                     }
                     else if(d.Ftype == "xls")
                     {
@@ -94,6 +130,9 @@ namespace BusinessPlanner.Utility
                 bp.AddSetting("Title", projectTitle);
                 bp.AddSetting("PlanType", planType);
                 bp.AddSetting("Currency", getCurrency());
+                bp.AddSetting("StartUp", isStartUp().ToString());
+                bp.AddSetting("SWOT", isSWOT().ToString());
+                bp.AddSetting("Website", isWeb().ToString());
                 bp.SaveSetting(Path.Combine(tempPath, "settings.json"));
                 ZipFile.CreateFromDirectory(tempPath, projectPath);
 

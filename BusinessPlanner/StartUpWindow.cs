@@ -25,7 +25,7 @@ namespace BusinessPlanner
                     ld.Show();
                     Application.DoEvents();
                     ExcelReader excelReader = new ExcelReader();
-                    excelReader.readExcelToDataGridView(dataGridView1, 1);
+                    excelReader.readExcelToDataGridView(dataGridView1, "StartUp Cost");
                     excelReader.Close();
                 }
                 catch (Exception e)
@@ -51,7 +51,7 @@ namespace BusinessPlanner
                 excelReader.saveExcelFromDataGridView(
                     new DataGridView[1] { dataGridView1 },
                     new int[1] { 1 },
-                    new string[1] { "Expenditures" }
+                    new string[1] { "StartUp Cost" }
                 );
                 excelReader.Close();
             }

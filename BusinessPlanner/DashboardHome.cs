@@ -51,13 +51,9 @@ namespace BusinessPlanner
             if (File.Exists(ProjectConfig.projectPath + "\\data.xls"))
             {
                 DataGridView dgv1 = new DataGridView();
-                //DataGridView dgv2 = new DataGridView();
-                //DataGridView dgv3 = new DataGridView();
                 ExcelReader excelReader = new ExcelReader();
-                dgv1 = excelReader.readExcelToDataGridView(3);
-                //dgv2 = excelReader.readExcelToDataGridView(2);
-                //dgv3 = excelReader.readExcelToDataGridView(1);
-                
+                dgv1 = excelReader.readExcelToDataGridView("Sales Forecast");
+
                 months = new List<string>();
                 for (int col = 2; col < dgv1.Rows[0].Cells.Count; col++)
                 {
@@ -78,7 +74,7 @@ namespace BusinessPlanner
                 this.salesAmount = new List<float>(){ col1, col2, col3, col4, col5, col6 };
                 dgv1.Rows.Clear();
                 dgv1.Columns.Clear();
-                dgv1 = excelReader.readExcelToDataGridView(2);
+                dgv1 = excelReader.readExcelToDataGridView("Cost Of Sales");
                 col1 = 0; col2 = 0; col3 = 0; col4 = 0; col5 = 0; col6 = 0;
                 for (int rows = 0; rows < dgv1.Rows.Count - 1; rows++)
                 {
@@ -93,7 +89,7 @@ namespace BusinessPlanner
                 this.costSales = new List<float>() { col1, col2, col3, col4, col5, col6 };
                 dgv1.Rows.Clear();
                 dgv1.Columns.Clear();
-                dgv1 = excelReader.readExcelToDataGridView(1);
+                dgv1 = excelReader.readExcelToDataGridView("Expenditures");
                 for (int rows = 0; rows < dgv1.Rows.Count-1; rows++)
                 {
                     expenditures.Add(new ExpenditureItem() { name = dgv1.Rows[rows].Cells[0].Value.ToString(), amount = float.Parse(dgv1.Rows[rows].Cells[1].Value.ToString()) });

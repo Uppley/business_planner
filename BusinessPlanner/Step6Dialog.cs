@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,7 @@ namespace BusinessPlanner
             this.mData["swot"] = checkBox1.Checked;
             this.mData["web"] = checkBox2.Checked;
             AppUtilities.CreateOrUpdateDict("step6",this.mData);
+            Debug.WriteLine(AppUtilities.mainData);
             Step7Dialog st7 = new Step7Dialog();
             this.Hide();
             st7.ShowDialog();

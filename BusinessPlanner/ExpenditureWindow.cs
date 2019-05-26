@@ -3,25 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace BusinessPlanner
 {
-    public partial class ForecastWindow : Form
+    public partial class ExpenditureWindow : Form
     {
-        
-        public ForecastWindow()
+        public ExpenditureWindow()
         {
             InitializeComponent();
-            if(File.Exists(ProjectConfig.projectPath+"\\data.xls"))
+            if (File.Exists(ProjectConfig.projectPath + "\\data.xls"))
             {
                 _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["data_load"]);
                 try
@@ -29,8 +25,7 @@ namespace BusinessPlanner
                     ld.Show();
                     Application.DoEvents();
                     ExcelReader excelReader = new ExcelReader();
-                    excelReader.readExcelToDataGridView(dataGridView1, "Sales Forecast");
-                    excelReader.readExcelToDataGridView(dataGridView2, "Cost Of Sales");
+                    excelReader.readExcelToDataGridView(dataGridView1, "Expenditures");
                     excelReader.Close();
                 }
                 catch (Exception e)
@@ -41,13 +36,11 @@ namespace BusinessPlanner
                 {
                     ld.Close();
                 }
-                
+
             }
         }
 
-        
-
-        private void Button1_Click_1(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["data_save"]);
             try
@@ -56,9 +49,9 @@ namespace BusinessPlanner
                 Application.DoEvents();
                 ExcelReader excelReader = new ExcelReader();
                 excelReader.saveExcelFromDataGridView(
-                    new DataGridView[2]{dataGridView1,dataGridView2}, 
-                    new int[2]{1,2}, 
-                    new string[2]{"Sales Forecast","Cost Of Sales"}
+                    new DataGridView[1] { dataGridView1 },
+                    new int[1] { 1 },
+                    new string[1] { "Expenditures" }
                 );
                 excelReader.Close();
             }
@@ -71,6 +64,5 @@ namespace BusinessPlanner
                 ld.Close();
             }
         }
-
     }
 }

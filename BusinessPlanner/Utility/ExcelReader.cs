@@ -29,6 +29,7 @@ namespace BusinessPlanner.Utility
             object missing = Type.Missing;
             xlApp.Visible = false;
             xlWorkbook = xlApp.Workbooks.Add(missing);
+            
 
             // First Sheet
             Excel.Worksheet oSheet = xlWorkbook.ActiveSheet as Excel.Worksheet;
@@ -56,6 +57,13 @@ namespace BusinessPlanner.Utility
             oSheet3.Cells[1, 1] = "Name";
             oSheet3.Cells[1, 2] = "Amount";
 
+            if ((string)data["is_startup"] == "yes")
+            {
+                Excel.Worksheet oSheet4 = xlWorkbook.Sheets.Add(missing, missing, 1, missing) as Excel.Worksheet;
+                oSheet4.Name = "StartUp Cost";
+                oSheet4.Cells[1, 1] = "Name";
+                oSheet4.Cells[1, 2] = "Amount";
+            }
 
             xlWorkbook.SaveAs(filename, Excel.XlFileFormat.xlOpenXMLWorkbook,
                 missing, missing, missing, missing,
@@ -66,13 +74,13 @@ namespace BusinessPlanner.Utility
             this.Close();
         }
 
-        public DataGridView readExcelToDataGridView(int sheet)
+        public DataGridView readExcelToDataGridView(string sheet_name)
         {
             DataGridView dgv = new DataGridView();
             try
             {
                 xlWorkbook = xlApp.Workbooks.Open(ProjectConfig.projectPath + "\\" + "data.xls");
-                xlWorksheet = xlWorkbook.Sheets[sheet];
+                xlWorksheet = xlWorkbook.Worksheets[sheet_name];
                 xlRange = xlWorksheet.UsedRange;
 
                 int rowCount = xlRange.Rows.Count;
@@ -118,12 +126,12 @@ namespace BusinessPlanner.Utility
             return dgv;
         }
 
-        public void readExcelToDataGridView(DataGridView dgv, int sheet)
+        public void readExcelToDataGridView(DataGridView dgv, string sheet_name)
         {
             try
             {
                 xlWorkbook = xlApp.Workbooks.Open(ProjectConfig.projectPath + "\\" + "data.xls");
-                xlWorksheet = xlWorkbook.Sheets[sheet];
+                xlWorksheet = xlWorkbook.Worksheets[sheet_name];
                 xlRange = xlWorksheet.UsedRange;
 
                 int rowCount = xlRange.Rows.Count;
