@@ -12,7 +12,7 @@ namespace BusinessPlanner.Utility
     class BPSettings
     {
         private List<Data> _data = new List<Data>();
-        public void AddSetting(string prop,string val)
+        public void AddSetting(string prop,object val)
         {
             _data.Add(new Data() {property=prop,value=val});
         }

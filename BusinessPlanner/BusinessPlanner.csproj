@@ -239,6 +239,8 @@
       <DependentUpon>_TableInputForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utility\BPSettings.cs" />
+    <Compile Include="Utility\ChartGenerator.cs" />
+    <Compile Include="Utility\DocumentProgressor.cs" />
     <Compile Include="Utility\ExportGenerator.cs" />
     <Compile Include="Utility\DocumentCreator.cs" />
     <Compile Include="Models\DocumentItem.cs" />
@@ -253,6 +255,8 @@
     <Compile Include="Models\SalesItem.cs" />
     <Compile Include="Models\TreeViewItem.cs" />
     <Compile Include="Utility\AppUtilities.cs" />
+    <Compile Include="Utility\TableGenerator.cs" />
+    <Compile Include="Utility\TableWithChartGenerator.cs" />
     <EmbeddedResource Include="AboutBP.resx">
       <DependentUpon>AboutBP.cs</DependentUpon>
     </EmbeddedResource>

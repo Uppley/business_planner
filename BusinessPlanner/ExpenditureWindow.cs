@@ -14,9 +14,13 @@ namespace BusinessPlanner
 {
     public partial class ExpenditureWindow : Form
     {
-        public ExpenditureWindow()
+        MainWindow mw;
+        DocumentProgressor dgp;
+        public ExpenditureWindow(MainWindow maw)
         {
             InitializeComponent();
+            mw = maw;
+            dgp = new DocumentProgressor();
             if (File.Exists(ProjectConfig.projectPath + "\\data.xls"))
             {
                 _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["data_load"]);
@@ -53,7 +57,15 @@ namespace BusinessPlanner
                     new int[1] { 1 },
                     new string[1] { "Expenditures" }
                 );
+                TableGenerator tbl = new TableGenerator();
+                tbl.Generate(dataGridView1,"expenditure.rtf");
                 excelReader.Close();
+                Label l = mw.Controls.Find("label4", true)[0] as Label;
+                ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
+                dgp.updateProgress("expenditure.rtf",dataGridView1.Rows.Count > 0 ? 1 : 0);
+                l.Text = dgp.completedSteps().ToString() + " /";
+                pbar.Value = dgp.completedSteps();
+                l.Refresh();
             }
             catch (Exception ex)
             {

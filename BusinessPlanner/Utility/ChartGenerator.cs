@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessPlanner.Models
+namespace BusinessPlanner.Utility
 {
-    class Data
+    class ChartGenerator
     {
-        public string property { get; set; }
-        public object value { get; set; }
     }
 }

@@ -14,9 +14,13 @@ namespace BusinessPlanner
 {
     public partial class StartUpWindow : Form
     {
-        public StartUpWindow()
+        MainWindow mw;
+        DocumentProgressor dgp;
+        public StartUpWindow(MainWindow maw)
         {
             InitializeComponent();
+            mw = maw;
+            dgp = new DocumentProgressor();
             if (File.Exists(ProjectConfig.projectPath + "\\data.xls"))
             {
                 _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["data_load"]);
@@ -54,6 +58,14 @@ namespace BusinessPlanner
                     new string[1] { "StartUp Cost" }
                 );
                 excelReader.Close();
+                TableGenerator tbl = new TableGenerator();
+                tbl.Generate(dataGridView1, "startup_table.rtf");
+                Label l = mw.Controls.Find("label4", true)[0] as Label;
+                ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
+                dgp.updateProgress("startup_table.rtf", dataGridView1.Rows.Count > 0 ? 1 : 0);
+                l.Text = dgp.completedSteps().ToString() + " /";
+                pbar.Value = dgp.completedSteps();
+                l.Refresh();
             }
             catch (Exception ex)
             {

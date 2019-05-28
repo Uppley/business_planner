@@ -15,7 +15,7 @@ namespace BusinessPlanner.Utility
 
         public static string projectExtension = ".bupx";
 
-        public static Dictionary<string,string> projectSettings { get; set; }
+        public static Dictionary<string,object> projectSettings { get; set; }
         public static string projectFile { get; set; }
 
         public static string projectBase = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),"BP Plans");
@@ -42,7 +42,7 @@ namespace BusinessPlanner.Utility
             projectSettings =  ProjectConfig.convertToDict(bp.ReadSettings(ProjectConfig.projectPath+"//"+"settings.json"));
         }
 
-        public static Dictionary<string,string> convertToDict(List<Data> d)
+        public static Dictionary<string,object> convertToDict(List<Data> d)
         {
             return d.ToDictionary(x => x.property, x => x.value);
         }

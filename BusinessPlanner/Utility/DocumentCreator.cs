@@ -106,17 +106,26 @@ namespace BusinessPlanner.Utility
                     Directory.Delete(tempPath,true);
                 DirectoryInfo di = Directory.CreateDirectory(tempPath);
                 di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+                Dictionary<string, int> progress = new Dictionary<string, int>();
+                BPSettings bp = new BPSettings();
+                bp.AddSetting("Title", projectTitle);
+                bp.AddSetting("PlanType", planType);
+                bp.AddSetting("Currency", getCurrency());
+                bp.AddSetting("StartUp", isStartUp().ToString());
+                bp.AddSetting("SWOT", isSWOT().ToString());
+                bp.AddSetting("Website", isWeb().ToString());
                 foreach (var d in documentList)
                 {
                     if (d.Ftype == "rtf")
                     {
-                        if (isSWOT() != 1 && (d.ItemName == "Strength" || d.ItemName == "Weakness" || d.ItemName == "Opportunities" || d.ItemName == "Threats"))
+                        if (isSWOT() != 1 && (d.ItemName == "Strengths" || d.ItemName == "Weaknesses" || d.ItemName == "Opportunities" || d.ItemName == "Threats"))
                             continue;
-                        if (isWeb() != 1 && (d.ItemName == "Web Plan Summary" || d.ItemName == "Developments Requirements"))
+                        if (isWeb() != 1 && (d.ItemName == "Website Strategy" || d.ItemName == "Developments Requirements"))
                             continue;
                         if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
                             continue;
                         rtb.Rtf = rtfText;
+                        progress.Add(d.DocumentName, 0);
                         rtb.SaveFile(Path.Combine(tempPath, d.DocumentName));
 
                     }
@@ -126,13 +135,7 @@ namespace BusinessPlanner.Utility
                         excelReader.createExcelFile(Path.Combine(tempPath, "data.xls"),data);
                     }
                 }
-                BPSettings bp = new BPSettings();
-                bp.AddSetting("Title", projectTitle);
-                bp.AddSetting("PlanType", planType);
-                bp.AddSetting("Currency", getCurrency());
-                bp.AddSetting("StartUp", isStartUp().ToString());
-                bp.AddSetting("SWOT", isSWOT().ToString());
-                bp.AddSetting("Website", isWeb().ToString());
+                bp.AddSetting("progress", progress);
                 bp.SaveSetting(Path.Combine(tempPath, "settings.json"));
                 ZipFile.CreateFromDirectory(tempPath, projectPath);
 

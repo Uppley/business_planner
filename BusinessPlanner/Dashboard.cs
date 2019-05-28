@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -20,9 +21,13 @@ namespace BusinessPlanner
         int findLength = 0;
         string file_loaded;
         public string richtext { get; set; }
-        public Dashboard(String name)
+        MainWindow mw;
+        DocumentProgressor dgp;
+
+        public Dashboard(MainWindow maw,String name)
         {
             InitializeComponent();
+            mw = maw;
             file_loaded = name;
             ToolStripManager.Renderer = new Office2007Renderer.Office2007Renderer();
             toolStrip2.Renderer = new Office2007Renderer.Office2007Renderer();
@@ -42,6 +47,7 @@ namespace BusinessPlanner
             richTextBox1.SelectionFont = new Font("Arial", 12, richTextBox1.SelectionFont.Style);
             richTextBox1.ZoomFactor = 1.0f;
             toolStripComboBox2.SelectedIndex = 2;
+            dgp = new DocumentProgressor();
         }
 
         private void setContentInitial(String name)
@@ -169,6 +175,17 @@ namespace BusinessPlanner
         {
             richTextBox1.SaveFile(Path.Combine(ProjectConfig.projectPath, file_loaded));
             label2.Text = "Saved";
+            Dashboard_changeProgress(file_loaded);
+        }
+
+        private void Dashboard_changeProgress(string mssg)
+        {
+            Label l = mw.Controls.Find("label4",true)[0] as Label;
+            ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
+            dgp.updateProgress(file_loaded, richTextBox1.TextLength > 0 ? 1:0) ;
+            l.Text = dgp.completedSteps().ToString()+" /";
+            pbar.Value = dgp.completedSteps();
+            l.Refresh();
         }
 
         private void btnGemBoxCut_Click_1(object sender, EventArgs e)

@@ -16,15 +16,16 @@ using Point = System.Drawing.Point;
 using Application = System.Windows.Forms.Application;
 using BusinessPlanner.Utility;
 using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace BusinessPlanner
 {
     public partial class MainWindow : Form
     {
-        Dashboard dashboard;
         Home home = new Home();
-        //string[] documents;
+        Dashboard dashboard;
         String project_name;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +40,13 @@ namespace BusinessPlanner
             label1.Text = project_name.ToUpper();
             currency.Text = ProjectConfig.projectSettings["Currency"].ToString();
             setTreeNodes();
+            DocumentProgressor dpg = new DocumentProgressor();
+            label4.Text = dpg.completedSteps().ToString() + " /";
+            label5.Text = dpg.totalSteps().ToString() + " tasks completed";
+            progressBar1.Maximum = dpg.totalSteps();
+            progressBar1.Value = dpg.completedSteps();
         }
+
 
         public void setTreeNodes()
         {
@@ -50,14 +57,14 @@ namespace BusinessPlanner
         {
             int total_files = Directory.GetFiles(ProjectConfig.projectPath).Length;
             List<TreeViewItem> filteredItems = null;
-            if(ProjectConfig.projectSettings["PlanType"]== "Standard Plan: Multiple Topics and Linked Financial Tables")
+            if(ProjectConfig.projectSettings["PlanType"].ToString()== "Standard Plan: Multiple Topics and Linked Financial Tables")
             {
                 filteredItems = StandardConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
-            }else if (ProjectConfig.projectSettings["PlanType"] == "Plan As You Go")
+            }else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Plan As You Go")
             {
                 filteredItems = PlanAsConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
             }
-            else if (ProjectConfig.projectSettings["PlanType"] == "Financial Plan: Topics Related To Financial Domain Only")
+            else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Financial Plan: Topics Related To Financial Domain Only")
             {
                 filteredItems = FinancialConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
             }
@@ -95,14 +102,14 @@ namespace BusinessPlanner
                     ProjectConfig.projectFile = StandardDocument.DocumentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
                     if (this.treeView1.SelectedNode.Text == "Sales Forecast Table")
                     {
-                        ForecastWindow frw = new ForecastWindow();
+                        ForecastWindow frw = new ForecastWindow(this);
                         frw.TopLevel = false;
                         panel1.Controls.Clear();
                         panel1.Controls.Add(frw);
                         frw.Show();
                     }else if(this.treeView1.SelectedNode.Text == "Start Up Investment")
                     {
-                        StartUpWindow stw = new StartUpWindow();
+                        StartUpWindow stw = new StartUpWindow(this);
                         stw.TopLevel = false;
                         panel1.Controls.Clear();
                         panel1.Controls.Add(stw);
@@ -110,7 +117,7 @@ namespace BusinessPlanner
                     }
                     else if (this.treeView1.SelectedNode.Text == "Company Expenditure")
                     {
-                        ExpenditureWindow stw = new ExpenditureWindow();
+                        ExpenditureWindow stw = new ExpenditureWindow(this);
                         stw.TopLevel = false;
                         panel1.Controls.Clear();
                         panel1.Controls.Add(stw);
@@ -118,11 +125,11 @@ namespace BusinessPlanner
                     }
                     else
                     {
-                        this.dashboard = new Dashboard(ProjectConfig.projectFile);
-                        this.dashboard.TopLevel = false;
+                        dashboard = new Dashboard(this,ProjectConfig.projectFile);
+                        dashboard.TopLevel = false;
                         panel1.Controls.Clear();
-                        panel1.Controls.Add(this.dashboard);
-                        this.dashboard.Show();
+                        panel1.Controls.Add(dashboard);
+                        dashboard.Show();
                     }
                 }
                 else
@@ -205,6 +212,7 @@ namespace BusinessPlanner
             {
                 ld.Show();
                 Application.DoEvents();
+                saveProgress();
                 string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
                 ProjectLoader.save(dPath, ProjectConfig.projectPath);
             }
@@ -216,6 +224,28 @@ namespace BusinessPlanner
             {
                 ld.Close();
             }
+        }
+
+        private void saveProgress()
+        {
+            BPSettings bp = new BPSettings();
+            var set_path = ProjectConfig.projectPath + "//" + "settings.json";
+            try
+            {
+                var se = bp.ReadSettings(set_path);
+                var i = se.FindIndex(x => x.property == "progress");
+                se[i].value = ProjectConfig.projectSettings["progress"];
+                using (StreamWriter file = File.CreateText(set_path))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(file, se);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Exception: " + e.Message);
+            }
+            
         }
 
         private void ToolStripButton21_Click(object sender, EventArgs e)
@@ -243,7 +273,7 @@ namespace BusinessPlanner
             {
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-                List<DocumentItem> allFiles = StandardDocument.DocumentList.FindAll(x=>x.Ftype=="rtf").OrderBy(x => x.Seq).ToList();
+                List<DocumentItem> allFiles = StandardDocument.DocumentList.FindAll(x=>x.Ftype=="rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
                 foreach(DocumentItem doc in allFiles)
                 {
                     rtb1.LoadFile(ProjectConfig.projectPath+"\\"+doc.DocumentName);
@@ -297,7 +327,7 @@ namespace BusinessPlanner
             {
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-                List<DocumentItem> allFiles = StandardDocument.DocumentList.FindAll(x => x.Ftype == "rtf").OrderBy(x => x.Seq).ToList();
+                List<DocumentItem> allFiles = StandardDocument.DocumentList.FindAll(x => x.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
                 foreach (DocumentItem doc in allFiles)
                 {
                     rtb1.LoadFile(ProjectConfig.projectPath + "\\" + doc.DocumentName);

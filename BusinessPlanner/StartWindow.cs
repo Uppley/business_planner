@@ -24,32 +24,47 @@ namespace BusinessPlanner
             tableLayoutPanel2.AutoSize = true;
             tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute,100F));
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            foreach (var p in ProjectConfig.projectList())
+            if(ProjectConfig.projectList().Count() > 0)
             {
-                string[] pnames = p.Split(new char[] {'\\'});
-                string pname = pnames[pnames.Count()-1];
-                if(i<4)
+                foreach (var p in ProjectConfig.projectList())
                 {
-                    LinkLabel linkLabel = new LinkLabel();
-                    linkLabel.Dock = DockStyle.Fill;
-                    linkLabel.Font = new Font("Arial", 10, FontStyle.Regular);
-                    
-                    linkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                    linkLabel.Text = pname;
-                    linkLabel.LinkClicked += new LinkLabelLinkClickedEventHandler(this.loadProject);
-                    tableLayoutPanel2.Controls.Add(linkLabel,1,i);
-                    i++;
-                }
-                else
-                {
-                    break;
+                    string[] pnames = p.Split(new char[] { '\\' });
+                    string pname = pnames[pnames.Count() - 1];
+                    if (i < 4)
+                    {
+                        LinkLabel linkLabel = new LinkLabel();
+                        linkLabel.Dock = DockStyle.Fill;
+                        linkLabel.Font = new Font("Arial", 10, FontStyle.Regular);
+
+                        linkLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                        linkLabel.Text = pname;
+                        linkLabel.LinkClicked += new LinkLabelLinkClickedEventHandler(this.loadProject);
+                        tableLayoutPanel2.Controls.Add(linkLabel, 1, i);
+                        i++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+
                 }
                 
             }
-            if(ProjectConfig.projectList().Count()<=3)
+            else
+            {
+                Label label = new Label();
+                label.Dock = DockStyle.Fill;
+                label.Font = new Font("Arial", 10, FontStyle.Regular);
+
+                label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                label.Text = "No previous projects";
+                tableLayoutPanel2.Controls.Add(label, 1, i);
+            }
+            if (ProjectConfig.projectList().Count() <= 3)
             {
                 panel1.Visible = false;
             }
+
         }
 
         private void loadProject(object sender, LinkLabelLinkClickedEventArgs e)
