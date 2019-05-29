@@ -111,6 +111,12 @@
     <Compile Include="DashboardHome.Designer.cs">
       <DependentUpon>DashboardHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="AnalysisWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnalysisWindow.Designer.cs">
+      <DependentUpon>AnalysisWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ForecastWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DashboardHome.resx">
       <DependentUpon>DashboardHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnalysisWindow.resx">
+      <DependentUpon>AnalysisWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForecastWindow.resx">
       <DependentUpon>ForecastWindow.cs</DependentUpon>

@@ -25,6 +25,7 @@ namespace BusinessPlanner
         Home home = new Home();
         Dashboard dashboard;
         String project_name;
+        List<DocumentItem> documentList = new List<DocumentItem>();
         
         public MainWindow()
         {
@@ -59,13 +60,16 @@ namespace BusinessPlanner
             List<TreeViewItem> filteredItems = null;
             if(ProjectConfig.projectSettings["PlanType"].ToString()== "Standard Plan: Multiple Topics and Linked Financial Tables")
             {
+                documentList = StandardDocument.DocumentList;
                 filteredItems = StandardConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
             }else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Plan As You Go")
             {
+                documentList = PlanAsDocument.DocumentList;
                 filteredItems = PlanAsConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
             }
             else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Financial Plan: Topics Related To Financial Domain Only")
             {
+                documentList = FinancialDocument.DocumentList;
                 filteredItems = FinancialConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
             }
             else
@@ -99,7 +103,7 @@ namespace BusinessPlanner
             {
                 if(this.treeView1.SelectedNode.Parent != null)
                 {
-                    ProjectConfig.projectFile = StandardDocument.DocumentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
+                    ProjectConfig.projectFile = documentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
                     if (this.treeView1.SelectedNode.Text == "Sales Forecast Table")
                     {
                         ForecastWindow frw = new ForecastWindow(this);
@@ -118,6 +122,14 @@ namespace BusinessPlanner
                     else if (this.treeView1.SelectedNode.Text == "Company Expenditure")
                     {
                         ExpenditureWindow stw = new ExpenditureWindow(this);
+                        stw.TopLevel = false;
+                        panel1.Controls.Clear();
+                        panel1.Controls.Add(stw);
+                        stw.Show();
+                    }
+                    else if (this.treeView1.SelectedNode.Text == "Analysis Table")
+                    {
+                        AnalysisWindow stw = new AnalysisWindow(this);
                         stw.TopLevel = false;
                         panel1.Controls.Clear();
                         panel1.Controls.Add(stw);

@@ -59,6 +59,9 @@ namespace BusinessPlanner
                 );
                 TableGenerator tbl = new TableGenerator();
                 tbl.Generate(dataGridView1,"expenditure.rtf");
+                ChartGenerator cgen = new ChartGenerator();
+                cgen.generatePieChart(dataGridView1,"generated.png","Company Expenditures");
+                cgen.ImageToRtf("expenditure.rtf", "generated.png");
                 excelReader.Close();
                 Label l = mw.Controls.Find("label4", true)[0] as Label;
                 ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;

@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    public partial class StartUpWindow : Form
+    public partial class AnalysisWindow : Form
     {
         MainWindow mw;
         DocumentProgressor dgp;
-        public StartUpWindow(MainWindow maw)
+        public AnalysisWindow(MainWindow maw)
         {
             InitializeComponent();
             mw = maw;
@@ -29,7 +29,7 @@ namespace BusinessPlanner
                     ld.Show();
                     Application.DoEvents();
                     ExcelReader excelReader = new ExcelReader();
-                    excelReader.readExcelToDataGridView(dataGridView1, "StartUp Cost");
+                    excelReader.readExcelToDataGridView(dataGridView1, "Market Analysis");
                     excelReader.Close();
                 }
                 catch (Exception e)
@@ -55,17 +55,17 @@ namespace BusinessPlanner
                 excelReader.saveExcelFromDataGridView(
                     new DataGridView[1] { dataGridView1 },
                     new int[1] { 1 },
-                    new string[1] { "StartUp Cost" }
+                    new string[1] { "Market Analysis" }
                 );
-                excelReader.Close();
                 TableGenerator tbl = new TableGenerator();
-                tbl.Generate(dataGridView1, "startup_table.rtf");
+                tbl.Generate(dataGridView1,"market_analysis.rtf");
                 ChartGenerator cgen = new ChartGenerator();
-                cgen.generatePieChart(dataGridView1, "generated.png","Start Up Investment");
-                cgen.ImageToRtf("startup_table.rtf", "generated.png");
+                cgen.generatePieChart(dataGridView1,"generated.png","Market Analysis");
+                cgen.ImageToRtf("market_analysis.rtf", "generated.png");
+                excelReader.Close();
                 Label l = mw.Controls.Find("label4", true)[0] as Label;
                 ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
-                dgp.updateProgress("startup_table.rtf", dataGridView1.Rows.Count > 0 ? 1 : 0);
+                dgp.updateProgress("market_analysis.rtf", dataGridView1.Rows.Count > 0 ? 1 : 0);
                 l.Text = dgp.completedSteps().ToString() + " /";
                 pbar.Value = dgp.completedSteps();
                 l.Refresh();

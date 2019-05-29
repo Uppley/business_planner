@@ -65,8 +65,12 @@ namespace BusinessPlanner
                 );
                 excelReader.Close();
                 TableGenerator tbl = new TableGenerator();
-                tbl.GenerateMultipleTable(new DataGridView[2] { dataGridView1, dataGridView2 }, "sales_forecast_table.rtf");
-
+                tbl.GenerateMultipleTable(new DataGridView[2] { dataGridView1, dataGridView2 }, "sales_forecast_table.rtf", new string[2] { "Sales Forecast", "Cost Of Sales" });
+                ChartGenerator cgr = new ChartGenerator();
+                cgr.generateBarChart(dataGridView1, "generate.png", "Forecast Sales");
+                cgr.ImageToRtf("sales_forecast_table.rtf", "generate.png");
+                cgr.generateBarChart(dataGridView2, "generate1.png", "Cost of Sales");
+                cgr.ImageToRtf("sales_forecast_table.rtf", "generate1.png");
                 Label l = mw.Controls.Find("label4", true)[0] as Label;
                 ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
                 dgp.updateProgress("sales_forecast_table.rtf", dataGridView1.Rows.Count > 0 && dataGridView2.Rows.Count > 0 ? 1 : 0);

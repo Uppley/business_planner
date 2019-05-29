@@ -52,19 +52,19 @@ namespace BusinessPlanner.Utility
             rtb.Dispose();
         }
 
-        public void GenerateMultipleTable(DataGridView[] dgv, string document)
+        public void GenerateMultipleTable(DataGridView[] dgv, string document,string[] names)
         {
-            string[] names = {"Sales Forecast","Cost Of Sales"};
+            
             StringBuilder tableRtf = new StringBuilder();
-            tableRtf.Append(@"{\rtf1 ");
+            tableRtf.Append(@"{\rtf1\ansi\deff0");
             for (int d=0;d<dgv.Length;d++)
             {
-                tableRtf.Append(@"\pard\ "+names[d]);
-                tableRtf.Append(@"\pard");
+                tableRtf.Append(@"\pard\fs30\b " + names[d]+@"\b0");
+                tableRtf.Append(@"\line\line");
                 int ra = 0;
                 for (int i = -1; i < dgv[d].Rows.Count - 1; i++)
                 {
-                    tableRtf.Append(@"{\trowd\trleft0\trgaph-0\trbrdrt\brdrnone\trbrdrb\brdrnone\trbrdrr\brdrnone\trbrdrl\brdrnone\trbrdrv\brdrnone\trbrdrh\brdrnone\trautofit1\trpaddl10\trpaddr10\trpaddb10\trpaddt10\trpaddfl3\trpaddfr3\trpaddft3\trpaddfb3\trql\ltrrow");
+                    tableRtf.Append(@"{\trowd\trleft0\trgaph-0\trbrdrt\brdrnone\trbrdrb\brdrnone\trbrdrr\brdrnone\trbrdrl\brdrnone\trbrdrv\brdrnone\trbrdrh\brdrnone\trftsWidth1\trftsWidthB3\trpaddl10\trpaddr10\trpaddb10\trpaddt10\trpaddfl3\trpaddfr3\trpaddft3\trpaddfb3\trql\ltrrow");
 
 
                     for (int j = 0; j < dgv[d].Columns.Count; j++)
@@ -91,8 +91,9 @@ namespace BusinessPlanner.Utility
                 }
 
                 tableRtf.Append(@"\pard");
-                tableRtf.Append(@"\pard");
-                tableRtf.Append(@"\pard");
+
+                tableRtf.Append(@"\line");
+                tableRtf.Append(@"\line");
 
             }
             tableRtf.Append(@"}");

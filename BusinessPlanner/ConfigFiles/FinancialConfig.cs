@@ -9,22 +9,22 @@ namespace BusinessPlanner.Utility
     class FinancialConfig
     {
         public static List<TreeViewItem> treeViewList = new List<TreeViewItem>() {
-            new TreeViewItem() {ParentID=0,ID=1,Text="Home"},
-           
-            new TreeViewItem() { ParentID = 0, ID = 1, Text = "Company Insight" },
-            new TreeViewItem() { ParentID = 1, ID = 2, Text = "Company Summary" },
-            new TreeViewItem() { ParentID = 1, ID = 3, Text = "Start Up Table" },
-            new TreeViewItem() { ParentID = 0, ID = 4, Text = "Product Selling" },
-            new TreeViewItem() { ParentID = 4, ID = 5, Text = "Product Summary" },
-            new TreeViewItem() { ParentID = 0, ID = 6, Text = "Sales Forecast" },
-            new TreeViewItem() { ParentID = 6, ID = 7, Text = "Sales Strategy" },
-            new TreeViewItem() { ParentID = 6, ID = 8, Text = "Sales Forecast Table" },
-            new TreeViewItem() { ParentID = 6, ID = 9, Text = "Explain Sales Forecast" },
-            new TreeViewItem() { ParentID = 0, ID = 10, Text = "Financial Plan" },
-            new TreeViewItem() { ParentID = 10, ID = 11, Text = "Financial Summary" },
-            new TreeViewItem() { ParentID = 10, ID = 12, Text = "Investment Requirement" },
-            new TreeViewItem() { ParentID = 0, ID = 13, Text = "Finish" },
-            new TreeViewItem() { ParentID = 13, ID = 14, Text = "Executive Summary" }
+            new TreeViewItem() {ParentID = 0, ID = 1,Text="Home"},
+            new TreeViewItem() { ParentID = 0, ID = 2, Text = "Company Insight" },
+            new TreeViewItem() { ParentID = 2, ID = 3, Text = "Company Summary" },
+            new TreeViewItem() { ParentID = 2, ID = 4, Text = "Start Up Investment" },
+            new TreeViewItem() { ParentID = 2, ID = 5, Text = "Company Expenditure" },
+            new TreeViewItem() { ParentID = 0, ID = 6, Text = "Product Selling" },
+            new TreeViewItem() { ParentID = 6, ID = 7, Text = "Product Summary" },
+            new TreeViewItem() { ParentID = 0, ID = 8, Text = "Sales Forecast" },
+            new TreeViewItem() { ParentID = 8, ID = 9, Text = "Sales Strategy" },
+            new TreeViewItem() { ParentID = 8, ID = 10, Text = "Sales Forecast Table" },
+            new TreeViewItem() { ParentID = 8, ID = 11, Text = "Explain Sales Forecast" },
+            new TreeViewItem() { ParentID = 0, ID = 12, Text = "Financial Plan" },
+            new TreeViewItem() { ParentID = 12, ID = 13, Text = "Financial Summary" },
+            new TreeViewItem() { ParentID = 12, ID = 14, Text = "Financial Statement" },
+            new TreeViewItem() { ParentID = 0, ID = 15, Text = "Finish" },
+            new TreeViewItem() { ParentID = 15, ID = 16, Text = "Executive Summary" }
         };
 
         public static int getId()

@@ -18,7 +18,7 @@ namespace BusinessPlanner.Utility
         private string tempPath;
         private string planType;
         RichTextBox rtb = new RichTextBox();
-        string rtfText = @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang14346{\fonttbl{\f0\fnil\fcharset0 Calibri;}} {\*\generator Riched20 10.0.10586}\viewkind4\uc1 \pard\sa200\sl276\slmult1\f0\fs22\lang10 Enter Text Here.\par }";
+        //string rtfText = @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang14346{\fonttbl{\f0\fnil\fcharset0 Calibri;}} {\*\generator Riched20 10.0.10586}\viewkind4\uc1 \pard\sa200\sl276\slmult1\f0\fs22\lang10 Enter Text Here.\par }";
 
         public DocumentCreator()
         {
@@ -124,7 +124,7 @@ namespace BusinessPlanner.Utility
                             continue;
                         if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
                             continue;
-                        rtb.Rtf = rtfText;
+                        rtb.Rtf = "";
                         progress.Add(d.DocumentName, 0);
                         rtb.SaveFile(Path.Combine(tempPath, d.DocumentName));
 

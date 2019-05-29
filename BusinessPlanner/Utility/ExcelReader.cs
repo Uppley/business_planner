@@ -65,6 +65,12 @@ namespace BusinessPlanner.Utility
                 oSheet4.Cells[1, 2] = "Amount";
             }
 
+            // Fifth Sheet
+            Excel.Worksheet oSheet5 = xlWorkbook.Sheets.Add(missing, missing, 1, missing) as Excel.Worksheet;
+            oSheet5.Name = "Market Analysis";
+            oSheet5.Cells[1, 1] = "Group";
+            oSheet5.Cells[1, 2] = "Percentage (%)";
+
             xlWorkbook.SaveAs(filename, Excel.XlFileFormat.xlOpenXMLWorkbook,
                 missing, missing, missing, missing,
                 Excel.XlSaveAsAccessMode.xlNoChange,
