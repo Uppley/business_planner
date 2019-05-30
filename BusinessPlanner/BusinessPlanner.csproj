@@ -117,6 +117,42 @@
     <Compile Include="AnalysisWindow.Designer.cs">
       <DependentUpon>AnalysisWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="FinancialSteps\FStep2Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep2Dialog.Designer.cs">
+      <DependentUpon>FStep2Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep3Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep3Dialog.Designer.cs">
+      <DependentUpon>FStep3Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep4Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep4Dialog.Designer.cs">
+      <DependentUpon>FStep4Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep5Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep5Dialog.Designer.cs">
+      <DependentUpon>FStep5Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep6Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep6Dialog.Designer.cs">
+      <DependentUpon>FStep6Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep7Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinancialSteps\FStep7Dialog.Designer.cs">
+      <DependentUpon>FStep7Dialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ForecastWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +160,7 @@
       <DependentUpon>ForecastWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Data.cs" />
+    <Compile Include="Models\MarketItem.cs" />
     <Compile Include="Partials\_FindDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,13 +168,37 @@
       <DependentUpon>_FindDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfigFiles\FinancialConfig.cs" />
-    <Compile Include="ConfigFiles\PlanAsConfig.cs" />
+    <Compile Include="ConfigFiles\QuickConfig.cs" />
     <Compile Include="ConfigFiles\StandardConfig.cs" />
     <Compile Include="ExpenditureWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ExpenditureWindow.Designer.cs">
       <DependentUpon>ExpenditureWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuickSteps\QStep2Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuickSteps\QStep2Dialog.Designer.cs">
+      <DependentUpon>QStep2Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuickSteps\QStep3Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuickSteps\QStep3Dialog.Designer.cs">
+      <DependentUpon>QStep3Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuickSteps\QStep4Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuickSteps\QStep4Dialog.Designer.cs">
+      <DependentUpon>QStep4Dialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuickSteps\QStep5Dialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuickSteps\QStep5Dialog.Designer.cs">
+      <DependentUpon>QStep5Dialog.cs</DependentUpon>
     </Compile>
     <Compile Include="StartUpWindow.cs">
       <SubType>Form</SubType>
@@ -178,47 +239,47 @@
     <Compile Include="StartWindow.Designer.cs">
       <DependentUpon>StartWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Step8Dialog.cs">
+    <Compile Include="StandardSteps\SStep8Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Step8Dialog.Designer.cs">
-      <DependentUpon>Step8Dialog.cs</DependentUpon>
+    <Compile Include="StandardSteps\SStep8Dialog.Designer.cs">
+      <DependentUpon>SStep8Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Step7Dialog.cs">
+    <Compile Include="StandardSteps\SStep7Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Step7Dialog.Designer.cs">
-      <DependentUpon>Step7Dialog.cs</DependentUpon>
+    <Compile Include="StandardSteps\SStep7Dialog.Designer.cs">
+      <DependentUpon>SStep7Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Step6Dialog.cs">
+    <Compile Include="StandardSteps\SStep6Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Step6Dialog.Designer.cs">
-      <DependentUpon>Step6Dialog.cs</DependentUpon>
+    <Compile Include="StandardSteps\SStep6Dialog.Designer.cs">
+      <DependentUpon>SStep6Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Step5Dialog.cs">
+    <Compile Include="StandardSteps\SStep5Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Step5Dialog.Designer.cs">
-      <DependentUpon>Step5Dialog.cs</DependentUpon>
+    <Compile Include="StandardSteps\SStep5Dialog.Designer.cs">
+      <DependentUpon>SStep5Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Step4Dialog.cs">
+    <Compile Include="StandardSteps\SStep4Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Step4Dialog.Designer.cs">
-      <DependentUpon>Step4Dialog.cs</DependentUpon>
+    <Compile Include="StandardSteps\SStep4Dialog.Designer.cs">
+      <DependentUpon>SStep4Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Step3Dialog.cs">
+    <Compile Include="StandardSteps\SStep3Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Step3Dialog.Designer.cs">
-      <DependentUpon>Step3Dialog.cs</DependentUpon>
+    <Compile Include="StandardSteps\SStep3Dialog.Designer.cs">
+      <DependentUpon>SStep3Dialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Step2Dialog.cs">
+    <Compile Include="StandardSteps\SStep2Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Step2Dialog.Designer.cs">
-      <DependentUpon>Step2Dialog.cs</DependentUpon>
+    <Compile Include="StandardSteps\SStep2Dialog.Designer.cs">
+      <DependentUpon>SStep2Dialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Step1Dialog.cs">
       <SubType>Form</SubType>
@@ -252,7 +313,7 @@
     <Compile Include="Models\DocumentItem.cs" />
     <Compile Include="Utility\ProjectLoader.cs" />
     <Compile Include="Utility\FinancialDocument.cs" />
-    <Compile Include="Utility\PlanAsDocument.cs" />
+    <Compile Include="Utility\QuickDocument.cs" />
     <Compile Include="Utility\StandardDocument.cs" />
     <Compile Include="Utility\ExcelReader.cs" />
     <Compile Include="Models\ExpenditureItem.cs" />
@@ -271,6 +332,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnalysisWindow.resx">
       <DependentUpon>AnalysisWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinancialSteps\FStep2Dialog.resx">
+      <DependentUpon>FStep2Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinancialSteps\FStep3Dialog.resx">
+      <DependentUpon>FStep3Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinancialSteps\FStep4Dialog.resx">
+      <DependentUpon>FStep4Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinancialSteps\FStep5Dialog.resx">
+      <DependentUpon>FStep5Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinancialSteps\FStep6Dialog.resx">
+      <DependentUpon>FStep6Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinancialSteps\FStep7Dialog.resx">
+      <DependentUpon>FStep7Dialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForecastWindow.resx">
       <DependentUpon>ForecastWindow.cs</DependentUpon>
@@ -297,6 +376,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QuickSteps\QStep2Dialog.resx">
+      <DependentUpon>QStep2Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuickSteps\QStep3Dialog.resx">
+      <DependentUpon>QStep3Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuickSteps\QStep4Dialog.resx">
+      <DependentUpon>QStep4Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuickSteps\QStep5Dialog.resx">
+      <DependentUpon>QStep5Dialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,26 +400,26 @@
     <EmbeddedResource Include="StartWindow.resx">
       <DependentUpon>StartWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Step8Dialog.resx">
-      <DependentUpon>Step8Dialog.cs</DependentUpon>
+    <EmbeddedResource Include="StandardSteps\SStep8Dialog.resx">
+      <DependentUpon>SStep8Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Step7Dialog.resx">
-      <DependentUpon>Step7Dialog.cs</DependentUpon>
+    <EmbeddedResource Include="StandardSteps\SStep7Dialog.resx">
+      <DependentUpon>SStep7Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Step6Dialog.resx">
-      <DependentUpon>Step6Dialog.cs</DependentUpon>
+    <EmbeddedResource Include="StandardSteps\SStep6Dialog.resx">
+      <DependentUpon>SStep6Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Step5Dialog.resx">
-      <DependentUpon>Step5Dialog.cs</DependentUpon>
+    <EmbeddedResource Include="StandardSteps\SStep5Dialog.resx">
+      <DependentUpon>SStep5Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Step4Dialog.resx">
-      <DependentUpon>Step4Dialog.cs</DependentUpon>
+    <EmbeddedResource Include="StandardSteps\SStep4Dialog.resx">
+      <DependentUpon>SStep4Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Step3Dialog.resx">
-      <DependentUpon>Step3Dialog.cs</DependentUpon>
+    <EmbeddedResource Include="StandardSteps\SStep3Dialog.resx">
+      <DependentUpon>SStep3Dialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Step2Dialog.resx">
-      <DependentUpon>Step2Dialog.cs</DependentUpon>
+    <EmbeddedResource Include="StandardSteps\SStep2Dialog.resx">
+      <DependentUpon>SStep2Dialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Step1Dialog.resx">
       <DependentUpon>Step1Dialog.cs</DependentUpon>
@@ -409,6 +500,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

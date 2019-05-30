@@ -1,6 +1,6 @@
 ﻿namespace BusinessPlanner
 {
-    partial class Step8Dialog
+    partial class FStep7Dialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Step8Dialog));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FStep7Dialog));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(532, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Step 8 of 8: Do you want a five-year forecast ?";
+            this.label1.Text = "Step 7 of 7: Do you want a five-year forecast ?";
             // 
             // label2
             // 
@@ -127,7 +127,7 @@
             this.radioButton2.Text = "I would like a long-term business plan.";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // Step9Dialog
+            // FStep7Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +144,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Step9Dialog";
+            this.Name = "FStep7Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
             this.ResumeLayout(false);

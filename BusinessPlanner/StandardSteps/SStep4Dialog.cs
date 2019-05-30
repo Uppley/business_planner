@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    public partial class Step4Dialog : Form
+    public partial class SStep4Dialog : Form
     {
         public String mData { get; set; }
-        public Step4Dialog()
+        public SStep4Dialog()
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
@@ -30,7 +30,7 @@ namespace BusinessPlanner
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Step3Dialog st3 = new Step3Dialog();
+            SStep3Dialog st3 = new SStep3Dialog();
             this.Hide();
             st3.ShowDialog();
         }
@@ -46,7 +46,7 @@ namespace BusinessPlanner
             String year = comboBox2.SelectedItem.ToString();
             this.mData = year+"-"+month + '-' +"01";
             AppUtilities.CreateOrUpdateDict("step4", this.mData);
-            Step5Dialog st5 = new Step5Dialog();
+            SStep5Dialog st5 = new SStep5Dialog();
             this.Hide();
             st5.ShowDialog();
         }

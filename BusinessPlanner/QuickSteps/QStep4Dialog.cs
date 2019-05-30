@@ -11,17 +11,17 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    public partial class Step6Dialog : Form
+    public partial class QStep4Dialog : Form
     {
         public Dictionary<string, Boolean> mData;
-        public Step6Dialog()
+        public QStep4Dialog()
         {
             InitializeComponent();
             mData = new Dictionary<string, bool>();
-            if (AppUtilities.mainData.ContainsKey("step6"))
+            if (AppUtilities.mainData.ContainsKey("step4"))
             {
                 Dictionary<string, Boolean> data = new Dictionary<string, bool>();
-                data = (Dictionary<string, Boolean>)AppUtilities.mainData["step6"];
+                data = (Dictionary<string, Boolean>)AppUtilities.mainData["step4"];
                 checkBox1.Checked = data["swot"];
                 checkBox2.Checked = data["web"];
             }
@@ -30,7 +30,7 @@ namespace BusinessPlanner
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Step5Dialog st5 = new Step5Dialog();
+            QStep3Dialog st5 = new QStep3Dialog();
             this.Hide();
             st5.ShowDialog();
         }
@@ -44,9 +44,9 @@ namespace BusinessPlanner
         {
             this.mData["swot"] = checkBox1.Checked;
             this.mData["web"] = checkBox2.Checked;
-            AppUtilities.CreateOrUpdateDict("step6",this.mData);
+            AppUtilities.CreateOrUpdateDict("step4",this.mData);
             Debug.WriteLine(AppUtilities.mainData);
-            Step7Dialog st7 = new Step7Dialog();
+            QStep5Dialog st7 = new QStep5Dialog();
             this.Hide();
             st7.ShowDialog();
         }

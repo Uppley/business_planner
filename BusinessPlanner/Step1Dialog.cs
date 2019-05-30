@@ -42,9 +42,24 @@ namespace BusinessPlanner
             var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             this.mData = cb.Text;
             AppUtilities.CreateOrUpdateDict("step1", this.mData);
-            Step2Dialog st2 = new Step2Dialog();
-            this.Hide();
-            st2.ShowDialog();
+            if(this.mData== "Quick Plan")
+            {
+                QStep2Dialog qst2 = new QStep2Dialog();
+                this.Hide();
+                qst2.ShowDialog();
+            }else if(this.mData == "Standard Plan")
+            {
+                SStep2Dialog st2 = new SStep2Dialog();
+                this.Hide();
+                st2.ShowDialog();
+            }
+            else if(this.mData == "Financial Plan")
+            {
+                FStep2Dialog fst2 = new FStep2Dialog();
+                this.Hide();
+                fst2.ShowDialog();
+            }
+            
         }
 
         

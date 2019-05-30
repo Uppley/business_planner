@@ -39,7 +39,7 @@ namespace BusinessPlanner
             AppUtilities.mainForm = this;
             project_name = ProjectConfig.projectSettings["Title"].ToString().ToUpper();
             label1.Text = project_name.ToUpper();
-            currency.Text = ProjectConfig.projectSettings["Currency"].ToString();
+            currency.Text = ProjectConfig.projectSettings.ContainsKey("Currency")?ProjectConfig.projectSettings["Currency"].ToString():"N.A.";
             setTreeNodes();
             DocumentProgressor dpg = new DocumentProgressor();
             label4.Text = dpg.completedSteps().ToString() + " /";
@@ -58,16 +58,16 @@ namespace BusinessPlanner
         {
             int total_files = Directory.GetFiles(ProjectConfig.projectPath).Length;
             List<TreeViewItem> filteredItems = null;
-            if(ProjectConfig.projectSettings["PlanType"].ToString()== "Standard Plan: Multiple Topics and Linked Financial Tables")
+            if(ProjectConfig.projectSettings["PlanType"].ToString()== "Standard Plan")
             {
                 documentList = StandardDocument.DocumentList;
                 filteredItems = StandardConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
-            }else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Plan As You Go")
+            }else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Quick Plan")
             {
-                documentList = PlanAsDocument.DocumentList;
-                filteredItems = PlanAsConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
+                documentList = QuickDocument.DocumentList;
+                filteredItems = QuickConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
             }
-            else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Financial Plan: Topics Related To Financial Domain Only")
+            else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Financial Plan")
             {
                 documentList = FinancialDocument.DocumentList;
                 filteredItems = FinancialConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
@@ -285,7 +285,8 @@ namespace BusinessPlanner
             {
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-                List<DocumentItem> allFiles = StandardDocument.DocumentList.FindAll(x=>x.Ftype=="rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
+
+                List<DocumentItem> allFiles = documentList.FindAll(x=>x.Ftype=="rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
                 foreach(DocumentItem doc in allFiles)
                 {
                     rtb1.LoadFile(ProjectConfig.projectPath+"\\"+doc.DocumentName);
@@ -339,7 +340,7 @@ namespace BusinessPlanner
             {
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-                List<DocumentItem> allFiles = StandardDocument.DocumentList.FindAll(x => x.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
+                List<DocumentItem> allFiles = documentList.FindAll(x => x.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
                 foreach (DocumentItem doc in allFiles)
                 {
                     rtb1.LoadFile(ProjectConfig.projectPath + "\\" + doc.DocumentName);

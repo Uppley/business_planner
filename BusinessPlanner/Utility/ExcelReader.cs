@@ -24,38 +24,42 @@ namespace BusinessPlanner.Utility
 
         public void createExcelFile(string filename,Dictionary<string,object> data)
         {
-            int duration = (int) data["plan_duration"];
-            string[] months = ((List<string>)data["months"]).ToArray();
+            
             object missing = Type.Missing;
             xlApp.Visible = false;
             xlWorkbook = xlApp.Workbooks.Add(missing);
-            
 
-            // First Sheet
-            Excel.Worksheet oSheet = xlWorkbook.ActiveSheet as Excel.Worksheet;
-            oSheet.Name = "Sales Forecast";
-            oSheet.Cells[1, 1] = "Product/Service";
-            oSheet.Cells[1, 2] = "VAT (%)";
-            for(int i = 0; i < duration; i++)
+            if(AppUtilities.mainData["step1"].ToString() != "Quick Plan")
             {
-                oSheet.Cells[1, 3+i] = months[i];
+                // First Sheet
+                int duration = (int)data["plan_duration"];
+                string[] months = ((List<string>)data["months"]).ToArray();
+                Excel.Worksheet oSheet = xlWorkbook.ActiveSheet as Excel.Worksheet;
+                oSheet.Name = "Sales Forecast";
+                oSheet.Cells[1, 1] = "Product/Service";
+                oSheet.Cells[1, 2] = "VAT (%)";
+                for (int i = 0; i < duration; i++)
+                {
+                    oSheet.Cells[1, 3 + i] = months[i];
+                }
+
+                // Second Sheet
+                Excel.Worksheet oSheet2 = xlWorkbook.Sheets.Add(missing, missing, 1, missing) as Excel.Worksheet;
+                oSheet2.Name = "Cost Of Sales";
+                oSheet2.Cells[1, 1] = "Product/Service";
+                oSheet2.Cells[1, 2] = "VAT (%)";
+                for (int i = 0; i < duration; i++)
+                {
+                    oSheet2.Cells[1, 3 + i] = months[i];
+                }
+
+                // Third Sheet
+                Excel.Worksheet oSheet3 = xlWorkbook.Sheets.Add(missing, missing, 1, missing) as Excel.Worksheet;
+                oSheet3.Name = "Expenditures";
+                oSheet3.Cells[1, 1] = "Name";
+                oSheet3.Cells[1, 2] = "Amount";
             }
             
-            // Second Sheet
-            Excel.Worksheet oSheet2 = xlWorkbook.Sheets.Add(missing, missing, 1, missing) as Excel.Worksheet;
-            oSheet2.Name = "Cost Of Sales";
-            oSheet2.Cells[1, 1] = "Product/Service";
-            oSheet2.Cells[1, 2] = "VAT (%)";
-            for (int i = 0; i < duration; i++)
-            {
-                oSheet2.Cells[1, 3 + i] = months[i];
-            }
-
-            // Third Sheet
-            Excel.Worksheet oSheet3 = xlWorkbook.Sheets.Add(missing, missing, 1, missing) as Excel.Worksheet;
-            oSheet3.Name = "Expenditures";
-            oSheet3.Cells[1, 1] = "Name";
-            oSheet3.Cells[1, 2] = "Amount";
 
             if ((string)data["is_startup"] == "yes")
             {

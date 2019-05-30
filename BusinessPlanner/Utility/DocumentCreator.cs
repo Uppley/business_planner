@@ -23,82 +23,57 @@ namespace BusinessPlanner.Utility
         public DocumentCreator()
         {
             planType = AppUtilities.mainData["step1"].ToString();
-            if (planType == "Plan As You Go")
-                documentList = PlanAsDocument.DocumentList;
-            else if (planType == "Standard Plan: Multiple Topics and Linked Financial Tables")
+            if (planType == "Quick Plan")
+                documentList = QuickDocument.DocumentList;
+            else if (planType == "Standard Plan")
                 documentList = StandardDocument.DocumentList;
-            else if (planType == "Financial Plan: Topics Related To Financial Domain Only")
+            else if (planType == "Financial Plan")
                 documentList = FinancialDocument.DocumentList;
         }
 
-        public string getCurrency()
+        public string getCurrency(object data)
         {
             string c = "AED";
-            if(int.Parse(AppUtilities.mainData["step2"].ToString())==0)
+            if(int.Parse(data.ToString())==0)
             {
                 c = "AED";
-            }else if(int.Parse(AppUtilities.mainData["step2"].ToString()) == 1)
+            }else if(int.Parse(data.ToString()) == 1)
             {
                 c = "USD";
             }
-            else if(int.Parse(AppUtilities.mainData["step2"].ToString()) == 2)
+            else if(int.Parse(data.ToString()) == 2)
             {
                 c = "EURO";
             }
             return c;
         }
-        public int isStartUp()
+        
+        public int isSWOT(object data)
         {
             int i = 0;
-            if(AppUtilities.mainData["step2"].ToString()== "This business plan is for a startup.")
-            {
-                i = 1;
-            }
-            return i;
-        }
-        public int isSWOT()
-        {
-            int i = 0;
-            var dt = (Dictionary<string,Boolean>)AppUtilities.mainData["step6"];
+            var dt = (Dictionary<string,Boolean>)data;
             if(dt["swot"])
             {
                 i = 1;
             }
             return i;
         }
-        public int isWeb()
+        public int isWeb(object data)
         {
             int i = 0;
-            var dt = (Dictionary<string, Boolean>)AppUtilities.mainData["step6"];
+            var dt = (Dictionary<string, Boolean>)data;
             if (dt["web"])
             {
                 i = 1;
             }
             return i;
         }
-        public string createPackage()
+        public string createQuickPackage()
         {
-            string projectTitle = AppUtilities.mainData["step5"].ToString();
+            string projectTitle = AppUtilities.mainData["step3"].ToString();
             projectPath = Path.Combine(ProjectConfig.projectBase,projectTitle+ProjectConfig.projectExtension);
-            string startDate = AppUtilities.mainData["step4"].ToString();
-            DateTime oDate = DateTime.Parse(startDate);
-            string plan_type = AppUtilities.mainData["step8"].ToString();
-            int plan_duration = 6;
-            if(plan_type != "I would like a standard-term business plan.")
-            {
-                plan_duration = 12;
-            }
-            List<string> months = new List<string>();
-            months.Add(oDate.ToString("MMMM", CultureInfo.CreateSpecificCulture("en")));
-            for(int i=1;i < plan_duration;i++)
-            {
-                months.Add(oDate.AddMonths(i).ToString("MMM", CultureInfo.InvariantCulture));
-            }
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data["plan_duration"] = plan_duration;
-            data["months"] = months;
-            data["currency"] = getCurrency();
-            data["is_startup"] = AppUtilities.mainData["step3"].ToString() == "This business plan is for a startup." ? "yes" : "no";
+            data["is_startup"] = AppUtilities.mainData["step2"].ToString() == "This business plan is for a startup." ? "yes" : "no";
             tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_"+projectTitle);
             try
             {
@@ -110,24 +85,24 @@ namespace BusinessPlanner.Utility
                 BPSettings bp = new BPSettings();
                 bp.AddSetting("Title", projectTitle);
                 bp.AddSetting("PlanType", planType);
-                bp.AddSetting("Currency", getCurrency());
-                bp.AddSetting("StartUp", isStartUp().ToString());
-                bp.AddSetting("SWOT", isSWOT().ToString());
-                bp.AddSetting("Website", isWeb().ToString());
+                bp.AddSetting("StartUp", data["is_startup"]);
+                bp.AddSetting("SWOT", isSWOT(AppUtilities.mainData["step4"]).ToString());
+                bp.AddSetting("Website", isWeb(AppUtilities.mainData["step4"]).ToString());
                 foreach (var d in documentList)
                 {
                     if (d.Ftype == "rtf")
                     {
-                        if (isSWOT() != 1 && (d.ItemName == "Strengths" || d.ItemName == "Weaknesses" || d.ItemName == "Opportunities" || d.ItemName == "Threats"))
+                        
+                        if (isSWOT(AppUtilities.mainData["step4"]) != 1 && (d.ItemName == "Strengths" || d.ItemName == "Weaknesses" || d.ItemName == "Opportunities" || d.ItemName == "Threats"))
                             continue;
-                        if (isWeb() != 1 && (d.ItemName == "Website Strategy" || d.ItemName == "Developments Requirements"))
+                        if (isWeb(AppUtilities.mainData["step4"]) != 1 && (d.ItemName == "Website Strategy" || d.ItemName == "Developments Requirements"))
                             continue;
                         if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
                             continue;
                         rtb.Rtf = "";
                         progress.Add(d.DocumentName, 0);
                         rtb.SaveFile(Path.Combine(tempPath, d.DocumentName));
-
+                        Debug.WriteLine("Fcrea "+d.DocumentName);
                     }
                     else if(d.Ftype == "xls")
                     {
@@ -138,13 +113,11 @@ namespace BusinessPlanner.Utility
                 bp.AddSetting("progress", progress);
                 bp.SaveSetting(Path.Combine(tempPath, "settings.json"));
                 ZipFile.CreateFromDirectory(tempPath, projectPath);
-
                 Debug.WriteLine("Project setup complete !");
-                
             }
             catch(Exception e)
             {
-                Debug.WriteLine(e.Message);
+                Debug.WriteLine("Erro foun "+e.Message);
                 
             }
             finally
@@ -154,6 +127,168 @@ namespace BusinessPlanner.Utility
                     Directory.Delete(tempPath, true);
                 }
                 
+            }
+
+            return projectPath;
+        }
+
+        public string createStandardPackage()
+        {
+            string projectTitle = AppUtilities.mainData["step5"].ToString();
+            projectPath = Path.Combine(ProjectConfig.projectBase, projectTitle + ProjectConfig.projectExtension);
+            string startDate = AppUtilities.mainData["step4"].ToString();
+            DateTime oDate = DateTime.Parse(startDate);
+            string plan_type = AppUtilities.mainData["step8"].ToString();
+            int plan_duration = 6;
+            if (plan_type != "I would like a standard-term business plan.")
+            {
+                plan_duration = 12;
+            }
+            List<string> months = new List<string>();
+            months.Add(oDate.ToString("MMMM", CultureInfo.CreateSpecificCulture("en")));
+            for (int i = 1; i < plan_duration; i++)
+            {
+                months.Add(oDate.AddMonths(i).ToString("MMM", CultureInfo.InvariantCulture));
+            }
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["plan_duration"] = plan_duration;
+            data["months"] = months;
+            data["currency"] = getCurrency(AppUtilities.mainData["step2"]);
+            data["is_startup"] = AppUtilities.mainData["step3"].ToString() == "This business plan is for a startup." ? "yes" : "no";
+            tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_" + projectTitle);
+            try
+            {
+                if (Directory.Exists(tempPath))
+                    Directory.Delete(tempPath, true);
+                DirectoryInfo di = Directory.CreateDirectory(tempPath);
+                di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+                Dictionary<string, int> progress = new Dictionary<string, int>();
+                BPSettings bp = new BPSettings();
+                bp.AddSetting("Title", projectTitle);
+                bp.AddSetting("PlanType", planType);
+                bp.AddSetting("Currency", getCurrency(AppUtilities.mainData["step2"]));
+                bp.AddSetting("StartUp", data["is_startup"]);
+                bp.AddSetting("SWOT", isSWOT(AppUtilities.mainData["step6"]).ToString());
+                bp.AddSetting("Website", isWeb(AppUtilities.mainData["step6"]).ToString());
+                foreach (var d in documentList)
+                {
+                    if (d.Ftype == "rtf")
+                    {
+                        if (isSWOT(AppUtilities.mainData["step6"]) != 1 && (d.ItemName == "Strengths" || d.ItemName == "Weaknesses" || d.ItemName == "Opportunities" || d.ItemName == "Threats"))
+                            continue;
+                        if (isWeb(AppUtilities.mainData["step6"]) != 1 && (d.ItemName == "Website Strategy" || d.ItemName == "Developments Requirements"))
+                            continue;
+                        if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
+                            continue;
+                        rtb.Rtf = "";
+                        progress.Add(d.DocumentName, 0);
+                        rtb.SaveFile(Path.Combine(tempPath, d.DocumentName));
+
+                    }
+                    else if (d.Ftype == "xls")
+                    {
+                        ExcelReader excelReader = new ExcelReader();
+                        excelReader.createExcelFile(Path.Combine(tempPath, "data.xls"), data);
+                    }
+                }
+                bp.AddSetting("progress", progress);
+                bp.SaveSetting(Path.Combine(tempPath, "settings.json"));
+                ZipFile.CreateFromDirectory(tempPath, projectPath);
+
+                Debug.WriteLine("Project setup complete !");
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+
+            }
+            finally
+            {
+                if (Directory.Exists(tempPath))
+                {
+                    Directory.Delete(tempPath, true);
+                }
+
+            }
+
+            return projectPath;
+        }
+
+        public string createFinancialPackage()
+        {
+            string projectTitle = AppUtilities.mainData["step5"].ToString();
+            projectPath = Path.Combine(ProjectConfig.projectBase, projectTitle + ProjectConfig.projectExtension);
+            string startDate = AppUtilities.mainData["step4"].ToString();
+            DateTime oDate = DateTime.Parse(startDate);
+            string plan_type = AppUtilities.mainData["step7"].ToString();
+            int plan_duration = 6;
+            if (plan_type != "I would like a standard-term business plan.")
+            {
+                plan_duration = 12;
+            }
+            List<string> months = new List<string>();
+            months.Add(oDate.ToString("MMMM", CultureInfo.CreateSpecificCulture("en")));
+            for (int i = 1; i < plan_duration; i++)
+            {
+                months.Add(oDate.AddMonths(i).ToString("MMM", CultureInfo.InvariantCulture));
+            }
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data["plan_duration"] = plan_duration;
+            data["months"] = months;
+            data["currency"] = getCurrency(AppUtilities.mainData["step2"]);
+            data["is_startup"] = AppUtilities.mainData["step3"].ToString() == "This business plan is for a startup." ? "yes" : "no";
+            tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_" + projectTitle);
+            try
+            {
+                if (Directory.Exists(tempPath))
+                    Directory.Delete(tempPath, true);
+                DirectoryInfo di = Directory.CreateDirectory(tempPath);
+                di.Attributes = FileAttributes.Directory | FileAttributes.Hidden;
+                Dictionary<string, int> progress = new Dictionary<string, int>();
+                BPSettings bp = new BPSettings();
+                bp.AddSetting("Title", projectTitle);
+                bp.AddSetting("PlanType", planType);
+                bp.AddSetting("Currency", getCurrency(AppUtilities.mainData["step2"]));
+                bp.AddSetting("StartUp", data["is_startup"]);
+                
+                foreach (var d in documentList)
+                {
+                    if (d.Ftype == "rtf")
+                    {
+                        
+                        if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
+                            continue;
+                        rtb.Rtf = "";
+                        progress.Add(d.DocumentName, 0);
+                        rtb.SaveFile(Path.Combine(tempPath, d.DocumentName));
+
+                    }
+                    else if (d.Ftype == "xls")
+                    {
+                        ExcelReader excelReader = new ExcelReader();
+                        excelReader.createExcelFile(Path.Combine(tempPath, "data.xls"), data);
+                    }
+                }
+                bp.AddSetting("progress", progress);
+                bp.SaveSetting(Path.Combine(tempPath, "settings.json"));
+                ZipFile.CreateFromDirectory(tempPath, projectPath);
+
+                Debug.WriteLine("Project setup complete !");
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+
+            }
+            finally
+            {
+                if (Directory.Exists(tempPath))
+                {
+                    Directory.Delete(tempPath, true);
+                }
+
             }
 
             return projectPath;

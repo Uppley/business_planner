@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    public partial class Step2Dialog : Form
+    public partial class FStep2Dialog : Form
     {
         public Int32 mData { get; set; }
 
-        public Step2Dialog()
+        public FStep2Dialog()
         {
             InitializeComponent();
             this.comboBox1.SelectedIndex = 0;
@@ -40,7 +40,7 @@ namespace BusinessPlanner
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Step3Dialog st3 = new Step3Dialog();
+            FStep3Dialog st3 = new FStep3Dialog();
             this.mData = this.comboBox1.SelectedIndex;
             AppUtilities.CreateOrUpdateDict("step2", this.mData);
             this.Hide();

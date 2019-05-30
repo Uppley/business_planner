@@ -10,24 +10,26 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    public partial class Step5Dialog : Form
+    public partial class FStep3Dialog : Form
     {
         public String mData { get; set; }
-        public Step5Dialog()
+        
+        public FStep3Dialog()
         {
             InitializeComponent();
-            if(AppUtilities.mainData.ContainsKey("step5"))
+            if (AppUtilities.mainData.ContainsKey("step3"))
             {
-                textBox1.Text = AppUtilities.mainData["step5"].ToString();
+                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == AppUtilities.mainData["step3"].ToString());
+                cb.Checked = true;
             }
         }
 
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Step4Dialog st4 = new Step4Dialog();
+            FStep2Dialog st2 = new FStep2Dialog();
             this.Hide();
-            st4.ShowDialog();
+            st2.ShowDialog();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -37,11 +39,12 @@ namespace BusinessPlanner
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            this.mData = textBox1.Text;
-            AppUtilities.CreateOrUpdateDict("step5", this.mData);
-            Step6Dialog st6 = new Step6Dialog();
+            FStep4Dialog st4 = new FStep4Dialog();
+            var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
+            this.mData = cb.Text;
+            AppUtilities.CreateOrUpdateDict("step3", this.mData);
             this.Hide();
-            st6.ShowDialog();
+            st4.ShowDialog();
         }
     }
 }

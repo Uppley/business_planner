@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,9 +50,9 @@ namespace BusinessPlanner.Utility
                 }
                 else
                 {
-                    foreach (var d in FinancialDocument.DocumentList)
+                    foreach (var d in StandardDocument.DocumentList)
                     {
-                        if (d.ItemName == s.Text)
+                        if (d.ItemName == s.Text && File.Exists(ProjectConfig.projectPath + "//" + d.DocumentName))
                         {
                             li.Add(s);
                         }

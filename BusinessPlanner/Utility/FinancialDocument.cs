@@ -20,7 +20,7 @@ namespace BusinessPlanner.Utility
             new DocumentItem() {ItemName="Explain Sales Forecast", DocumentName="explain_sales_forecast_table.rtf",Ftype="rtf",Seq=15 },
             new DocumentItem() {ItemName="Financial Summary", DocumentName="financial_summary.rtf",Ftype="rtf",Seq=18 },
             new DocumentItem() {ItemName="Financial Statement", DocumentName="financial_statement.rtf",Ftype="rtf",Seq=19 },
-            new DocumentItem() {ItemName="Financial Data", DocumentName="data.xls",Ftype="xls",Seq=21 },
+            new DocumentItem() {ItemName="MainData", DocumentName="data.xls",Ftype="xls",Seq=21 },
             
         };
     }

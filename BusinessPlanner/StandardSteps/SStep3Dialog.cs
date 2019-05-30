@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    public partial class Step3Dialog : Form
+    public partial class SStep3Dialog : Form
     {
         public String mData { get; set; }
         
-        public Step3Dialog()
+        public SStep3Dialog()
         {
             InitializeComponent();
             if (AppUtilities.mainData.ContainsKey("step3"))
@@ -27,7 +27,7 @@ namespace BusinessPlanner
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Step2Dialog st2 = new Step2Dialog();
+            SStep2Dialog st2 = new SStep2Dialog();
             this.Hide();
             st2.ShowDialog();
         }
@@ -39,7 +39,7 @@ namespace BusinessPlanner
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Step4Dialog st4 = new Step4Dialog();
+            SStep4Dialog st4 = new SStep4Dialog();
             var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             this.mData = cb.Text;
             AppUtilities.CreateOrUpdateDict("step3", this.mData);

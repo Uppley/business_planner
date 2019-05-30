@@ -12,17 +12,17 @@ using System.Windows.Forms;
 
 namespace BusinessPlanner
 {
-    public partial class Step8Dialog : Form
+    public partial class FStep7Dialog : Form
     {
         private String mData { get; set; }
         
-        public Step8Dialog()
+        public FStep7Dialog()
         {
             InitializeComponent();
            
-            if (AppUtilities.mainData.ContainsKey("step8"))
+            if (AppUtilities.mainData.ContainsKey("step7"))
             {
-                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == AppUtilities.mainData["step8"].ToString());
+                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == AppUtilities.mainData["step7"].ToString());
                 cb.Checked = true;
             }
         }
@@ -30,7 +30,7 @@ namespace BusinessPlanner
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Step7Dialog st7 = new Step7Dialog();
+            FStep6Dialog st7 = new FStep6Dialog();
             this.Hide();
             st7.ShowDialog();
         }
@@ -44,7 +44,7 @@ namespace BusinessPlanner
         {
             var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             this.mData = cb.Text;
-            AppUtilities.CreateOrUpdateDict("step8", this.mData);
+            AppUtilities.CreateOrUpdateDict("step7", this.mData);
             _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["document_created"]);
             this.Close();
             try
@@ -52,7 +52,7 @@ namespace BusinessPlanner
                 ld.Show();
                 Application.DoEvents();
                 DocumentCreator dc = new DocumentCreator();
-                string proPath = dc.createPackage();
+                string proPath = dc.createFinancialPackage();
                 string tempPath = Path.Combine(ProjectConfig.projectBase,"~temp_"+AppUtilities.mainData["step5"].ToString());
                 ProjectLoader.load(proPath,tempPath);
             }
