@@ -35,5 +35,10 @@ namespace BusinessPlanner.Utility
             filedata[fname] = i;
             ProjectConfig.projectSettings["progress"] = filedata;
         }
+
+        public Dictionary<string,int> fetchAllSteps()
+        {
+            return filedata;
+        }
     }
 }

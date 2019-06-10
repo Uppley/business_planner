@@ -200,6 +200,30 @@
     <Compile Include="QuickSteps\QStep5Dialog.Designer.cs">
       <DependentUpon>QStep5Dialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="OutlineWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutlineWindow.Designer.cs">
+      <DependentUpon>OutlineWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReviewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReviewWindow.Designer.cs">
+      <DependentUpon>ReviewWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportWindow.Designer.cs">
+      <DependentUpon>ReportWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SectionIntro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SectionIntro.Designer.cs">
+      <DependentUpon>SectionIntro.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartUpWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,9 +332,10 @@
     <Compile Include="Utility\BPSettings.cs" />
     <Compile Include="Utility\ChartGenerator.cs" />
     <Compile Include="Utility\DocumentProgressor.cs" />
-    <Compile Include="Utility\ExportGenerator.cs" />
     <Compile Include="Utility\DocumentCreator.cs" />
     <Compile Include="Models\DocumentItem.cs" />
+    <Compile Include="Utility\ExportGenerator.cs" />
+    <Compile Include="Utility\LoadingSpinner.cs" />
     <Compile Include="Utility\ProjectLoader.cs" />
     <Compile Include="Utility\FinancialDocument.cs" />
     <Compile Include="Utility\QuickDocument.cs" />
@@ -387,6 +412,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuickSteps\QStep5Dialog.resx">
       <DependentUpon>QStep5Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutlineWindow.resx">
+      <DependentUpon>OutlineWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReviewWindow.resx">
+      <DependentUpon>ReviewWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportWindow.resx">
+      <DependentUpon>ReportWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SectionIntro.resx">
+      <DependentUpon>SectionIntro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
@@ -500,7 +537,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BP.Data\BP.Data.csproj">
+      <Project>{9461ecf0-1779-4f19-b081-bf9497d9d707}</Project>
+      <Name>BP.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

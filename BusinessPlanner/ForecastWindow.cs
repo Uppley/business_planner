@@ -26,25 +26,10 @@ namespace BusinessPlanner
             dgp = new DocumentProgressor();
             if (File.Exists(ProjectConfig.projectPath+"\\data.xls"))
             {
-                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["data_load"]);
-                try
-                {
-                    ld.Show();
-                    Application.DoEvents();
-                    ExcelReader excelReader = new ExcelReader();
-                    excelReader.readExcelToDataGridView(dataGridView1, "Sales Forecast");
-                    excelReader.readExcelToDataGridView(dataGridView2, "Cost Of Sales");
-                    excelReader.Close();
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Exception: " + e.Message);
-                }
-                finally
-                {
-                    ld.Close();
-                }
-                
+                ExcelReader excelReader = new ExcelReader();
+                excelReader.readExcelToDataGridView(dataGridView1, "Sales Forecast");
+                excelReader.readExcelToDataGridView(dataGridView2, "Cost Of Sales");
+                excelReader.Close();
             }
         }
 
@@ -52,11 +37,10 @@ namespace BusinessPlanner
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["data_save"]);
+            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["data_save"]);
             try
             {
-                ld.Show();
-                Application.DoEvents();
+                ls.show();
                 ExcelReader excelReader = new ExcelReader();
                 excelReader.saveExcelFromDataGridView(
                     new DataGridView[2]{dataGridView1,dataGridView2}, 
@@ -84,7 +68,7 @@ namespace BusinessPlanner
             }
             finally
             {
-                ld.Close();
+                ls.hide();
             }
         }
 

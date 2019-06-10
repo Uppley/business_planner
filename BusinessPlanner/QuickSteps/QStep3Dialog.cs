@@ -38,10 +38,20 @@ namespace BusinessPlanner
         private void Button3_Click(object sender, EventArgs e)
         {
             this.mData = textBox1.Text;
-            AppUtilities.CreateOrUpdateDict("step3", this.mData);
-            QStep4Dialog st6 = new QStep4Dialog();
-            this.Hide();
-            st6.ShowDialog();
+            if (this.mData == "")
+            {
+                label5.Text = "This field is required !";
+            }
+            else
+            {
+                label5.Text = "";
+                AppUtilities.CreateOrUpdateDict("step3", this.mData);
+                QStep4Dialog st6 = new QStep4Dialog();
+                this.Hide();
+                st6.ShowDialog();
+            }
         }
+
+        
     }
 }

@@ -118,9 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label2.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. vitae faucibus. Integer ac rhoncus neque, id mollis diam.Duis sem massa, fermentum a magna nec, faucibus elementum ipsum. Praesent scelerisque lacinia venenatis. Duis venenatis risus vel nibh facilisis, sit amet semper nunc imperdiet. Vivamus maximus luctus enim, eget sodales massa lacinia eu. 
+    <value>Its always great to set your targets when you are planning your business. Setting your start date will help you plan your financials. This date will be used to populate the rows in your table. Remember that you generally do not begin your business before the mentioned starting date.
 
-Sed sit amet purus a justo facilisis vestibulum. In justo magna, euismod id libero vel, lacinia varius quam. Integer interdum dui vitae ipsum commodo, tempor bibendum lacus vulputate.
+
+
+Select the starting month and the Starting Year below.
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />

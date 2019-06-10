@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FStep2Dialog));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -48,26 +48,6 @@
             this.label1.Size = new System.Drawing.Size(512, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Step 2 of 7: What currency should be used ?";
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(35, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(824, 75);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero portti" +
-    "tor erat volutpat gravida non quis mi. vitae faucibus. Integer ac rhoncus neque," +
-    " id mollis diam.\r\n";
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(35, 337);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(824, 75);
-            this.label4.TabIndex = 6;
-            this.label4.Text = resources.GetString("label4.Text");
             // 
             // button1
             // 
@@ -118,17 +98,35 @@
             this.comboBox1.Size = new System.Drawing.Size(246, 28);
             this.comboBox1.TabIndex = 12;
             // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(35, 326);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(824, 75);
+            this.label4.TabIndex = 14;
+            this.label4.Text = resources.GetString("label4.Text");
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(35, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(824, 75);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Select the currency that you want your plan’s table and charts to show.";
+            // 
             // FStep2Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 630);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -145,11 +143,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -419,6 +419,7 @@
             this.toolStripButton22.Size = new System.Drawing.Size(64, 58);
             this.toolStripButton22.Text = "Reports";
             this.toolStripButton22.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton22.Click += new System.EventHandler(this.ToolStripButton22_Click);
             // 
             // toolStripButton5
             // 
@@ -430,6 +431,7 @@
             this.toolStripButton5.Size = new System.Drawing.Size(61, 58);
             this.toolStripButton5.Text = "Outline";
             this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton5.Click += new System.EventHandler(this.ToolStripButton5_Click);
             // 
             // toolStripSeparator1
             // 
@@ -458,6 +460,7 @@
             this.toolStripButton20.Size = new System.Drawing.Size(92, 58);
             this.toolStripButton20.Text = "Plan Review";
             this.toolStripButton20.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton20.Click += new System.EventHandler(this.ToolStripButton20_Click);
             // 
             // toolStripButton19
             // 

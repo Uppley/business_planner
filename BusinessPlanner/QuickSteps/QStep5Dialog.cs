@@ -44,12 +44,11 @@ namespace BusinessPlanner
             var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             this.mData = cb.Text;
             AppUtilities.CreateOrUpdateDict("step5", this.mData);
-            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["document_created"]);
-            this.Close();
+            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["document_created"]);
+            //this.Close();
             try
             {
-                ld.Show();
-                Application.DoEvents();
+                ls.show();
                 DocumentCreator dc = new DocumentCreator();
                 string proPath = dc.createQuickPackage();
                 string tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_" + AppUtilities.mainData["step3"].ToString());
@@ -61,7 +60,8 @@ namespace BusinessPlanner
             }
             finally
             {
-                ld.Close();
+                ls.hide();
+                this.Close();
                 MainWindow mf = new MainWindow();
                 mf.Show();
             }

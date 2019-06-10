@@ -46,29 +46,30 @@
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(34, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(532, 29);
+            this.label1.Size = new System.Drawing.Size(542, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Step 8 of 8: Do you want a five-year forecast ?";
+            this.label1.Text = "Step 8 of 8: Do you want a long-term forecast ?";
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(35, 88);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(824, 75);
+            this.label2.Size = new System.Drawing.Size(824, 84);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero portti" +
-    "tor erat volutpat gravida non quis mi. vitae faucibus. Integer ac rhoncus neque," +
-    " id mollis diam.\r\n";
+            this.label2.Text = "Would you like a Standard-term or long-term business plan ?\r\n\r\nThe Standard-Term " +
+    "setting includes 6 months forecasting and the Long-Term setting includes 12 mont" +
+    "hs forecasting table.\r\n";
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(35, 197);
+            this.label4.Location = new System.Drawing.Point(35, 247);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(824, 75);
+            this.label4.Size = new System.Drawing.Size(824, 25);
             this.label4.TabIndex = 6;
-            this.label4.Text = resources.GetString("label4.Text");
+            this.label4.Text = "Selecting the appropriate option as per your requirements will render your docume" +
+    "nt accordingly.";
             // 
             // button1
             // 
@@ -127,7 +128,7 @@
             this.radioButton2.Text = "I would like a long-term business plan.";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // Step9Dialog
+            // SStep8Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +145,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Step9Dialog";
+            this.Name = "SStep8Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
             this.ResumeLayout(false);

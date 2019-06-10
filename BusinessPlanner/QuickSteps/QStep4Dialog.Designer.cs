@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QStep4Dialog));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -50,17 +50,6 @@
             this.label1.Size = new System.Drawing.Size(434, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Step 4 of 5: Add additional Analysis ?";
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(35, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(824, 75);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero portti" +
-    "tor erat volutpat gravida non quis mi. vitae faucibus. Integer ac rhoncus neque," +
-    " id mollis diam.\r\n";
             // 
             // button1
             // 
@@ -117,24 +106,34 @@
             this.checkBox2.Text = "Website";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(35, 83);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(824, 75);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Select any of the following items to add to your business plan. Adding the below " +
+    "items will increase number of topics for your business plan.";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(209, 174);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(598, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis imperdiet in nequ" +
-    "e eget feugiat.";
+            this.label3.Size = new System.Drawing.Size(572, 17);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "- topics for discussing your business’s Strength, Weaknesses, Opportunities and T" +
+    "hreats.";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(143, 219);
+            this.label5.Location = new System.Drawing.Point(141, 219);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(376, 17);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "- Vestibulum dapibus euismod blandit. Etiam vitae leo felis.";
+            this.label5.Size = new System.Drawing.Size(351, 17);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "- a section for detailing your objectives for the website.";
             // 
             // QStep4Dialog
             // 
@@ -143,12 +142,12 @@
             this.ClientSize = new System.Drawing.Size(934, 630);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -165,12 +164,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
     }

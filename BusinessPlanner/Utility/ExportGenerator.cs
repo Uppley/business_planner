@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessPlanner.Utility
 {
-    class ExportGenerator
+    public class ExportGenerator
     {
         private object missing;
         private object Visible;
@@ -30,12 +30,12 @@ namespace BusinessPlanner.Utility
         {
             foreach (Section section in this.adoc.Sections)
             {
-                    
-                Range headerRange = section.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;   
+
+                Range headerRange = section.Headers[WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
                 headerRange.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
                 headerRange.Font.ColorIndex = WdColorIndex.wdDarkRed;
                 headerRange.Font.Size = 10;
-                headerRange.Text = data+" Plan";
+                headerRange.Text = data + " Plan";
                 headerRange.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
                 headerRange.InlineShapes.AddHorizontalLineStandard();
             }

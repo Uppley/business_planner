@@ -17,6 +17,7 @@ using Application = System.Windows.Forms.Application;
 using BusinessPlanner.Utility;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using Task = System.Threading.Tasks.Task;
 
 namespace BusinessPlanner
 {
@@ -46,6 +47,8 @@ namespace BusinessPlanner
             label5.Text = dpg.totalSteps().ToString() + " tasks completed";
             progressBar1.Maximum = dpg.totalSteps();
             progressBar1.Value = dpg.completedSteps();
+            
+
         }
 
 
@@ -104,75 +107,67 @@ namespace BusinessPlanner
                 if(this.treeView1.SelectedNode.Parent != null)
                 {
                     ProjectConfig.projectFile = documentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
-                    if (this.treeView1.SelectedNode.Text == "Sales Forecast Table")
+                    LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["loading"]);
+                    try
                     {
-                        ForecastWindow frw = new ForecastWindow(this);
-                        frw.TopLevel = false;
-                        panel1.Controls.Clear();
-                        panel1.Controls.Add(frw);
-                        frw.Show();
-                    }else if(this.treeView1.SelectedNode.Text == "Start Up Investment")
-                    {
-                        StartUpWindow stw = new StartUpWindow(this);
-                        stw.TopLevel = false;
-                        panel1.Controls.Clear();
-                        panel1.Controls.Add(stw);
-                        stw.Show();
+                        ls.show();
+                        if (this.treeView1.SelectedNode.Text == "Sales Forecast Table")
+                        {
+                            ForecastWindow frw = new ForecastWindow(this);
+                            frw.TopLevel = false;
+                            panel1.Controls.Clear();
+                            panel1.Controls.Add(frw);
+                            frw.Show();
+                        }else if(this.treeView1.SelectedNode.Text == "Start Up Investment")
+                        {
+                            StartUpWindow stw = new StartUpWindow(this);
+                            stw.TopLevel = false;
+                            panel1.Controls.Clear();
+                            panel1.Controls.Add(stw);
+                            stw.Show();
+                        }
+                        else if (this.treeView1.SelectedNode.Text == "Company Expenditure")
+                        {
+                            ExpenditureWindow stw = new ExpenditureWindow(this);
+                            stw.TopLevel = false;
+                            panel1.Controls.Clear();
+                            panel1.Controls.Add(stw);
+                            stw.Show();
+                        }
+                        else if (this.treeView1.SelectedNode.Text == "Analysis Table")
+                        {
+                            AnalysisWindow stw = new AnalysisWindow(this);
+                            stw.TopLevel = false;
+                            panel1.Controls.Clear();
+                            panel1.Controls.Add(stw);
+                            stw.Show();
+                        }
+                        else
+                        {
+                            dashboard = new Dashboard(this, ProjectConfig.projectFile);
+                            dashboard.TopLevel = false;
+                            panel1.Controls.Clear();
+                            panel1.Controls.Add(dashboard);
+                            dashboard.Show();
+                        }
                     }
-                    else if (this.treeView1.SelectedNode.Text == "Company Expenditure")
+                    catch (Exception ex)
                     {
-                        ExpenditureWindow stw = new ExpenditureWindow(this);
-                        stw.TopLevel = false;
-                        panel1.Controls.Clear();
-                        panel1.Controls.Add(stw);
-                        stw.Show();
+                        Console.Write(ex.Message);
                     }
-                    else if (this.treeView1.SelectedNode.Text == "Analysis Table")
+                    finally
                     {
-                        AnalysisWindow stw = new AnalysisWindow(this);
-                        stw.TopLevel = false;
-                        panel1.Controls.Clear();
-                        panel1.Controls.Add(stw);
-                        stw.Show();
-                    }
-                    else
-                    {
-                        dashboard = new Dashboard(this,ProjectConfig.projectFile);
-                        dashboard.TopLevel = false;
-                        panel1.Controls.Clear();
-                        panel1.Controls.Add(dashboard);
-                        dashboard.Show();
+                        ls.hide();
                     }
                 }
                 else
                 {
+                    SectionIntro si = new SectionIntro(this.treeView1.SelectedNode.Text);
+                    si.TopLevel = false;
                     panel1.Controls.Clear();
-                    Label lb = new Label();
-                    lb.AutoSize = true;
-                    lb.Text = this.treeView1.SelectedNode.Text;
-                    lb.ForeColor = Color.RoyalBlue;
-                    lb.Font = new System.Drawing.Font(FontFamily.GenericSansSerif,35.0F, FontStyle.Bold);
-                    lb.Left = 50;
-                    lb.Top = 50;
-                    Label lb1 = new Label();
-                    lb1.Left = 50;
-                    lb1.Top = 120;
-                    lb1.Text = "";
-                    lb1.BorderStyle = BorderStyle.Fixed3D;
-                    lb1.AutoSize = false;
-                    lb1.Width = 1190;
-                    lb1.Height = 2;
-                    lb1.BackColor = Color.Red;
-                    Label lb2 = new Label();
-                    lb2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer cursus dui id eros condimentum feugiat. Praesent et mauris nec nibh convallis aliquet in id magna. Quisque id dui vitae ipsum malesuada vulputate. Ut eu pulvinar enim. Duis dolor sapien, rutrum eget ultrices convallis, aliquam eu ex. Vestibulum eget erat quis purus pulvinar ultricies ac vel ipsum. Suspendisse nibh erat, consequat vitae consectetur sed, vehicula vel quam. Vivamus bibendum arcu tortor, sit amet porta tellus sollicitudin eu. Sed pharetra a ante sed tincidunt. In accumsan velit mauris, vitae placerat leo gravida nec. Cras condimentum massa et faucibus posuere.\n\n\nSuspendisse tempus fringilla lectus ac feugiat. Quisque eget elementum lorem. In euismod finibus dui et mollis. Sed auctor tincidunt urna vel dignissim. Vivamus sed leo nec mauris porta interdum nec et nibh.";
-                    lb2.Font = new System.Drawing.Font(FontFamily.GenericSerif, 12.0F, FontStyle.Regular);
-                    lb2.Top = 150;
-                    lb2.Left = 60;
-                    lb2.Width = 1200;
-                    lb2.Height = 700;
-                    panel1.Controls.Add(lb);
-                    panel1.Controls.Add(lb1);
-                    panel1.Controls.Add(lb2);
+                    panel1.Controls.Add(si);
+                    si.Show();
+                    
                 }
                 
             }
@@ -219,11 +214,10 @@ namespace BusinessPlanner
 
         private void saveProjectBeforeClose()
         {
-            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_save"]);
+            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_save"]);
             try
             {
-                ld.Show();
-                Application.DoEvents();
+                ls.show();
                 saveProgress();
                 string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
                 ProjectLoader.save(dPath, ProjectConfig.projectPath);
@@ -234,7 +228,7 @@ namespace BusinessPlanner
             }
             finally
             {
-                ld.Close();
+                ls.hide();
             }
         }
 
@@ -262,7 +256,7 @@ namespace BusinessPlanner
 
         private void ToolStripButton21_Click(object sender, EventArgs e)
         {
-            DashboardHome dh = new DashboardHome();
+            DashboardHome dh = new DashboardHome(this);
             dh.TopLevel = false;
             panel1.Controls.Clear();
             panel1.Controls.Add(dh);
@@ -278,6 +272,7 @@ namespace BusinessPlanner
 
         private void MSWordToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string mssg = "";
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             saveFileDialog1.DefaultExt = "docx";
             saveFileDialog1.Filter = "docx files (*.docx)|*.docx|All files (*.*)|*.*";
@@ -301,10 +296,10 @@ namespace BusinessPlanner
                 document.open();
                 document.generateCoverPage(project_name);
                 document.getFooterWithPageNumber();
-                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["exporting"]);
+                LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["exporting"]);
                 try
                 {
-                    ld.Show();
+                    ls.show();
                     System.Windows.Forms.Application.DoEvents();
                     Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
                     rtb1.Dispose();
@@ -313,17 +308,20 @@ namespace BusinessPlanner
                     object filename = saveFileDialog1.FileName;
                     document.saveAsWord(filename);
                     document.close();
-                    ld.Close();
-                    MessageBox.Show(AppMessages.messages["export_success"]);
+                    mssg = AppMessages.messages["export_success"];
+                    ls.hide();
                 }
                 catch (Exception ex)
                 {
-                    ld.Close();
-                    MessageBox.Show(ex.Message);
+                    mssg=ex.Message;
+                    ls.hide();
                 }
                 finally
                 {
+                    MessageBox.Show(mssg);
+                    
                     document = null;
+                    Clipboard.Clear();
                     GC.Collect();
                 }
                 
@@ -355,11 +353,10 @@ namespace BusinessPlanner
                 document.open();
                 document.generateCoverPage(project_name);
                 document.getFooterWithPageNumber();
-                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["exporting"]);
+                LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["exporting"]);
                 try
                 {
-                    ld.Show();
-                    System.Windows.Forms.Application.DoEvents();
+                    ls.show();
                     Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
                     document.getContent();
                     rtb1.Dispose();
@@ -368,16 +365,17 @@ namespace BusinessPlanner
                     object fileformat = WdSaveFormat.wdFormatPDF;
                     document.saveAsPdf(filename);
                     document.close();
-                    ld.Close();
+                    
                     MessageBox.Show(AppMessages.messages["export_success"]);
                 }
                 catch (Exception ex)
                 {
-                    ld.Close();
+                    
                     MessageBox.Show(ex.Message);
                 }
                 finally
                 {
+                    ls.hide();
                     document = null;
                     GC.Collect();
                 }
@@ -398,14 +396,12 @@ namespace BusinessPlanner
                 }
                 else
                 {
-                    _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_loading"]);
+                    LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_loading"]);
                     try
                     {
-                        ld.Show();
-                        Application.DoEvents();
+                        ls.show();
                         string proPath = opnfd.FileName;
                         string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
-                        this.Close();
                         ProjectLoader.load(proPath, tempPath);
                         MainWindow mf = new MainWindow();
                         mf.Show();
@@ -417,7 +413,8 @@ namespace BusinessPlanner
                     }
                     finally
                     {
-                        ld.Close();
+                        ls.hide();
+                        this.Close();
                     }
                 }
             }
@@ -425,11 +422,10 @@ namespace BusinessPlanner
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_save"]);
+            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_save"]);
             try
             {
-                ld.Show();
-                Application.DoEvents();
+                ls.show();
                 string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
                 ProjectLoader.saveOnly(dPath, ProjectConfig.projectPath);
 
@@ -440,7 +436,7 @@ namespace BusinessPlanner
             }
             finally
             {
-                ld.Close();
+                ls.hide();
             }
         }
 
@@ -452,11 +448,10 @@ namespace BusinessPlanner
             if (saveFileDialog4.ShowDialog() == DialogResult.OK)
             {
                 Debug.WriteLine(saveFileDialog4.FileName);
-                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_save"]);
+                LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_save"]);
                 try
                 {
-                    ld.Show();
-                    Application.DoEvents();
+                    ls.show();
                     string dPath = saveFileDialog4.FileName;
                     ProjectLoader.saveAsOnly(dPath, ProjectConfig.projectPath);
 
@@ -467,18 +462,17 @@ namespace BusinessPlanner
                 }
                 finally
                 {
-                    ld.Close();
+                    ls.hide();
                 }
             }
         }
 
         private void ToolStripButton3_Click(object sender, EventArgs e)
         {
-            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_save"]);
+            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_save"]);
             try
             {
-                ld.Show();
-                Application.DoEvents();
+                ls.show();
                 string dPath = ProjectConfig.projectPath.Replace("~temp_", "");
                 ProjectLoader.saveOnly(dPath, ProjectConfig.projectPath);
 
@@ -489,8 +483,29 @@ namespace BusinessPlanner
             }
             finally
             {
-                ld.Close();
+                ls.hide();
             }
+        }
+
+        // Show reports
+        private void ToolStripButton22_Click(object sender, EventArgs e)
+        {
+            ReportWindow rpw = new ReportWindow();
+            rpw.Show();
+        }
+
+        // Plan outline
+        private void ToolStripButton5_Click(object sender, EventArgs e)
+        {
+            OutlineWindow ouw = new OutlineWindow();
+            ouw.Show();
+        }
+
+        //Review Plan
+        private void ToolStripButton20_Click(object sender, EventArgs e)
+        {
+            ReviewWindow rvw = new ReviewWindow();
+            rvw.Show();
         }
     }
 }

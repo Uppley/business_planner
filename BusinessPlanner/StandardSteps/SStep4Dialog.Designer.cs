@@ -158,7 +158,7 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Starting Year:";
             // 
-            // Step4Dialog
+            // SStep4Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -176,7 +176,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Step4Dialog";
+            this.Name = "SStep4Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
             this.ResumeLayout(false);

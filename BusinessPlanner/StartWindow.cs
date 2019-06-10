@@ -73,14 +73,16 @@ namespace BusinessPlanner
             _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_loading"]);
             try
             {
-                ld.Show();
+                Task.Factory.StartNew(() => {
+                    ld.ShowDialog();
+                });
                 Application.DoEvents();
                 string proPath = Path.Combine(ProjectConfig.projectBase, lnb.Text);
                 string tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_" + lnb.Text.Replace(ProjectConfig.projectExtension,""));
                 ProjectLoader.load(proPath, tempPath);
                 MainWindow mf = new MainWindow();
                 mf.Show();
-                this.Close();
+                
             }
             catch (Exception ex)
             {
@@ -88,7 +90,11 @@ namespace BusinessPlanner
             }
             finally
             {
-                ld.Close();
+                Invoke(new MethodInvoker(() =>
+                {
+                    ld.Close();
+                }));
+                this.Close();
             }
             
         }
@@ -113,11 +119,12 @@ namespace BusinessPlanner
                     _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_loading"]);
                     try
                     {
-                        ld.Show();
-                        Application.DoEvents();
+                        Task.Factory.StartNew(() => {
+                            ld.ShowDialog();
+                        });
                         string proPath = opnfd.FileName;
                         string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
-                        this.Close();
+                        
                         ProjectLoader.load(proPath, tempPath);
                         MainWindow mf = new MainWindow();
                         mf.Show();
@@ -129,8 +136,12 @@ namespace BusinessPlanner
                     }
                     finally
                     {
-                        ld.Close();
-                    }
+                        Invoke(new MethodInvoker(() =>
+                        {
+                            ld.Close();
+                        }));
+                        this.Close();
+                }
                 
             }
         }

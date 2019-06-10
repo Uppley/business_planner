@@ -56,9 +56,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(824, 75);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero portti" +
-    "tor erat volutpat gravida non quis mi. vitae faucibus. Integer ac rhoncus neque," +
-    " id mollis diam.\r\n";
+            this.label2.Text = "Select the currency that you want your plan’s table and charts to show.";
             // 
             // label4
             // 
@@ -118,7 +116,7 @@
             this.comboBox1.Size = new System.Drawing.Size(246, 28);
             this.comboBox1.TabIndex = 12;
             // 
-            // Step2Dialog
+            // SStep2Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,7 +132,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Step2Dialog";
+            this.Name = "SStep2Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
             this.ResumeLayout(false);

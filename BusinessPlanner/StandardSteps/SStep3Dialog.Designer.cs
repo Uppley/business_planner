@@ -115,7 +115,7 @@
             this.radioButton2.Text = "I\'m already in business, this business plan is for an ongoing business.";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // Step3Dialog
+            // SStep3Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +131,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Step3Dialog";
+            this.Name = "SStep3Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
             this.ResumeLayout(false);

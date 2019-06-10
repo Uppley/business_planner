@@ -118,13 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label2.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. vitae faucibus. Integer ac rhoncus neque, id mollis diam.
+    <value>Select the description that best describes what your business deals with. If your business is related to some particular products you can opt for the first option or else if your business belongs to service industry then you can opt for the other option and in case of both then go for the third one.
 
-Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam ultricies in nisl id ornare. Ut vestibulum congue quam, sit amet dignissim velit efficitur et.
 
-Proin et sapien malesuada, malesuada metus quis, fermentum sem. Ut elementum velit non purus iaculis pellentesque a ac purus. Duis ac accumsan tellus. Nullam ac sem vitae erat fringilla rutrum ac eget mauris. Fusce nec nisi ipsum. In vulputate orci non accumsan porttitor. 
 
-Integer non neque nec risus facilisis condimentum. Integer imperdiet turpis et nisl scelerisque, ac fermentum elit sagittis.
+Based upon your selection we will modify your business plan documents and display the appropriate options for your need.
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />

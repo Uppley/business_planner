@@ -118,10 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label2.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. vitae faucibus. Integer ac rhoncus neque, id mollis diam.
-Duis sem massa, fermentum a magna nec, faucibus elementum ipsum. Praesent scelerisque lacinia venenatis. Duis venenatis risus vel nibh facilisis, sit amet semper nunc imperdiet. Vivamus maximus luctus enim, eget sodales massa lacinia eu. Sed sit amet purus a justo facilisis vestibulum. In justo magna, euismod id libero vel, lacinia varius quam. Integer interdum dui vitae ipsum commodo, tempor bibendum lacus vulputate.
+    <value>A start-up business plan is different from an ongoing business plan. Business plans for start-up businesses include start expenditure section where you can add one-time expenditures that occur on starting a new business, for eg. Franchise license, security deposits, office setup etc. 
 
-</value>
+Business plans for ongoing businesses include regular company expenditures that incur every year. Some of the common expenditures include office rent, utility bills etc.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

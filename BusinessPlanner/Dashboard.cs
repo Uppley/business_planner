@@ -52,12 +52,10 @@ namespace BusinessPlanner
 
         private void setContentInitial(String name)
         {
-                
-            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["loading"]);
+
+            
             try
             {
-                ld.Show();
-                Application.DoEvents();
                 
                 label9.Text = StandardDocument.DocumentList.Find(item => item.DocumentName == name).ItemName;
                 richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath,name));
@@ -68,7 +66,7 @@ namespace BusinessPlanner
             }
             finally
             {
-                ld.Close();
+                
             }
 
         }

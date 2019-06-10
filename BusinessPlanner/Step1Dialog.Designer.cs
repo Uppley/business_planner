@@ -106,7 +106,9 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(824, 75);
             this.label4.TabIndex = 6;
-            this.label4.Text = resources.GetString("label4.Text");
+            this.label4.Text = "It includes topics that are only related to financial aspects of your business pl" +
+    "an. You can opt for this option if you only want to analyze the financial aspect" +
+    " of your business.";
             // 
             // radioButton3
             // 

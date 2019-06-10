@@ -36,6 +36,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -56,9 +58,8 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(824, 75);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero portti" +
-    "tor erat volutpat gravida non quis mi. vitae faucibus. Integer ac rhoncus neque," +
-    " id mollis diam.\r\n";
+            this.label2.Text = "What you want your business plan to be called with? The plan title will be displa" +
+    "yed on the cover page upon exporting your plan.";
             // 
             // button1
             // 
@@ -111,11 +112,31 @@
             this.label3.TabIndex = 16;
             this.label3.Text = "Plan Title :";
             // 
-            // Step5Dialog
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(35, 240);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(824, 75);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Note: This will also represent your project file name. ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(611, 169);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 17);
+            this.label5.TabIndex = 18;
+            // 
+            // SStep5Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 630);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button3);
@@ -127,7 +148,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Step5Dialog";
+            this.Name = "SStep5Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
             this.ResumeLayout(false);
@@ -144,5 +165,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

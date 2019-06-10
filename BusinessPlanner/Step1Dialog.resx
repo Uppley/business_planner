@@ -118,16 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label2.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. Sed dignissim lacinia leo, a semper dolor faucibus eu. Nam vehicula nisi ac arcu cursus viverra.Maecenas mattis volutpat ex vitae faucibus. Integer ac rhoncus neque, id mollis diam.
-</value>
+    <value>Get started quickly with a streamlined plan that you need for your business planning. It saves you from indulging into hardcore accounting and financial planning and focuses only on the documentation of the business plan.</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. Sed dignissim lacinia leo, a semper dolor faucibus eu. Nam vehicula nisi ac arcu cursus viverra.Maecenas mattis volutpat ex vitae faucibus. Integer ac rhoncus neque, id mollis diam.
-</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. Sed dignissim lacinia leo, a semper dolor faucibus eu. Nam vehicula nisi ac arcu cursus viverra.Maecenas mattis volutpat ex vitae faucibus. Integer ac rhoncus neque, id mollis diam.
-</value>
+    <value>This covers all the necessary topics that are required for your business planning including financial statements and budgeting. This option is a great start for planning your business in a streamlined and effective way.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

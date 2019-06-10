@@ -20,7 +20,7 @@ namespace BusinessPlanner.Utility
             new TreeViewItem() { ParentID = 5, ID = 7, Text = "Ownership" },
             new TreeViewItem() { ParentID = 5, ID = 8, Text = "Start Up Investment" },
             new TreeViewItem() { ParentID = 5, ID = 9, Text = "Company Expenditure" },
-            new TreeViewItem() { ParentID = 0, ID = 10, Text = "Product Selling" },
+            new TreeViewItem() { ParentID = 0, ID = 10, Text = "What You Sell" },
             new TreeViewItem() { ParentID = 10, ID = 11, Text = "Product Summary" },
             new TreeViewItem() { ParentID = 0, ID = 12, Text = "Market Analysis" },
             new TreeViewItem() { ParentID = 12, ID = 13, Text = "Market Summary" },

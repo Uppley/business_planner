@@ -118,8 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label4.Text" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis libero porttitor erat volutpat gravida non quis mi. Sed dignissim lacinia leo, a semper dolor faucibus eu. Nam vehicula nisi ac arcu cursus viverra.Maecenas mattis volutpat ex vitae faucibus. Integer ac rhoncus neque, id mollis diam.
-</value>
+    <value>Note: In case you want your plan to be in different currency than your local currency, please check the currency exchange rates, so that you get expected results. Also, you will enter your VAT rate % (if available in your country) and select appropriate VAT tax period when you start working on your tables.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

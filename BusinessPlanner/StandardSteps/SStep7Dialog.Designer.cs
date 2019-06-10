@@ -127,7 +127,7 @@
             this.radioButton3.Text = "I sell both products and services.";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // Step7Dialog
+            // SStep7Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +144,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Step7Dialog";
+            this.Name = "SStep7Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
             this.ResumeLayout(false);

@@ -23,15 +23,14 @@ namespace BusinessPlanner
         List<ExpenditureItem> expenditures = new List<ExpenditureItem>();
         List<ExpenditureItem> startupInvestments = new List<ExpenditureItem>();
         List<MarketItem> marketAnalysis = new List<MarketItem>();
-        public DashboardHome()
+        public DashboardHome(MainWindow mw)
         {
             InitializeComponent();
             
-            _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["data_load"]);
+            LoadingSpinner ls = new LoadingSpinner(mw,AppMessages.messages["data_load"]);
             try
             {
-                ld.Show();
-                Application.DoEvents();
+                ls.show();
                 fetchAllData();
                 if (ProjectConfig.projectSettings["PlanType"].ToString() == "Quick Plan")
                 {
@@ -55,7 +54,8 @@ namespace BusinessPlanner
             }
             finally
             {
-                ld.Close();
+                ls.hide();
+                
             }
             
         }
