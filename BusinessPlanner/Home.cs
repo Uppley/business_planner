@@ -12,15 +12,30 @@ namespace BusinessPlanner
 {
     public partial class Home : Form
     {
+        public Form parentForm { get; set; }
         public Home()
         {
             InitializeComponent();
         }
 
+
         private void Label2_Click(object sender, EventArgs e)
         {
-            Step1Dialog st = new Step1Dialog();
-            st.ShowDialog();
+            var confirmResult = MessageBox.Show(AppMessages.messages["new_body"], AppMessages.messages["new_head"], MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                parentForm.Close();
+                if (parentForm.IsDisposed)
+                {
+                    Step1Dialog st = new Step1Dialog();
+                    st.ShowDialog();
+                }
+
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

@@ -112,7 +112,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(35, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(824, 75);
+            this.label2.Size = new System.Drawing.Size(824, 52);
             this.label2.TabIndex = 13;
             this.label2.Text = "Select the currency that you want your plan’s table and charts to show.";
             // 

@@ -36,6 +36,7 @@ namespace BusinessPlanner
             this.home.TopLevel = false;
             panel1.Controls.Clear();
             panel1.Controls.Add(this.home);
+            this.home.parentForm = this;
             this.home.Show();
             AppUtilities.mainForm = this;
             project_name = ProjectConfig.projectSettings["Title"].ToString().ToUpper();
@@ -175,8 +176,8 @@ namespace BusinessPlanner
 
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
-            Step1Dialog st = new Step1Dialog();
-            st.ShowDialog();
+            this.CloseForNew();
+            
         }
 
         private void AboutVersionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -266,8 +267,8 @@ namespace BusinessPlanner
 
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Step1Dialog st = new Step1Dialog();
-            st.ShowDialog();
+            this.CloseForNew();
+            
         }
 
         private void MSWordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -396,12 +397,13 @@ namespace BusinessPlanner
                 }
                 else
                 {
-                    LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_loading"]);
+                    
                     try
                     {
-                        ls.show();
+                        
                         string proPath = opnfd.FileName;
                         string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
+                        this.Close();
                         ProjectLoader.load(proPath, tempPath);
                         MainWindow mf = new MainWindow();
                         mf.Show();
@@ -413,10 +415,28 @@ namespace BusinessPlanner
                     }
                     finally
                     {
-                        ls.hide();
-                        this.Close();
+                        
                     }
                 }
+            }
+        }
+
+        public void CloseForNew()
+        {
+            var confirmResult = MessageBox.Show(AppMessages.messages["new_body"], AppMessages.messages["new_head"], MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                this.Close();
+                if(this.IsDisposed)
+                {
+                    Step1Dialog st = new Step1Dialog();
+                    st.ShowDialog();
+                }
+                
+            }
+            else
+            {
+                return;
             }
         }
 
