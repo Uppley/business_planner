@@ -37,5 +37,11 @@ namespace BusinessPlanner
                 return;
             }
         }
+
+        private void Label9_Click(object sender, EventArgs e)
+        {
+            ReviewWindow rew = new ReviewWindow();
+            rew.Show();
+        }
     }
 }
