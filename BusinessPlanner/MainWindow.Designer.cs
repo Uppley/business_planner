@@ -63,7 +63,7 @@
             this.planReviewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.currencyRateMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modifyProjectNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyProjectNameMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.spellCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nightModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.colorThemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,7 +132,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(791, 570);
+            this.panel1.Size = new System.Drawing.Size(798, 570);
             this.panel1.TabIndex = 0;
             // 
             // label4
@@ -400,7 +400,7 @@
             // preferencesToolStripMenuItem
             // 
             this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.modifyProjectNameToolStripMenuItem,
+            this.modifyProjectNameMenu,
             this.spellCheckToolStripMenuItem,
             this.nightModeToolStripMenuItem,
             this.colorThemeToolStripMenuItem,
@@ -410,20 +410,25 @@
             this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             // 
-            // modifyProjectNameToolStripMenuItem
+            // modifyProjectNameMenu
             // 
-            this.modifyProjectNameToolStripMenuItem.Name = "modifyProjectNameToolStripMenuItem";
-            this.modifyProjectNameToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
-            this.modifyProjectNameToolStripMenuItem.Text = "Modify Project Name";
+            this.modifyProjectNameMenu.Name = "modifyProjectNameMenu";
+            this.modifyProjectNameMenu.Size = new System.Drawing.Size(233, 26);
+            this.modifyProjectNameMenu.Text = "Modify Project Name";
+            this.modifyProjectNameMenu.Click += new System.EventHandler(this.ModifyProjectNameMenu_Click);
             // 
             // spellCheckToolStripMenuItem
             // 
+            this.spellCheckToolStripMenuItem.Checked = true;
+            this.spellCheckToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.spellCheckToolStripMenuItem.Name = "spellCheckToolStripMenuItem";
             this.spellCheckToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
             this.spellCheckToolStripMenuItem.Text = "Spell Check";
             // 
             // nightModeToolStripMenuItem
             // 
+            this.nightModeToolStripMenuItem.Checked = true;
+            this.nightModeToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.nightModeToolStripMenuItem.Name = "nightModeToolStripMenuItem";
             this.nightModeToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
             this.nightModeToolStripMenuItem.Text = "Night Mode";
@@ -703,7 +708,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(9, 104);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -718,7 +722,7 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(992, 570);
-            this.splitContainer1.SplitterDistance = 197;
+            this.splitContainer1.SplitterDistance = 190;
             this.splitContainer1.TabIndex = 9;
             // 
             // treeView1
@@ -733,7 +737,7 @@
             this.treeView1.ItemHeight = 25;
             this.treeView1.Location = new System.Drawing.Point(0, 34);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(197, 536);
+            this.treeView1.Size = new System.Drawing.Size(190, 536);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect_1);
             // 
@@ -746,7 +750,7 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(197, 41);
+            this.panel3.Size = new System.Drawing.Size(190, 41);
             this.panel3.TabIndex = 1;
             // 
             // label3
@@ -757,7 +761,7 @@
             this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 39);
+            this.label3.Size = new System.Drawing.Size(188, 39);
             this.label3.TabIndex = 0;
             this.label3.Text = "Tasks";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -941,7 +945,7 @@
         private System.Windows.Forms.ToolStripMenuItem outlineMenu;
         private System.Windows.Forms.ToolStripMenuItem planReviewMenu;
         private System.Windows.Forms.ToolStripMenuItem currencyRateMenu;
-        private System.Windows.Forms.ToolStripMenuItem modifyProjectNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modifyProjectNameMenu;
         private System.Windows.Forms.ToolStripMenuItem spellCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nightModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colorThemeToolStripMenuItem;

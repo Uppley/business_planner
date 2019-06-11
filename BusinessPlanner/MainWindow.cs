@@ -30,6 +30,7 @@ namespace BusinessPlanner
         String project_name;
         List<DocumentItem> documentList = new List<DocumentItem>();
         int checkprint;
+        int splitDist=355;
         
         public MainWindow()
         {
@@ -51,7 +52,7 @@ namespace BusinessPlanner
             label5.Text = dpg.totalSteps().ToString() + " tasks completed";
             progressBar1.Maximum = dpg.totalSteps();
             progressBar1.Value = dpg.completedSteps();
-            
+            //splitContainer1.SplitterDistance = splitDist;
 
         }
 
@@ -610,18 +611,20 @@ namespace BusinessPlanner
 
         private void ShowTasksMenu_Click(object sender, EventArgs e)
         {
+            
             var temp = (ToolStripMenuItem)sender;
             if (temp.CheckState == CheckState.Checked)
             {
                 temp.CheckState = CheckState.Unchecked;
                 splitContainer1.Panel1.Hide();
-                this.Refresh();
+                splitContainer1.SplitterDistance = 0;
+                
             }
             else
             {
                 temp.CheckState = CheckState.Checked;
+                splitContainer1.SplitterDistance = splitDist;
                 splitContainer1.Panel1.Show();
-                this.Refresh();
             }
         }
 
@@ -646,6 +649,11 @@ namespace BusinessPlanner
         private void CurrencyRateMenu_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ModifyProjectNameMenu_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
