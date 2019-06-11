@@ -18,6 +18,8 @@ using BusinessPlanner.Utility;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using Task = System.Threading.Tasks.Task;
+using System.Drawing.Printing;
+using RichTextBoxPrintCtrl;
 
 namespace BusinessPlanner
 {
@@ -27,6 +29,7 @@ namespace BusinessPlanner
         Dashboard dashboard;
         String project_name;
         List<DocumentItem> documentList = new List<DocumentItem>();
+        int checkprint;
         
         public MainWindow()
         {
@@ -273,12 +276,14 @@ namespace BusinessPlanner
 
         private void MSWordToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Clipboard.Clear();
             string mssg = "";
             saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             saveFileDialog1.DefaultExt = "docx";
             saveFileDialog1.Filter = "docx files (*.docx)|*.docx|All files (*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
 
@@ -292,6 +297,7 @@ namespace BusinessPlanner
                     rtb2.AppendText("\n\n"+doc.Seq+". "+doc.ItemName+"\n\n");
                     rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                     rtb2.Paste();
+                    Clipboard.Clear();
                 }
                 ExportGenerator document = new ExportGenerator();
                 document.open();
@@ -305,7 +311,8 @@ namespace BusinessPlanner
                     Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
                     rtb1.Dispose();
                     rtb2.Dispose();
-                    document.getContent();
+                    document.setContent();
+                    
                     object filename = saveFileDialog1.FileName;
                     document.saveAsWord(filename);
                     document.close();
@@ -332,11 +339,13 @@ namespace BusinessPlanner
 
         private void AdobePDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Clipboard.Clear();
             saveFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             saveFileDialog2.DefaultExt = "pdf";
             saveFileDialog2.Filter = "pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
             if (saveFileDialog2.ShowDialog() == DialogResult.OK)
             {
+                
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
                 List<DocumentItem> allFiles = documentList.FindAll(x => x.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
@@ -349,6 +358,7 @@ namespace BusinessPlanner
                     rtb2.AppendText("\n\n" + doc.Seq + ". " + doc.ItemName + "\n\n");
                     rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                     rtb2.Paste();
+                    Clipboard.Clear();
                 }
                 ExportGenerator document = new ExportGenerator();
                 document.open();
@@ -359,7 +369,7 @@ namespace BusinessPlanner
                 {
                     ls.show();
                     Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
-                    document.getContent();
+                    document.setContent();
                     rtb1.Dispose();
                     rtb2.Dispose();
                     object filename = saveFileDialog2.FileName;
@@ -526,6 +536,59 @@ namespace BusinessPlanner
         {
             ReviewWindow rvw = new ReviewWindow();
             rvw.Show();
+        }
+
+        //Print preview
+        private void ToolStripButton2_Click(object sender, EventArgs e)
+        {
+
+            printPreviewDialog1.Document = printDocument1;
+            
+            printPreviewDialog1.ShowDialog();
+            
+        }
+
+        private void ToolStripButton4_Click(object sender, EventArgs e)
+        {
+            if(printDialog1.ShowDialog()==DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
+
+        }
+
+        private void PrintDocument1_BeginPrint(object sender, PrintEventArgs e)
+        {
+            checkprint = 0;
+        }
+
+        private void PrintDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Clipboard.Clear();
+            RichTextBox rtb1 = new RichTextBox();
+            RichTextBoxPrintCtrl.RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtb2 = new RichTextBoxPrintCtrl.RichTextBoxPrintCtrl.RichTextBoxPrintCtrl();
+
+
+            List<DocumentItem> allFiles = documentList.FindAll(z => z.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + z.DocumentName)).OrderBy(z => z.Seq).ToList();
+            foreach (DocumentItem doc in allFiles)
+            {
+                rtb1.LoadFile(ProjectConfig.projectPath + "\\" + doc.DocumentName);
+                rtb1.SelectAll();
+                rtb1.Copy();
+                rtb2.SelectionFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+                rtb2.AppendText("\n\n" + doc.Seq + ". " + doc.ItemName + "\n\n");
+                rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
+                rtb2.Paste();
+                Clipboard.Clear();
+                
+                
+            }
+            checkprint = rtb2.Print(checkprint, rtb2.TextLength, e);
+
+            if (checkprint < rtb2.TextLength)
+                e.HasMorePages = true;
+            else
+                e.HasMorePages = false;
         }
     }
 }

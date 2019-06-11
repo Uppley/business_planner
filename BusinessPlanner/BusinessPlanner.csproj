@@ -75,6 +75,9 @@
     <Reference Include="Office2007Renderer">
       <HintPath>..\..\..\..\..\Desktop\business planner workspace\Office2007Renderer.dll</HintPath>
     </Reference>
+    <Reference Include="RichTextBoxPrintCtrl">
+      <HintPath>..\..\..\..\..\Desktop\RichTextBoxPrintCtrl.dll</HintPath>
+    </Reference>
     <Reference Include="RtfWriter">
       <HintPath>..\..\..\..\..\Desktop\netrtfwriter-1.0.0\RtfWriter\bin\Debug\RtfWriter.dll</HintPath>
     </Reference>

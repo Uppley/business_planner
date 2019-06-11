@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BusinessPlanner.Utility
 {
@@ -74,9 +75,15 @@ namespace BusinessPlanner.Utility
             this.clearFormatting();
         }
 
-        public void getContent()
+        public void setContent()
         {
             this.WordApp.Selection.Paste();
+            Clipboard.Clear();
+        }
+
+        public Document getDocument()
+        {
+            return adoc;
         }
 
         public void saveAsWord(object data)
