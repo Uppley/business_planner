@@ -22,7 +22,8 @@ namespace BusinessPlanner
             InitializeComponent();
             listView1.View = View.Details;
             listView2.View = View.Details;
-            
+            listView1.ForeColor = Color.Red;
+            listView2.ForeColor = Color.DarkGreen;
             DocumentProgressor dcp = new DocumentProgressor();
             var allSteps = dcp.fetchAllSteps();
             populateIncomplete(allSteps.Where(x => x.Value == 0));

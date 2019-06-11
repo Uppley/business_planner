@@ -27,7 +27,7 @@ namespace BusinessPlanner
                 report_files.Add("Company Expenditure", "expenditure.rtf");
 
             if (File.Exists(Path.Combine(ProjectConfig.projectPath, "market_segmentation.rtf")))
-                report_files.Add("Market Segmentation", "market_segmentation.rtf");
+                report_files.Add("Market Segmentation", "market_analysis.rtf");
 
             if (File.Exists(Path.Combine(ProjectConfig.projectPath, "sales_forecast_table.rtf")))
                 report_files.Add("Sales Forecast", "sales_forecast_table.rtf");

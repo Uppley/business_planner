@@ -35,7 +35,7 @@ namespace BusinessPlanner
         {
             InitializeComponent();
             ToolStripManager.Renderer = new Office2007Renderer.Office2007Renderer();
-            toolStrip1.Renderer = new Office2007Renderer.Office2007Renderer();
+            toolBar.Renderer = new Office2007Renderer.Office2007Renderer();
             this.home.TopLevel = false;
             panel1.Controls.Clear();
             panel1.Controls.Add(this.home);
@@ -589,6 +589,63 @@ namespace BusinessPlanner
                 e.HasMorePages = true;
             else
                 e.HasMorePages = false;
+        }
+
+        private void ShowToolbarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var temp = (ToolStripMenuItem)sender;
+            if(temp.CheckState==CheckState.Checked)
+            {
+                temp.CheckState = CheckState.Unchecked;
+                toolStripContainer1.Hide();
+                this.Refresh();
+            }
+            else
+            {
+                temp.CheckState = CheckState.Checked;
+                toolStripContainer1.Show();
+                this.Refresh();
+            }
+        }
+
+        private void ShowTasksMenu_Click(object sender, EventArgs e)
+        {
+            var temp = (ToolStripMenuItem)sender;
+            if (temp.CheckState == CheckState.Checked)
+            {
+                temp.CheckState = CheckState.Unchecked;
+                splitContainer1.Panel1.Hide();
+                this.Refresh();
+            }
+            else
+            {
+                temp.CheckState = CheckState.Checked;
+                splitContainer1.Panel1.Show();
+                this.Refresh();
+            }
+        }
+
+        private void ReportsMenu_Click(object sender, EventArgs e)
+        {
+            ReportWindow rep = new ReportWindow();
+            rep.Show();
+        }
+
+        private void OutlineMenu_Click(object sender, EventArgs e)
+        {
+            OutlineWindow ouw = new OutlineWindow();
+            ouw.Show();
+        }
+
+        private void PlanReviewMenu_Click(object sender, EventArgs e)
+        {
+            ReviewWindow rew = new ReviewWindow();
+            rew.Show();
+        }
+
+        private void CurrencyRateMenu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

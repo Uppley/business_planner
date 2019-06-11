@@ -31,36 +31,61 @@ namespace BusinessPlanner
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["data_save"]);
-            try
+            if(validateData())
             {
-                ls.show();
-                ExcelReader excelReader = new ExcelReader();
-                excelReader.saveExcelFromDataGridView(
-                    new DataGridView[1] { dataGridView1 },
-                    new int[1] { 1 },
-                    new string[1] { "Market Analysis" }
-                );
-                TableGenerator tbl = new TableGenerator();
-                tbl.Generate(dataGridView1,"market_analysis.rtf");
-                ChartGenerator cgen = new ChartGenerator();
-                cgen.generatePieChart(dataGridView1,"generated.png","Market Analysis");
-                cgen.ImageToRtf("market_analysis.rtf", "generated.png");
-                excelReader.Close();
-                Label l = mw.Controls.Find("label4", true)[0] as Label;
-                ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
-                dgp.updateProgress("market_analysis.rtf", dataGridView1.Rows.Count > 0 ? 1 : 0);
-                l.Text = dgp.completedSteps().ToString() + " /";
-                pbar.Value = dgp.completedSteps();
-                l.Refresh();
+                LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["data_save"]);
+                try
+                {
+                    ls.show();
+                    ExcelReader excelReader = new ExcelReader();
+                    excelReader.saveExcelFromDataGridView(
+                        new DataGridView[1] { dataGridView1 },
+                        new int[1] { 1 },
+                        new string[1] { "Market Analysis" }
+                    );
+                    TableGenerator tbl = new TableGenerator();
+                    tbl.Generate(dataGridView1, "market_analysis.rtf");
+                    ChartGenerator cgen = new ChartGenerator();
+                    cgen.generatePieChart(dataGridView1, "generated.png", "Market Analysis");
+                    cgen.ImageToRtf("market_analysis.rtf", "generated.png");
+                    excelReader.Close();
+                    Label l = mw.Controls.Find("label4", true)[0] as Label;
+                    ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
+                    dgp.updateProgress("market_analysis.rtf", dataGridView1.Rows.Count > 0 ? 1 : 0);
+                    l.Text = dgp.completedSteps().ToString() + " /";
+                    pbar.Value = dgp.completedSteps();
+                    l.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception: " + ex.Message);
+                }
+                finally
+                {
+                    ls.hide();
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Exception: " + ex.Message);
+                MessageBox.Show("Percentage cannot exceed 100 !");
             }
-            finally
+            
+        }
+
+        private bool validateData()
+        {
+            int sum = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
-                ls.hide();
+                sum += Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
+            }
+            if(sum>100)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

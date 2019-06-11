@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartWindow));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
@@ -77,6 +78,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.tableLayoutPanel2);
             this.groupBox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -87,13 +89,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Open Existing Plan";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(11, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(146, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Recently opened projects";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.linkLabel5);
             this.panel1.Location = new System.Drawing.Point(6, 183);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(67, 25);
+            this.panel1.Size = new System.Drawing.Size(113, 25);
             this.panel1.TabIndex = 6;
             // 
             // pictureBox3
@@ -112,10 +124,10 @@
             this.linkLabel5.Font = new System.Drawing.Font("Arial", 8F);
             this.linkLabel5.Location = new System.Drawing.Point(21, 3);
             this.linkLabel5.Name = "linkLabel5";
-            this.linkLabel5.Size = new System.Drawing.Size(40, 16);
+            this.linkLabel5.Size = new System.Drawing.Size(90, 16);
             this.linkLabel5.TabIndex = 3;
             this.linkLabel5.TabStop = true;
-            this.linkLabel5.Text = "More";
+            this.linkLabel5.Text = "Browse More";
             this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel5_LinkClicked);
             // 
             // tableLayoutPanel2
@@ -123,11 +135,11 @@
             this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 29);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 54);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(245, 26);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
@@ -282,5 +294,6 @@
         private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label2;
     }
 }
