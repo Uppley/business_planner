@@ -53,10 +53,30 @@ namespace BusinessPlanner
             label5.Text = dpg.totalSteps().ToString() + " tasks completed";
             progressBar1.Maximum = dpg.totalSteps();
             progressBar1.Value = dpg.completedSteps();
+            if(dashboard == null)
+            {
+                activateEditMenus(0);
+            }
             //splitContainer1.SplitterDistance = splitDist;
 
         }
 
+        private void activateEditMenus(int v)
+        {
+            ToolStripItemCollection tsic = ((ToolStripMenuItem)editToolStripMenuItem).DropDownItems;
+
+            foreach (ToolStripItem tsi in tsic)
+            {
+                if(v==1)
+                {
+                    tsi.Enabled = true;
+                }
+                else
+                {
+                    tsi.Enabled = false;
+                }
+            }
+        }
 
         public void setTreeNodes()
         {
@@ -107,6 +127,7 @@ namespace BusinessPlanner
                 panel1.Controls.Clear();
                 panel1.Controls.Add(this.home);
                 this.home.Show();
+                activateEditMenus(0);
             }
             else
             {
@@ -120,41 +141,52 @@ namespace BusinessPlanner
                         if (this.treeView1.SelectedNode.Text == "Sales Forecast Table")
                         {
                             ForecastWindow frw = new ForecastWindow(this);
+                            activateEditMenus(0);
                             frw.TopLevel = false;
                             panel1.Controls.Clear();
                             panel1.Controls.Add(frw);
                             frw.Show();
-                        }else if(this.treeView1.SelectedNode.Text == "Start Up Investment")
+                            
+                        }
+                        else if(this.treeView1.SelectedNode.Text == "Start Up Investment")
                         {
                             StartUpWindow stw = new StartUpWindow(this);
+                            activateEditMenus(0);
                             stw.TopLevel = false;
                             panel1.Controls.Clear();
                             panel1.Controls.Add(stw);
                             stw.Show();
+                            
                         }
                         else if (this.treeView1.SelectedNode.Text == "Company Expenditure")
                         {
                             ExpenditureWindow stw = new ExpenditureWindow(this);
+                            activateEditMenus(0);
                             stw.TopLevel = false;
                             panel1.Controls.Clear();
                             panel1.Controls.Add(stw);
                             stw.Show();
+                            
                         }
                         else if (this.treeView1.SelectedNode.Text == "Analysis Table")
                         {
                             AnalysisWindow stw = new AnalysisWindow(this);
+                            activateEditMenus(0);
                             stw.TopLevel = false;
                             panel1.Controls.Clear();
                             panel1.Controls.Add(stw);
                             stw.Show();
+                            
                         }
                         else
                         {
                             dashboard = new Dashboard(this, ProjectConfig.projectFile);
+                            activateEditMenus(1);
                             dashboard.TopLevel = false;
                             panel1.Controls.Clear();
                             panel1.Controls.Add(dashboard);
                             dashboard.Show();
+                            
                         }
                     }
                     catch (Exception ex)
@@ -169,6 +201,7 @@ namespace BusinessPlanner
                 else
                 {
                     SectionIntro si = new SectionIntro(this.treeView1.SelectedNode.Text);
+                    activateEditMenus(0);
                     si.TopLevel = false;
                     panel1.Controls.Clear();
                     panel1.Controls.Add(si);
@@ -739,6 +772,12 @@ namespace BusinessPlanner
             {
                 dashboard.richTextBox1.Text = dashboard.richTextBox1.Text.Replace(hpl.searchTerm, hpl.newTerm);
             }
+        }
+
+        private void AddNewEventToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MeetingDialog med = new MeetingDialog();
+            med.Show();
         }
     }
 }
