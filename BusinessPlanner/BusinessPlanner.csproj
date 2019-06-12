@@ -164,6 +164,12 @@
     </Compile>
     <Compile Include="Models\Data.cs" />
     <Compile Include="Models\MarketItem.cs" />
+    <Compile Include="Partials\_ReplaceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partials\_ReplaceDialog.Designer.cs">
+      <DependentUpon>_ReplaceDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Partials\_FindDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Partials\_ReplaceDialog.resx">
+      <DependentUpon>_ReplaceDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Partials\_FindDialog.resx">
       <DependentUpon>_FindDialog.cs</DependentUpon>

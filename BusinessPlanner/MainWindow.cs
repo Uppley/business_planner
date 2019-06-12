@@ -20,6 +20,7 @@ using Newtonsoft.Json;
 using Task = System.Threading.Tasks.Task;
 using System.Drawing.Printing;
 using RichTextBoxPrintCtrl;
+using BusinessPlanner.Partials;
 
 namespace BusinessPlanner
 {
@@ -653,7 +654,91 @@ namespace BusinessPlanner
 
         private void ModifyProjectNameMenu_Click(object sender, EventArgs e)
         {
+            _ProjectNameDialog pnd = new _ProjectNameDialog();
+            pnd.oldName = label1.Text;
+            DialogResult pnd_data = pnd.ShowDialog(this);
+            if (pnd_data == DialogResult.OK)
+            {
+                
+                label1.Text = pnd.newName.ToUpper();
+                
+            }
+        }
+
+        //undo
+        private void ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+            if (dashboard.richTextBox1.CanUndo)
+                dashboard.richTextBox1.Undo();
+        }
+
+        //redo
+        private void ToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            if (dashboard.richTextBox1.CanRedo)
+                dashboard.richTextBox1.Redo();
+        }
+
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dashboard.richTextBox1.Cut();
+        }
+
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dashboard.richTextBox1.Copy();
+        }
+
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dashboard.richTextBox1.Paste();
+        }
+
+
+        private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dashboard.richTextBox1.SelectAll();
+        }
+
+        private void FindToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             
+            _FindDialog hpl = new _FindDialog();
+            DialogResult hpl_data = hpl.ShowDialog(this);
+            if (hpl_data == DialogResult.OK)
+            {
+                if (hpl.searchTerm.Length > 0)
+                {
+                    dashboard.findLength = hpl.searchTerm.Length;
+                    int startIndex = 0;
+                    while (startIndex < dashboard.richTextBox1.TextLength)
+                    {
+                        int wordStartIndex = dashboard.richTextBox1.Find(hpl.searchTerm, startIndex, RichTextBoxFinds.None);
+                        if (wordStartIndex != -1)
+                        {
+                            dashboard.richTextBox1.SelectionStart = wordStartIndex;
+                            dashboard.richTextBox1.SelectionLength = hpl.searchTerm.Length;
+                            dashboard.richTextBox1.SelectionBackColor = Color.Yellow;
+                            dashboard.findPosition.Add(wordStartIndex);
+                        }
+                        else
+                            break;
+                        startIndex += wordStartIndex + hpl.searchTerm.Length;
+                    }
+
+                }
+            }
+        }
+
+        private void ReplaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _ReplaceDialog hpl = new _ReplaceDialog();
+            DialogResult hpl_data = hpl.ShowDialog(this);
+            if (hpl_data == DialogResult.OK)
+            {
+                dashboard.richTextBox1.Text = dashboard.richTextBox1.Text.Replace(hpl.searchTerm, hpl.newTerm);
+            }
         }
     }
 }

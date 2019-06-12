@@ -28,35 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.projectName = new System.Windows.Forms.TextBox();
+            this.modifyBt = new System.Windows.Forms.Button();
+            this.cancelBt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // projectName
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(341, 22);
-            this.textBox1.TabIndex = 0;
+            this.projectName.Location = new System.Drawing.Point(13, 35);
+            this.projectName.Name = "projectName";
+            this.projectName.Size = new System.Drawing.Size(341, 22);
+            this.projectName.TabIndex = 0;
             // 
-            // button1
+            // modifyBt
             // 
-            this.button1.Location = new System.Drawing.Point(232, 94);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Modify";
-            this.button1.UseVisualStyleBackColor = true;
+            this.modifyBt.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.modifyBt.Location = new System.Drawing.Point(232, 94);
+            this.modifyBt.Name = "modifyBt";
+            this.modifyBt.Size = new System.Drawing.Size(121, 34);
+            this.modifyBt.TabIndex = 1;
+            this.modifyBt.Text = "Modify";
+            this.modifyBt.UseVisualStyleBackColor = true;
+            this.modifyBt.Click += new System.EventHandler(this.ModifyBt_Click);
+            // 
+            // cancelBt
+            // 
+            this.cancelBt.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelBt.Location = new System.Drawing.Point(91, 94);
+            this.cancelBt.Name = "cancelBt";
+            this.cancelBt.Size = new System.Drawing.Size(121, 34);
+            this.cancelBt.TabIndex = 2;
+            this.cancelBt.Text = "Cancel";
+            this.cancelBt.UseVisualStyleBackColor = true;
+            this.cancelBt.Click += new System.EventHandler(this.CancelBt_Click);
             // 
             // _ProjectNameDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 156);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cancelBt);
+            this.Controls.Add(this.modifyBt);
+            this.Controls.Add(this.projectName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "_ProjectNameDialog";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Modify Project Name";
+            this.Load += new System.EventHandler(this._ProjectNameDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -64,7 +85,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox projectName;
+        private System.Windows.Forms.Button modifyBt;
+        private System.Windows.Forms.Button cancelBt;
     }
 }

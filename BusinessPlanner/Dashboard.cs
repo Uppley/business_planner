@@ -17,9 +17,10 @@ namespace BusinessPlanner
 {
     public partial class Dashboard : Form
     {
-        List<int> findPosition = new List<int>();
-        int findLength = 0;
+        public List<int> findPosition = new List<int>();
+        public int findLength = 0;
         string file_loaded;
+        
         public string richtext { get; set; }
         MainWindow mw;
         DocumentProgressor dgp;
@@ -48,12 +49,14 @@ namespace BusinessPlanner
             richTextBox1.ZoomFactor = 1.0f;
             toolStripComboBox2.SelectedIndex = 2;
             dgp = new DocumentProgressor();
+            
         }
+
+        
 
         private void setContentInitial(String name)
         {
 
-            
             try
             {
                 
@@ -452,5 +455,7 @@ namespace BusinessPlanner
             Clipboard.SetText(label4.Text);
             richTextBox1.Paste();
         }
+
+        
     }
 }

@@ -358,7 +358,7 @@
             this.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSave.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(23, 27);
+            this.btnSave.Size = new System.Drawing.Size(29, 27);
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
@@ -370,7 +370,7 @@
             this.btnGemBoxCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGemBoxCut.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.btnGemBoxCut.Name = "btnGemBoxCut";
-            this.btnGemBoxCut.Size = new System.Drawing.Size(23, 27);
+            this.btnGemBoxCut.Size = new System.Drawing.Size(29, 27);
             this.btnGemBoxCut.Text = "Cut";
             this.btnGemBoxCut.Click += new System.EventHandler(this.btnGemBoxCut_Click_1);
             // 
@@ -382,7 +382,7 @@
             this.btnGemBoxCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGemBoxCopy.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.btnGemBoxCopy.Name = "btnGemBoxCopy";
-            this.btnGemBoxCopy.Size = new System.Drawing.Size(23, 27);
+            this.btnGemBoxCopy.Size = new System.Drawing.Size(29, 27);
             this.btnGemBoxCopy.Text = "Copy";
             this.btnGemBoxCopy.Click += new System.EventHandler(this.btnGemBoxCopy_Click_1);
             // 
@@ -394,7 +394,7 @@
             this.btnGemBoxPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnGemBoxPaste.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.btnGemBoxPaste.Name = "btnGemBoxPaste";
-            this.btnGemBoxPaste.Size = new System.Drawing.Size(23, 27);
+            this.btnGemBoxPaste.Size = new System.Drawing.Size(29, 27);
             this.btnGemBoxPaste.Text = "Paste";
             this.btnGemBoxPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
@@ -406,7 +406,7 @@
             this.btnUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnUndo.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(23, 27);
+            this.btnUndo.Size = new System.Drawing.Size(29, 27);
             this.btnUndo.Text = "Undo";
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click_1);
             // 
@@ -418,7 +418,7 @@
             this.btnRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRedo.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(23, 27);
+            this.btnRedo.Size = new System.Drawing.Size(29, 27);
             this.btnRedo.Text = "Redo";
             this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click_1);
             // 
@@ -449,7 +449,7 @@
             this.boldBt.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.boldBt.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.boldBt.Name = "boldBt";
-            this.boldBt.Size = new System.Drawing.Size(23, 27);
+            this.boldBt.Size = new System.Drawing.Size(29, 27);
             this.boldBt.Text = "Bold Text";
             this.boldBt.Click += new System.EventHandler(this.btnBold_Click);
             // 
@@ -461,7 +461,7 @@
             this.italicBt.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.italicBt.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.italicBt.Name = "italicBt";
-            this.italicBt.Size = new System.Drawing.Size(23, 27);
+            this.italicBt.Size = new System.Drawing.Size(29, 27);
             this.italicBt.Text = "Italic Text";
             this.italicBt.Click += new System.EventHandler(this.btnItalic_Click);
             // 
@@ -473,7 +473,7 @@
             this.underBt.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.underBt.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.underBt.Name = "underBt";
-            this.underBt.Size = new System.Drawing.Size(23, 27);
+            this.underBt.Size = new System.Drawing.Size(29, 27);
             this.underBt.Text = "Underline Text";
             this.underBt.Click += new System.EventHandler(this.btnUnderline_Click);
             // 
@@ -490,7 +490,7 @@
             this.toggleFont.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toggleFont.Margin = new System.Windows.Forms.Padding(10, 0, 5, 0);
             this.toggleFont.Name = "toggleFont";
-            this.toggleFont.Size = new System.Drawing.Size(23, 27);
+            this.toggleFont.Size = new System.Drawing.Size(29, 27);
             this.toggleFont.Text = "Indent Right";
             this.toggleFont.Click += new System.EventHandler(this.btnIncreaseIndentation_Click);
             // 
@@ -502,7 +502,7 @@
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton5.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton5.Text = "Indent Left";
             this.toolStripButton5.Click += new System.EventHandler(this.btnDecreaseIndentation_Click);
             // 
@@ -514,7 +514,7 @@
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton7.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton7.Text = "Unordered Lists";
             this.toolStripButton7.Click += new System.EventHandler(this.btnToggleBullets_Click);
             // 
@@ -526,7 +526,7 @@
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton8.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton8.Text = "Left Align";
             this.toolStripButton8.Click += new System.EventHandler(this.btnAlignLeft_Click);
             // 
@@ -538,7 +538,7 @@
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton9.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton9.Text = "Center Align";
             this.toolStripButton9.Click += new System.EventHandler(this.btnAlignCenter_Click);
             // 
@@ -550,7 +550,7 @@
             this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton10.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton10.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton10.Text = "Right Align";
             this.toolStripButton10.Click += new System.EventHandler(this.btnAlignRight_Click);
             // 
@@ -588,7 +588,7 @@
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton4.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton4.Text = "Hyperlink";
             this.toolStripButton4.Click += new System.EventHandler(this.ToolStripButton4_Click);
             // 
@@ -600,7 +600,7 @@
             this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton13.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton13.Name = "toolStripButton13";
-            this.toolStripButton13.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton13.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton13.Text = "Insert Image";
             this.toolStripButton13.Click += new System.EventHandler(this.ToolStripButton13_Click);
             // 
@@ -612,7 +612,7 @@
             this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton14.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton14.Name = "toolStripButton14";
-            this.toolStripButton14.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton14.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton14.Text = "Insert Table";
             this.toolStripButton14.Click += new System.EventHandler(this.ToolStripButton14_Click);
             // 
@@ -624,7 +624,7 @@
             this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton15.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton15.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton15.Text = "Forecolor";
             this.toolStripButton15.Click += new System.EventHandler(this.ToolStripButton15_Click);
             // 
@@ -636,7 +636,7 @@
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton1.Text = "Backcolor";
             this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButton1_Click);
             // 
@@ -648,7 +648,7 @@
             this.toolStripButton16.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton16.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(23, 27);
+            this.toolStripButton16.Size = new System.Drawing.Size(29, 27);
             this.toolStripButton16.Text = "Look Up";
             this.toolStripButton16.Click += new System.EventHandler(this.ToolStripButton16_Click);
             // 
@@ -812,7 +812,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
@@ -828,5 +827,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
