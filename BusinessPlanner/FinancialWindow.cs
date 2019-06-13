@@ -219,10 +219,9 @@ namespace BusinessPlanner
 
         private void SaveBt_Click(object sender, EventArgs e)
         {
-            LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["data_save"]);
+            
             try
             {
-                ls.show();
                 
                 this.richTextBox1.SaveFile(ProjectConfig.projectPath + "\\" + "financial_statement.rtf");
                 Label l = mw.Controls.Find("label4", true)[0] as Label;
@@ -231,15 +230,13 @@ namespace BusinessPlanner
                 l.Text = dgp.completedSteps().ToString() + " /";
                 pbar.Value = dgp.completedSteps();
                 l.Refresh();
+                MessageBox.Show("Saved successfully !");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Exception: " + ex.Message);
             }
-            finally
-            {
-                ls.hide();
-            }
+            
         }
     }
 }
