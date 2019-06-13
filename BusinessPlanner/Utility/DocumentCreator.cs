@@ -168,6 +168,7 @@ namespace BusinessPlanner.Utility
                 bp.AddSetting("PlanType", planType);
                 bp.AddSetting("Currency", getCurrency(AppUtilities.mainData["step2"]));
                 bp.AddSetting("StartUp", data["is_startup"]);
+                bp.AddSetting("Duration", plan_duration);
                 bp.AddSetting("SWOT", isSWOT(AppUtilities.mainData["step6"]).ToString());
                 bp.AddSetting("Website", isWeb(AppUtilities.mainData["step6"]).ToString());
                 foreach (var d in documentList)
@@ -251,7 +252,7 @@ namespace BusinessPlanner.Utility
                 bp.AddSetting("PlanType", planType);
                 bp.AddSetting("Currency", getCurrency(AppUtilities.mainData["step2"]));
                 bp.AddSetting("StartUp", data["is_startup"]);
-                
+                bp.AddSetting("Duration", plan_duration);
                 foreach (var d in documentList)
                 {
                     if (d.Ftype == "rtf")

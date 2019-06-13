@@ -156,6 +156,12 @@
     <Compile Include="FinancialSteps\FStep7Dialog.Designer.cs">
       <DependentUpon>FStep7Dialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FinancialWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinancialWindow.Designer.cs">
+      <DependentUpon>FinancialWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ForecastWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FinancialSteps\FStep7Dialog.resx">
       <DependentUpon>FStep7Dialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinancialWindow.resx">
+      <DependentUpon>FinancialWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForecastWindow.resx">
       <DependentUpon>ForecastWindow.cs</DependentUpon>

@@ -178,6 +178,15 @@ namespace BusinessPlanner
                             stw.Show();
                             
                         }
+                        else if(this.treeView1.SelectedNode.Text== "Financial Statement")
+                        {
+                            FinancialWindow fiw = new FinancialWindow(this);
+                            activateEditMenus(0);
+                            fiw.TopLevel = false;
+                            panel1.Controls.Clear();
+                            panel1.Controls.Add(fiw);
+                            fiw.Show();
+                        }
                         else
                         {
                             dashboard = new Dashboard(this, ProjectConfig.projectFile);
