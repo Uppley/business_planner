@@ -21,6 +21,8 @@ using Task = System.Threading.Tasks.Task;
 using System.Drawing.Printing;
 using RichTextBoxPrintCtrl;
 using BusinessPlanner.Partials;
+using BP.CurrencyFetcher;
+using System.Configuration;
 
 namespace BusinessPlanner
 {
@@ -53,12 +55,33 @@ namespace BusinessPlanner
             label5.Text = dpg.totalSteps().ToString() + " tasks completed";
             progressBar1.Maximum = dpg.totalSteps();
             progressBar1.Value = dpg.completedSteps();
+            
+            if(currency.Text!="N.A.")
+            {
+                fromCurr.Text = "1 " + currency.Text + " = ";
+                getCurrencyRateAsync();
+            }
+            
             if(dashboard == null)
             {
                 activateEditMenus(0);
             }
             //splitContainer1.SplitterDistance = splitDist;
 
+        }
+
+        private async void getCurrencyRateAsync()
+        {
+            CurrencyFetcher currencyFetcher = new CurrencyFetcher();
+            string res = await currencyFetcher.GetExchangeRate(Properties.Settings.Default.currency_api, currency.Text, "USD");
+            if(res=="error")
+            {
+                toCurr.Text = "undefined";
+            }
+            else
+            {
+                toCurr.Text = res+" USD";
+            }
         }
 
         private void activateEditMenus(int v)
@@ -691,7 +714,18 @@ namespace BusinessPlanner
 
         private void CurrencyRateMenu_Click(object sender, EventArgs e)
         {
+            var temp = (ToolStripMenuItem)sender;
+            if (temp.CheckState == CheckState.Checked)
+            {
+                temp.CheckState = CheckState.Unchecked;
+                currencyPanel.Hide();
 
+            }
+            else
+            {
+                temp.CheckState = CheckState.Checked;
+                currencyPanel.Show();
+            }
         }
 
         private void ModifyProjectNameMenu_Click(object sender, EventArgs e)

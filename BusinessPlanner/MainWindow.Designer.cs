@@ -103,6 +103,9 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.toCurr = new System.Windows.Forms.Label();
+            this.fromCurr = new System.Windows.Forms.Label();
+            this.currencyPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -112,6 +115,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.currencyPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // progressBar1
@@ -364,7 +368,7 @@
             this.showToolbarMenu.Checked = true;
             this.showToolbarMenu.CheckState = System.Windows.Forms.CheckState.Checked;
             this.showToolbarMenu.Name = "showToolbarMenu";
-            this.showToolbarMenu.Size = new System.Drawing.Size(183, 26);
+            this.showToolbarMenu.Size = new System.Drawing.Size(224, 26);
             this.showToolbarMenu.Text = "Toolbar";
             this.showToolbarMenu.Click += new System.EventHandler(this.ShowToolbarToolStripMenuItem_Click);
             // 
@@ -373,35 +377,37 @@
             this.showTasksMenu.Checked = true;
             this.showTasksMenu.CheckState = System.Windows.Forms.CheckState.Checked;
             this.showTasksMenu.Name = "showTasksMenu";
-            this.showTasksMenu.Size = new System.Drawing.Size(183, 26);
+            this.showTasksMenu.Size = new System.Drawing.Size(224, 26);
             this.showTasksMenu.Text = "Tasks";
             this.showTasksMenu.Click += new System.EventHandler(this.ShowTasksMenu_Click);
             // 
             // reportsMenu
             // 
             this.reportsMenu.Name = "reportsMenu";
-            this.reportsMenu.Size = new System.Drawing.Size(183, 26);
+            this.reportsMenu.Size = new System.Drawing.Size(224, 26);
             this.reportsMenu.Text = "Reports";
             this.reportsMenu.Click += new System.EventHandler(this.ReportsMenu_Click);
             // 
             // outlineMenu
             // 
             this.outlineMenu.Name = "outlineMenu";
-            this.outlineMenu.Size = new System.Drawing.Size(183, 26);
+            this.outlineMenu.Size = new System.Drawing.Size(224, 26);
             this.outlineMenu.Text = "Outline";
             this.outlineMenu.Click += new System.EventHandler(this.OutlineMenu_Click);
             // 
             // planReviewMenu
             // 
             this.planReviewMenu.Name = "planReviewMenu";
-            this.planReviewMenu.Size = new System.Drawing.Size(183, 26);
+            this.planReviewMenu.Size = new System.Drawing.Size(224, 26);
             this.planReviewMenu.Text = "Plan Review";
             this.planReviewMenu.Click += new System.EventHandler(this.PlanReviewMenu_Click);
             // 
             // currencyRateMenu
             // 
+            this.currencyRateMenu.Checked = true;
+            this.currencyRateMenu.CheckState = System.Windows.Forms.CheckState.Checked;
             this.currencyRateMenu.Name = "currencyRateMenu";
-            this.currencyRateMenu.Size = new System.Drawing.Size(183, 26);
+            this.currencyRateMenu.Size = new System.Drawing.Size(224, 26);
             this.currencyRateMenu.Text = "Currency Rate";
             this.currencyRateMenu.Click += new System.EventHandler(this.CurrencyRateMenu_Click);
             // 
@@ -844,6 +850,42 @@
             this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.PrintDocument1_BeginPrint);
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.PrintDocument1_PrintPage);
             // 
+            // toCurr
+            // 
+            this.toCurr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toCurr.AutoSize = true;
+            this.toCurr.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toCurr.Location = new System.Drawing.Point(76, 8);
+            this.toCurr.Name = "toCurr";
+            this.toCurr.Size = new System.Drawing.Size(113, 17);
+            this.toCurr.TabIndex = 16;
+            this.toCurr.Text = "0.272238 USD";
+            // 
+            // fromCurr
+            // 
+            this.fromCurr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fromCurr.AutoSize = true;
+            this.fromCurr.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromCurr.Location = new System.Drawing.Point(8, 8);
+            this.fromCurr.Name = "fromCurr";
+            this.fromCurr.Size = new System.Drawing.Size(72, 17);
+            this.fromCurr.TabIndex = 17;
+            this.fromCurr.Text = "1 AED = ";
+            // 
+            // currencyPanel
+            // 
+            this.currencyPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.currencyPanel.BackColor = System.Drawing.Color.White;
+            this.currencyPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.currencyPanel.Controls.Add(this.fromCurr);
+            this.currencyPanel.Controls.Add(this.toCurr);
+            this.currencyPanel.Location = new System.Drawing.Point(508, 680);
+            this.currencyPanel.Name = "currencyPanel";
+            this.currencyPanel.Size = new System.Drawing.Size(200, 35);
+            this.currencyPanel.TabIndex = 18;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -851,6 +893,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1006, 723);
+            this.Controls.Add(this.currencyPanel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.currency);
             this.Controls.Add(this.label2);
@@ -880,6 +923,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.currencyPanel.ResumeLayout(false);
+            this.currencyPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -961,5 +1006,8 @@
         private System.Windows.Forms.ToolStripMenuItem addNewContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewContactsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
+        private System.Windows.Forms.Label toCurr;
+        private System.Windows.Forms.Label fromCurr;
+        private System.Windows.Forms.Panel currencyPanel;
     }
 }

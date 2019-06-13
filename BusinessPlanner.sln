@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessPlanner", "Business
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BP.Data", "BP.Data\BP.Data.csproj", "{9461ECF0-1779-4F19-B081-BF9497D9D707}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BP.CurrencyFetcher", "BP.CurrencyFetcher\BP.CurrencyFetcher.csproj", "{9783D036-49B7-4806-A745-177E64D6B2FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{9461ECF0-1779-4F19-B081-BF9497D9D707}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9461ECF0-1779-4F19-B081-BF9497D9D707}.Release|x86.ActiveCfg = Release|Any CPU
 		{9461ECF0-1779-4F19-B081-BF9497D9D707}.Release|x86.Build.0 = Release|Any CPU
+		{9783D036-49B7-4806-A745-177E64D6B2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9783D036-49B7-4806-A745-177E64D6B2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9783D036-49B7-4806-A745-177E64D6B2FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9783D036-49B7-4806-A745-177E64D6B2FF}.Debug|x86.Build.0 = Debug|Any CPU
+		{9783D036-49B7-4806-A745-177E64D6B2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9783D036-49B7-4806-A745-177E64D6B2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9783D036-49B7-4806-A745-177E64D6B2FF}.Release|x86.ActiveCfg = Release|Any CPU
+		{9783D036-49B7-4806-A745-177E64D6B2FF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
