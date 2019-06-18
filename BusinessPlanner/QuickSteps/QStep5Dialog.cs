@@ -19,9 +19,9 @@ namespace BusinessPlanner
         public QStep5Dialog()
         {
             InitializeComponent();
-            if (AppUtilities.mainData.ContainsKey("step5"))
+            if (AppUtilities.mainData.ContainsKey("sellType"))
             {
-                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == AppUtilities.mainData["step5"].ToString());
+                var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Text == AppUtilities.mainData["sellType"].ToString());
                 cb.Checked = true;
             }
         }
@@ -43,7 +43,7 @@ namespace BusinessPlanner
         {
             var cb = this.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
             this.mData = cb.Text;
-            AppUtilities.CreateOrUpdateDict("step5", this.mData);
+            AppUtilities.CreateOrUpdateDict("sellType", this.mData);
             LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["document_created"]);
             //this.Close();
             try

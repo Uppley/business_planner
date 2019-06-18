@@ -1,5 +1,6 @@
 ﻿using BusinessPlanner.Partials;
 using BusinessPlanner.Utility;
+using NHunspellComponent.Spelling;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,6 +51,7 @@ namespace BusinessPlanner
             toolStripComboBox2.SelectedIndex = 2;
             dgp = new DocumentProgressor();
             
+
         }
 
         
@@ -226,10 +228,7 @@ namespace BusinessPlanner
 
        
 
-        private void richTextBox1_TextChanged(object sender, KeyEventArgs e)
-        {
-            label2.Text = "Editing";
-        }
+        
 
         private void ToolStripButton13_Click(object sender, EventArgs e)
         {
@@ -447,7 +446,16 @@ namespace BusinessPlanner
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
+
             label2.Text = "Editing";
+            if (richTextBox1.CanUndo)
+                btnUndo.Enabled = true;
+            else
+                btnUndo.Enabled = false;
+            if (richTextBox1.CanRedo)
+                btnRedo.Enabled = true;
+            else
+                btnRedo.Enabled = false;
         }
 
         private void Button1_Click(object sender, EventArgs e)

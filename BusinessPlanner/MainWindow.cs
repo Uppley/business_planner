@@ -55,19 +55,22 @@ namespace BusinessPlanner
             label5.Text = dpg.totalSteps().ToString() + " tasks completed";
             progressBar1.Maximum = dpg.totalSteps();
             progressBar1.Value = dpg.completedSteps();
-            
-            if(currency.Text!="N.A.")
-            {
-                fromCurr.Text = "1 " + currency.Text + " = ";
-                getCurrencyRateAsync();
-            }
-            
+            currencyHandler();
             if(dashboard == null)
             {
                 activateEditMenus(0);
             }
             //splitContainer1.SplitterDistance = splitDist;
 
+        }
+
+        private void currencyHandler()
+        {
+            if (currency.Text != "N.A.")
+            {
+                fromCurr.Text = "1 " + currency.Text + " = ";
+                getCurrencyRateAsync();
+            }
         }
 
         private async void getCurrencyRateAsync()
@@ -353,7 +356,7 @@ namespace BusinessPlanner
                 
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
-
+                int seq = 1;
                 List<DocumentItem> allFiles = documentList.FindAll(x=>x.Ftype=="rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
                 foreach(DocumentItem doc in allFiles)
                 {
@@ -361,10 +364,11 @@ namespace BusinessPlanner
                     rtb1.SelectAll();
                     rtb1.Copy();
                     rtb2.SelectionFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold |FontStyle.Underline);
-                    rtb2.AppendText("\n\n"+doc.Seq+". "+doc.ItemName+"\n\n");
+                    rtb2.AppendText("\n\n"+seq+". "+doc.ItemName+"\n\n");
                     rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                     rtb2.Paste();
                     Clipboard.Clear();
+                    seq += 1;
                 }
                 ExportGenerator document = new ExportGenerator();
                 document.open();
@@ -415,6 +419,7 @@ namespace BusinessPlanner
                 
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
+                int seq = 1;
                 List<DocumentItem> allFiles = documentList.FindAll(x => x.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
                 foreach (DocumentItem doc in allFiles)
                 {
@@ -422,10 +427,11 @@ namespace BusinessPlanner
                     rtb1.SelectAll();
                     rtb1.Copy();
                     rtb2.SelectionFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
-                    rtb2.AppendText("\n\n" + doc.Seq + ". " + doc.ItemName + "\n\n");
+                    rtb2.AppendText("\n\n" + seq + ". " + doc.ItemName + "\n\n");
                     rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                     rtb2.Paste();
                     Clipboard.Clear();
+                    seq += 1;
                 }
                 ExportGenerator document = new ExportGenerator();
                 document.open();
@@ -634,8 +640,7 @@ namespace BusinessPlanner
             Clipboard.Clear();
             RichTextBox rtb1 = new RichTextBox();
             RichTextBoxPrintCtrl.RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtb2 = new RichTextBoxPrintCtrl.RichTextBoxPrintCtrl.RichTextBoxPrintCtrl();
-
-
+            int seq = 1;
             List<DocumentItem> allFiles = documentList.FindAll(z => z.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + z.DocumentName)).OrderBy(z => z.Seq).ToList();
             foreach (DocumentItem doc in allFiles)
             {
@@ -643,12 +648,11 @@ namespace BusinessPlanner
                 rtb1.SelectAll();
                 rtb1.Copy();
                 rtb2.SelectionFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
-                rtb2.AppendText("\n\n" + doc.Seq + ". " + doc.ItemName + "\n\n");
+                rtb2.AppendText("\n\n" + seq + ". " + doc.ItemName + "\n\n");
                 rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
                 rtb2.Paste();
                 Clipboard.Clear();
-                
-                
+                seq += 1;
             }
             checkprint = rtb2.Print(checkprint, rtb2.TextLength, e);
 
@@ -817,10 +821,83 @@ namespace BusinessPlanner
             }
         }
 
+        private void ModifyCurrency_Click(object sender, EventArgs e)
+        {
+            _CurrencyDialog cnd = new _CurrencyDialog();
+            cnd.oldName = currency.Text;
+            DialogResult pnd_data = cnd.ShowDialog(this);
+            if (pnd_data == DialogResult.OK)
+            {
+
+                currency.Text = cnd.newName.ToUpper();
+                currencyHandler();
+            }
+        }
+
         private void AddNewEventToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MeetingDialog med = new MeetingDialog();
             med.Show();
+        }
+
+        private void AddNewContactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ContactDialog cod = new ContactDialog();
+            cod.Show();
+        }
+
+        private void ViewContactsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewContact vco = new viewContact();
+            vco.Show();
+        }
+
+        private void ViewEventsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewMeeting vem = new viewMeeting();
+            vem.Show();
+        }
+
+        private void SpellCheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var temp = (ToolStripMenuItem)sender;
+            if (temp.CheckState == CheckState.Checked)
+            {
+                temp.CheckState = CheckState.Unchecked;
+                dashboard.Dispose();
+                dashboard = new Dashboard(this, ProjectConfig.projectFile);
+                activateEditMenus(1);
+                dashboard.TopLevel = false;
+                panel1.Controls.Clear();
+                panel1.Controls.Add(dashboard);
+                dashboard.Show();
+                dashboard.spellingWorker1.IsEditorSpellingEnabled = false;
+                dashboard.spellingWorker1.Editor.IsSpellingEnabled = false;
+
+            }
+            else
+            {
+                temp.CheckState = CheckState.Checked;
+                dashboard.Dispose();
+                dashboard = new Dashboard(this, ProjectConfig.projectFile);
+                activateEditMenus(1);
+                dashboard.TopLevel = false;
+                panel1.Controls.Clear();
+                panel1.Controls.Add(dashboard);
+                dashboard.Show();
+                dashboard.spellingWorker1.IsEditorSpellingEnabled = true;
+                dashboard.spellingWorker1.Editor.IsSpellingEnabled = true;
+            }
+        }
+
+        private void FAQToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

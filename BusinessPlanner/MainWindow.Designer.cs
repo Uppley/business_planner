@@ -63,15 +63,14 @@
             this.currencyRateMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modifyProjectNameMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.modifyCurrency = new System.Windows.Forms.ToolStripMenuItem();
             this.spellCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nightModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.meetingEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageContactsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewContactsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -368,7 +367,7 @@
             this.showToolbarMenu.Checked = true;
             this.showToolbarMenu.CheckState = System.Windows.Forms.CheckState.Checked;
             this.showToolbarMenu.Name = "showToolbarMenu";
-            this.showToolbarMenu.Size = new System.Drawing.Size(224, 26);
+            this.showToolbarMenu.Size = new System.Drawing.Size(183, 26);
             this.showToolbarMenu.Text = "Toolbar";
             this.showToolbarMenu.Click += new System.EventHandler(this.ShowToolbarToolStripMenuItem_Click);
             // 
@@ -377,28 +376,28 @@
             this.showTasksMenu.Checked = true;
             this.showTasksMenu.CheckState = System.Windows.Forms.CheckState.Checked;
             this.showTasksMenu.Name = "showTasksMenu";
-            this.showTasksMenu.Size = new System.Drawing.Size(224, 26);
+            this.showTasksMenu.Size = new System.Drawing.Size(183, 26);
             this.showTasksMenu.Text = "Tasks";
             this.showTasksMenu.Click += new System.EventHandler(this.ShowTasksMenu_Click);
             // 
             // reportsMenu
             // 
             this.reportsMenu.Name = "reportsMenu";
-            this.reportsMenu.Size = new System.Drawing.Size(224, 26);
+            this.reportsMenu.Size = new System.Drawing.Size(183, 26);
             this.reportsMenu.Text = "Reports";
             this.reportsMenu.Click += new System.EventHandler(this.ReportsMenu_Click);
             // 
             // outlineMenu
             // 
             this.outlineMenu.Name = "outlineMenu";
-            this.outlineMenu.Size = new System.Drawing.Size(224, 26);
+            this.outlineMenu.Size = new System.Drawing.Size(183, 26);
             this.outlineMenu.Text = "Outline";
             this.outlineMenu.Click += new System.EventHandler(this.OutlineMenu_Click);
             // 
             // planReviewMenu
             // 
             this.planReviewMenu.Name = "planReviewMenu";
-            this.planReviewMenu.Size = new System.Drawing.Size(224, 26);
+            this.planReviewMenu.Size = new System.Drawing.Size(183, 26);
             this.planReviewMenu.Text = "Plan Review";
             this.planReviewMenu.Click += new System.EventHandler(this.PlanReviewMenu_Click);
             // 
@@ -407,7 +406,7 @@
             this.currencyRateMenu.Checked = true;
             this.currencyRateMenu.CheckState = System.Windows.Forms.CheckState.Checked;
             this.currencyRateMenu.Name = "currencyRateMenu";
-            this.currencyRateMenu.Size = new System.Drawing.Size(224, 26);
+            this.currencyRateMenu.Size = new System.Drawing.Size(183, 26);
             this.currencyRateMenu.Text = "Currency Rate";
             this.currencyRateMenu.Click += new System.EventHandler(this.CurrencyRateMenu_Click);
             // 
@@ -415,11 +414,10 @@
             // 
             this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modifyProjectNameMenu,
+            this.modifyCurrency,
             this.spellCheckToolStripMenuItem,
-            this.nightModeToolStripMenuItem,
             this.meetingEventsToolStripMenuItem,
-            this.manageContactsToolStripMenuItem,
-            this.checkForUpdatesToolStripMenuItem});
+            this.manageContactsToolStripMenuItem});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
             this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.preferencesToolStripMenuItem.Text = "Preferences";
@@ -431,6 +429,13 @@
             this.modifyProjectNameMenu.Text = "Modify Project Name";
             this.modifyProjectNameMenu.Click += new System.EventHandler(this.ModifyProjectNameMenu_Click);
             // 
+            // modifyCurrency
+            // 
+            this.modifyCurrency.Name = "modifyCurrency";
+            this.modifyCurrency.Size = new System.Drawing.Size(233, 26);
+            this.modifyCurrency.Text = "Modify Currency";
+            this.modifyCurrency.Click += new System.EventHandler(this.ModifyCurrency_Click);
+            // 
             // spellCheckToolStripMenuItem
             // 
             this.spellCheckToolStripMenuItem.Checked = true;
@@ -438,12 +443,7 @@
             this.spellCheckToolStripMenuItem.Name = "spellCheckToolStripMenuItem";
             this.spellCheckToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
             this.spellCheckToolStripMenuItem.Text = "Spell Check";
-            // 
-            // nightModeToolStripMenuItem
-            // 
-            this.nightModeToolStripMenuItem.Name = "nightModeToolStripMenuItem";
-            this.nightModeToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
-            this.nightModeToolStripMenuItem.Text = "Night Mode";
+            this.spellCheckToolStripMenuItem.Click += new System.EventHandler(this.SpellCheckToolStripMenuItem_Click);
             // 
             // meetingEventsToolStripMenuItem
             // 
@@ -457,15 +457,16 @@
             // addNewEventToolStripMenuItem
             // 
             this.addNewEventToolStripMenuItem.Name = "addNewEventToolStripMenuItem";
-            this.addNewEventToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
-            this.addNewEventToolStripMenuItem.Text = "Add New Event";
+            this.addNewEventToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.addNewEventToolStripMenuItem.Text = "Add Meeting";
             this.addNewEventToolStripMenuItem.Click += new System.EventHandler(this.AddNewEventToolStripMenuItem_Click);
             // 
             // viewEventsToolStripMenuItem
             // 
             this.viewEventsToolStripMenuItem.Name = "viewEventsToolStripMenuItem";
-            this.viewEventsToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
-            this.viewEventsToolStripMenuItem.Text = "View Events";
+            this.viewEventsToolStripMenuItem.Size = new System.Drawing.Size(189, 26);
+            this.viewEventsToolStripMenuItem.Text = "View Meetings";
+            this.viewEventsToolStripMenuItem.Click += new System.EventHandler(this.ViewEventsToolStripMenuItem_Click);
             // 
             // manageContactsToolStripMenuItem
             // 
@@ -481,18 +482,14 @@
             this.addNewContactToolStripMenuItem.Name = "addNewContactToolStripMenuItem";
             this.addNewContactToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.addNewContactToolStripMenuItem.Text = "Add New Contact";
+            this.addNewContactToolStripMenuItem.Click += new System.EventHandler(this.AddNewContactToolStripMenuItem_Click);
             // 
             // viewContactsToolStripMenuItem
             // 
             this.viewContactsToolStripMenuItem.Name = "viewContactsToolStripMenuItem";
             this.viewContactsToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.viewContactsToolStripMenuItem.Text = "View Contacts";
-            // 
-            // checkForUpdatesToolStripMenuItem
-            // 
-            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
-            this.checkForUpdatesToolStripMenuItem.Text = "Check For Updates";
+            this.viewContactsToolStripMenuItem.Click += new System.EventHandler(this.ViewContactsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -511,6 +508,7 @@
             this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
             this.fAQToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
             this.fAQToolStripMenuItem.Text = "FAQ";
+            this.fAQToolStripMenuItem.Click += new System.EventHandler(this.FAQToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -519,6 +517,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(186, 26);
             this.toolStripMenuItem1.Text = "Support";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
             // 
             // aboutVersionToolStripMenuItem
             // 
@@ -998,16 +997,15 @@
         private System.Windows.Forms.ToolStripMenuItem currencyRateMenu;
         private System.Windows.Forms.ToolStripMenuItem modifyProjectNameMenu;
         private System.Windows.Forms.ToolStripMenuItem spellCheckToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nightModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem meetingEventsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewEventToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewEventsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manageContactsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewContactToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewContactsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private System.Windows.Forms.Label toCurr;
         private System.Windows.Forms.Label fromCurr;
         private System.Windows.Forms.Panel currencyPanel;
+        private System.Windows.Forms.ToolStripMenuItem modifyCurrency;
     }
 }

@@ -79,9 +79,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new BusinessPlanner.CustomElements.CustomRichtextBox();
+            this.spellingWorker1 = new NHunspellComponent.Spelling.SpellingWorker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -700,21 +701,6 @@
             this.panel1.Size = new System.Drawing.Size(1012, 393);
             this.panel1.TabIndex = 7;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.AutoWordSelection = true;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.EnableAutoDragDrop = true;
-            this.richTextBox1.Location = new System.Drawing.Point(10, 10);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(990, 371);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.SelectionChanged += new System.EventHandler(this.RichTextBox1_SelectionChanged);
-            this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichTextBox1_MouseClick);
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
             // label8
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -736,6 +722,27 @@
             this.label9.Size = new System.Drawing.Size(44, 17);
             this.label9.TabIndex = 9;
             this.label9.Text = "none";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.IsPassWordProtected = false;
+            this.richTextBox1.IsSpellingAutoEnabled = true;
+            this.richTextBox1.IsSpellingEnabled = true;
+            this.richTextBox1.Location = new System.Drawing.Point(10, 10);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(990, 371);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.UnderlinedSections = ((System.Collections.Generic.Dictionary<int, int>)(resources.GetObject("richTextBox1.UnderlinedSections")));
+            this.richTextBox1.SelectionChanged += new System.EventHandler(this.RichTextBox1_SelectionChanged);
+            this.richTextBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RichTextBox1_MouseClick);
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // spellingWorker1
+            // 
+            this.spellingWorker1.Editor = this.richTextBox1;
             // 
             // Dashboard
             // 
@@ -827,6 +834,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.RichTextBox richTextBox1;
+        public CustomElements.CustomRichtextBox richTextBox1;
+        public NHunspellComponent.Spelling.SpellingWorker spellingWorker1;
     }
 }

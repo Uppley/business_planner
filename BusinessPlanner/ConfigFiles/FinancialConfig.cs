@@ -17,15 +17,17 @@ namespace BusinessPlanner.Utility
             new TreeViewItem() { ParentID = 2, ID = 5, Text = "Company Expenditure" },
             new TreeViewItem() { ParentID = 0, ID = 6, Text = "What You Sell" },
             new TreeViewItem() { ParentID = 6, ID = 7, Text = "Product Summary" },
-            new TreeViewItem() { ParentID = 0, ID = 8, Text = "Sales Forecast" },
-            new TreeViewItem() { ParentID = 8, ID = 9, Text = "Sales Strategy" },
-            new TreeViewItem() { ParentID = 8, ID = 10, Text = "Sales Forecast Table" },
-            new TreeViewItem() { ParentID = 8, ID = 11, Text = "Explain Sales Forecast" },
-            new TreeViewItem() { ParentID = 0, ID = 12, Text = "Financial Plan" },
-            new TreeViewItem() { ParentID = 12, ID = 13, Text = "Financial Summary" },
-            new TreeViewItem() { ParentID = 12, ID = 14, Text = "Financial Statement" },
-            new TreeViewItem() { ParentID = 0, ID = 15, Text = "Finish" },
-            new TreeViewItem() { ParentID = 15, ID = 16, Text = "Executive Summary" }
+            new TreeViewItem() { ParentID = 6, ID = 8, Text = "Service Summary" },
+            new TreeViewItem() { ParentID = 6, ID = 9, Text = "Product & Service Summary" },
+            new TreeViewItem() { ParentID = 0, ID = 10, Text = "Sales Forecast" },
+            new TreeViewItem() { ParentID = 10, ID = 11, Text = "Sales Strategy" },
+            new TreeViewItem() { ParentID = 10, ID = 12, Text = "Sales Forecast Table" },
+            new TreeViewItem() { ParentID = 10, ID = 13, Text = "Explain Sales Forecast" },
+            new TreeViewItem() { ParentID = 0, ID = 14, Text = "Financial Plan" },
+            new TreeViewItem() { ParentID = 14, ID = 15, Text = "Financial Summary" },
+            new TreeViewItem() { ParentID = 14, ID = 16, Text = "Financial Statement" },
+            new TreeViewItem() { ParentID = 0, ID = 17, Text = "Finish" },
+            new TreeViewItem() { ParentID = 17, ID = 18, Text = "Executive Summary" }
         };
 
         public static int getId()

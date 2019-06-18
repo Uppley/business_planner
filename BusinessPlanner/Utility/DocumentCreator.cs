@@ -31,7 +31,7 @@ namespace BusinessPlanner.Utility
                 documentList = FinancialDocument.DocumentList;
         }
 
-        public string getCurrency(object data)
+        private string getCurrency(object data)
         {
             string c = "AED";
             if(int.Parse(data.ToString())==0)
@@ -48,7 +48,7 @@ namespace BusinessPlanner.Utility
             return c;
         }
         
-        public int isSWOT(object data)
+        private int isSWOT(object data)
         {
             int i = 0;
             var dt = (Dictionary<string,Boolean>)data;
@@ -58,7 +58,20 @@ namespace BusinessPlanner.Utility
             }
             return i;
         }
-        public int isWeb(object data)
+
+        private string getSellType()
+        {
+            string t = "";
+            if (AppUtilities.mainData["sellType"].ToString() == "I sell services.")
+                t = "Service Summary";
+            else if (AppUtilities.mainData["sellType"].ToString() == "I sell products.")
+                t = "Product Summary";
+            else
+                t = "Product & Service Summary";
+            return t;
+
+        }
+        private int isWeb(object data)
         {
             int i = 0;
             var dt = (Dictionary<string, Boolean>)data;
@@ -99,6 +112,8 @@ namespace BusinessPlanner.Utility
                             continue;
                         if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
                             continue;
+                        if ((d.ItemName == "Product Summary" || d.ItemName == "Service Summary" || d.ItemName == "Product & Service Summary") && !getSellType().Equals(d.ItemName))
+                            continue;
                         rtb.Rtf = "";
                         progress.Add(d.DocumentName, 0);
                         rtb.SaveFile(Path.Combine(tempPath, d.DocumentName));
@@ -112,6 +127,7 @@ namespace BusinessPlanner.Utility
                 }
                 bp.AddSetting("progress", progress);
                 bp.SaveSetting(Path.Combine(tempPath, "settings.json"));
+                
                 ZipFile.CreateFromDirectory(tempPath, projectPath);
                 Debug.WriteLine("Project setup complete !");
             }
@@ -180,6 +196,8 @@ namespace BusinessPlanner.Utility
                         if (isWeb(AppUtilities.mainData["step6"]) != 1 && (d.ItemName == "Website Strategy" || d.ItemName == "Developments Requirements"))
                             continue;
                         if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
+                            continue;
+                        if ((d.ItemName== "Product Summary" || d.ItemName == "Service Summary" || d.ItemName == "Product & Service Summary") && !getSellType().Equals(d.ItemName))
                             continue;
                         rtb.Rtf = "";
                         progress.Add(d.DocumentName, 0);
@@ -259,6 +277,8 @@ namespace BusinessPlanner.Utility
                     {
                         
                         if (data["is_startup"].ToString() != "yes" && d.ItemName == "Start Up Investment")
+                            continue;
+                        if ((d.ItemName == "Product Summary" || d.ItemName == "Service Summary" || d.ItemName == "Product & Service Summary") && !getSellType().Equals(d.ItemName))
                             continue;
                         rtb.Rtf = "";
                         progress.Add(d.DocumentName, 0);
