@@ -34,7 +34,7 @@ namespace BusinessPlanner
         List<DocumentItem> documentList = new List<DocumentItem>();
         int checkprint;
         int splitDist=355;
-        
+        int meeting_count;
         public MainWindow()
         {
             InitializeComponent();
@@ -61,7 +61,18 @@ namespace BusinessPlanner
                 activateEditMenus(0);
             }
             //splitContainer1.SplitterDistance = splitDist;
-
+            meeting_count = DatabaseReader.getMeetingCount();
+            button1.Text = meeting_count + " Meetings Today";
+            if ( meeting_count > 0)
+            {
+                button1.ImageIndex = 1;
+                button1.Enabled = true;
+            }
+            else
+            {
+                button1.ImageIndex = 0;
+                button1.Enabled = false;
+            }
         }
 
         private void currencyHandler()
@@ -898,6 +909,12 @@ namespace BusinessPlanner
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            viewMeeting vem = new viewMeeting(DateTime.Now.Date.ToString());
+            vem.Show();
         }
     }
 }

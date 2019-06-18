@@ -102,6 +102,49 @@ namespace BusinessPlanner.Utility
             return sqlite_datareader;
         }
 
+        public static SQLiteDataReader getTodayMeeting(string date,SQLiteConnection conn)
+        {
+            SQLiteDataReader sqlite_datareader;
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = conn.CreateCommand();
+            sqlite_cmd.CommandText = "SELECT * FROM MeetingTable where Date = '" + date + "';";
+            sqlite_datareader = sqlite_cmd.ExecuteReader();
+            return sqlite_datareader;
+        }
+
+        public static int getMeetingCount()
+        {
+            int output = 0;
+            SQLiteConnection conn=DatabaseReader.CreateConnection();
+            try
+            {
+                SQLiteDataReader sqlite_datareader;
+                SQLiteCommand sqlite_cmd;
+                sqlite_cmd = conn.CreateCommand();
+                sqlite_cmd.CommandText = "select count(id) from MeetingTable where Date = '" + DateTime.Now.Date.ToString() + "';";
+                sqlite_datareader = sqlite_cmd.ExecuteReader();
+                while (sqlite_datareader.Read())
+                {
+                    output = Convert.ToInt32(sqlite_datareader[0]);
+                    sqlite_datareader.Close();
+                }
+                
+                return output;
+            }
+            catch(Exception e)
+            {
+                
+                return output;
+            }
+            finally
+            {
+                DatabaseReader.Close(conn);
+            }
+            
+            
+        }
+
+
         public static bool UpdateMeetingData(int id,Dictionary<string, string> data, SQLiteConnection conn)
         {
             if (DatabaseReader.validateMeetingData(data))

@@ -42,6 +42,7 @@ namespace BusinessPlanner
                     
                     dt.Rows.Add(row);
                 }
+                sdr.Close();
                 dataGridView1.DataSource = dt;
                 dataGridView1.Columns[0].ReadOnly = true;
             }

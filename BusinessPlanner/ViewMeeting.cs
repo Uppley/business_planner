@@ -44,6 +44,7 @@ namespace BusinessPlanner
                     row["Duration"] = sdr["Duration"];
                     dt.Rows.Add(row);
                 }
+                sdr.Close();
                 dataGridView1.DataSource = dt;
                 dataGridView1.Columns[0].ReadOnly = true;
             }
@@ -58,7 +59,51 @@ namespace BusinessPlanner
             }
         }
 
-        
+        public viewMeeting(string date)
+        {
+            InitializeComponent();
+            try
+            {
+                conn = DatabaseReader.CreateConnection();
+                SQLiteDataReader sdr = DatabaseReader.getTodayMeeting(date,conn);
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Id");
+                dt.Columns.Add("Name");
+                dt.Columns.Add("Email");
+                dt.Columns.Add("Subject");
+                dt.Columns.Add("Body");
+                dt.Columns.Add("Location");
+                dt.Columns.Add("Date");
+                dt.Columns.Add("Duration");
+                while (sdr.Read())
+                {
+                    DataRow row = dt.NewRow();
+                    row["Id"] = sdr["Id"];
+                    row["Name"] = sdr["Name"];
+                    row["Email"] = sdr["Email"];
+                    row["Subject"] = sdr["Subject"];
+                    row["Location"] = sdr["Location"];
+                    row["Body"] = sdr["Body"];
+                    row["Date"] = sdr["Date"];
+                    row["Duration"] = sdr["Duration"];
+                    dt.Rows.Add(row);
+                }
+                sdr.Close();
+                dataGridView1.DataSource = dt;
+                dataGridView1.Columns[0].ReadOnly = true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                DatabaseReader.Close(conn);
+                conn = null;
+            }
+        }
+
+
 
         private void DataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {

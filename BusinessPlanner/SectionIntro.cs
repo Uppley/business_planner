@@ -18,8 +18,12 @@ namespace BusinessPlanner
             InitializeComponent();
             BPData bpd = new BPData();
             var data = bpd.nodeItems.Find(x => x.name == name);
-            label1.Text = data.name;
-            label2.Text = data.description;
+            if(data != null)
+            {
+                label1.Text = data.name;
+                label2.Text = data.description;
+            }
+            
         }
     }
 }
