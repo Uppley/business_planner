@@ -642,7 +642,7 @@
             // 
             // currencyPanel
             // 
-            this.currencyPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.currencyPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.currencyPanel.BackColor = System.Drawing.Color.White;
             this.currencyPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.currencyPanel.Controls.Add(this.fromCurr);
