@@ -62,7 +62,7 @@ namespace BusinessPlanner
             }
             //splitContainer1.SplitterDistance = splitDist;
             meeting_count = DatabaseReader.getMeetingCount();
-            button1.Text = meeting_count + " Meetings Today";
+            button1.Text =  meeting_count==1 ? meeting_count+" Meeting Today" : meeting_count + " Meetings Today";
             if ( meeting_count > 0)
             {
                 button1.ImageIndex = 1;
@@ -908,13 +908,20 @@ namespace BusinessPlanner
 
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            ResourceWindow rew = new ResourceWindow();
+            rew.Show();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             viewMeeting vem = new viewMeeting(DateTime.Now.Date.ToString());
             vem.Show();
+        }
+
+        private void ToolStripButton19_Click(object sender, EventArgs e)
+        {
+            ResourceWindow rsw = new ResourceWindow();
+            rsw.Show();
         }
     }
 }

@@ -137,6 +137,7 @@
             this.label11.Size = new System.Drawing.Size(99, 20);
             this.label11.TabIndex = 8;
             this.label11.Text = "Resources";
+            this.label11.Click += new System.EventHandler(this.Label11_Click);
             // 
             // label8
             // 

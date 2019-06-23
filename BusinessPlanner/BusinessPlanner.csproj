@@ -276,6 +276,12 @@
     <Compile Include="OutlineWindow.Designer.cs">
       <DependentUpon>OutlineWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResourceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResourceWindow.Designer.cs">
+      <DependentUpon>ResourceWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReviewWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,24 @@
       <DependentUpon>SectionIntro.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="ShowDocumentWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowDocumentWindow.Designer.cs">
+      <DependentUpon>ShowDocumentWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowLinkWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowLinkWindow.Designer.cs">
+      <DependentUpon>ShowLinkWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowVideoWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowVideoWindow.Designer.cs">
+      <DependentUpon>ShowVideoWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="StartUpWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -518,6 +542,9 @@
     <EmbeddedResource Include="OutlineWindow.resx">
       <DependentUpon>OutlineWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ResourceWindow.resx">
+      <DependentUpon>ResourceWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReviewWindow.resx">
       <DependentUpon>ReviewWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -526,6 +553,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SectionIntro.resx">
       <DependentUpon>SectionIntro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowDocumentWindow.resx">
+      <DependentUpon>ShowDocumentWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowLinkWindow.resx">
+      <DependentUpon>ShowLinkWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowVideoWindow.resx">
+      <DependentUpon>ShowVideoWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
@@ -676,6 +712,10 @@
       <Project>{9461ecf0-1779-4f19-b081-bf9497d9d707}</Project>
       <Name>BP.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BP.Resource\BP.Resource.csproj">
+      <Project>{fe990b1c-4458-4082-bd77-38e6a9cf3274}</Project>
+      <Name>BP.Resource</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Hunspellx64.dll">
@@ -687,6 +727,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bell_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\pdf_ic1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.111.0\build\net46\System.Data.SQLite.Core.targets')" />

@@ -43,5 +43,11 @@ namespace BusinessPlanner
             ReviewWindow rew = new ReviewWindow();
             rew.Show();
         }
+
+        private void Label11_Click(object sender, EventArgs e)
+        {
+            ResourceWindow rsw = new ResourceWindow();
+            rsw.Show();
+        }
     }
 }

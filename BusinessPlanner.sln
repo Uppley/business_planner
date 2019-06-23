@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BP.CurrencyFetcher", "BP.Cu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHunspellWrapper", "..\..\..\NHunspellWrapper\NHunspellWrapper.csproj", "{44DD66CB-3F02-4F0D-BD29-3F48986B81AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BP.Resource", "BP.Resource\BP.Resource.csproj", "{FE990B1C-4458-4082-BD77-38E6A9CF3274}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{44DD66CB-3F02-4F0D-BD29-3F48986B81AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{44DD66CB-3F02-4F0D-BD29-3F48986B81AE}.Release|x86.ActiveCfg = Release|Any CPU
 		{44DD66CB-3F02-4F0D-BD29-3F48986B81AE}.Release|x86.Build.0 = Release|Any CPU
+		{FE990B1C-4458-4082-BD77-38E6A9CF3274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE990B1C-4458-4082-BD77-38E6A9CF3274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE990B1C-4458-4082-BD77-38E6A9CF3274}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FE990B1C-4458-4082-BD77-38E6A9CF3274}.Debug|x86.Build.0 = Debug|Any CPU
+		{FE990B1C-4458-4082-BD77-38E6A9CF3274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE990B1C-4458-4082-BD77-38E6A9CF3274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE990B1C-4458-4082-BD77-38E6A9CF3274}.Release|x86.ActiveCfg = Release|Any CPU
+		{FE990B1C-4458-4082-BD77-38E6A9CF3274}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
