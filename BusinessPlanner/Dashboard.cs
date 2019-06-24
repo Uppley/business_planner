@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessPlanner.Models;
 
 namespace BusinessPlanner
 {
@@ -50,7 +51,10 @@ namespace BusinessPlanner
             this.richTextBox1.ZoomFactor = 1.0f;
             toolStripComboBox2.SelectedIndex = 2;
             dgp = new DocumentProgressor();
-            
+            if (WorkProgress.workItems.Exists(x => x.filename == file_loaded))
+            {
+                label2.Text = "Unsaved";
+            }
 
         }
 
@@ -58,12 +62,21 @@ namespace BusinessPlanner
 
         private void setContentInitial(String name)
         {
-
             try
             {
-                
                 label9.Text = StandardDocument.DocumentList.Find(item => item.DocumentName == name).ItemName;
-                this.richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath,name));
+                if(WorkProgress.workItems.Exists(x=>x.filename==name))
+                {
+                    int index = WorkProgress.workItems.FindIndex(x => x.filename == name);
+                    Debug.WriteLine(WorkProgress.workItems[index].filename);
+                    this.richTextBox1.Rtf = WorkProgress.workItems[index].data;
+                    WorkProgress.workItems[index].data = this.richTextBox1.Rtf;
+                }
+                else
+                {
+                    Debug.WriteLine("First insert:" + name);
+                    this.richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath, name));
+                }
             }
             catch(Exception e)
             {
@@ -366,8 +379,6 @@ namespace BusinessPlanner
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-
-            label2.Text = "Editing";
             if (this.richTextBox1.CanUndo)
                 btnUndo.Enabled = true;
             else
@@ -389,6 +400,11 @@ namespace BusinessPlanner
             this.richTextBox1.SaveFile(Path.Combine(ProjectConfig.projectPath, file_loaded));
             label2.Text = "Saved";
             Dashboard_changeProgress(file_loaded);
+            if (WorkProgress.workItems.Exists(x => x.filename == file_loaded))
+            {
+                int index = WorkProgress.workItems.FindIndex(x => x.filename == file_loaded);
+                WorkProgress.workItems.RemoveAt(index);
+            }
         }
 
         private void Dashboard_changeProgress(string mssg)
@@ -399,6 +415,20 @@ namespace BusinessPlanner
             l.Text = dgp.completedSteps().ToString() + " /";
             pbar.Value = dgp.completedSteps();
             l.Refresh();
+        }
+
+        private void RichTextBox1_Leave(object sender, EventArgs e)
+        {
+            label2.Text = "Unsaved";
+            if (WorkProgress.workItems.Exists(x => x.filename == file_loaded))
+            {
+                int index = WorkProgress.workItems.FindIndex(x => x.filename == file_loaded);
+                WorkProgress.workItems[index].data = this.richTextBox1.Rtf;
+            }
+            else
+            {
+                WorkProgress.workItems.Add(new WorkItem { filename = file_loaded, data = this.richTextBox1.Rtf });
+            }
         }
     }
 }

@@ -273,6 +273,7 @@ namespace BusinessPlanner
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveOpenSections();
             var confirmResult = MessageBox.Show(AppMessages.messages["exit_body"],AppMessages.messages["exit_head"],MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
@@ -284,6 +285,7 @@ namespace BusinessPlanner
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            saveOpenSections();
             var confirmResult = MessageBox.Show(AppMessages.messages["exit_body"], AppMessages.messages["exit_head"], MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
@@ -297,10 +299,34 @@ namespace BusinessPlanner
                 return;
             }
         }
-
+        private void saveOpenSections()
+        {
+            if (WorkProgress.workItems.Count > 0)
+            {
+                var confirmResult = MessageBox.Show("You have unsaved sections in your project.\nDo you want to save them ?", "Unsaved work", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    foreach (var w in WorkProgress.workItems)
+                    {
+                        RichTextBox rtb = new RichTextBox();
+                        rtb.Rtf = w.data;
+                        rtb.SaveFile(Path.Combine(ProjectConfig.projectPath, w.filename));
+                        rtb.Dispose();
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
         private void saveProjectBeforeClose()
         {
-            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_save"]);
+            LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["project_save"]);
             try
             {
                 ls.show();
@@ -316,6 +342,8 @@ namespace BusinessPlanner
             {
                 ls.hide();
             }
+            
+            
         }
 
         private void saveProgress()

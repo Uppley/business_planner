@@ -216,6 +216,7 @@
     <Compile Include="MeetingDialog.Designer.cs">
       <DependentUpon>MeetingDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\WorkItem.cs" />
     <Compile Include="Partials\_CurrencyDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -449,6 +450,7 @@
     <Compile Include="Utility\AppUtilities.cs" />
     <Compile Include="Utility\TableGenerator.cs" />
     <Compile Include="Utility\TableWithChartGenerator.cs" />
+    <Compile Include="Utility\WorkProgress.cs" />
     <Compile Include="ViewContact.cs">
       <SubType>Form</SubType>
     </Compile>
