@@ -23,6 +23,7 @@ using RichTextBoxPrintCtrl;
 using BusinessPlanner.Partials;
 using BP.CurrencyFetcher;
 using System.Configuration;
+using Font = System.Drawing.Font;
 
 namespace BusinessPlanner
 {
@@ -634,11 +635,7 @@ namespace BusinessPlanner
 
         private void ToolStripButton4_Click(object sender, EventArgs e)
         {
-            if(printDialog1.ShowDialog()==DialogResult.OK)
-            {
-                printDocument1.Print();
-            }
-
+            printDocument();
         }
 
         private void PrintDocument1_BeginPrint(object sender, PrintEventArgs e)
@@ -760,67 +757,48 @@ namespace BusinessPlanner
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
 
-            if (dashboard.richTextBox1.CanUndo)
-                dashboard.richTextBox1.Undo();
+            CustomEditor.undo(dashboard.richTextBox1);
         }
 
         //redo
         private void ToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            if (dashboard.richTextBox1.CanRedo)
-                dashboard.richTextBox1.Redo();
+            CustomEditor.redo(dashboard.richTextBox1);
         }
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dashboard.richTextBox1.Cut();
+            CustomEditor.Cut(dashboard.richTextBox1);
         }
 
         private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dashboard.richTextBox1.Copy();
+            CustomEditor.Copy(dashboard.richTextBox1);
         }
 
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dashboard.richTextBox1.Paste();
+            CustomEditor.Paste(dashboard.richTextBox1);
         }
 
 
         private void SelectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dashboard.richTextBox1.SelectAll();
+            CustomEditor.selectAll(dashboard.richTextBox1);
+        }
+
+        private void DeselectAll_Click(object sender, EventArgs e)
+        {
+            CustomEditor.deselectAll(dashboard.richTextBox1);
         }
 
         private void FindToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            findWord();
             
-            _FindDialog hpl = new _FindDialog();
-            DialogResult hpl_data = hpl.ShowDialog(this);
-            if (hpl_data == DialogResult.OK)
-            {
-                if (hpl.searchTerm.Length > 0)
-                {
-                    dashboard.findLength = hpl.searchTerm.Length;
-                    int startIndex = 0;
-                    while (startIndex < dashboard.richTextBox1.TextLength)
-                    {
-                        int wordStartIndex = dashboard.richTextBox1.Find(hpl.searchTerm, startIndex, RichTextBoxFinds.None);
-                        if (wordStartIndex != -1)
-                        {
-                            dashboard.richTextBox1.SelectionStart = wordStartIndex;
-                            dashboard.richTextBox1.SelectionLength = hpl.searchTerm.Length;
-                            dashboard.richTextBox1.SelectionBackColor = Color.Yellow;
-                            dashboard.findPosition.Add(wordStartIndex);
-                        }
-                        else
-                            break;
-                        startIndex += wordStartIndex + hpl.searchTerm.Length;
-                    }
-
-                }
-            }
         }
+
+        
 
         private void ReplaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -923,5 +901,104 @@ namespace BusinessPlanner
             ResourceWindow rsw = new ResourceWindow();
             rsw.Show();
         }
+
+        private void findWord()
+        {
+            _FindDialog hpl = new _FindDialog();
+            DialogResult hpl_data = hpl.ShowDialog(this);
+            if (hpl_data == DialogResult.OK)
+            {
+                if (hpl.searchTerm.Length > 0)
+                {
+                    dashboard.findLength = hpl.searchTerm.Length;
+                    int startIndex = 0;
+                    while (startIndex < dashboard.richTextBox1.TextLength)
+                    {
+                        int wordStartIndex = dashboard.richTextBox1.Find(hpl.searchTerm, startIndex, RichTextBoxFinds.None);
+                        if (wordStartIndex != -1)
+                        {
+                            dashboard.richTextBox1.SelectionStart = wordStartIndex;
+                            dashboard.richTextBox1.SelectionLength = hpl.searchTerm.Length;
+                            dashboard.richTextBox1.SelectionBackColor = Color.Yellow;
+                            dashboard.findPosition.Add(wordStartIndex);
+                        }
+                        else
+                            break;
+                        startIndex += wordStartIndex + hpl.searchTerm.Length;
+                    }
+
+                }
+            }
+        }
+
+        private void printDocument()
+        {
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printDocument1.Print();
+            }
+        }
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control)
+            {
+                var kp = e.KeyCode;
+                switch (kp)
+                {
+                    case Keys.Z:
+                        CustomEditor.undo(dashboard.richTextBox1);
+                        break;
+                    case Keys.Y:
+                        CustomEditor.redo(dashboard.richTextBox1);
+                        break;
+                    case Keys.D:
+                        CustomEditor.deselectAll(dashboard.richTextBox1);
+                        break;
+                    case Keys.S:
+                        dashboard.saveDocument();
+                        break;
+                    case Keys.B:
+                        CustomEditor.makeBold(dashboard.richTextBox1);
+                        break;
+                    case Keys.I:
+                        CustomEditor.makeItalic(dashboard.richTextBox1);
+                        break;
+                    case Keys.U:
+                        CustomEditor.makeUnderline(dashboard.richTextBox1);
+                        break;
+                    case Keys.P:
+                        printDocument();
+                        break;
+                    case Keys.N:
+                        this.CloseForNew();
+                        break;
+                    case Keys.Oemplus:
+                        CustomEditor.zoomIn(dashboard.richTextBox1);
+                        break;
+                    case Keys.OemMinus:
+                        CustomEditor.zoomOut(dashboard.richTextBox1);
+                        break;
+                    case Keys.F:
+                        findWord();
+                        break;
+                    case Keys.A:
+                        CustomEditor.selectAll(dashboard.richTextBox1);
+                        break;
+                    case Keys.D0:
+                        dashboard.richTextBox1.ZoomFactor = 1.0f;
+                        break;
+                    case Keys.NumPad0:
+                        dashboard.richTextBox1.ZoomFactor = 1.0f;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+            
+        }
+
+        
     }
 }

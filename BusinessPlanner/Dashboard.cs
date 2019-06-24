@@ -46,8 +46,8 @@ namespace BusinessPlanner
             toolStripComboBox1.SelectedItem = "Arial";
             fontSizeCmb.SelectedItem = 12;
             this.setContentInitial(file_loaded);
-            richTextBox1.SelectionFont = new Font("Arial", 12, richTextBox1.SelectionFont.Style);
-            richTextBox1.ZoomFactor = 1.0f;
+            this.richTextBox1.SelectionFont = new Font("Arial", 12, this.richTextBox1.SelectionFont.Style);
+            this.richTextBox1.ZoomFactor = 1.0f;
             toolStripComboBox2.SelectedIndex = 2;
             dgp = new DocumentProgressor();
             
@@ -63,7 +63,7 @@ namespace BusinessPlanner
             {
                 
                 label9.Text = StandardDocument.DocumentList.Find(item => item.DocumentName == name).ItemName;
-                richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath,name));
+                this.richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath,name));
             }
             catch(Exception e)
             {
@@ -77,158 +77,83 @@ namespace BusinessPlanner
         }
 
 
-
-        private void toolStripButton1_Click_1(object sender, EventArgs e)
-        {
-            
-        }
-
-
-        private void btnCut_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Cut();
-        }
-
-        private void btnCopy_Click(object sender, EventArgs e)
-        {
-            richTextBox1.Copy();
-        }
-
         private void btnPaste_Click(object sender, EventArgs e)
         {
-           richTextBox1.Paste();
+            CustomEditor.Paste(this.richTextBox1);
         }
 
         private void btnBold_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionFont != null)
-            {
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size, ToggleFontStyle(richTextBox1.SelectionFont.Style, FontStyle.Bold));
-            }
+            CustomEditor.makeBold(this.richTextBox1);
         }
 
         private void btnItalic_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionFont != null)
-            {
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size, ToggleFontStyle(richTextBox1.SelectionFont.Style, FontStyle.Italic));
-            }
+            CustomEditor.makeItalic(this.richTextBox1);
         }
 
         private void btnUnderline_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionFont != null)
-            {
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, richTextBox1.SelectionFont.Size, ToggleFontStyle(richTextBox1.SelectionFont.Style, FontStyle.Underline));
-            }
+            CustomEditor.makeUnderline(this.richTextBox1);
         }
-
-      
 
         private void btnToggleBullets_Click(object sender, EventArgs e)
         {
-            
-                richTextBox1.SelectionBullet = !richTextBox1.SelectionBullet;
-            
+            CustomEditor.toggleBullets(this.richTextBox1);
         }
 
         private void btnDecreaseIndentation_Click(object sender, EventArgs e)
         {
-            
-                richTextBox1.SelectionIndent -= 10;
-            
+            CustomEditor.decIndent(this.richTextBox1);
         }
 
         private void btnIncreaseIndentation_Click(object sender, EventArgs e)
         {
-            
-                richTextBox1.SelectionIndent += 10;
-            
+            CustomEditor.incIndent(this.richTextBox1);
         }
 
         private void btnAlignLeft_Click(object sender, EventArgs e)
         {
-            
-                richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            
+            CustomEditor.alignLeft(this.richTextBox1);
         }
 
         private void btnAlignCenter_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            CustomEditor.alignCenter(this.richTextBox1);
         }
 
         private void btnAlignRight_Click(object sender, EventArgs e)
         {
-            richTextBox1.SelectionAlignment = System.Windows.Forms.HorizontalAlignment.Right;
+            CustomEditor.alignRight(this.richTextBox1);
         }
 
-        //endregion
-
-        
-
-        
-
-        private FontStyle ToggleFontStyle(FontStyle item, FontStyle toggle)
-        {
-            return item ^ toggle;
-        }
 
         private void btnSave_Click_1(object sender, EventArgs e)
         {
-            richTextBox1.SaveFile(Path.Combine(ProjectConfig.projectPath, file_loaded));
-            label2.Text = "Saved";
-            Dashboard_changeProgress(file_loaded);
+            saveDocument();
         }
 
-        private void Dashboard_changeProgress(string mssg)
-        {
-            Label l = mw.Controls.Find("label4",true)[0] as Label;
-            ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
-            dgp.updateProgress(file_loaded, richTextBox1.TextLength > 0 ? 1:0) ;
-            l.Text = dgp.completedSteps().ToString()+" /";
-            pbar.Value = dgp.completedSteps();
-            l.Refresh();
-        }
 
         private void btnGemBoxCut_Click_1(object sender, EventArgs e)
         {
-            
-            richTextBox1.SelectedRtf = string.Empty;
+
+            CustomEditor.Cut(this.richTextBox1);
         }
 
         private void btnGemBoxCopy_Click_1(object sender, EventArgs e)
         {
-            richTextBox1.Copy();
+            CustomEditor.Copy(this.richTextBox1);
         }
-
-        private void btnGemBoxPastePrepend_Click_1(object sender, EventArgs e)
-        {
-            richTextBox1.Paste();
-        }
-
-
 
         private void btnUndo_Click_1(object sender, EventArgs e)
         {
-            if (richTextBox1.CanUndo)
-                richTextBox1.Undo();
+            CustomEditor.undo(this.richTextBox1);
         }
 
         private void btnRedo_Click_1(object sender, EventArgs e)
         {
-            if (richTextBox1.CanRedo)
-                richTextBox1.Redo();
+            CustomEditor.redo(this.richTextBox1);
         }
-
-        private void toggleFont_Click(object sender, EventArgs e)
-        {
-            //this.ToggleFontStyle();
-        }
-
-       
-
-        
 
         private void ToolStripButton13_Click(object sender, EventArgs e)
         {
@@ -239,8 +164,8 @@ namespace BusinessPlanner
             {
                 Image img = Image.FromFile(opnfd.FileName);
                 Clipboard.SetImage(img);
-                richTextBox1.Paste();
-                richTextBox1.Focus();
+                this.richTextBox1.Paste();
+                this.richTextBox1.Focus();
             }
         }
 
@@ -249,13 +174,13 @@ namespace BusinessPlanner
             ColorDialog MyDialog = new ColorDialog();
             MyDialog.AllowFullOpen = false;
             MyDialog.ShowHelp = true;
-            MyDialog.Color = richTextBox1.ForeColor;
+            MyDialog.Color = this.richTextBox1.ForeColor;
 
             if (MyDialog.ShowDialog() == DialogResult.OK)
             {
-                if (richTextBox1.SelectedText != null)
+                if (this.richTextBox1.SelectedText != null)
                 {
-                    richTextBox1.SelectionColor = MyDialog.Color;
+                    this.richTextBox1.SelectionColor = MyDialog.Color;
                 }
             }
         }
@@ -284,13 +209,8 @@ namespace BusinessPlanner
                 
                 tableRtf.Append(@"\pard");
                 tableRtf.Append(@"}");
-                richTextBox1.SelectedRtf = tableRtf.ToString();
+                this.richTextBox1.SelectedRtf = tableRtf.ToString();
             }
-            
-        }
-
-        private void ToolStripButton3_Click(object sender, EventArgs e)
-        {
             
         }
 
@@ -308,26 +228,26 @@ namespace BusinessPlanner
                 st.Append(@"{\field{\*\fldinst {HYPERLINK "+ hpl.linkUrl +"}}");
                 st.Append(@"{\fldrslt{\cf1\ul " + hpl.linkText+"}}}");
                 st.Append(@"}");
-                richTextBox1.SelectedRtf = st.ToString();
+                this.richTextBox1.SelectedRtf = st.ToString();
             }
         }
 
         private void ToolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionFont != null)
-                richTextBox1.SelectionFont = new Font(toolStripComboBox1.SelectedItem.ToString(), 12, richTextBox1.SelectionFont.Style);
+            if (this.richTextBox1.SelectionFont != null)
+                this.richTextBox1.SelectionFont = new Font(toolStripComboBox1.SelectedItem.ToString(), 12, this.richTextBox1.SelectionFont.Style);
         }
 
         private void RichTextBox1_SelectionChanged(object sender, EventArgs e)
         {
             
-            if (richTextBox1.SelectionFont != null)
+            if (this.richTextBox1.SelectionFont != null)
             {
                 boldBt.Checked = false;
                 italicBt.Checked = false;
                 underBt.Checked = false;
-                toolStripComboBox1.SelectedItem = richTextBox1.SelectionFont.Name;
-                fontSizeCmb.SelectedItem = Int32.TryParse(richTextBox1.SelectionFont.Size.ToString(), out int res) ?  res : 12;
+                toolStripComboBox1.SelectedItem = this.richTextBox1.SelectionFont.Name;
+                fontSizeCmb.SelectedItem = Int32.TryParse(this.richTextBox1.SelectionFont.Size.ToString(), out int res) ?  res : 12;
             }
          }
 
@@ -352,14 +272,14 @@ namespace BusinessPlanner
             {
                 zf = 1.5f;
             }
-            
-            richTextBox1.ZoomFactor = zf;
+
+            this.richTextBox1.ZoomFactor = zf;
         }
 
         private void FontSizeCmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (richTextBox1.SelectionFont != null)
-                richTextBox1.SelectionFont = new Font(richTextBox1.SelectionFont.FontFamily, float.Parse(fontSizeCmb.SelectedItem.ToString()), richTextBox1.SelectionFont.Style);
+            if (this.richTextBox1.SelectionFont != null)
+                this.richTextBox1.SelectionFont = new Font(this.richTextBox1.SelectionFont.FontFamily, float.Parse(fontSizeCmb.SelectedItem.ToString()), this.richTextBox1.SelectionFont.Style);
         }
 
         private void ToolStripButton1_Click(object sender, EventArgs e)
@@ -367,13 +287,13 @@ namespace BusinessPlanner
             ColorDialog MyDialog = new ColorDialog();
             MyDialog.AllowFullOpen = false;
             MyDialog.ShowHelp = true;
-            MyDialog.Color = richTextBox1.BackColor;
+            MyDialog.Color = this.richTextBox1.BackColor;
 
             if (MyDialog.ShowDialog() == DialogResult.OK)
             {
-                if (richTextBox1.SelectedText != null)
+                if (this.richTextBox1.SelectedText != null)
                 {
-                    richTextBox1.SelectionBackColor = MyDialog.Color;
+                    this.richTextBox1.SelectionBackColor = MyDialog.Color;
                 }
             }
         }
@@ -388,14 +308,14 @@ namespace BusinessPlanner
                 {
                     this.findLength = hpl.searchTerm.Length;
                     int startIndex = 0;
-                    while (startIndex < richTextBox1.TextLength)
+                    while (startIndex < this.richTextBox1.TextLength)
                     {
-                        int wordStartIndex = richTextBox1.Find(hpl.searchTerm, startIndex, RichTextBoxFinds.None);
+                        int wordStartIndex = this.richTextBox1.Find(hpl.searchTerm, startIndex, RichTextBoxFinds.None);
                         if (wordStartIndex != -1)
                         {
-                            richTextBox1.SelectionStart = wordStartIndex;
-                            richTextBox1.SelectionLength = hpl.searchTerm.Length;
-                            richTextBox1.SelectionBackColor = Color.Yellow;
+                            this.richTextBox1.SelectionStart = wordStartIndex;
+                            this.richTextBox1.SelectionLength = hpl.searchTerm.Length;
+                            this.richTextBox1.SelectionBackColor = Color.Yellow;
                             this.findPosition.Add(wordStartIndex);
                         }
                         else
@@ -414,9 +334,9 @@ namespace BusinessPlanner
             {
                 foreach (int c in this.findPosition)
                 {
-                    richTextBox1.SelectionStart = c;
-                    richTextBox1.SelectionLength = this.findLength;
-                    richTextBox1.SelectionBackColor = Color.White;
+                    this.richTextBox1.SelectionStart = c;
+                    this.richTextBox1.SelectionLength = this.findLength;
+                    this.richTextBox1.SelectionBackColor = Color.White;
                 }
 
                 this.findPosition.Clear();
@@ -448,11 +368,11 @@ namespace BusinessPlanner
         {
 
             label2.Text = "Editing";
-            if (richTextBox1.CanUndo)
+            if (this.richTextBox1.CanUndo)
                 btnUndo.Enabled = true;
             else
                 btnUndo.Enabled = false;
-            if (richTextBox1.CanRedo)
+            if (this.richTextBox1.CanRedo)
                 btnRedo.Enabled = true;
             else
                 btnRedo.Enabled = false;
@@ -461,9 +381,24 @@ namespace BusinessPlanner
         private void Button1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(label4.Text);
-            richTextBox1.Paste();
+            this.richTextBox1.Paste();
         }
 
-        
+        public void saveDocument()
+        {
+            this.richTextBox1.SaveFile(Path.Combine(ProjectConfig.projectPath, file_loaded));
+            label2.Text = "Saved";
+            Dashboard_changeProgress(file_loaded);
+        }
+
+        private void Dashboard_changeProgress(string mssg)
+        {
+            Label l = mw.Controls.Find("label4", true)[0] as Label;
+            ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
+            dgp.updateProgress(file_loaded, richTextBox1.TextLength > 0 ? 1 : 0);
+            l.Text = dgp.completedSteps().ToString() + " /";
+            pbar.Value = dgp.completedSteps();
+            l.Refresh();
+        }
     }
 }

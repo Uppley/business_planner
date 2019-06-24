@@ -13,6 +13,9 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,11 +28,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -70,6 +70,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo_9Ll_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -89,7 +92,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="RichTextBoxPrintCtrl">
-      <HintPath>..\..\..\..\..\Desktop\RichTextBoxPrintCtrl.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\business planner workspace\RichTextBoxPrintCtrl.dll</HintPath>
     </Reference>
     <Reference Include="RtfWriter">
       <HintPath>..\..\..\..\..\Desktop\netrtfwriter-1.0.0\RtfWriter\bin\Debug\RtfWriter.dll</HintPath>
@@ -430,6 +433,7 @@
     <Compile Include="Utility\DocumentProgressor.cs" />
     <Compile Include="Utility\DocumentCreator.cs" />
     <Compile Include="Models\DocumentItem.cs" />
+    <Compile Include="Utility\CustomEditor.cs" />
     <Compile Include="Utility\ExportGenerator.cs" />
     <Compile Include="Utility\LoadingSpinner.cs" />
     <Compile Include="Utility\ProjectLoader.cs" />
@@ -729,6 +733,7 @@
     <None Include="Resources\bell_ic.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="logo_9Ll_icon.ico" />
     <Content Include="Resources\pdf_ic1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
