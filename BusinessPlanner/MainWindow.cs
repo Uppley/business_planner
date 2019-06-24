@@ -946,15 +946,6 @@ namespace BusinessPlanner
                 var kp = e.KeyCode;
                 switch (kp)
                 {
-                    case Keys.Z:
-                        CustomEditor.undo(dashboard.richTextBox1);
-                        break;
-                    case Keys.Y:
-                        CustomEditor.redo(dashboard.richTextBox1);
-                        break;
-                    case Keys.D:
-                        CustomEditor.deselectAll(dashboard.richTextBox1);
-                        break;
                     case Keys.S:
                         dashboard.saveDocument();
                         break;
@@ -967,23 +958,11 @@ namespace BusinessPlanner
                     case Keys.U:
                         CustomEditor.makeUnderline(dashboard.richTextBox1);
                         break;
-                    case Keys.P:
-                        printDocument();
-                        break;
-                    case Keys.N:
-                        this.CloseForNew();
-                        break;
                     case Keys.Oemplus:
                         CustomEditor.zoomIn(dashboard.richTextBox1);
                         break;
                     case Keys.OemMinus:
                         CustomEditor.zoomOut(dashboard.richTextBox1);
-                        break;
-                    case Keys.F:
-                        findWord();
-                        break;
-                    case Keys.A:
-                        CustomEditor.selectAll(dashboard.richTextBox1);
                         break;
                     case Keys.D0:
                         dashboard.richTextBox1.ZoomFactor = 1.0f;
@@ -999,6 +978,9 @@ namespace BusinessPlanner
             
         }
 
-        
+        private void PrintMenu_Click(object sender, EventArgs e)
+        {
+            printDocument();
+        }
     }
 }
