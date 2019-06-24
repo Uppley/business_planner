@@ -303,15 +303,30 @@ namespace BusinessPlanner
         {
             if (WorkProgress.workItems.Count > 0)
             {
+                DocumentProgressor dgp= new DocumentProgressor();
                 var confirmResult = MessageBox.Show("You have unsaved sections in your project.\nDo you want to save them ?", "Unsaved work", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    foreach (var w in WorkProgress.workItems)
+                    LoadingSpinner ls = new LoadingSpinner(this, "Saving work in progress..");
+                    try
                     {
-                        RichTextBox rtb = new RichTextBox();
-                        rtb.Rtf = w.data;
-                        rtb.SaveFile(Path.Combine(ProjectConfig.projectPath, w.filename));
-                        rtb.Dispose();
+                        ls.show();
+                        foreach (var w in WorkProgress.workItems)
+                        {
+                            RichTextBox rtb = new RichTextBox();
+                            rtb.Rtf = w.data;
+                            rtb.SaveFile(Path.Combine(ProjectConfig.projectPath, w.filename));
+                            dgp.updateProgress(w.filename, rtb.TextLength > 0 ? 1 : 0);
+                            rtb.Dispose();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Exception: " + e.Message);
+                    }
+                    finally
+                    {
+                        ls.hide();
                     }
                 }
                 else

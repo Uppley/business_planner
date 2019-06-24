@@ -74,7 +74,6 @@ namespace BusinessPlanner
                 }
                 else
                 {
-                    Debug.WriteLine("First insert:" + name);
                     this.richTextBox1.LoadFile(Path.Combine(ProjectConfig.projectPath, name));
                 }
             }
