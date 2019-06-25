@@ -148,6 +148,7 @@
             this.Name = "SStep8Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SStep8Dialog_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

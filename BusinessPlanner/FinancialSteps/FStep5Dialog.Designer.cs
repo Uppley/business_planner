@@ -151,6 +151,7 @@
             this.Name = "FStep5Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FStep5Dialog_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -15,7 +15,7 @@ namespace BusinessPlanner
     public partial class QStep5Dialog : Form
     {
         private String mData { get; set; }
-
+        int t = 0;
         public QStep5Dialog()
         {
             InitializeComponent();
@@ -53,6 +53,7 @@ namespace BusinessPlanner
                 string proPath = dc.createQuickPackage();
                 string tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_" + AppUtilities.mainData["step3"].ToString());
                 ProjectLoader.load(proPath, tempPath);
+                t = 1;
             }
             catch (Exception ex)
             {
@@ -67,6 +68,10 @@ namespace BusinessPlanner
             }
         }
 
-        
+        private void QStep5Dialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(t==0)
+                System.Windows.Forms.Application.Exit();
+        }
     }
 }

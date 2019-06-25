@@ -35,6 +35,7 @@ namespace BusinessPlanner
         private void Button1_Click(object sender, EventArgs e)
         {
             this.Close();
+            
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -45,6 +46,17 @@ namespace BusinessPlanner
             AppUtilities.CreateOrUpdateDict("step3", this.mData);
             this.Hide();
             st4.ShowDialog();
+        }
+
+        private void SStep3Dialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Close();
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void SStep3Dialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

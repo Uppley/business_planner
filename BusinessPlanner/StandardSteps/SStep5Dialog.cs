@@ -53,6 +53,11 @@ namespace BusinessPlanner
             
         }
 
-        
+       
+
+        private void SStep5Dialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

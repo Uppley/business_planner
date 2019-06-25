@@ -15,7 +15,7 @@ namespace BusinessPlanner
     public partial class SStep8Dialog : Form
     {
         private String mData { get; set; }
-        
+        int t = 0;
         public SStep8Dialog()
         {
             InitializeComponent();
@@ -54,6 +54,7 @@ namespace BusinessPlanner
                 string proPath = dc.createStandardPackage();
                 string tempPath = Path.Combine(ProjectConfig.projectBase,"~temp_"+AppUtilities.mainData["step5"].ToString());
                 ProjectLoader.load(proPath,tempPath);
+                t = 1;
             }
             catch (Exception ex)
             {
@@ -68,6 +69,12 @@ namespace BusinessPlanner
             }
            
             
+        }
+
+        private void SStep8Dialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(t==0)
+                System.Windows.Forms.Application.Exit();
         }
     }
 }

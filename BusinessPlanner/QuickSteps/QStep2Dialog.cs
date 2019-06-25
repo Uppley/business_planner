@@ -46,5 +46,10 @@ namespace BusinessPlanner
             this.Hide();
             st4.ShowDialog();
         }
+
+        private void QStep2Dialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

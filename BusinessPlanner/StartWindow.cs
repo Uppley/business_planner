@@ -15,6 +15,7 @@ namespace BusinessPlanner
 {
     public partial class StartWindow : Form
     {
+        int t = 0;
         public StartWindow()
         {
             InitializeComponent();
@@ -22,9 +23,9 @@ namespace BusinessPlanner
             tableLayoutPanel2.RowCount = 3;
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.AutoSize = true;
-            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute,100F));
+            tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            if(ProjectConfig.projectList().Count() > 0)
+            if (ProjectConfig.projectList().Count() > 0)
             {
                 foreach (var p in ProjectConfig.projectList())
                 {
@@ -48,7 +49,7 @@ namespace BusinessPlanner
                     }
 
                 }
-                
+
             }
             else
             {
@@ -76,13 +77,13 @@ namespace BusinessPlanner
                 Task.Factory.StartNew(() => {
                     ld.ShowDialog();
                 });
-                Application.DoEvents();
+                //Application.DoEvents();
                 string proPath = Path.Combine(ProjectConfig.projectBase, lnb.Text);
-                string tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_" + lnb.Text.Replace(ProjectConfig.projectExtension,""));
+                string tempPath = Path.Combine(ProjectConfig.projectBase, "~temp_" + lnb.Text.Replace(ProjectConfig.projectExtension, ""));
                 ProjectLoader.load(proPath, tempPath);
                 MainWindow mf = new MainWindow();
                 mf.Show();
-                
+                t = 1;
             }
             catch (Exception ex)
             {
@@ -96,7 +97,7 @@ namespace BusinessPlanner
                 }));
                 this.Close();
             }
-            
+
         }
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -105,6 +106,7 @@ namespace BusinessPlanner
             Step1Dialog st = new Step1Dialog();
             //mf.Show();
             st.ShowDialog();
+            t = 1;
             this.Close();
         }
 
@@ -115,35 +117,41 @@ namespace BusinessPlanner
             //string dPath = ProjectConfig.projectPath.Replace("temp_", "") + ProjectConfig.projectExtension;
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
-               
-                    _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_loading"]);
-                    try
-                    {
-                        Task.Factory.StartNew(() => {
-                            ld.ShowDialog();
-                        });
-                        string proPath = opnfd.FileName;
-                        string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
-                        
-                        ProjectLoader.load(proPath, tempPath);
-                        MainWindow mf = new MainWindow();
-                        mf.Show();
 
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Exception: " + ex.Message);
-                    }
-                    finally
-                    {
-                        Invoke(new MethodInvoker(() =>
-                        {
-                            ld.Close();
-                        }));
-                        this.Close();
+                _LoadingDialog ld = new _LoadingDialog(AppMessages.messages["project_loading"]);
+                try
+                {
+                    Task.Factory.StartNew(() => {
+                        ld.ShowDialog();
+                    });
+                    string proPath = opnfd.FileName;
+                    string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
+
+                    ProjectLoader.load(proPath, tempPath);
+                    MainWindow mf = new MainWindow();
+                    mf.Show();
+                    t = 1;
                 }
-                
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception: " + ex.Message);
+                }
+                finally
+                {
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        ld.Close();
+                    }));
+                    this.Close();
+                }
+
             }
+        }
+
+        private void StartWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(t==0)
+                System.Windows.Forms.Application.Exit();
         }
     }
 }

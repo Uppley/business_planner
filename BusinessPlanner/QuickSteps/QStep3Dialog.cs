@@ -52,6 +52,9 @@ namespace BusinessPlanner
             }
         }
 
-        
+        private void QStep3Dialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

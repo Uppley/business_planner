@@ -147,6 +147,7 @@
             this.Name = "QStep5Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.QStep5Dialog_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

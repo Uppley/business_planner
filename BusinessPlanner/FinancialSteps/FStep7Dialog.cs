@@ -15,7 +15,7 @@ namespace BusinessPlanner
     public partial class FStep7Dialog : Form
     {
         private String mData { get; set; }
-        
+        int t = 0;
         public FStep7Dialog()
         {
             InitializeComponent();
@@ -54,6 +54,7 @@ namespace BusinessPlanner
                 string proPath = dc.createFinancialPackage();
                 string tempPath = Path.Combine(ProjectConfig.projectBase,"~temp_"+AppUtilities.mainData["step5"].ToString());
                 ProjectLoader.load(proPath,tempPath);
+                t = 1;
             }
             catch (Exception ex)
             {
@@ -68,6 +69,12 @@ namespace BusinessPlanner
             }
            
             
+        }
+
+        private void FStep7Dialog_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(t==0)
+                System.Windows.Forms.Application.Exit();
         }
     }
 }

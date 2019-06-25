@@ -34,7 +34,7 @@ namespace BusinessPlanner
         String project_name;
         List<DocumentItem> documentList = new List<DocumentItem>();
         int checkprint;
-        int splitDist=355;
+        int splitDist = 355;
         int meeting_count;
         public MainWindow()
         {
@@ -49,7 +49,7 @@ namespace BusinessPlanner
             AppUtilities.mainForm = this;
             project_name = ProjectConfig.projectSettings["Title"].ToString().ToUpper();
             label1.Text = project_name.ToUpper();
-            currency.Text = ProjectConfig.projectSettings.ContainsKey("Currency")?ProjectConfig.projectSettings["Currency"].ToString():"N.A.";
+            currency.Text = ProjectConfig.projectSettings.ContainsKey("Currency") ? ProjectConfig.projectSettings["Currency"].ToString() : "N.A.";
             setTreeNodes();
             DocumentProgressor dpg = new DocumentProgressor();
             label4.Text = dpg.completedSteps().ToString() + " /";
@@ -57,14 +57,14 @@ namespace BusinessPlanner
             progressBar1.Maximum = dpg.totalSteps();
             progressBar1.Value = dpg.completedSteps();
             currencyHandler();
-            if(dashboard == null)
+            if (dashboard == null)
             {
                 activateEditMenus(0);
             }
             //splitContainer1.SplitterDistance = splitDist;
             meeting_count = DatabaseReader.getMeetingCount();
-            button1.Text =  meeting_count==1 ? meeting_count+" Meeting Today" : meeting_count + " Meetings Today";
-            if ( meeting_count > 0)
+            button1.Text = meeting_count == 1 ? meeting_count + " Meeting Today" : meeting_count + " Meetings Today";
+            if (meeting_count > 0)
             {
                 button1.ImageIndex = 1;
                 button1.Enabled = true;
@@ -89,13 +89,13 @@ namespace BusinessPlanner
         {
             CurrencyFetcher currencyFetcher = new CurrencyFetcher();
             string res = await currencyFetcher.GetExchangeRate(Properties.Settings.Default.currency_api, currency.Text, "USD");
-            if(res=="error")
+            if (res == "error")
             {
                 toCurr.Text = "undefined";
             }
             else
             {
-                toCurr.Text = res+" USD";
+                toCurr.Text = res + " USD";
             }
         }
 
@@ -105,7 +105,7 @@ namespace BusinessPlanner
 
             foreach (ToolStripItem tsi in tsic)
             {
-                if(v==1)
+                if (v == 1)
                 {
                     tsi.Enabled = true;
                 }
@@ -125,11 +125,12 @@ namespace BusinessPlanner
         {
             int total_files = Directory.GetFiles(ProjectConfig.projectPath).Length;
             List<TreeViewItem> filteredItems = null;
-            if(ProjectConfig.projectSettings["PlanType"].ToString()== "Standard Plan")
+            if (ProjectConfig.projectSettings["PlanType"].ToString() == "Standard Plan")
             {
                 documentList = StandardDocument.DocumentList;
                 filteredItems = StandardConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
-            }else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Quick Plan")
+            }
+            else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Quick Plan")
             {
                 documentList = QuickDocument.DocumentList;
                 filteredItems = QuickConfig.getProjectNodes().Where(item => item.ParentID == parentId).ToList();
@@ -143,7 +144,7 @@ namespace BusinessPlanner
             {
                 MessageBox.Show("We encountered some config issues");
             }
-            
+
             TreeNode childNode;
             foreach (var i in filteredItems)
             {
@@ -158,10 +159,10 @@ namespace BusinessPlanner
 
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
-            
+
             if (this.treeView1.SelectedNode.Text == "Home")
             {
-               
+
                 panel1.Controls.Clear();
                 panel1.Controls.Add(this.home);
                 this.home.Show();
@@ -169,7 +170,7 @@ namespace BusinessPlanner
             }
             else
             {
-                if(this.treeView1.SelectedNode.Parent != null)
+                if (this.treeView1.SelectedNode.Parent != null)
                 {
                     ProjectConfig.projectFile = documentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
                     LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["loading"]);
@@ -184,9 +185,9 @@ namespace BusinessPlanner
                             panel1.Controls.Clear();
                             panel1.Controls.Add(frw);
                             frw.Show();
-                            
+
                         }
-                        else if(this.treeView1.SelectedNode.Text == "Start Up Investment")
+                        else if (this.treeView1.SelectedNode.Text == "Start Up Investment")
                         {
                             StartUpWindow stw = new StartUpWindow(this);
                             activateEditMenus(0);
@@ -194,7 +195,7 @@ namespace BusinessPlanner
                             panel1.Controls.Clear();
                             panel1.Controls.Add(stw);
                             stw.Show();
-                            
+
                         }
                         else if (this.treeView1.SelectedNode.Text == "Company Expenditure")
                         {
@@ -204,7 +205,7 @@ namespace BusinessPlanner
                             panel1.Controls.Clear();
                             panel1.Controls.Add(stw);
                             stw.Show();
-                            
+
                         }
                         else if (this.treeView1.SelectedNode.Text == "Analysis Table")
                         {
@@ -214,9 +215,9 @@ namespace BusinessPlanner
                             panel1.Controls.Clear();
                             panel1.Controls.Add(stw);
                             stw.Show();
-                            
+
                         }
-                        else if(this.treeView1.SelectedNode.Text== "Financial Statement")
+                        else if (this.treeView1.SelectedNode.Text == "Financial Statement")
                         {
                             FinancialWindow fiw = new FinancialWindow(this);
                             activateEditMenus(0);
@@ -233,7 +234,7 @@ namespace BusinessPlanner
                             panel1.Controls.Clear();
                             panel1.Controls.Add(dashboard);
                             dashboard.Show();
-                            
+
                         }
                     }
                     catch (Exception ex)
@@ -253,16 +254,16 @@ namespace BusinessPlanner
                     panel1.Controls.Clear();
                     panel1.Controls.Add(si);
                     si.Show();
-                    
+
                 }
-                
+
             }
         }
 
         private void ToolStripButton1_Click(object sender, EventArgs e)
         {
             this.CloseForNew();
-            
+
         }
 
         private void AboutVersionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -274,13 +275,13 @@ namespace BusinessPlanner
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             saveOpenSections();
-            var confirmResult = MessageBox.Show(AppMessages.messages["exit_body"],AppMessages.messages["exit_head"],MessageBoxButtons.YesNo);
+            var confirmResult = MessageBox.Show(AppMessages.messages["exit_body"], AppMessages.messages["exit_head"], MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 this.saveProjectBeforeClose();
                 this.Dispose();
                 System.Windows.Forms.Application.Exit();
-            }  
+            }
 
         }
 
@@ -293,7 +294,7 @@ namespace BusinessPlanner
                 this.saveProjectBeforeClose();
                 e.Cancel = false;
                 this.Dispose();
-                System.Windows.Forms.Application.Exit();
+                
             }
             else
             {
@@ -305,7 +306,7 @@ namespace BusinessPlanner
         {
             if (WorkProgress.workItems.Count > 0)
             {
-                DocumentProgressor dgp= new DocumentProgressor();
+                DocumentProgressor dgp = new DocumentProgressor();
                 var confirmResult = MessageBox.Show("You have unsaved sections in your project.\nDo you want to save them ?", "Unsaved work", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
@@ -359,8 +360,8 @@ namespace BusinessPlanner
             {
                 ls.hide();
             }
-            
-            
+
+
         }
 
         private void saveProgress()
@@ -382,7 +383,7 @@ namespace BusinessPlanner
             {
                 MessageBox.Show("Exception: " + e.Message);
             }
-            
+
         }
 
         private void ToolStripButton21_Click(object sender, EventArgs e)
@@ -398,7 +399,7 @@ namespace BusinessPlanner
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.CloseForNew();
-            
+
         }
 
         private void MSWordToolStripMenuItem_Click(object sender, EventArgs e)
@@ -410,70 +411,7 @@ namespace BusinessPlanner
             saveFileDialog1.Filter = "docx files (*.docx)|*.docx|All files (*.*)|*.*";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                
-                RichTextBox rtb1 = new RichTextBox();
-                RichTextBox rtb2 = new RichTextBox();
-                int seq = 1;
-                List<DocumentItem> allFiles = documentList.FindAll(x=>x.Ftype=="rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
-                foreach(DocumentItem doc in allFiles)
-                {
-                    rtb1.LoadFile(ProjectConfig.projectPath+"\\"+doc.DocumentName);
-                    rtb1.SelectAll();
-                    rtb1.Copy();
-                    rtb2.SelectionFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold |FontStyle.Underline);
-                    rtb2.AppendText("\n\n"+seq+". "+doc.ItemName+"\n\n");
-                    rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
-                    rtb2.Paste();
-                    Clipboard.Clear();
-                    seq += 1;
-                }
-                ExportGenerator document = new ExportGenerator();
-                document.open();
-                document.generateCoverPage(project_name);
-                document.getFooterWithPageNumber();
-                LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["exporting"]);
-                try
-                {
-                    ls.show();
-                    System.Windows.Forms.Application.DoEvents();
-                    Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
-                    rtb1.Dispose();
-                    rtb2.Dispose();
-                    document.setContent();
-                    
-                    object filename = saveFileDialog1.FileName;
-                    document.saveAsWord(filename);
-                    document.close();
-                    mssg = AppMessages.messages["export_success"];
-                    ls.hide();
-                }
-                catch (Exception ex)
-                {
-                    mssg=ex.Message;
-                    ls.hide();
-                }
-                finally
-                {
-                    MessageBox.Show(mssg);
-                    
-                    document = null;
-                    Clipboard.Clear();
-                    GC.Collect();
-                }
-                
-            }
-            
-        }
 
-        private void AdobePDFToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Clipboard.Clear();
-            saveFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            saveFileDialog2.DefaultExt = "pdf";
-            saveFileDialog2.Filter = "pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
-            if (saveFileDialog2.ShowDialog() == DialogResult.OK)
-            {
-                
                 RichTextBox rtb1 = new RichTextBox();
                 RichTextBox rtb2 = new RichTextBox();
                 int seq = 1;
@@ -494,7 +432,70 @@ namespace BusinessPlanner
                 document.open();
                 document.generateCoverPage(project_name);
                 document.getFooterWithPageNumber();
-                LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["exporting"]);
+                LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["exporting"]);
+                try
+                {
+                    ls.show();
+                    System.Windows.Forms.Application.DoEvents();
+                    Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
+                    rtb1.Dispose();
+                    rtb2.Dispose();
+                    document.setContent();
+
+                    object filename = saveFileDialog1.FileName;
+                    document.saveAsWord(filename);
+                    document.close();
+                    mssg = AppMessages.messages["export_success"];
+                    ls.hide();
+                }
+                catch (Exception ex)
+                {
+                    mssg = ex.Message;
+                    ls.hide();
+                }
+                finally
+                {
+                    MessageBox.Show(mssg);
+
+                    document = null;
+                    Clipboard.Clear();
+                    GC.Collect();
+                }
+
+            }
+
+        }
+
+        private void AdobePDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.Clear();
+            saveFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            saveFileDialog2.DefaultExt = "pdf";
+            saveFileDialog2.Filter = "pdf files (*.pdf)|*.pdf|All files (*.*)|*.*";
+            if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+
+                RichTextBox rtb1 = new RichTextBox();
+                RichTextBox rtb2 = new RichTextBox();
+                int seq = 1;
+                List<DocumentItem> allFiles = documentList.FindAll(x => x.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + x.DocumentName)).OrderBy(x => x.Seq).ToList();
+                foreach (DocumentItem doc in allFiles)
+                {
+                    rtb1.LoadFile(ProjectConfig.projectPath + "\\" + doc.DocumentName);
+                    rtb1.SelectAll();
+                    rtb1.Copy();
+                    rtb2.SelectionFont = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+                    rtb2.AppendText("\n\n" + seq + ". " + doc.ItemName + "\n\n");
+                    rtb2.SelectionFont = new System.Drawing.Font(rtb1.Font, FontStyle.Regular);
+                    rtb2.Paste();
+                    Clipboard.Clear();
+                    seq += 1;
+                }
+                ExportGenerator document = new ExportGenerator();
+                document.open();
+                document.generateCoverPage(project_name);
+                document.getFooterWithPageNumber();
+                LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["exporting"]);
                 try
                 {
                     ls.show();
@@ -506,12 +507,12 @@ namespace BusinessPlanner
                     object fileformat = WdSaveFormat.wdFormatPDF;
                     document.saveAsPdf(filename);
                     document.close();
-                    
+
                     MessageBox.Show(AppMessages.messages["export_success"]);
                 }
                 catch (Exception ex)
                 {
-                    
+
                     MessageBox.Show(ex.Message);
                 }
                 finally
@@ -520,7 +521,7 @@ namespace BusinessPlanner
                     document = null;
                     GC.Collect();
                 }
-                
+
             }
         }
 
@@ -528,7 +529,7 @@ namespace BusinessPlanner
         {
             OpenFileDialog opnfd = new OpenFileDialog();
             opnfd.Filter = "BUPX Files (*.bupx;)|*.bupx;";
-            string dPath = ProjectConfig.projectPath.Replace("~temp_", "")+ProjectConfig.projectExtension;
+            string dPath = ProjectConfig.projectPath.Replace("~temp_", "") + ProjectConfig.projectExtension;
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
                 if (opnfd.FileName.Equals(dPath))
@@ -537,10 +538,10 @@ namespace BusinessPlanner
                 }
                 else
                 {
-                    
+
                     try
                     {
-                        
+
                         string proPath = opnfd.FileName;
                         string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
                         this.Close();
@@ -555,7 +556,7 @@ namespace BusinessPlanner
                     }
                     finally
                     {
-                        
+
                     }
                 }
             }
@@ -566,13 +567,14 @@ namespace BusinessPlanner
             var confirmResult = MessageBox.Show(AppMessages.messages["new_body"], AppMessages.messages["new_head"], MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
-                this.Close();
-                if(this.IsDisposed)
+                saveProjectBeforeClose();
+                this.Dispose();
+                if (this.IsDisposed)
                 {
                     Step1Dialog st = new Step1Dialog();
                     st.ShowDialog();
                 }
-                
+
             }
             else
             {
@@ -582,7 +584,7 @@ namespace BusinessPlanner
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_save"]);
+            LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["project_save"]);
             try
             {
                 ls.show();
@@ -608,7 +610,7 @@ namespace BusinessPlanner
             if (saveFileDialog4.ShowDialog() == DialogResult.OK)
             {
                 Debug.WriteLine(saveFileDialog4.FileName);
-                LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_save"]);
+                LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["project_save"]);
                 try
                 {
                     ls.show();
@@ -629,7 +631,7 @@ namespace BusinessPlanner
 
         private void ToolStripButton3_Click(object sender, EventArgs e)
         {
-            LoadingSpinner ls = new LoadingSpinner(this,AppMessages.messages["project_save"]);
+            LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["project_save"]);
             try
             {
                 ls.show();
@@ -673,9 +675,9 @@ namespace BusinessPlanner
         {
 
             printPreviewDialog1.Document = printDocument1;
-            
+
             printPreviewDialog1.ShowDialog();
-            
+
         }
 
         private void ToolStripButton4_Click(object sender, EventArgs e)
@@ -718,7 +720,7 @@ namespace BusinessPlanner
         private void ShowToolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var temp = (ToolStripMenuItem)sender;
-            if(temp.CheckState==CheckState.Checked)
+            if (temp.CheckState == CheckState.Checked)
             {
                 temp.CheckState = CheckState.Unchecked;
                 toolStripContainer1.Hide();
@@ -734,14 +736,14 @@ namespace BusinessPlanner
 
         private void ShowTasksMenu_Click(object sender, EventArgs e)
         {
-            
+
             var temp = (ToolStripMenuItem)sender;
             if (temp.CheckState == CheckState.Checked)
             {
                 temp.CheckState = CheckState.Unchecked;
                 splitContainer1.Panel1.Hide();
                 splitContainer1.SplitterDistance = 0;
-                
+
             }
             else
             {
@@ -792,9 +794,9 @@ namespace BusinessPlanner
             DialogResult pnd_data = pnd.ShowDialog(this);
             if (pnd_data == DialogResult.OK)
             {
-                
+
                 label1.Text = pnd.newName.ToUpper();
-                
+
             }
         }
 
@@ -840,10 +842,10 @@ namespace BusinessPlanner
         private void FindToolStripMenuItem_Click(object sender, EventArgs e)
         {
             findWord();
-            
+
         }
 
-        
+
 
         private void ReplaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -986,7 +988,7 @@ namespace BusinessPlanner
 
         private void MainWindow_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Control)
+            if (e.Control)
             {
                 var kp = e.KeyCode;
                 switch (kp)
@@ -1019,13 +1021,18 @@ namespace BusinessPlanner
                         break;
                 }
             }
-            
-            
+
+
         }
 
         private void PrintMenu_Click(object sender, EventArgs e)
         {
             printDocument();
+        }
+
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

@@ -228,6 +228,7 @@
             this.Name = "Step1Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Setup";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Step1Dialog_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
