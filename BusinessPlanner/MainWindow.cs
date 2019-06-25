@@ -544,7 +544,8 @@ namespace BusinessPlanner
 
                         string proPath = opnfd.FileName;
                         string tempPath = Path.Combine(Path.GetDirectoryName(opnfd.FileName), "~temp_" + opnfd.SafeFileName.Replace(ProjectConfig.projectExtension, ""));
-                        this.Close();
+                        saveProjectBeforeClose();
+                        this.Dispose();
                         ProjectLoader.load(proPath, tempPath);
                         MainWindow mf = new MainWindow();
                         mf.Show();
