@@ -35,7 +35,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -51,6 +50,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.percentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.instruction_box = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -106,24 +106,14 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Info;
-            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.instruction_box);
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(10);
             this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabPage1.Size = new System.Drawing.Size(463, 754);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Instructions";
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 3);
-            this.label3.Name = "label3";
-            this.label3.Padding = new System.Windows.Forms.Padding(10);
-            this.label3.Size = new System.Drawing.Size(457, 748);
-            this.label3.TabIndex = 0;
-            this.label3.Text = resources.GetString("label3.Text");
             // 
             // tabPage2
             // 
@@ -305,6 +295,19 @@
             this.percentage.MinimumWidth = 6;
             this.percentage.Name = "percentage";
             // 
+            // instruction_box
+            // 
+            this.instruction_box.BackColor = System.Drawing.SystemColors.Info;
+            this.instruction_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.instruction_box.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.instruction_box.Location = new System.Drawing.Point(10, 10);
+            this.instruction_box.Name = "instruction_box";
+            this.instruction_box.ReadOnly = true;
+            this.instruction_box.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.instruction_box.Size = new System.Drawing.Size(443, 734);
+            this.instruction_box.TabIndex = 0;
+            this.instruction_box.Text = "";
+            // 
             // AnalysisWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -334,7 +337,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPage3;
@@ -350,5 +352,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn group;
         private System.Windows.Forms.DataGridViewTextBoxColumn percentage;
+        private System.Windows.Forms.RichTextBox instruction_box;
     }
 }

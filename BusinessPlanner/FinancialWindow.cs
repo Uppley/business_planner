@@ -1,4 +1,5 @@
-﻿using BusinessPlanner.Utility;
+﻿using BP.Instructions;
+using BusinessPlanner.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,12 +22,15 @@ namespace BusinessPlanner
         float grossProfit = 0;
         float totalExpenditures = 0;
         float operatingProfit = 0;
+        SectionInstructions secIns;
         public FinancialWindow(MainWindow maw)
         {
             InitializeComponent();
             mw = maw;
             dgp = new DocumentProgressor();
             saveBt.Left = (saveBt.Parent.Width - saveBt.Width) / 2;
+            secIns = new SectionInstructions();
+            instruction_box.Text = secIns.instructionItems.FirstOrDefault(x => x.section == "Financial Statement").instruction;
             try
             {
                 fetchAllData();

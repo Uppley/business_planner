@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -81,6 +80,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.instruction_box = new System.Windows.Forms.RichTextBox();
             this.richTextBox1 = new BusinessPlanner.CustomElements.CustomRichtextBox();
             this.spellingWorker1 = new NHunspellComponent.Spelling.SpellingWorker();
             this.tabControl1.SuspendLayout();
@@ -115,24 +115,14 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Info;
-            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.instruction_box);
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(10);
             this.tabPage1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabPage1.Size = new System.Drawing.Size(969, 238);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Instructions";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.Location = new System.Drawing.Point(11, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(940, 215);
-            this.label3.TabIndex = 0;
-            this.label3.Text = resources.GetString("label3.Text");
             // 
             // tabPage2
             // 
@@ -723,6 +713,20 @@
             this.label9.TabIndex = 9;
             this.label9.Text = "none";
             // 
+            // instruction_box
+            // 
+            this.instruction_box.BackColor = System.Drawing.SystemColors.Info;
+            this.instruction_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.instruction_box.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.instruction_box.Location = new System.Drawing.Point(10, 10);
+            this.instruction_box.Name = "instruction_box";
+            this.instruction_box.ReadOnly = true;
+            this.instruction_box.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.instruction_box.ShortcutsEnabled = false;
+            this.instruction_box.Size = new System.Drawing.Size(949, 218);
+            this.instruction_box.TabIndex = 0;
+            this.instruction_box.Text = "";
+            // 
             // richTextBox1
             // 
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -821,7 +825,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
@@ -838,5 +841,6 @@
         private System.Windows.Forms.Button button1;
         public CustomElements.CustomRichtextBox richTextBox1;
         public NHunspellComponent.Spelling.SpellingWorker spellingWorker1;
+        private System.Windows.Forms.RichTextBox instruction_box;
     }
 }

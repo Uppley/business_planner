@@ -1,4 +1,5 @@
-﻿using BusinessPlanner.Utility;
+﻿using BP.Instructions;
+using BusinessPlanner.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,14 @@ namespace BusinessPlanner
     {
         MainWindow mw;
         DocumentProgressor dgp;
+        SectionInstructions secIns;
         public AnalysisWindow(MainWindow maw)
         {
             InitializeComponent();
             mw = maw;
             dgp = new DocumentProgressor();
+            secIns = new SectionInstructions();
+            instruction_box.Text = secIns.instructionItems.FirstOrDefault(x => x.section == "Analysis Table").instruction;
             if (File.Exists(ProjectConfig.projectPath + "\\data.xls"))
             {
                 ExcelReader excelReader = new ExcelReader();

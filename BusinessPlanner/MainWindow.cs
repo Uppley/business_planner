@@ -279,6 +279,7 @@ namespace BusinessPlanner
             {
                 this.saveProjectBeforeClose();
                 this.Dispose();
+                System.Windows.Forms.Application.Exit();
             }  
 
         }
@@ -292,6 +293,7 @@ namespace BusinessPlanner
                 this.saveProjectBeforeClose();
                 e.Cancel = false;
                 this.Dispose();
+                System.Windows.Forms.Application.Exit();
             }
             else
             {

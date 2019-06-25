@@ -718,6 +718,10 @@
       <Project>{9461ecf0-1779-4f19-b081-bf9497d9d707}</Project>
       <Name>BP.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BP.Instructions\BP.Instructions.csproj">
+      <Project>{b972ae97-5bfc-4286-bd29-5ad2a59bb06e}</Project>
+      <Name>BP.Instructions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BP.Resource\BP.Resource.csproj">
       <Project>{fe990b1c-4458-4082-bd77-38e6a9cf3274}</Project>
       <Name>BP.Resource</Name>

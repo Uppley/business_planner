@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessPlanner.Models;
+using BP.Instructions;
 
 namespace BusinessPlanner
 {
@@ -22,7 +23,8 @@ namespace BusinessPlanner
         public List<int> findPosition = new List<int>();
         public int findLength = 0;
         string file_loaded;
-        
+        string section_name;
+        SectionInstructions secIns;
         public string richtext { get; set; }
         MainWindow mw;
         DocumentProgressor dgp;
@@ -46,6 +48,8 @@ namespace BusinessPlanner
             }
             toolStripComboBox1.SelectedItem = "Arial";
             fontSizeCmb.SelectedItem = 12;
+            section_name = StandardDocument.DocumentList.Find(item => item.DocumentName == name).ItemName;
+            secIns = new SectionInstructions();
             this.setContentInitial(file_loaded);
             this.richTextBox1.SelectionFont = new Font("Arial", 12, this.richTextBox1.SelectionFont.Style);
             this.richTextBox1.ZoomFactor = 1.0f;
@@ -64,7 +68,8 @@ namespace BusinessPlanner
         {
             try
             {
-                label9.Text = StandardDocument.DocumentList.Find(item => item.DocumentName == name).ItemName;
+                label9.Text = section_name;
+                instruction_box.Text = secIns.instructionItems.FirstOrDefault(x => x.section == section_name).instruction;
                 if(WorkProgress.workItems.Exists(x=>x.filename==name))
                 {
                     int index = WorkProgress.workItems.FindIndex(x => x.filename == name);
