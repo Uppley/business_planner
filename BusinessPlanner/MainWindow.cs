@@ -81,6 +81,10 @@ namespace BusinessPlanner
                 fromCurr.Text = "1 " + currency.Text + " = ";
                 getCurrencyRateAsync();
             }
+            else
+            {
+                currencyPanel.Visible = false;
+            }
         }
 
         private async void getCurrencyRateAsync()

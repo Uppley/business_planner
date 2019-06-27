@@ -14,7 +14,7 @@ namespace BusinessPlanner.Utility
         {
 
             SQLiteConnection sqlite_conn;
-            sqlite_conn = new SQLiteConnection("Data Source="+ProjectConfig.projectPath+"//user_config.db; Version = 3; Compress = True;");
+            sqlite_conn = new SQLiteConnection("Data Source="+ProjectConfig.projectPath+"//user_config.db; Version = 3;Password=test123; Compress = True;");
             try
             {
                 sqlite_conn.Open();
