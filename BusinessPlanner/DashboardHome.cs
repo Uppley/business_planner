@@ -103,7 +103,6 @@ namespace BusinessPlanner
                     dgv1.Rows.Clear();
                     dgv1.Columns.Clear();
                     dgv1.Dispose();
-                    excelReader.Close();
                 }
                 else
                 {
@@ -154,7 +153,6 @@ namespace BusinessPlanner
                     dgv1.Rows.Clear();
                     dgv1.Columns.Clear();
                     dgv1.Dispose();
-                    excelReader.Close();
                 }
                 
 

@@ -29,7 +29,6 @@ namespace BusinessPlanner
             {
                 ExcelReader excelReader = new ExcelReader();
                 excelReader.readExcelToDataGridView(dataGridView1, "Expenditures");
-                excelReader.Close();
             }
         }
 
@@ -50,7 +49,6 @@ namespace BusinessPlanner
                 ChartGenerator cgen = new ChartGenerator();
                 cgen.generatePieChart(dataGridView1,"generated.png","Company Expenditures");
                 cgen.ImageToRtf("expenditure.rtf", "generated.png");
-                excelReader.Close();
                 Label l = mw.Controls.Find("label4", true)[0] as Label;
                 ProgressBar pbar = mw.Controls.Find("progressBar1", true)[0] as ProgressBar;
                 dgp.updateProgress("expenditure.rtf",dataGridView1.Rows.Count > 0 ? 1 : 0);

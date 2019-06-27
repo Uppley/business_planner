@@ -29,7 +29,7 @@ namespace BusinessPlanner
             { 
                 ExcelReader excelReader = new ExcelReader();
                 excelReader.readExcelToDataGridView(dataGridView1, "StartUp Cost");
-                excelReader.Close();
+                
             }
         }
 
@@ -45,7 +45,7 @@ namespace BusinessPlanner
                     new int[1] { 1 },
                     new string[1] { "StartUp Cost" }
                 );
-                excelReader.Close();
+                
                 TableGenerator tbl = new TableGenerator();
                 tbl.Generate(dataGridView1, "startup_table.rtf");
                 ChartGenerator cgen = new ChartGenerator();

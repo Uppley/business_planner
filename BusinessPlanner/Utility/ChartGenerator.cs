@@ -40,7 +40,7 @@ namespace BusinessPlanner.Utility
                 x++;
             }
            
-            chart.SaveImage(fname, ChartImageFormat.Png);
+            chart.SaveImage(Path.Combine(ProjectConfig.projectPath,fname), ChartImageFormat.Png);
             chart.Invalidate();
             
         }
@@ -82,7 +82,7 @@ namespace BusinessPlanner.Utility
                 x++;
             }
 
-            chart.SaveImage(fname, ChartImageFormat.Png);
+            chart.SaveImage(Path.Combine(ProjectConfig.projectPath, fname), ChartImageFormat.Png);
             chart.Invalidate();
         }
 
@@ -90,7 +90,7 @@ namespace BusinessPlanner.Utility
         {
             try
             {
-                var img = Image.FromFile(name);
+                var img = Image.FromFile(Path.Combine(ProjectConfig.projectPath, name));
                 Clipboard.SetImage(img);
                 img.Dispose();
                 RichTextBox rtb = new RichTextBox();
@@ -99,8 +99,8 @@ namespace BusinessPlanner.Utility
                 rtb.Paste();
                 rtb.SaveFile(ProjectConfig.projectPath + "\\" + fname);
                 rtb.Dispose();
-                if(File.Exists(name))
-                    File.Delete(name);
+                if(File.Exists(Path.Combine(ProjectConfig.projectPath, name)))
+                    File.Delete(Path.Combine(ProjectConfig.projectPath, name));
                 Clipboard.Clear();
             }
             catch(Exception e)

@@ -98,7 +98,6 @@ namespace BusinessPlanner
             dgv1.Rows.Clear();
             dgv1.Columns.Clear();
             dgv1.Dispose();
-            excelReader.Close();
             foreach(var e in expenditures)
             {
                 totalExpenditures += e.amount;

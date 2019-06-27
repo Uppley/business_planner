@@ -34,9 +34,9 @@ namespace BP.CurrencyFetcher
                     }
                     
                 }
-                catch (HttpRequestException httpRequestException)
+                catch (Exception ex)
                 {
-                    Console.WriteLine(httpRequestException.StackTrace);
+                    //Console.WriteLine(httpRequestException.StackTrace);
                     return "error";
                 }
             }

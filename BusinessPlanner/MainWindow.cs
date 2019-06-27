@@ -8,8 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Office2007Renderer;
-using Microsoft.Office.Interop.Word;
-using Microsoft.Office;
 using System.Windows.Forms;
 using Rectangle = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
@@ -91,7 +89,7 @@ namespace BusinessPlanner
             string res = await currencyFetcher.GetExchangeRate(Properties.Settings.Default.currency_api, currency.Text, "USD");
             if (res == "error")
             {
-                toCurr.Text = "undefined";
+                toCurr.Text = "Undefined";
             }
             else
             {
@@ -428,23 +426,22 @@ namespace BusinessPlanner
                     Clipboard.Clear();
                     seq += 1;
                 }
-                ExportGenerator document = new ExportGenerator();
-                document.open();
-                document.generateCoverPage(project_name);
-                document.getFooterWithPageNumber();
+                
                 LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["exporting"]);
+                string filename = saveFileDialog1.FileName;
                 try
                 {
                     ls.show();
                     System.Windows.Forms.Application.DoEvents();
-                    Clipboard.SetText(rtb2.Rtf, TextDataFormat.Rtf);
+                    ExportGenerator document = new ExportGenerator();
+                    document.open(filename);
+                    document.generateCoverPage(project_name);
+                    byte[] byteArray = Encoding.UTF8.GetBytes(rtb2.Rtf);
+                    document.setContent(byteArray);
                     rtb1.Dispose();
                     rtb2.Dispose();
-                    document.setContent();
-
-                    object filename = saveFileDialog1.FileName;
-                    document.saveAsWord(filename);
-                    document.close();
+                    document.saveDocument();
+                    document.Close();
                     mssg = AppMessages.messages["export_success"];
                     ls.hide();
                 }
@@ -456,8 +453,6 @@ namespace BusinessPlanner
                 finally
                 {
                     MessageBox.Show(mssg);
-
-                    document = null;
                     Clipboard.Clear();
                     GC.Collect();
                 }
@@ -466,7 +461,7 @@ namespace BusinessPlanner
 
         }
 
-        private void AdobePDFToolStripMenuItem_Click(object sender, EventArgs e)
+       /* private void AdobePDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Clipboard.Clear();
             saveFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -523,7 +518,7 @@ namespace BusinessPlanner
                 }
 
             }
-        }
+        }*/
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {

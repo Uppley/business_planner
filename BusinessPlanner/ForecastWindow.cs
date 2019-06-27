@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace BusinessPlanner
 {
@@ -29,7 +29,7 @@ namespace BusinessPlanner
                 ExcelReader excelReader = new ExcelReader();
                 excelReader.readExcelToDataGridView(dataGridView1, "Sales Forecast");
                 excelReader.readExcelToDataGridView(dataGridView2, "Cost Of Sales");
-                excelReader.Close();
+
             }
         }
 
@@ -47,7 +47,7 @@ namespace BusinessPlanner
                     new int[2]{1,2}, 
                     new string[2]{"Sales Forecast","Cost Of Sales"}
                 );
-                excelReader.Close();
+
                 TableGenerator tbl = new TableGenerator();
                 tbl.GenerateMultipleTable(new DataGridView[2] { dataGridView1, dataGridView2 }, "sales_forecast_table.rtf", new string[2] { "Sales Forecast", "Cost Of Sales" });
                 ChartGenerator cgr = new ChartGenerator();
