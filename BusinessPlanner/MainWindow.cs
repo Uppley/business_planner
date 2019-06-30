@@ -162,44 +162,6 @@ namespace BusinessPlanner
 
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
-            
-            if(WorkProgress.workItems.Count() > 0)
-            {
-                TreeNodeCollection all_nodes = this.treeView1.Nodes;
-                
-                foreach (TreeNode n in all_nodes)
-                {
-                    
-                    TreeNodeCollection child_nodes = n.Nodes;
-                    foreach(TreeNode c in child_nodes)
-                    {
-                        string filename = documentList.Find(x => x.ItemName == c.Name).DocumentName;
-                        if (WorkProgress.workItems.Exists(x => x.filename == filename))
-                        {
-                            c.Text = c.Name + "*";
-                        }
-                        else
-                        {
-                            c.Text = c.Name;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                TreeNodeCollection all_nodes = this.treeView1.Nodes;
-                foreach (TreeNode n in all_nodes)
-                {
-                    TreeNodeCollection child_nodes = n.Nodes;
-                    foreach (TreeNode c in child_nodes)
-                    {
-                        c.Text = c.Name;
-                        n.Text = n.Name;
-                    }
-                }
-            }
-            
-
             if (this.treeView1.SelectedNode.Name == "Home")
             {
 

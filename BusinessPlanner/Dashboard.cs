@@ -21,6 +21,7 @@ namespace BusinessPlanner
     public partial class Dashboard : Form
     {
         public List<int> findPosition = new List<int>();
+        
         public int findLength = 0;
         string file_loaded;
         string section_name;
@@ -48,7 +49,7 @@ namespace BusinessPlanner
             }
             toolStripComboBox1.SelectedItem = "Arial";
             fontSizeCmb.SelectedItem = 12;
-            section_name = StandardDocument.DocumentList.Find(item => item.DocumentName == name).ItemName;
+            section_name = setDocumentList().Find(item => item.DocumentName == name).ItemName;
             secIns = new SectionInstructions();
             this.setContentInitial(file_loaded);
             this.richTextBox1.SelectionFont = new Font("Arial", 12, this.richTextBox1.SelectionFont.Style);
@@ -62,7 +63,24 @@ namespace BusinessPlanner
 
         }
 
-        
+        private List<DocumentItem> setDocumentList()
+        {
+            List<DocumentItem> documentList = null;
+
+            if (ProjectConfig.projectSettings["PlanType"].ToString() == "Standard Plan")
+            {
+                documentList = StandardDocument.DocumentList;
+            }
+            else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Quick Plan")
+            {
+                documentList = QuickDocument.DocumentList;
+            }
+            else if (ProjectConfig.projectSettings["PlanType"].ToString() == "Financial Plan")
+            {
+                documentList = FinancialDocument.DocumentList;
+            }
+            return documentList;
+        }
 
         private void setContentInitial(String name)
         {
@@ -409,6 +427,24 @@ namespace BusinessPlanner
                 int index = WorkProgress.workItems.FindIndex(x => x.filename == file_loaded);
                 WorkProgress.workItems.RemoveAt(index);
             }
+            string child_node = setDocumentList().Find(x => x.DocumentName == file_loaded).ItemName;
+            TreeNode node = mw.treeView1.Nodes.Find(child_node, true)[0];
+            node.Text = node.Name;
+            TreeNode parent = node.Parent;
+            TreeNodeCollection child_nodes = parent.Nodes;
+            foreach(TreeNode p in child_nodes)
+            {
+                string cn = setDocumentList().Find(x => x.ItemName == p.Name).DocumentName;
+                if(WorkProgress.workItems.Exists(x=>x.filename==cn))
+                {
+                    break;
+                }
+                else
+                {
+                    parent.Text = parent.Name;
+                }
+            }
+            
         }
 
         private void Dashboard_changeProgress(string mssg)
@@ -433,7 +469,10 @@ namespace BusinessPlanner
             {
                 WorkProgress.workItems.Add(new WorkItem { filename = file_loaded, data = this.richTextBox1.Rtf });
             }
-            
+            string child_node = setDocumentList().Find(x => x.DocumentName == file_loaded).ItemName;
+            TreeNode node = mw.treeView1.Nodes.Find(child_node, true)[0];
+            node.Text = node.Name + "*";
+            node.Parent.Text = node.Parent.Name + "*";
         }
     }
 }
