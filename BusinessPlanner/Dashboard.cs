@@ -73,7 +73,7 @@ namespace BusinessPlanner
                 if(WorkProgress.workItems.Exists(x=>x.filename==name))
                 {
                     int index = WorkProgress.workItems.FindIndex(x => x.filename == name);
-                    Debug.WriteLine(WorkProgress.workItems[index].filename);
+                    //Debug.WriteLine(WorkProgress.workItems[index].filename);
                     this.richTextBox1.Rtf = WorkProgress.workItems[index].data;
                     WorkProgress.workItems[index].data = this.richTextBox1.Rtf;
                 }
@@ -433,6 +433,7 @@ namespace BusinessPlanner
             {
                 WorkProgress.workItems.Add(new WorkItem { filename = file_loaded, data = this.richTextBox1.Rtf });
             }
+            
         }
     }
 }

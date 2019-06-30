@@ -59,7 +59,6 @@ namespace BusinessPlanner
             {
                 activateEditMenus(0);
             }
-            //splitContainer1.SplitterDistance = splitDist;
             meeting_count = DatabaseReader.getMeetingCount();
             button1.Text = meeting_count == 1 ? meeting_count + " Meeting Today" : meeting_count + " Meetings Today";
             if (meeting_count > 0)
@@ -84,6 +83,8 @@ namespace BusinessPlanner
             else
             {
                 currencyPanel.Visible = false;
+                currencyRateMenu.Enabled = false;
+                modifyCurrency.Enabled = false;
             }
         }
 
@@ -151,9 +152,9 @@ namespace BusinessPlanner
             foreach (var i in filteredItems)
             {
                 if (parentNode == null)
-                    childNode = this.treeView1.Nodes.Add(i.Text);
+                    childNode = this.treeView1.Nodes.Add(Name= i.Text, Text=i.Text);
                 else
-                    childNode = parentNode.Nodes.Add(i.Text);
+                    childNode = parentNode.Nodes.Add(Name = i.Text, Text = i.Text);
 
                 PopulateTreeView(i.ID, childNode);
             }
@@ -161,8 +162,45 @@ namespace BusinessPlanner
 
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
+            
+            if(WorkProgress.workItems.Count() > 0)
+            {
+                TreeNodeCollection all_nodes = this.treeView1.Nodes;
+                
+                foreach (TreeNode n in all_nodes)
+                {
+                    
+                    TreeNodeCollection child_nodes = n.Nodes;
+                    foreach(TreeNode c in child_nodes)
+                    {
+                        string filename = documentList.Find(x => x.ItemName == c.Name).DocumentName;
+                        if (WorkProgress.workItems.Exists(x => x.filename == filename))
+                        {
+                            c.Text = c.Name + "*";
+                        }
+                        else
+                        {
+                            c.Text = c.Name;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                TreeNodeCollection all_nodes = this.treeView1.Nodes;
+                foreach (TreeNode n in all_nodes)
+                {
+                    TreeNodeCollection child_nodes = n.Nodes;
+                    foreach (TreeNode c in child_nodes)
+                    {
+                        c.Text = c.Name;
+                        n.Text = n.Name;
+                    }
+                }
+            }
+            
 
-            if (this.treeView1.SelectedNode.Text == "Home")
+            if (this.treeView1.SelectedNode.Name == "Home")
             {
 
                 panel1.Controls.Clear();
@@ -174,69 +212,62 @@ namespace BusinessPlanner
             {
                 if (this.treeView1.SelectedNode.Parent != null)
                 {
-                    ProjectConfig.projectFile = documentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Text).DocumentName;
+                    ProjectConfig.projectFile = documentList.Find(item => item.ItemName == this.treeView1.SelectedNode.Name).DocumentName;
                     LoadingSpinner ls = new LoadingSpinner(this, AppMessages.messages["loading"]);
                     try
                     {
                         ls.show();
-                        if (this.treeView1.SelectedNode.Text == "Sales Forecast Table")
+                        string item = this.treeView1.SelectedNode.Name;
+                        switch(item)
                         {
-                            ForecastWindow frw = new ForecastWindow(this);
-                            activateEditMenus(0);
-                            frw.TopLevel = false;
-                            panel1.Controls.Clear();
-                            panel1.Controls.Add(frw);
-                            frw.Show();
-
-                        }
-                        else if (this.treeView1.SelectedNode.Text == "Start Up Investment")
-                        {
-                            StartUpWindow stw = new StartUpWindow(this);
-                            activateEditMenus(0);
-                            stw.TopLevel = false;
-                            panel1.Controls.Clear();
-                            panel1.Controls.Add(stw);
-                            stw.Show();
-
-                        }
-                        else if (this.treeView1.SelectedNode.Text == "Company Expenditure")
-                        {
-                            ExpenditureWindow stw = new ExpenditureWindow(this);
-                            activateEditMenus(0);
-                            stw.TopLevel = false;
-                            panel1.Controls.Clear();
-                            panel1.Controls.Add(stw);
-                            stw.Show();
-
-                        }
-                        else if (this.treeView1.SelectedNode.Text == "Analysis Table")
-                        {
-                            AnalysisWindow stw = new AnalysisWindow(this);
-                            activateEditMenus(0);
-                            stw.TopLevel = false;
-                            panel1.Controls.Clear();
-                            panel1.Controls.Add(stw);
-                            stw.Show();
-
-                        }
-                        else if (this.treeView1.SelectedNode.Text == "Financial Statement")
-                        {
-                            FinancialWindow fiw = new FinancialWindow(this);
-                            activateEditMenus(0);
-                            fiw.TopLevel = false;
-                            panel1.Controls.Clear();
-                            panel1.Controls.Add(fiw);
-                            fiw.Show();
-                        }
-                        else
-                        {
-                            dashboard = new Dashboard(this, ProjectConfig.projectFile);
-                            activateEditMenus(1);
-                            dashboard.TopLevel = false;
-                            panel1.Controls.Clear();
-                            panel1.Controls.Add(dashboard);
-                            dashboard.Show();
-
+                            case "Sales Forecast Table":
+                                ForecastWindow frw = new ForecastWindow(this);
+                                activateEditMenus(0);
+                                frw.TopLevel = false;
+                                panel1.Controls.Clear();
+                                panel1.Controls.Add(frw);
+                                frw.Show();
+                                break;
+                            case "Start Up Investment":
+                                StartUpWindow sui = new StartUpWindow(this);
+                                activateEditMenus(0);
+                                sui.TopLevel = false;
+                                panel1.Controls.Clear();
+                                panel1.Controls.Add(sui);
+                                sui.Show();
+                                break;
+                            case "Company Expenditure":
+                                ExpenditureWindow coe = new ExpenditureWindow(this);
+                                activateEditMenus(0);
+                                coe.TopLevel = false;
+                                panel1.Controls.Clear();
+                                panel1.Controls.Add(coe);
+                                coe.Show();
+                                break;
+                            case "Analysis Table":
+                                AnalysisWindow ant = new AnalysisWindow(this);
+                                activateEditMenus(0);
+                                ant.TopLevel = false;
+                                panel1.Controls.Clear();
+                                panel1.Controls.Add(ant);
+                                ant.Show();
+                                break;
+                            case "Financial Statement":
+                                FinancialWindow fiw = new FinancialWindow(this);
+                                activateEditMenus(0);
+                                fiw.TopLevel = false;
+                                panel1.Controls.Clear();
+                                panel1.Controls.Add(fiw);
+                                fiw.Show();
+                                break;
+                            default:
+                                dashboard = new Dashboard(this, ProjectConfig.projectFile);
+                                activateEditMenus(1);
+                                dashboard.TopLevel = false;
+                                panel1.Controls.Clear();
+                                panel1.Controls.Add(dashboard);
+                                dashboard.Show();
+                                break;
                         }
                     }
                     catch (Exception ex)
@@ -250,7 +281,7 @@ namespace BusinessPlanner
                 }
                 else
                 {
-                    SectionIntro si = new SectionIntro(this.treeView1.SelectedNode.Text);
+                    SectionIntro si = new SectionIntro(this.treeView1.SelectedNode.Name);
                     activateEditMenus(0);
                     si.TopLevel = false;
                     panel1.Controls.Clear();

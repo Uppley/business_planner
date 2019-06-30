@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.instruction_box = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -50,7 +51,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.group = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.percentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.instruction_box = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -114,6 +114,20 @@
             this.tabPage1.Size = new System.Drawing.Size(463, 754);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Instructions";
+            // 
+            // instruction_box
+            // 
+            this.instruction_box.BackColor = System.Drawing.SystemColors.Info;
+            this.instruction_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.instruction_box.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.instruction_box.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.instruction_box.Location = new System.Drawing.Point(10, 10);
+            this.instruction_box.Name = "instruction_box";
+            this.instruction_box.ReadOnly = true;
+            this.instruction_box.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.instruction_box.Size = new System.Drawing.Size(443, 734);
+            this.instruction_box.TabIndex = 0;
+            this.instruction_box.Text = "";
             // 
             // tabPage2
             // 
@@ -294,19 +308,6 @@
             this.percentage.HeaderText = "Percentage (%)";
             this.percentage.MinimumWidth = 6;
             this.percentage.Name = "percentage";
-            // 
-            // instruction_box
-            // 
-            this.instruction_box.BackColor = System.Drawing.SystemColors.Info;
-            this.instruction_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.instruction_box.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.instruction_box.Location = new System.Drawing.Point(10, 10);
-            this.instruction_box.Name = "instruction_box";
-            this.instruction_box.ReadOnly = true;
-            this.instruction_box.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.instruction_box.Size = new System.Drawing.Size(443, 734);
-            this.instruction_box.TabIndex = 0;
-            this.instruction_box.Text = "";
             // 
             // AnalysisWindow
             // 
