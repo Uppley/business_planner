@@ -710,6 +710,10 @@
       <Project>{fe990b1c-4458-4082-bd77-38e6a9cf3274}</Project>
       <Name>BP.Resource</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BP.Samples\BP.Samples.csproj">
+      <Project>{4f92251c-1c75-4d5f-8a70-1b605d18e0b9}</Project>
+      <Name>BP.Samples</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Hunspellx64.dll">

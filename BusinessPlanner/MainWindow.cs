@@ -687,6 +687,7 @@ namespace BusinessPlanner
         {
             Clipboard.Clear();
             RichTextBox rtb1 = new RichTextBox();
+            
             RichTextBoxPrintCtrl.RichTextBoxPrintCtrl.RichTextBoxPrintCtrl rtb2 = new RichTextBoxPrintCtrl.RichTextBoxPrintCtrl.RichTextBoxPrintCtrl();
             int seq = 1;
             List<DocumentItem> allFiles = documentList.FindAll(z => z.Ftype == "rtf" && File.Exists(ProjectConfig.projectPath + "//" + z.DocumentName)).OrderBy(z => z.Seq).ToList();
@@ -1026,6 +1027,17 @@ namespace BusinessPlanner
         private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
         {
             System.Windows.Forms.Application.Exit();
+        }
+
+        private string generateHeading(string head)
+        {
+            StringBuilder strb = new StringBuilder();
+            strb.Append(@"{\rtf1\ansi\deff0");
+            strb.Append(@"{\fonttbl {\f0 Arial;}");
+            strb.Append(@"{\colortbl;\red0\green0\blue0;}");
+            strb.Append(@"\cf1\fs30 "+head);
+            strb.Append(@"}");
+            return strb.ToString();
         }
     }
 }

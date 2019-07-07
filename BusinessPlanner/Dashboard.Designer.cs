@@ -40,7 +40,6 @@
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.nextEgBt = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -83,6 +82,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.spellingWorker1 = new NHunspellComponent.Spelling.SpellingWorker();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -142,23 +142,21 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Info;
+            this.tabPage2.Controls.Add(this.richTextBox2);
             this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(969, 238);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Examples";
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.prevEgBt);
             this.panel2.Controls.Add(this.nextEgBt);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 196);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(969, 42);
@@ -196,6 +194,7 @@
             this.prevEgBt.Size = new System.Drawing.Size(28, 28);
             this.prevEgBt.TabIndex = 2;
             this.prevEgBt.UseVisualStyleBackColor = true;
+            this.prevEgBt.Click += new System.EventHandler(this.PrevEgBt_Click);
             this.prevEgBt.MouseLeave += new System.EventHandler(this.PrevEgBt_MouseLeave);
             this.prevEgBt.MouseHover += new System.EventHandler(this.PrevEgBt_MouseHover);
             // 
@@ -222,6 +221,7 @@
             this.nextEgBt.Size = new System.Drawing.Size(28, 28);
             this.nextEgBt.TabIndex = 1;
             this.nextEgBt.UseVisualStyleBackColor = true;
+            this.nextEgBt.Click += new System.EventHandler(this.NextEgBt_Click);
             this.nextEgBt.MouseLeave += new System.EventHandler(this.NextEgBt_MouseLeave);
             this.nextEgBt.MouseHover += new System.EventHandler(this.NextEgBt_MouseHover);
             // 
@@ -231,16 +231,6 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "left_arr.png");
             this.imageList1.Images.SetKeyName(1, "left_arr_active.png");
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.Location = new System.Drawing.Point(11, 11);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(952, 182);
-            this.label4.TabIndex = 0;
-            this.label4.Text = resources.GetString("label4.Text");
             // 
             // tabPage3
             // 
@@ -326,6 +316,7 @@
             this.toolStrip2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.toolStrip2.CanOverflow = false;
             this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSave,
@@ -568,6 +559,7 @@
             this.toolStrip3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.toolStrip3.CanOverflow = false;
             this.toolStrip3.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip3.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton4,
@@ -750,6 +742,18 @@
             // 
             this.spellingWorker1.Editor = this.richTextBox1;
             // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.SystemColors.Info;
+            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox2.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox2.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(969, 196);
+            this.richTextBox2.TabIndex = 4;
+            this.richTextBox2.Text = "";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -826,7 +830,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
@@ -843,5 +846,6 @@
         public CustomElements.CustomRichtextBox richTextBox1;
         public NHunspellComponent.Spelling.SpellingWorker spellingWorker1;
         private System.Windows.Forms.RichTextBox instruction_box;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }

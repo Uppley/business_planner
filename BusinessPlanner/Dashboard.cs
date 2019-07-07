@@ -15,16 +15,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessPlanner.Models;
 using BP.Instructions;
+using BP.Samples.Models;
+using BP.Samples;
 
 namespace BusinessPlanner
 {
     public partial class Dashboard : Form
     {
         public List<int> findPosition = new List<int>();
-        
+        public List<SampleItem> all_samples;
         public int findLength = 0;
         string file_loaded;
         string section_name;
+        int sample_index = 0;
+        int sample_count = 0;
         SectionInstructions secIns;
         public string richtext { get; set; }
         MainWindow mw;
@@ -51,6 +55,7 @@ namespace BusinessPlanner
             fontSizeCmb.SelectedItem = 12;
             section_name = setDocumentList().Find(item => item.DocumentName == name).ItemName;
             secIns = new SectionInstructions();
+            loadSample(section_name);
             this.setContentInitial(file_loaded);
             this.richTextBox1.SelectionFont = new Font("Arial", 12, this.richTextBox1.SelectionFont.Style);
             this.richTextBox1.ZoomFactor = 1.0f;
@@ -61,6 +66,14 @@ namespace BusinessPlanner
                 label2.Text = "Unsaved";
             }
 
+        }
+
+        private void loadSample(string section_name)
+        {
+            SampleData so = new SampleData();
+            all_samples = so.items.FindAll(x => x.section == section_name);
+            sample_count = all_samples.Count();
+            this.richTextBox2.Text = all_samples[sample_index].content;
         }
 
         private List<DocumentItem> setDocumentList()
@@ -258,10 +271,10 @@ namespace BusinessPlanner
             {
 
                 StringBuilder st = new StringBuilder();
-                st.Append(@"{\rtf1");
+                st.Append(@"{\rtf1\ansi\deff0");
                 st.Append(@"{\colortbl;\red0\green0\blue238;}");
-                st.Append(@"{\field{\*\fldinst {HYPERLINK "+ hpl.linkUrl +"}}");
-                st.Append(@"{\fldrslt{\cf1\ul " + hpl.linkText+"}}}");
+                st.Append(@"{\field{\*\fldinst {HYPERLINK " + hpl.linkUrl + "}}");
+                st.Append(@"{\fldrslt{\cf1\ul " + hpl.linkText + "}}}");
                 st.Append(@"}");
                 this.richTextBox1.SelectedRtf = st.ToString();
             }
@@ -413,8 +426,11 @@ namespace BusinessPlanner
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(label4.Text);
+            Clipboard.SetText(richTextBox2.Text);
             this.richTextBox1.Paste();
+            this.richTextBox1.Paste();
+            this.richTextBox1.SelectionStart = richTextBox1.Text.Length;
+            this.richTextBox1.Focus();
         }
 
         public void saveDocument()
@@ -473,6 +489,38 @@ namespace BusinessPlanner
             TreeNode node = mw.treeView1.Nodes.Find(child_node, true)[0];
             node.Text = node.Name + "*";
             node.Parent.Text = node.Parent.Name + "*";
+        }
+
+        private void NextEgBt_Click(object sender, EventArgs e)
+        {
+            if (sample_index < sample_count - 1)
+            {
+                sample_index += 1;
+                Debug.WriteLine(sample_index);
+                richTextBox2.Text = all_samples[sample_index].content;
+                prevEgBt.Enabled = true;
+            }
+            else
+            {
+                var bt = (Button)sender;
+                bt.Enabled = false;
+            }
+        }
+
+        private void PrevEgBt_Click(object sender, EventArgs e)
+        {
+            if (sample_index > 0)
+            {
+                sample_index -= 1;
+                Debug.WriteLine(sample_index);
+                richTextBox2.Text = all_samples[sample_index].content;
+                nextEgBt.Enabled = true;
+            }
+            else
+            {
+                var bt = (Button)sender;
+                bt.Enabled = false;
+            }
         }
     }
 }

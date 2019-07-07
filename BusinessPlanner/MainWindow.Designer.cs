@@ -566,7 +566,7 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.toolBar);
             this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(995, 39);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(995, 64);
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(6, 33);
             this.toolStripContainer1.Name = "toolStripContainer1";
